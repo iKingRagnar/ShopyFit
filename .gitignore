@@ -1,0 +1,25 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Dependencies (in case backend gets added)
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Build / hosting
+.vercel/
+.netlify/
+dist/
+build/
+
+# Local helpers
+_zip/
+*.log
+.env
+.env.local
