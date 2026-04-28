@@ -480,8 +480,11 @@ function toast(msg,type){
 // Cambia API_BASE por la URL pública de tu servicio FastAPI en Railway
 // (ej. https://shopyfit-api-production.up.railway.app) y pon USE_API=true.
 // Mientras esté en false, los handlers responden con mocks locales.
-const API_BASE='';                // ← rellena cuando tengas el deploy
-const USE_API=false;              // ← flip a true cuando API_BASE esté listo
+// API base + flag — runtime-configurable. Set from socios.html ("Configurar API" tile)
+// or via devtools: localStorage.setItem('tk_api_base','https://your-api.up.railway.app');
+//                  localStorage.setItem('tk_use_api','1');
+const API_BASE = localStorage.getItem('tk_api_base') || '';
+const USE_API  = localStorage.getItem('tk_use_api') === '1' && !!API_BASE;
 
 async function api(path,body){
   const r=await fetch(API_BASE+path,{
