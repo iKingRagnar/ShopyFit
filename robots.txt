@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /socios.html
+Disallow: /dashboard.html
+Disallow: /api/
+Disallow: /tomasq-v3.html
+Disallow: /tomasq-v4.html
+
+Sitemap: https://torokaizen.mx/sitemap.xml
