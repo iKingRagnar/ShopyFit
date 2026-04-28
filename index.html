@@ -71,27 +71,33 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  /* LIGHT CREAM THEME — Toro Kaizen v2 (Mexican warm + Japanese minimal) */
-  --lime:#C8F000;            /* lime un poco más oscuro para legibilidad sobre cream */
-  --lime-dark:#9FBE00;
-  --black:#0d0d0e;            /* sigue siendo el dark accent / button text on lime */
-  --bg-1:#FAF7F0;            /* CREAM warm — main page bg */
-  --bg-2:#FFFFFF;            /* WHITE surfaces — cards */
-  --bg-3:#F0EBDF;            /* warm light grey */
-  --bg-4:#E5DECF;            /* deeper warm grey */
-  --border:#D9D2C2;          /* warm border */
-  --border-soft:#ECE7DA;     /* lighter warm border */
-  --white:#0d0d0e;            /* foreground accent (was white, ahora near-black) */
-  --text:#1a1a1a;             /* main text */
-  --text-2:#5a5550;           /* secondary text */
-  --text-3:#8a8580;           /* tertiary text */
-  --red:#d92828;
-  --green:#1a9c46;
-  --amber:#e89a2a;
-  --blue:#2b6cd9;
-  --purple:#6e4ad9;
-  --dark-section-bg:#0d0d0e;  /* para secciones con drama editorial */
-  --dark-section-text:#f5f5f2;
+  /* HYBRID THEME — dark canvas with cream sections for shopping */
+  --lime:#D4FF00;
+  --black:#0d0d0e;
+  --bg-1:#141416;             /* dark main bg (hero, ticker, lookbook, footer) */
+  --bg-2:#1c1c1f;             /* card surfaces dark */
+  --bg-3:#26262a;
+  --bg-4:#33333a;
+  --border:#3a3a40;
+  --border-soft:#2a2a30;
+  --white:#ffffff;
+  --text:#f5f5f2;
+  --text-2:#c8c8c2;
+  --text-3:#8e8e88;
+  --red:#ff3b41;
+  --green:#3dd96f;
+  --amber:#ffb547;
+  --blue:#5b9eff;
+  --purple:#a78bfa;
+  /* Cream tokens for the shopping band (products / reviews / activities / UGC) */
+  --cream-bg:#FAF7F0;
+  --cream-card:#FFFFFF;
+  --cream-bg-2:#F0EBDF;
+  --cream-text:#1a1a1a;
+  --cream-text-2:#5a5550;
+  --cream-text-3:#8a8580;
+  --cream-border:#D9D2C2;
+  --cream-border-soft:#ECE7DA;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;cursor:none}
@@ -420,192 +426,6 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-/* ═══════════ LIGHT THEME OVERRIDES (Toro Kaizen v2) ═══════════ */
-/* Body / global */
-body{background:var(--bg-1);color:var(--text)}
-::-webkit-scrollbar-track{background:var(--bg-2)}
-::-webkit-scrollbar-thumb{background:var(--lime)}
-
-/* Nav: cream + dark text + subtle border */
-nav{background:rgba(250,247,240,.92);border-bottom:.5px solid var(--border)}
-.logo{color:var(--text)}
-.logo-badge{border-color:var(--text)}
-.nav-links a{color:var(--text-2)}
-.nav-links a:hover{color:var(--text)}
-.nav-ico{color:var(--text-2)}
-.nav-ico:hover{color:var(--text)}
-.cart-pill{background:var(--text);color:var(--bg-2)}
-.cart-pill:hover{background:var(--lime);color:var(--text)}
-.c-badge{background:var(--bg-2);color:var(--text)}
-
-/* Mega menu: white bg + dark text */
-.mega{background:rgba(255,255,255,.97);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border)}
-.mega-h{color:var(--text);border-bottom-color:var(--border)}
-.mega-link{color:var(--text-2)}
-.mega-link:hover{color:var(--text)}
-.mega-feat-cap{color:#fff;background:linear-gradient(to top,rgba(13,13,14,.85),transparent)}
-
-/* Hero: cream con drama suave */
-.hero{background:linear-gradient(180deg,var(--bg-1) 0%,var(--bg-3) 100%)}
-.hero-bull-wm{opacity:.06;color:var(--text)}
-h1.hero-t{color:var(--text)}
-h1.hero-t .outline{-webkit-text-stroke:1.5px var(--text)}
-.hero-pill{background:rgba(13,13,14,.04);border-color:var(--text);color:var(--text)}
-.hero-pill .ldot{background:var(--lime);box-shadow:0 0 0 2px var(--text)}
-.cnt-cell{background:var(--bg-2);border-color:var(--border)}
-.cnt-cell b{color:var(--text)}
-.btn-p{background:var(--text);color:var(--bg-2);border:1px solid var(--text)}
-.btn-p:hover{background:var(--lime);color:var(--text);border-color:var(--lime)}
-.btn-g{color:var(--text);border:1px solid var(--text)}
-.btn-g:hover{background:var(--text);color:var(--bg-2)}
-
-/* Hero images */
-.hero-img-wrap img{filter:brightness(1) contrast(1.02)}
-.hero-img-wrap:hover img{filter:brightness(1.05) contrast(1.05)}
-.hero-img-label{background:rgba(13,13,14,.85);color:#fff}
-.hero-img-badge{background:var(--lime);color:var(--text)}
-
-/* Trust bar: cream con divisores claros */
-.trust-bar{background:var(--bg-2);border-top-color:var(--border);border-bottom-color:var(--border)}
-.trust-cell{border-right-color:var(--border)}
-.trust-cell b{color:var(--text)}
-.trust-cell span{color:var(--text-2)}
-
-/* Ticker: dark band para contraste */
-.ticker{background:var(--text);color:var(--bg-1)}
-.t-item{color:var(--bg-1)}
-.t-dot{background:var(--lime)}
-
-/* Products: cream con cards blancas */
-.products{background:var(--bg-1)}
-.s-label{color:var(--lime)}
-.s-title{color:var(--text)}
-.s-title .lime{color:var(--lime)}
-.f-btn{border-color:var(--border);color:var(--text-2);background:var(--bg-2)}
-.f-btn.on,.f-btn:hover{background:var(--text);color:var(--bg-2);border-color:var(--text)}
-.filt-label{color:var(--text-3)}
-.tg{background:var(--bg-3);border-color:var(--border-soft);color:var(--text-2)}
-.prod-empty{color:var(--text-2);border-color:var(--border)}
-.prod-empty .link{color:var(--text)}
-
-/* Product cards: white surface */
-.pc{background:var(--bg-2);border:.5px solid var(--border)}
-.pc-img-wrap{background:var(--bg-3)}
-.pc-img-wrap img{filter:brightness(1) contrast(1.02)}
-.pc:hover .pc-img-wrap img{filter:brightness(1.04)}
-.pc-overlay{background:linear-gradient(to top,rgba(13,13,14,.55),transparent 60%)}
-.pc-info{background:var(--bg-2)}
-.pc-cat{color:var(--text-3)}
-.pc-name{color:var(--text)}
-.pc-price{color:var(--text)}
-.pc-old{color:var(--text-3)}
-.add-btn{background:var(--text);color:var(--bg-2)}
-.add-btn:hover{background:var(--lime);color:var(--text)}
-.q-btn{background:var(--bg-2);color:var(--text);border:1px solid var(--text)}
-.q-btn:hover{background:var(--text);color:var(--bg-2)}
-.pc-badge{color:#fff}
-.pc-rating{color:var(--text-2)}
-.pc-rating .stars{color:var(--text)}
-.pc-rating .cnt{color:var(--text-3)}
-.pc-sw{border-color:var(--border)}
-.pc-sw[data-c="white"]{background:#fff;border-color:var(--text-3)}
-.pc-wish{background:rgba(255,255,255,.85);border-color:var(--border);color:var(--text)}
-.pc-wish:hover,.pc-wish.on{background:var(--lime);color:var(--text);border-color:var(--lime)}
-
-/* Activities: cream */
-.activities{background:var(--bg-1)}
-.act-card-cap{color:#fff}
-.act-card .arrow{border-color:rgba(255,255,255,.7);color:#fff}
-
-/* Lookbook: STAYS DARK (drama editorial) */
-.lookbook{background:#0d0d0e}
-.lookbook .s-label{color:var(--lime)}
-.lookbook .s-title{color:#fff}
-.lookbook .s-title .lime{color:var(--lime)}
-.lookbook .btn-g{color:#fff;border-color:rgba(255,255,255,.4)}
-.lookbook .btn-g:hover{border-color:var(--lime);color:var(--lime);background:transparent}
-
-/* Reviews: cream con cards blancas */
-.reviews{background:var(--bg-3)}
-.rv-stat{background:var(--bg-2);border-color:var(--border)}
-.rv-stat .num{color:var(--text)}
-.rv-stat .stars{color:var(--lime)}
-.rv-stat span{color:var(--text-3)}
-.rv-card{background:var(--bg-2);border-color:var(--border)}
-.rv-text{color:var(--text)}
-.rv-name{color:var(--text)}
-.rv-meta{border-top-color:var(--border)}
-.rv-name + div{color:var(--text-3)}
-
-/* Recently viewed: cream */
-.recent{background:var(--bg-1);border-top-color:var(--border)}
-.rs-img{background:var(--bg-3)}
-.rs-name{color:var(--text)}
-
-/* UGC: cream */
-.ugc{background:var(--bg-2)}
-
-/* Footer: STAYS DARK por contraste */
-.foot-x{background:#0d0d0e;color:#c8c8c2;border-top:none}
-.foot-x-brand{color:#fff}
-.foot-x-tag{color:#c8c8c2}
-.foot-x-col h4{color:#fff}
-.foot-x-col a,.foot-x-col li{color:#c8c8c2}
-.foot-x-col a:hover{color:var(--lime)}
-.foot-x-social a{border-color:#3a3a40;color:#c8c8c2}
-.foot-x-social a:hover{border-color:var(--lime);color:var(--lime)}
-.foot-x-news input{background:#1c1c1f;border-color:#3a3a40;color:#f5f5f2}
-.foot-x-bot{border-top-color:#2a2a30;color:#8e8e88}
-.foot-x-bot a{color:#8e8e88}
-.foot-x-bot a:hover{color:var(--lime)}
-.foot-x-pay span{border-color:#3a3a40;color:#c8c8c2}
-
-/* Sourcing/Fulfillment removed from public, but kept for any leftover */
-.b2b,.fulfill{background:var(--bg-3)}
-
-/* Modals & popups */
-.qa-modal{background:var(--bg-2)}
-.qa-name{color:var(--text)}
-.qa-x{color:var(--text-2)}
-.qa-x:hover{color:var(--text)}
-.qa-row-l{color:var(--text-3)}
-.qa-size{background:var(--bg-2);border-color:var(--border);color:var(--text)}
-.qa-size:hover,.qa-size.on{background:var(--text);color:var(--bg-2);border-color:var(--text)}
-.qa-link{color:var(--text-3)}
-.qa-link:hover{color:var(--text)}
-.em-modal{background:var(--bg-2);border:1px solid var(--border)}
-.em-x{color:var(--text-2)}
-.em-x:hover{color:var(--text)}
-.em-h{color:var(--text)}
-.em-p{color:var(--text-2)}
-.em-input{background:var(--bg-1);border-color:var(--border);color:var(--text)}
-.em-input:focus{border-color:var(--lime)}
-.em-foot{color:var(--text-3)}
-.em-foot a{color:var(--text-2)}
-
-/* Toast */
-.toast{background:var(--text);color:var(--bg-2);border-left-color:var(--lime)}
-
-/* Chatbot: STAYS DARK style (like a chat overlay) for premium feel */
-.cb-fab{background:var(--lime);color:var(--text);box-shadow:0 8px 24px rgba(13,13,14,.25)}
-.cb-tip{background:var(--text);color:#fff;border-color:var(--text)}
-.cb-tip::after{background:var(--text);border-right-color:var(--text);border-top-color:var(--text)}
-.cb-panel{background:var(--bg-2);border:1px solid var(--border)}
-.cb-head{background:linear-gradient(135deg,var(--lime) 0%,#9FBE00 100%);color:var(--text)}
-.cb-avatar{background:var(--text);color:var(--lime)}
-.cb-x{color:var(--text)}
-.cb-log{background:var(--bg-2)}
-.cb-msg.bot{background:var(--bg-3);color:var(--text);border-left-color:var(--lime)}
-.cb-msg.usr{background:var(--lime);color:var(--text)}
-.cb-typing{background:var(--bg-3);border-left-color:var(--lime)}
-.cb-quick{background:var(--bg-1);border-top-color:var(--border)}
-.cb-chip{border-color:var(--border);background:var(--bg-2);color:var(--text-2)}
-.cb-chip:hover{background:var(--text);color:var(--bg-2);border-color:var(--text)}
-.cb-form{background:var(--bg-2);border-top-color:var(--border)}
-.cb-input{background:var(--bg-1);border-color:var(--border);color:var(--text)}
-.cb-input:focus{border-color:var(--lime)}
-.cb-send{background:var(--lime);color:var(--text)}
-
 /* BULL MARK */
 .bull-mark{display:block;width:100%;height:100%;color:var(--lime)}
 .bull-mark.dark{color:var(--black)}
@@ -628,8 +448,55 @@ h1.hero-t .outline{-webkit-text-stroke:1.5px var(--text)}
 /* opt-out for products that shouldn't show the print (shorts, accessories) */
 .pc[data-print="off"] .pc-img-wrap::after{display:none}
 
+
+/* ═══════════ HYBRID THEME — cream bands inside dark canvas ═══════════ */
+/* Apply .cream-band class on a section to flip it cream while rest stays dark */
+.cream-band{background:var(--cream-bg);color:var(--cream-text)}
+.cream-band .s-label{color:var(--cream-text-3)}
+.cream-band .s-title{color:var(--cream-text)}
+.cream-band .s-title .lime{color:var(--lime)}
+.cream-band .pc{background:var(--cream-card);border:.5px solid var(--cream-border)}
+.cream-band .pc-img-wrap{background:var(--cream-bg-2)}
+.cream-band .pc-info{background:var(--cream-card)}
+.cream-band .pc-cat{color:var(--cream-text-3)}
+.cream-band .pc-name{color:var(--cream-text)}
+.cream-band .pc-price{color:var(--cream-text)}
+.cream-band .pc-old{color:var(--cream-text-3)}
+.cream-band .pc-rating{color:var(--cream-text-2)}
+.cream-band .pc-rating .stars{color:var(--cream-text)}
+.cream-band .pc-rating .cnt{color:var(--cream-text-3)}
+.cream-band .tg{background:var(--cream-bg-2);color:var(--cream-text-2);border-color:var(--cream-border-soft)}
+.cream-band .add-btn{background:var(--cream-text);color:var(--cream-card)}
+.cream-band .add-btn:hover{background:var(--lime);color:var(--cream-text)}
+.cream-band .q-btn{background:var(--cream-card);color:var(--cream-text);border:1px solid var(--cream-text)}
+.cream-band .q-btn:hover{background:var(--cream-text);color:var(--cream-card)}
+.cream-band .pc-wish{background:rgba(255,255,255,.85);border-color:var(--cream-border);color:var(--cream-text)}
+.cream-band .pc-wish:hover,.cream-band .pc-wish.on{background:var(--lime);color:var(--cream-text);border-color:var(--lime)}
+.cream-band .f-btn{background:var(--cream-card);color:var(--cream-text-2);border-color:var(--cream-border)}
+.cream-band .f-btn.on,.cream-band .f-btn:hover{background:var(--cream-text);color:var(--cream-card);border-color:var(--cream-text)}
+.cream-band .filt-label{color:var(--cream-text-3)}
+.cream-band .prod-empty{color:var(--cream-text-2);border-color:var(--cream-border)}
+.cream-band .prod-empty .link{color:var(--cream-text)}
+.cream-band .pc-sw{border-color:var(--cream-border)}
+.cream-band .pc-sw[data-c="white"]{background:#fff;border-color:var(--cream-text-3)}
+.cream-band .rv-stat{background:var(--cream-card);border-color:var(--cream-border)}
+.cream-band .rv-stat .num{color:var(--cream-text)}
+.cream-band .rv-stat span{color:var(--cream-text-3)}
+.cream-band .rv-card{background:var(--cream-card);border-color:var(--cream-border)}
+.cream-band .rv-text{color:var(--cream-text)}
+.cream-band .rv-name{color:var(--cream-text)}
+.cream-band .rv-meta{border-top-color:var(--cream-border)}
+.cream-band .rv-name + div{color:var(--cream-text-3)}
+.cream-band .ugc-cell{background:var(--cream-bg-2)}
+.cream-band .rs-img{background:var(--cream-bg-2)}
+.cream-band .rs-name{color:var(--cream-text)}
+.cream-band .act-card-cap{color:#fff}
+
 /* ═══════════ SCROLL-MORPH VIDEO COMPONENT ═══════════ */
-.scroll-morph{position:relative;height:240vh;background:var(--bg-1);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border)}
+/* Scroll-morph hidden by default; reveals itself once .mp4 loads (.has-video). Add data-show-placeholder="1" on the section to force-show the placeholder for dev preview. */
+.scroll-morph{display:none;position:relative;height:240vh;background:var(--bg-1);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border)}
+.scroll-morph[data-show-placeholder="1"]{display:block}
+.scroll-morph.has-video{display:block}
 .scroll-morph.dark{background:#0d0d0e;color:#fff;border-color:#1c1c1f}
 .scroll-morph-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding:40px 6vw}
 .scroll-morph-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--lime);margin-bottom:14px;display:flex;align-items:center;gap:14px;position:relative;z-index:2}
@@ -879,7 +746,7 @@ h1.hero-t .outline{-webkit-text-stroke:1.5px var(--text)}
 </div>
 
 <!-- PRODUCTS -->
-<section class="products" id="productos">
+<section class="products cream-band" id="productos">
   <div class="prod-head">
     <div>
       <div class="s-label rv">Lo Más Buscado</div>
@@ -1083,7 +950,7 @@ h1.hero-t .outline{-webkit-text-stroke:1.5px var(--text)}
 </section>
 
 <!-- ═══════════════════ SHOP BY ACTIVITY ═══════════════════ -->
-<section class="activities" id="actividades">
+<section class="activities cream-band" id="actividades">
   <div class="act-head">
     <div class="s-label rv">Shop by Activity</div>
     <h2 class="s-title rv">ENCUENTRA <span class="lime">TU LIGA</span></h2>
@@ -1173,7 +1040,7 @@ h1.hero-t .outline{-webkit-text-stroke:1.5px var(--text)}
 </section>
 
 <!-- ═══════════════════ REVIEWS ═══════════════════ -->
-<section class="reviews" id="reviews">
+<section class="reviews cream-band" id="reviews">
   <div class="rv-head">
     <div class="rv-stat rv">
       <div class="num">4.9</div>
@@ -1225,7 +1092,7 @@ h1.hero-t .outline{-webkit-text-stroke:1.5px var(--text)}
 </section>
 
 <!-- ═══════════════════ RECENTLY VIEWED ═══════════════════ -->
-<section class="recent" id="recent" hidden>
+<section class="recent cream-band" id="recent" hidden>
   <div class="recent-head">
     <div class="s-label">Visto recientemente</div>
     <a href="#productos" style="font-size:11px;font-family:'Barlow Condensed';letter-spacing:.16em;text-transform:uppercase;color:var(--lime);text-decoration:none">Ver todo →</a>
@@ -1234,7 +1101,7 @@ h1.hero-t .outline{-webkit-text-stroke:1.5px var(--text)}
 </section>
 
 <!-- ═══════════════════ UGC / AMBASSADORS ═══════════════════ -->
-<section class="ugc" id="ugc">
+<section class="ugc cream-band" id="ugc">
   <div class="ugc-head">
     <div class="s-label rv">@TOROKAIZEN.MX</div>
     <h2 class="s-title rv">EL <span class="lime">SQUAD</span> EN VIVO</h2>
@@ -1498,7 +1365,7 @@ function initScrollMorph(section){
   video.addEventListener('loadedmetadata',()=>{
     if(video.duration && isFinite(video.duration)){
       videoReady=true;
-      video.hidden=false;
+      video.hidden=false;section.classList.add("has-video");
       if(placeholder)placeholder.style.display='none';
       onScroll();
     }
