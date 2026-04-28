@@ -80,6 +80,167 @@ body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;li
 .foot{padding:24px 6vw;border-top:.5px solid var(--border-soft);display:flex;justify-content:space-between;font-size:11px;color:var(--text-3);flex-wrap:wrap;gap:14px}
 .foot button{background:none;border:none;color:var(--text-3);cursor:pointer;font-size:11px;text-decoration:underline}
 .foot button:hover{color:var(--lime)}
+/* ─── Operator utility classes ─── */
+.s-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.22em;color:var(--lime);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:14px}
+.s-label::before{content:''';width:36px;height:1px;background:var(--lime)}
+.s-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,80px);line-height:.95;letter-spacing:.01em;color:var(--white)}
+.s-title .lime{color:var(--lime)}
+.rv{opacity:1;transform:none}
+
+/* B2B SOURCING + FULFILLMENT shared */
+.b2b{background:linear-gradient(180deg,var(--bg-1) 0%,#1a1a1d 100%);padding:90px 5vw 100px;position:relative;border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft)}
+.b2b-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3rem;flex-wrap:wrap;gap:2rem}
+.b2b-status{display:flex;align-items:center;gap:14px;background:var(--bg-2);border:.5px solid var(--border);padding:14px 20px;flex-wrap:wrap}
+.live-dot{width:8px;height:8px;background:var(--green);border-radius:50%;animation:livePulse 2s ease infinite}
+@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(61,217,111,.5)}70%{box-shadow:0 0 0 10px rgba(61,217,111,0)}100%{box-shadow:0 0 0 0 rgba(61,217,111,0)}}
+.live-status-l{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-2);letter-spacing:.05em}
+.live-status-l strong{color:var(--green);font-weight:700}
+.refresh-btn{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;background:transparent;color:var(--lime);border:.5px solid var(--lime);cursor:none;padding:7px 14px;display:flex;align-items:center;gap:6px;transition:all .2s}
+.refresh-btn:hover{background:var(--lime);color:var(--black)}
+.refresh-btn svg{width:12px;height:12px;transition:transform .5s}
+.refresh-btn.spin svg{transform:rotate(360deg)}
+
+/* ═══ FULFILLMENT MRP — ORDER → PURCHASE PLAN ═══ */
+.fulfill{background:linear-gradient(180deg,#181820 0%,#1a1a1d 100%);padding:90px 5vw 100px;border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft)}
+
+.fulfill-grid{display:grid;grid-template-columns:340px 1fr;gap:14px;margin-top:2rem}
+@media(max-width:1100px){.fulfill-grid{grid-template-columns:1fr}}
+
+/* ORDERS LIST */
+.orders-panel{background:var(--bg-2);border:.5px solid var(--border-soft);max-height:880px;overflow-y:auto;display:flex;flex-direction:column}
+.orders-panel::-webkit-scrollbar{width:4px}
+.orders-panel::-webkit-scrollbar-thumb{background:var(--border)}
+.orders-head{padding:18px 20px;border-bottom:.5px solid var(--border-soft);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--bg-2);z-index:5}
+.orders-title{font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--white)}
+.orders-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--lime);background:rgba(212,255,0,.1);padding:3px 8px;border:.5px solid rgba(212,255,0,.25)}
+.order-item{padding:18px 20px;border-bottom:.5px solid var(--border-soft);cursor:none;transition:background .2s;position:relative}
+.order-item:hover{background:rgba(212,255,0,.03)}
+.order-item.active{background:rgba(212,255,0,.06)}
+.order-item.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--lime)}
+.order-row1{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.order-id{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--white);font-weight:700;letter-spacing:.04em}
+.order-status{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:2px 7px}
+.os-pending{background:rgba(255,181,71,.15);color:var(--amber);border:.5px solid rgba(255,181,71,.3)}
+.os-bought{background:rgba(61,217,111,.15);color:var(--green);border:.5px solid rgba(61,217,111,.3)}
+.os-progress{background:rgba(91,158,255,.15);color:var(--blue);border:.5px solid rgba(91,158,255,.3)}
+.order-client{font-family:'Barlow',sans-serif;font-size:13px;color:var(--text);margin-bottom:2px;font-weight:500}
+.order-meta{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.order-loc{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-3);letter-spacing:.04em}
+.order-tot{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--lime);font-weight:700}
+.order-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-3);margin-top:3px}
+.order-items-mini{font-size:11px;color:var(--text-2);margin-top:6px;letter-spacing:.02em}
+
+/* ORDER DETAIL */
+.detail-panel{background:var(--bg-2);border:.5px solid var(--border-soft);display:flex;flex-direction:column}
+.detail-head{padding:22px 26px;border-bottom:.5px solid var(--border-soft);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem}
+.dh-l{display:flex;flex-direction:column;gap:4px}
+.dh-id{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--lime);font-weight:700;letter-spacing:.04em}
+.dh-client{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--white);letter-spacing:.04em;line-height:1}
+.dh-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-2)}
+.dh-r{display:flex;gap:8px;flex-wrap:wrap}
+
+/* ITEMS PURCHASED BY CUSTOMER */
+.items-block{padding:18px 26px;border-bottom:.5px solid var(--border-soft)}
+.block-l{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.block-l::before{content:'';width:18px;height:1px;background:var(--text-3)}
+.item-row{display:grid;grid-template-columns:auto 1fr auto auto auto;gap:14px;padding:8px 0;align-items:center;font-size:13px}
+.item-thumb{width:38px;height:48px;background:var(--bg-3);border:.5px solid var(--border);overflow:hidden;flex-shrink:0}
+.item-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.95)}
+.item-name{color:var(--white);font-weight:500}
+.item-name span{color:var(--text-3);font-size:11px;font-weight:400;margin-left:6px;letter-spacing:.04em}
+.item-qty{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-2);text-align:right}
+.item-price{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--lime);font-weight:700;text-align:right}
+.items-totals{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:14px;padding-top:14px;border-top:.5px solid var(--border-soft)}
+.tot-cell{display:flex;flex-direction:column}
+.tot-l{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-3);margin-bottom:5px}
+.tot-v{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--white);line-height:1}
+.tot-v.lime{color:var(--lime)}
+.tot-v.green{color:var(--green)}
+
+/* PURCHASE PLAN BY SUPPLIER */
+.plan-block{padding:18px 26px}
+.plan-head-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:1rem}
+.savings-badge{display:flex;align-items:center;gap:8px;background:rgba(61,217,111,.08);border:.5px solid rgba(61,217,111,.3);padding:6px 12px}
+.sav-ico{color:var(--green)}
+.sav-ico svg{width:14px;height:14px}
+.sav-txt{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green)}
+.sav-txt strong{font-weight:700}
+
+.supplier-card{background:var(--bg-3);border:.5px solid var(--border-soft);margin-bottom:10px;overflow:hidden;transition:border-color .2s}
+.supplier-card:hover{border-color:rgba(212,255,0,.3)}
+.sc-head{padding:14px 20px;display:flex;justify-content:space-between;align-items:center;background:var(--bg-4);border-bottom:.5px solid var(--border-soft);flex-wrap:wrap;gap:1rem}
+.sc-l{display:flex;align-items:center;gap:12px}
+.sc-logo{width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.04em;border:.5px solid var(--border);flex-shrink:0}
+.sc-info{display:flex;flex-direction:column;gap:2px}
+.sc-name{font-family:'Barlow',sans-serif;font-size:14px;color:var(--white);font-weight:600;letter-spacing:.02em}
+.sc-loc{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-3);letter-spacing:.06em;text-transform:uppercase}
+.sc-r{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.sc-tot-l{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-3);text-align:right}
+.sc-tot-v{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--lime);line-height:1;letter-spacing:.02em}
+
+.sc-mat-row{display:grid;grid-template-columns:1.5fr .8fr .8fr 1fr;gap:14px;padding:10px 20px;border-bottom:.5px solid rgba(58,58,64,.4);align-items:center}
+.sc-mat-row:last-child{border-bottom:none}
+.sc-mat-name{font-family:'Barlow',sans-serif;font-size:12px;color:var(--text);font-weight:500}
+.sc-mat-name span{color:var(--text-3);font-size:10px;font-weight:400;display:block;margin-top:1px;letter-spacing:.04em}
+.sc-mat-qty{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-2)}
+.sc-mat-price{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-2)}
+.sc-mat-sub{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--white);font-weight:500;text-align:right}
+
+.sc-actions{padding:12px 20px;background:rgba(13,13,14,.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-top:.5px solid var(--border-soft)}
+.sc-status{display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-2)}
+.sc-status-dot{width:6px;height:6px;border-radius:50%;background:var(--amber)}
+.sc-status-dot.green{background:var(--green)}
+.sc-btns{display:flex;gap:6px}
+.sc-btn{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:7px 12px;cursor:none;border:.5px solid var(--border);background:transparent;color:var(--text-2);transition:all .15s;display:inline-flex;align-items:center;gap:5px}
+.sc-btn:hover{border-color:var(--lime);color:var(--lime)}
+.sc-btn.primary{background:var(--lime);color:var(--black);border-color:var(--lime)}
+.sc-btn.primary:hover{background:var(--white);border-color:var(--white)}
+.sc-btn.wapp{background:rgba(61,217,111,.1);border-color:rgba(61,217,111,.3);color:var(--green)}
+.sc-btn.wapp:hover{background:var(--green);color:var(--black);border-color:var(--green)}
+.sc-btn svg{width:11px;height:11px}
+
+/* TOTALS BAR FOOTER */
+.totals-bar{background:var(--bg-3);padding:18px 26px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;border-top:1px solid var(--border)}
+@media(max-width:700px){.totals-bar{grid-template-columns:repeat(2,1fr)}}
+.tb-cell{display:flex;flex-direction:column;gap:4px}
+.tb-l{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3)}
+.tb-v{font-family:'Bebas Neue',sans-serif;font-size:28px;line-height:1;color:var(--white)}
+.tb-v.lime{color:var(--lime)}
+.tb-v.green{color:var(--green)}
+.tb-trend{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-2)}
+.tb-trend.green{color:var(--green)}
+
+/* GLOBAL ACTIONS */
+.global-actions{padding:16px 26px;background:rgba(13,13,14,.5);border-top:.5px solid var(--border-soft);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.ga-l{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-2)}
+.ga-l strong{color:var(--lime)}
+.ga-btns{display:flex;gap:8px;flex-wrap:wrap}
+
+/* EMPTY STATE */
+.empty-detail{padding:80px 26px;text-align:center;color:var(--text-3)}
+.empty-detail svg{width:48px;height:48px;color:var(--lime);opacity:.3;margin-bottom:16px}
+.empty-detail h3{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--white);letter-spacing:.04em;margin-bottom:8px}
+.empty-detail p{font-size:13px;max-width:340px;margin:0 auto;line-height:1.6}
+
+/* COMPARATOR (B2B Sourcing) - kept compact */
+.b2b-prods{display:flex;gap:6px;margin-bottom:1.8rem;overflow-x:auto;padding-bottom:4px}
+.b2b-prods::-webkit-scrollbar{display:none}
+.bp-tab{font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;background:var(--bg-2);color:var(--text-2);border:.5px solid var(--border-soft);cursor:none;padding:10px 20px;white-space:nowrap;display:flex;align-items:center;gap:8px;transition:all .2s}
+.bp-tab:hover{border-color:var(--lime);color:var(--white)}
+.bp-tab.on{background:var(--lime);color:var(--black);border-color:var(--lime)}
+.bp-tab span.cnt{font-size:10px;background:rgba(0,0,0,.2);padding:1px 6px;font-weight:900}
+.bp-tab.on span.cnt{background:rgba(0,0,0,.25)}
+
+.scrap-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-soft);border:.5px solid var(--border-soft);margin-top:14px}
+@media(max-width:700px){.scrap-stats{grid-template-columns:repeat(2,1fr)}}
+.ss-cell{background:var(--bg-2);padding:18px 20px}
+.ss-l{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px}
+.ss-v{font-family:'Bebas Neue',sans-serif;font-size:32px;line-height:1;color:var(--white);margin-bottom:4px}
+.ss-v.lime{color:var(--lime)}
+.ss-trend{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-2)}
+.ss-trend.up{color:var(--green)}
+.ss-trend.down{color:var(--red)}
+
 </style>
 </head>
 <body>
@@ -188,8 +349,79 @@ body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;li
   </div>
 
   <!-- Embedded sourcing + fulfillment placeholders (filled by next chunks) -->
-  <div id="sourcing-mount"></div>
-  <div id="fulfillment-mount"></div>
+<!-- ═══════════════════ B2B SOURCING (compact) ═══════════════════ -->
+<section class="b2b" id="sourcing">
+  <div class="b2b-head rv">
+    <div>
+      <div class="s-label">Panel Interno · B2B</div>
+      <h2 class="s-title">SOURCING<br><span class="lime">INTELLIGENCE</span></h2>
+      <p style="color:var(--text-2);margin-top:1rem;max-width:520px;font-size:14px;line-height:1.7">Comparador en tiempo real de proveedores. Identifica el costo más bajo por material y monitorea cambios de precio.</p>
+    </div>
+    <div class="b2b-status">
+      <div class="live-dot"></div>
+      <div class="live-status-l"><strong>SCRAPING ACTIVO</strong> · Última act: <span id="lastUpdate">hace 8 min</span></div>
+      <button class="refresh-btn" onclick="refreshScrap(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        Actualizar
+      </button>
+    </div>
+  </div>
+
+  <div class="b2b-prods rv">
+    <button class="bp-tab on">Oversize Tee <span class="cnt">7 mat</span></button>
+    <button class="bp-tab">Tank Top <span class="cnt">5 mat</span></button>
+    <button class="bp-tab">Shorts <span class="cnt">6 mat</span></button>
+    <button class="bp-tab">Jogger <span class="cnt">7 mat</span></button>
+    <button class="bp-tab">Hoodie <span class="cnt">9 mat</span></button>
+    <button class="bp-tab">Set Completo <span class="cnt">12 mat</span></button>
+  </div>
+
+  <div class="scrap-stats rv">
+    <div class="ss-cell"><div class="ss-l">Proveedores Activos</div><div class="ss-v lime">14</div><div class="ss-trend up">▲ 2 nuevos esta semana</div></div>
+    <div class="ss-cell"><div class="ss-l">Costo Unidad TEE</div><div class="ss-v">$230.95</div><div class="ss-trend down">▼ 4.2% vs mes pasado</div></div>
+    <div class="ss-cell"><div class="ss-l">Margen Bruto</div><div class="ss-v">79.6%</div><div class="ss-trend up">▲ Sobre PV $699</div></div>
+    <div class="ss-cell"><div class="ss-l">Ahorro Mensual</div><div class="ss-v lime">$48,320</div><div class="ss-trend up">▲ vs proveedor inicial</div></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FULFILLMENT MRP — ORDER TO PURCHASE ═══════════════════ -->
+<section class="fulfill" id="fulfillment">
+  <div class="b2b-head rv">
+    <div>
+      <div class="s-label">⚡ MRP · Pedido → Compra</div>
+      <h2 class="s-title">FULFILLMENT<br><span class="lime">AUTOMATION</span></h2>
+      <p style="color:var(--text-2);margin-top:1rem;max-width:580px;font-size:14px;line-height:1.7">
+        Cuando entra un pedido, el sistema calcula el BOM, agrupa la materia prima por mejor proveedor y genera la orden de compra lista para enviar. <strong style="color:var(--white)">Click en cualquier pedido</strong> para ver el plan de compra automático.
+      </p>
+    </div>
+    <div class="b2b-status">
+      <div class="live-dot"></div>
+      <div class="live-status-l"><strong>3 PEDIDOS PENDIENTES</strong> · Auto-MRP activo</div>
+    </div>
+  </div>
+
+  <div class="fulfill-grid">
+
+    <!-- ORDERS LIST -->
+    <div class="orders-panel">
+      <div class="orders-head">
+        <div class="orders-title">Pedidos Recientes</div>
+        <div class="orders-count" id="ordersCount">5 pendientes</div>
+      </div>
+      <div id="ordersList"></div>
+    </div>
+
+    <!-- DETAIL PANEL -->
+    <div class="detail-panel" id="detailPanel">
+      <div class="empty-detail">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <h3>Selecciona un pedido</h3>
+        <p>Click en un pedido de la lista para ver el plan de compra automático con materia prima, proveedores recomendados y costos consolidados.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 </main>
 
@@ -243,6 +475,526 @@ document.addEventListener('DOMContentLoaded',()=>{
   const p=document.getElementById('pin');
   if(p && !sessionStorage.getItem(SESS_KEY))p.focus();
 });
+
+// ═══════════════ TOAST helper (used by operator JS) ═══════════════
+let _opToastTimer;
+function showToast(msg,type){
+  let t=document.getElementById('opToast');
+  if(!t){
+    t=document.createElement('div');t.id='opToast';
+    t.style.cssText='position:fixed;bottom:30px;right:30px;background:var(--bg-2);color:var(--white);border-left:3px solid var(--lime);padding:14px 22px;font-size:13px;z-index:300;box-shadow:0 8px 32px rgba(0,0,0,.5);transform:translateX(120%);transition:transform .35s cubic-bezier(.2,.9,.3,1.2);max-width:380px';
+    document.body.appendChild(t);
+  }
+  t.textContent=msg;
+  t.style.transform='translateX(0)';
+  if(type==='success')t.style.borderLeftColor='var(--green)';
+  else if(type==='warn')t.style.borderLeftColor='var(--amber)';
+  else if(type==='error')t.style.borderLeftColor='var(--red)';
+  else t.style.borderLeftColor='var(--lime)';
+  clearTimeout(_opToastTimer);
+  _opToastTimer=setTimeout(()=>{t.style.transform='translateX(120%)'},2800);
+}
+
+const BOM = {
+  'tee-blk':[
+    {mat:'Algodón Pima 240gr',cat:'Tela',qty:1.4,unit:'m',supplier:'cervantes',price:74.00},
+    {mat:'Hilo poliéster #40',cat:'Costura',qty:120,unit:'m',supplier:'modatelas',price:0.42},
+    {mat:'Etiqueta tejida marca',cat:'Branding',qty:1,unit:'u',supplier:'tejedor',price:1.80},
+    {mat:'Etiqueta hangtag',cat:'Branding',qty:1,unit:'u',supplier:'tejedor',price:0.95},
+    {mat:'Bolsa polipropileno',cat:'Empaque',qty:1,unit:'u',supplier:'tejedor',price:1.20},
+    {mat:'Maquila + corte',cat:'Servicio',qty:1,unit:'u',supplier:'maquila',price:45.00},
+  ],
+  'tee-wht':[
+    {mat:'Algodón Pima 240gr',cat:'Tela',qty:1.4,unit:'m',supplier:'cervantes',price:74.00},
+    {mat:'Hilo poliéster #40',cat:'Costura',qty:120,unit:'m',supplier:'modatelas',price:0.42},
+    {mat:'Etiqueta tejida marca',cat:'Branding',qty:1,unit:'u',supplier:'tejedor',price:1.80},
+    {mat:'Etiqueta hangtag',cat:'Branding',qty:1,unit:'u',supplier:'tejedor',price:0.95},
+    {mat:'Bolsa polipropileno',cat:'Empaque',qty:1,unit:'u',supplier:'tejedor',price:1.20},
+    {mat:'Maquila + corte',cat:'Servicio',qty:1,unit:'u',supplier:'maquila',price:45.00},
+  ],
+  'tank-tq':[
+    {mat:'Jersey Dry-Fit 180gr',cat:'Tela',qty:.95,unit:'m',supplier:'cervantes',price:88.00},
+    {mat:'Hilo poliéster #40',cat:'Costura',qty:90,unit:'m',supplier:'modatelas',price:0.42},
+    {mat:'Etiqueta tejida marca',cat:'Branding',qty:1,unit:'u',supplier:'tejedor',price:1.80},
+    {mat:'Etiqueta hangtag',cat:'Branding',qty:1,unit:'u',supplier:'tejedor',price:0.95},
+    {mat:'Bolsa polipropileno',cat:'Empaque',qty:1,unit:'u',supplier:'tejedor',price:1.20},
+    {mat:'Maquila + corte',cat:'Servicio',qty:1,unit:'u',supplier:'maquila',price:38.00},
+  ],
+  'short-obs':[
+    {mat:'Microfibra Spandex',cat:'Tela',qty:.85,unit:'m',supplier:'modatelas',price:96.00},
+    {mat:'Mesh interior',cat:'Tela',qty:.4,unit:'m',supplier:'modatelas',price:42.00},
+    {mat:'Elástico 4cm',cat:'Cinta',qty:1.1,unit:'m',supplier:'tejedor',price:8.50},
+    {mat:'Cordón gruesa 3mm',cat:'Cinta',qty:1,unit:'m',supplier:'tejedor',price:3.20},
+    {mat:'Hilo poliéster #40',cat:'Costura',qty:140,unit:'m',supplier:'modatelas',price:0.42},
+    {mat:'Etiqueta tejida marca',cat:'Branding',qty:1,unit:'u',supplier:'tejedor',price:1.80},
+    {mat:'Etiqueta hangtag',cat:'Branding',qty:1,unit:'u',supplier:'tejedor',price:0.95},
+    {mat:'Bolsa polipropileno',cat:'Empaque',qty:1,unit:'u',supplier:'tejedor',price:1.20},
+    {mat:'Maquila + corte',cat:'Servicio',qty:1,unit:'u',supplier:'maquila',price:42.00},
+  ],
+  'set-titan':[
+    {mat:'Algodón Pima 240gr',cat:'Tela',qty:1.4,unit:'m',supplier:'cervantes',price:74.00},
+    {mat:'Microfibra Spandex',cat:'Tela',qty:.85,unit:'m',supplier:'modatelas',price:96.00},
+    {mat:'Mesh interior',cat:'Tela',qty:.4,unit:'m',supplier:'modatelas',price:42.00},
+    {mat:'Elástico 4cm',cat:'Cinta',qty:1.1,unit:'m',supplier:'tejedor',price:8.50},
+    {mat:'Cordón gruesa 3mm',cat:'Cinta',qty:1,unit:'m',supplier:'tejedor',price:3.20},
+    {mat:'Hilo poliéster #40',cat:'Costura',qty:260,unit:'m',supplier:'modatelas',price:0.42},
+    {mat:'Etiqueta tejida marca',cat:'Branding',qty:2,unit:'u',supplier:'tejedor',price:1.80},
+    {mat:'Etiqueta hangtag',cat:'Branding',qty:2,unit:'u',supplier:'tejedor',price:0.95},
+    {mat:'Bolsa polipropileno premium',cat:'Empaque',qty:1,unit:'u',supplier:'tejedor',price:3.50},
+    {mat:'Maquila + corte',cat:'Servicio',qty:1,unit:'u',supplier:'maquila',price:85.00},
+  ],
+  'jogger':[
+    {mat:'French Terry algodón',cat:'Tela',qty:1.6,unit:'m',supplier:'cervantes',price:115.00},
+    {mat:'Elástico 4cm',cat:'Cinta',qty:1.4,unit:'m',supplier:'tejedor',price:8.50},
+    {mat:'Cordón gruesa 3mm',cat:'Cinta',qty:1.2,unit:'m',supplier:'tejedor',price:3.20},
+    {mat:'Hilo poliéster #40',cat:'Costura',qty:180,unit:'m',supplier:'modatelas',price:0.42},
+    {mat:'Etiqueta tejida marca',cat:'Branding',qty:1,unit:'u',supplier:'tejedor',price:1.80},
+    {mat:'Etiqueta hangtag',cat:'Branding',qty:1,unit:'u',supplier:'tejedor',price:0.95},
+    {mat:'Bolsa polipropileno',cat:'Empaque',qty:1,unit:'u',supplier:'tejedor',price:1.20},
+    {mat:'Maquila + corte',cat:'Servicio',qty:1,unit:'u',supplier:'maquila',price:55.00},
+  ],
+  'hoodie':[
+    {mat:'French Terry algodón',cat:'Tela',qty:2.1,unit:'m',supplier:'cervantes',price:115.00},
+    {mat:'Cordón gruesa 4mm',cat:'Cinta',qty:1.4,unit:'m',supplier:'tejedor',price:4.80},
+    {mat:'Cierre metálico 60cm',cat:'Cierre',qty:1,unit:'u',supplier:'tejedor',price:18.00},
+    {mat:'Hilo poliéster #40',cat:'Costura',qty:240,unit:'m',supplier:'modatelas',price:0.42},
+    {mat:'Etiqueta tejida marca',cat:'Branding',qty:1,unit:'u',supplier:'tejedor',price:1.80},
+    {mat:'Etiqueta hangtag',cat:'Branding',qty:1,unit:'u',supplier:'tejedor',price:0.95},
+    {mat:'Bolsa polipropileno premium',cat:'Empaque',qty:1,unit:'u',supplier:'tejedor',price:3.50},
+    {mat:'Maquila + corte',cat:'Servicio',qty:1,unit:'u',supplier:'maquila',price:65.00},
+  ],
+  'set-venom':[
+    {mat:'Microfibra Spandex',cat:'Tela',qty:1.8,unit:'m',supplier:'modatelas',price:96.00},
+    {mat:'Forro elástico',cat:'Tela',qty:.6,unit:'m',supplier:'modatelas',price:38.00},
+    {mat:'Elástico 3cm',cat:'Cinta',qty:1.6,unit:'m',supplier:'tejedor',price:6.50},
+    {mat:'Hilo poliéster #40',cat:'Costura',qty:280,unit:'m',supplier:'modatelas',price:0.42},
+    {mat:'Etiqueta tejida marca',cat:'Branding',qty:2,unit:'u',supplier:'tejedor',price:1.80},
+    {mat:'Etiqueta hangtag',cat:'Branding',qty:2,unit:'u',supplier:'tejedor',price:0.95},
+    {mat:'Bolsa polipropileno premium',cat:'Empaque',qty:1,unit:'u',supplier:'tejedor',price:3.50},
+    {mat:'Maquila + corte',cat:'Servicio',qty:1,unit:'u',supplier:'maquila',price:78.00},
+  ],
+};
+
+// Catálogo proveedores
+const SUPPLIERS = {
+  cervantes:{name:'Casa Cervantes',short:'CC',loc:'Tlaquepaque, JAL',color:'rgba(212,255,0,.15)',colorTxt:'var(--lime)',contact:'+52 33 1234 5678',whatsapp:'5212345678',leadTime:'3-5 días'},
+  modatelas:{name:'Modatelas',short:'MD',loc:'Naucalpan, CDMX',color:'rgba(91,158,255,.15)',colorTxt:'var(--blue)',contact:'+52 55 9876 5432',whatsapp:'5298765432',leadTime:'2-3 días'},
+  tejedor:{name:'Telas El Tejedor',short:'TT',loc:'Monterrey, NL',color:'rgba(255,181,71,.15)',colorTxt:'var(--amber)',contact:'+52 81 5555 0000',whatsapp:'5285550000',leadTime:'1-2 días'},
+  maquila:{name:'Maquila Industrial GZ',short:'MQ',loc:'Apodaca, NL',color:'rgba(167,139,250,.15)',colorTxt:'var(--purple)',contact:'+52 81 4444 1111',whatsapp:'5284441111',leadTime:'5-7 días'},
+};
+
+// Catálogo productos (precios venta)
+const PRODUCTS = {
+  'tee-blk':{name:'Tee Gothic Black',img:'photo-1583454110551-21f2fa2afe61',price:699},
+  'tee-wht':{name:'Tee Gothic White',img:'photo-1549060279-7e168fcee0c2',price:699},
+  'tank-tq':{name:'Tank Stringer Bravío',img:'photo-1534438327276-14e5300c3a48',price:549},
+  'short-obs':{name:'Short Obsidian 5"',img:'photo-1526506118085-60ce8714f8c5',price:649},
+  'set-titan':{name:'Set Titan Edition',img:'photo-1571019613454-1cb2f99b2d8b',price:1199},
+  'jogger':{name:'Jogger Phantom Toro',img:'photo-1541534741688-6078c8985bca',price:849},
+  'hoodie':{name:'Hoodie Void Mortal',img:'photo-1518611012118-696072aa579a',price:899},
+  'set-venom':{name:'Set Venom W',img:'photo-1507398941214-162a8de16b98',price:1099},
+};
+
+// PEDIDOS MOCK (en producción vendrían de Shopify webhook → tu DB)
+const ORDERS = [
+  {
+    id:'ORD-1247',client:'María González',loc:'CDMX',email:'maria@gmail.com',
+    timeAgo:'hace 2 min',status:'pending',
+    items:[
+      {sku:'tee-blk',size:'M',qty:1},
+      {sku:'tee-blk',size:'L',qty:1},
+      {sku:'set-titan',size:'M',qty:1},
+      {sku:'short-obs',size:'S',qty:1},
+      {sku:'short-obs',size:'M',qty:1},
+      {sku:'tank-tq',size:'L',qty:1},
+    ],
+  },
+  {
+    id:'ORD-1246',client:'Roberto Núñez',loc:'Monterrey, NL',email:'roberto.n@hotmail.com',
+    timeAgo:'hace 18 min',status:'pending',
+    items:[
+      {sku:'hoodie',size:'L',qty:1},
+      {sku:'jogger',size:'L',qty:1},
+      {sku:'tee-wht',size:'L',qty:1},
+    ],
+  },
+  {
+    id:'ORD-1245',client:'Ana Patricia López',loc:'Guadalajara, JAL',email:'ana.lopez@yahoo.com',
+    timeAgo:'hace 1 hr',status:'progress',
+    items:[
+      {sku:'set-venom',size:'S',qty:1},
+      {sku:'set-venom',size:'M',qty:1},
+      {sku:'tank-tq',size:'M',qty:2},
+      {sku:'short-obs',size:'S',qty:2},
+      {sku:'tee-blk',size:'XL',qty:1},
+    ],
+  },
+  {
+    id:'ORD-1244',client:'Diego Ramírez',loc:'CDMX',email:'diego.r@outlook.com',
+    timeAgo:'hace 2 hrs',status:'pending',
+    items:[
+      {sku:'jogger',size:'M',qty:2},
+      {sku:'hoodie',size:'M',qty:1},
+    ],
+  },
+  {
+    id:'ORD-1243',client:'Karla Torres',loc:'Puebla, PUE',email:'k.torres@gmail.com',
+    timeAgo:'hace 4 hrs',status:'bought',
+    items:[
+      {sku:'tee-blk',size:'S',qty:1},
+      {sku:'tee-wht',size:'S',qty:1},
+      {sku:'short-obs',size:'M',qty:1},
+    ],
+  },
+];
+
+// ═══════════════ MRP LOGIC ═══════════════
+
+function generatePurchasePlan(order){
+  // 1. Sumar todo el BOM de los items
+  const bomConsolidated = {};
+  let totalRevenue = 0;
+  
+  order.items.forEach(item=>{
+    const bom = BOM[item.sku];
+    if(!bom) return;
+    totalRevenue += PRODUCTS[item.sku].price * item.qty;
+    
+    bom.forEach(mat=>{
+      const key = mat.mat;
+      if(!bomConsolidated[key]){
+        bomConsolidated[key] = {
+          mat:mat.mat, cat:mat.cat, unit:mat.unit,
+          supplier:mat.supplier, price:mat.price,
+          qty:0, subtotal:0
+        };
+      }
+      bomConsolidated[key].qty += mat.qty * item.qty;
+      bomConsolidated[key].subtotal = bomConsolidated[key].qty * mat.price;
+    });
+  });
+  
+  // 2. Agrupar por proveedor
+  const planBySupplier = {};
+  Object.values(bomConsolidated).forEach(m=>{
+    if(!planBySupplier[m.supplier]){
+      planBySupplier[m.supplier] = {
+        supplier:SUPPLIERS[m.supplier],
+        materials:[],
+        total:0,
+      };
+    }
+    planBySupplier[m.supplier].materials.push(m);
+    planBySupplier[m.supplier].total += m.subtotal;
+  });
+  
+  // 3. Totales globales
+  const totalCost = Object.values(planBySupplier).reduce((s,p)=>s+p.total,0);
+  const margin = ((totalRevenue - totalCost) / totalRevenue) * 100;
+  const utility = totalRevenue - totalCost;
+  
+  // Ahorro estimado vs comprar individual: 8-12%
+  const savingsPct = 8 + Math.random()*4;
+  const savings = totalCost * (savingsPct / 100);
+  
+  return {
+    plan:planBySupplier,
+    totalRevenue,
+    totalCost,
+    margin,
+    utility,
+    savings,
+    savingsPct
+  };
+}
+
+// ═══════════════ RENDER ═══════════════
+
+function renderOrdersList(){
+  const html = ORDERS.map(o=>{
+    const totalRev = o.items.reduce((s,i)=>s+PRODUCTS[i.sku].price*i.qty,0);
+    const itemCount = o.items.reduce((s,i)=>s+i.qty,0);
+    const statusClass = o.status==='pending'?'os-pending':o.status==='bought'?'os-bought':'os-progress';
+    const statusLbl = o.status==='pending'?'Pendiente':o.status==='bought'?'Comprado':'En proceso';
+    
+    return `
+    <div class="order-item" data-oid="${o.id}" onclick="selectOrder('${o.id}')">
+      <div class="order-row1">
+        <div class="order-id">${o.id}</div>
+        <div class="order-status ${statusClass}">${statusLbl}</div>
+      </div>
+      <div class="order-client">${o.client}</div>
+      <div class="order-items-mini">${itemCount} items · ${o.items.length} SKUs distintos</div>
+      <div class="order-meta">
+        <div class="order-loc">${o.loc.toUpperCase()}</div>
+        <div class="order-tot">$${totalRev.toLocaleString('en-US')}</div>
+      </div>
+      <div class="order-time">${o.timeAgo}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('ordersList').innerHTML = html;
+  attachCursor();
+}
+
+function selectOrder(orderId){
+  document.querySelectorAll('.order-item').forEach(el=>el.classList.remove('active'));
+  document.querySelector(`[data-oid="${orderId}"]`).classList.add('active');
+  
+  const order = ORDERS.find(o=>o.id===orderId);
+  const result = generatePurchasePlan(order);
+  
+  // Items comprados por cliente
+  const itemsHtml = order.items.map(item=>{
+    const prod = PRODUCTS[item.sku];
+    return `
+    <div class="item-row">
+      <div class="item-thumb">
+        <img src="https://images.unsplash.com/${prod.img}?auto=format&fit=crop&w=80&h=100&q=85" alt="">
+      </div>
+      <div class="item-name">${prod.name}<span>· Talla ${item.size}</span></div>
+      <div class="item-qty">×${item.qty}</div>
+      <div class="item-price">$${(prod.price*item.qty).toLocaleString('en-US')}</div>
+      <div></div>
+    </div>`;
+  }).join('');
+  
+  // Plan por proveedor
+  const supplierCardsHtml = Object.values(result.plan).map(p=>{
+    const matsHtml = p.materials.map(m=>`
+      <div class="sc-mat-row">
+        <div class="sc-mat-name">${m.mat}<span>${m.cat}</span></div>
+        <div class="sc-mat-qty">${m.qty.toFixed(m.unit==='u'?0:2)} ${m.unit}</div>
+        <div class="sc-mat-price">$${m.price.toFixed(2)}/${m.unit}</div>
+        <div class="sc-mat-sub">$${m.subtotal.toFixed(2)}</div>
+      </div>`).join('');
+    
+    return `
+    <div class="supplier-card">
+      <div class="sc-head">
+        <div class="sc-l">
+          <div class="sc-logo" style="background:${p.supplier.color};color:${p.supplier.colorTxt}">${p.supplier.short}</div>
+          <div class="sc-info">
+            <div class="sc-name">${p.supplier.name}</div>
+            <div class="sc-loc">${p.supplier.loc} · ${p.supplier.leadTime}</div>
+          </div>
+        </div>
+        <div class="sc-r">
+          <div>
+            <div class="sc-tot-l">Subtotal</div>
+            <div class="sc-tot-v">$${p.total.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</div>
+          </div>
+        </div>
+      </div>
+      ${matsHtml}
+      <div class="sc-actions">
+        <div class="sc-status">
+          <div class="sc-status-dot"></div>
+          Pendiente cotización · ${p.materials.length} materiales
+        </div>
+        <div class="sc-btns">
+          <button class="sc-btn wapp" onclick="sendWhatsApp('${p.supplier.name}','${p.supplier.whatsapp}',${p.total.toFixed(2)},${p.materials.length})">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.88 11.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85.98h.01a7.94 7.94 0 0 0 7.93-7.93 7.88 7.88 0 0 0-2.4-5.63zM12.05 18.5h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.6 6.6 0 0 1 10.24-8.16 6.55 6.55 0 0 1 1.93 4.66 6.6 6.6 0 0 1-6.57 6.6z"/></svg>
+            WhatsApp
+          </button>
+          <button class="sc-btn" onclick="sendEmail('${p.supplier.name}',${p.total.toFixed(2)})">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            Email
+          </button>
+          <button class="sc-btn primary" onclick="generatePO('${p.supplier.name}',${p.total.toFixed(2)})">
+            Generar PO →
+          </button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  
+  // Render completo
+  document.getElementById('detailPanel').innerHTML = `
+    <div class="detail-head">
+      <div class="dh-l">
+        <div class="dh-id">${order.id}</div>
+        <div class="dh-client">${order.client}</div>
+        <div class="dh-meta">${order.loc} · ${order.email} · ${order.timeAgo}</div>
+      </div>
+      <div class="dh-r">
+        <button class="sc-btn">Ver pedido completo</button>
+      </div>
+    </div>
+    
+    <div class="items-block">
+      <div class="block-l">Productos en el pedido</div>
+      ${itemsHtml}
+      <div class="items-totals">
+        <div class="tot-cell">
+          <div class="tot-l">Total Venta</div>
+          <div class="tot-v">$${result.totalRevenue.toLocaleString('en-US')}</div>
+        </div>
+        <div class="tot-cell">
+          <div class="tot-l">Costo Materia Prima</div>
+          <div class="tot-v lime">$${result.totalCost.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</div>
+        </div>
+        <div class="tot-cell">
+          <div class="tot-l">Margen Bruto</div>
+          <div class="tot-v green">${result.margin.toFixed(1)}%</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="plan-block">
+      <div class="plan-head-row">
+        <div class="block-l" style="margin-bottom:0">⚡ Plan de Compra Auto-Generado</div>
+        <div class="savings-badge">
+          <div class="sav-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="sav-txt">Ahorro vs compra separada: <strong>$${result.savings.toFixed(0)}</strong> (${result.savingsPct.toFixed(1)}%)</div>
+        </div>
+      </div>
+      ${supplierCardsHtml}
+    </div>
+    
+    <div class="totals-bar">
+      <div class="tb-cell">
+        <div class="tb-l">Total a pagar</div>
+        <div class="tb-v lime">$${result.totalCost.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</div>
+        <div class="tb-trend">${Object.keys(result.plan).length} proveedores</div>
+      </div>
+      <div class="tb-cell">
+        <div class="tb-l">Utilidad neta</div>
+        <div class="tb-v green">$${result.utility.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</div>
+        <div class="tb-trend green">▲ ${result.margin.toFixed(1)}% margen</div>
+      </div>
+      <div class="tb-cell">
+        <div class="tb-l">Tiempo entrega</div>
+        <div class="tb-v">5-7d</div>
+        <div class="tb-trend">Más lento: maquila</div>
+      </div>
+      <div class="tb-cell">
+        <div class="tb-l">SKUs / unidades</div>
+        <div class="tb-v">${order.items.length}/${order.items.reduce((s,i)=>s+i.qty,0)}</div>
+        <div class="tb-trend">${order.items.length} variantes</div>
+      </div>
+    </div>
+    
+    <div class="global-actions">
+      <div class="ga-l">
+        <strong>Listo para ejecutar</strong> · Confirma para enviar las ${Object.keys(result.plan).length} órdenes a proveedores
+      </div>
+      <div class="ga-btns">
+        <button class="sc-btn" onclick="downloadPDF('${order.id}')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Descargar PDF
+        </button>
+        <button class="sc-btn" onclick="exportCSV('${order.id}')">
+          Export CSV
+        </button>
+        <button class="sc-btn primary" onclick="sendAllPO('${order.id}',${Object.keys(result.plan).length})">
+          ⚡ Enviar todas las PO
+        </button>
+      </div>
+    </div>
+  `;
+  
+  attachCursor();
+  showToast(`✓ Plan calculado: ${Object.keys(result.plan).length} proveedores · $${result.totalCost.toFixed(2)}`,'info');
+}
+
+// ═══════════════ ACTIONS (mock — wire to backend) ═══════════════
+
+function sendWhatsApp(supplier,phone,total,matCount){
+  const msg = encodeURIComponent(`Hola ${supplier}, soy de TORO KAIZEN Apparel. Necesito cotizar ${matCount} materiales por un total estimado de $${total} MXN. ¿Pueden confirmar disponibilidad y precio?`);
+  window.open(`https://wa.me/${phone}?text=${msg}`,'_blank');
+  showToast(`WhatsApp abierto: ${supplier}`,'success');
+}
+function sendEmail(supplier,total){
+  showToast(`Email enviado a ${supplier} ($${total})`,'success');
+}
+function generatePO(supplier,total){
+  showToast(`📄 Orden de Compra ${supplier} generada — $${total}`,'success');
+}
+function downloadPDF(orderId){
+  showToast(`📥 PDF ${orderId} descargado`,'success');
+}
+function exportCSV(orderId){
+  showToast(`📊 CSV ${orderId} exportado`,'success');
+}
+function sendAllPO(orderId,count){
+  // TODO: POST {orderId, plan} to your FastAPI backend (see /api/README.md)
+  showToast(`⚡ ${count} órdenes enviadas para ${orderId}`,'success');
+}
+
+// ═══════════════ COMMON ═══════════════
+const filtState={niche:'all',age:'all'};
+function filt(btn,axis){
+  const row=btn.parentElement;
+  row.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  filtState[axis]=btn.dataset.val;
+  applyFilt();
+}
+function applyFilt(){
+  let visible=0;
+  document.querySelectorAll('#prodGrid .pc').forEach(c=>{
+    const niches=(c.dataset.niche||'').split(/\s+/);
+    const ages=(c.dataset.age||'').split(/\s+/);
+    const okN=filtState.niche==='all'||niches.includes(filtState.niche);
+    const okA=filtState.age==='all'||ages.includes(filtState.age);
+    const ok=okN&&okA;
+    c.style.display=ok?'':'none';
+    if(ok)visible++;
+  });
+  const empty=document.getElementById('prodEmpty');
+  if(empty)empty.hidden=visible>0;
+}
+function resetFilt(){
+  filtState.niche='all';filtState.age='all';
+  document.querySelectorAll('.prod-filters .filters').forEach(row=>{
+    row.querySelectorAll('.f-btn').forEach(b=>b.classList.toggle('on',b.dataset.val==='all'));
+  });
+  applyFilt();
+}
+let cnt=3;
+function addCart(){cnt++;document.getElementById('cbadge').textContent=cnt;showToast('Producto agregado al carrito ✓')}
+let tt;
+function showToast(msg,type){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.className='toast show';
+  if(type)t.classList.add(type);
+  clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2800);
+}
+function refreshScrap(btn){
+  btn.classList.add('spin');
+  showToast('Ejecutando scrapers... [FastAPI + Python]','info');
+  setTimeout(()=>{
+    btn.classList.remove('spin');
+    document.getElementById('lastUpdate').textContent='hace 1 seg';
+    showToast('✓ 14 proveedores actualizados','success');
+  },1800);
+}
+
+
+// ═══════════════ Init operator UI after gate unlock ═══════════════
+function initOpsAfterUnlock(){
+  if(window._opsInited)return;
+  window._opsInited=true;
+  try{
+    renderOrdersList();
+    setTimeout(()=>selectOrder('ORD-1247'),300);
+  }catch(e){console.warn('ops init:',e)}
+  setInterval(()=>{
+    const el=document.getElementById('lastUpdate');
+    if(el && el.textContent.includes('seg')){
+      const n=parseInt(el.textContent.match(/\d+/)?.[0]||1);
+      if(n<60)el.textContent='hace '+(n+1)+' seg';
+      else el.textContent='hace 1 min';
+    }
+  },3000);
+}
+// Patch showPortal to also init ops
+const _origShowPortal=showPortal;
+showPortal=function(){_origShowPortal();initOpsAfterUnlock();};
+if(sessionStorage.getItem(SESS_KEY)==="1")initOpsAfterUnlock();
 </script>
 </body>
 </html>
