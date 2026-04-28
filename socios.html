@@ -253,15 +253,26 @@ body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;li
     </div>
     <div class="gate-eyebrow">Acceso restringido</div>
     <h1 class="gate-h">PORTAL <span style="color:var(--lime)">SOCIOS</span><span class="kanji">改善</span></h1>
-    <p class="gate-sub">Sólo socios y empleados de TORO KAIZEN. Ingresa tu PIN para continuar.</p>
-    <form class="gate-form" onsubmit="tryUnlock(event)">
-      <input class="gate-input" type="password" id="pin" inputmode="numeric" maxlength="6" placeholder="• • • •" autocomplete="off" required>
-      <button class="gate-btn" type="submit">Entrar</button>
+    <p class="gate-sub" id="gateSub">Sólo socios y empleados de TORO KAIZEN. Ingresa tus credenciales.</p>
+
+    <!-- Email/password form (Supabase) — visible when SUPABASE configured -->
+    <form class="gate-form" id="gateFormAuth" onsubmit="signIn(event)" style="display:none">
+      <input class="gate-input" type="email" id="email" placeholder="tu@torokaizen.mx" autocomplete="email" required style="font-family:'Barlow',sans-serif;font-size:14px;letter-spacing:.02em;text-align:left">
+      <input class="gate-input" type="password" id="password" placeholder="••••••••" autocomplete="current-password" required style="font-family:'Barlow',sans-serif;font-size:14px;letter-spacing:.04em;text-align:left">
+      <button class="gate-btn" type="submit" id="signInBtn">Entrar</button>
       <div class="gate-err" id="gateErr"></div>
     </form>
+
+    <!-- PIN fallback — visible when Supabase NOT configured (demo) -->
+    <form class="gate-form" id="gateFormPin" onsubmit="tryUnlockPin(event)" style="display:none">
+      <input class="gate-input" type="password" id="pin" inputmode="numeric" maxlength="6" placeholder="• • • •" autocomplete="off" required>
+      <button class="gate-btn" type="submit">Entrar (PIN)</button>
+      <div class="gate-err" id="gateErrPin"></div>
+    </form>
+
     <div class="gate-foot">
       ¿Cliente buscando comprar? <a href="index.html">Volver a la tienda →</a><br>
-      <span style="opacity:.5">PIN demo: <code style="color:var(--lime)">1234</code> · auth real con Supabase pronto</span>
+      <span id="gateFootHint" style="opacity:.5"></span>
     </div>
   </div>
 </div>
@@ -431,26 +442,112 @@ body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;li
   <div><button onclick="logout()">Cerrar sesión</button></div>
 </footer>
 
+<!-- Supabase JS SDK — used only if SUPABASE_URL + SUPABASE_ANON_KEY (or runtime overrides) are present. -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+
 <script>
-// ═══════ Auth gate (frontend-only, demo) ═══════
-// TODO: replace with Supabase Auth (or similar) — endpoint /api/auth + JWT cookie.
-// Right now uses a hardcoded PIN so we can demo the separation. Move to backend before
-// putting any real data behind it. The PIN is NOT a security boundary today.
+/* ═══════ Auth gate ═══════
+ *
+ *  PRODUCTION SETUP (Supabase Auth)
+ *  ────────────────────────────────
+ *  1. Create a project at https://supabase.com (free tier funciona).
+ *  2. Project Settings → API → copia:
+ *       - Project URL  → SUPABASE_URL
+ *       - anon public key → SUPABASE_ANON_KEY
+ *  3. Authentication → Providers → enable Email (password sign-in).
+ *  4. Authentication → Users → "Add user" → crea cuentas del equipo
+ *     (o habilita signup si quieres self-service).
+ *
+ *  Cuando llenes URL+key, esta página automáticamente usa email/password
+ *  y persiste sesión. Mientras tanto cae al PIN demo (1234).
+ *
+ *  Override en runtime sin redeploy: ?sb_url=...&sb_key=... en la URL,
+ *  o localStorage tk_sb_url / tk_sb_key. Útil para staging vs prod.
+ */
+const SUPABASE_URL  = '';        // ← llenar en producción
+const SUPABASE_ANON_KEY = '';    // ← llenar en producción
+
 const PIN_OK='1234';
 const SESS_KEY='tk_socio_session';
 
-function tryUnlock(e){
+function resolveSb(){
+  const params=new URLSearchParams(location.search);
+  const url = SUPABASE_URL || params.get('sb_url') || localStorage.getItem('tk_sb_url') || '';
+  const key = SUPABASE_ANON_KEY || params.get('sb_key') || localStorage.getItem('tk_sb_key') || '';
+  return { url, key };
+}
+
+let sb = null;
+const { url:_sbUrl, key:_sbKey } = resolveSb();
+if(_sbUrl && _sbKey && window.supabase && window.supabase.createClient){
+  sb = window.supabase.createClient(_sbUrl, _sbKey, {
+    auth:{ persistSession:true, autoRefreshToken:true }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', async ()=>{
+  const formAuth = document.getElementById('gateFormAuth');
+  const formPin  = document.getElementById('gateFormPin');
+  const hint     = document.getElementById('gateFootHint');
+  const sub      = document.getElementById('gateSub');
+
+  if(sb){
+    formAuth.style.display='flex';
+    hint.innerHTML = 'Auth con <b style="color:var(--lime)">Supabase</b> · sesión persistida en navegador';
+    sub.textContent = 'Sólo socios y empleados de TORO KAIZEN. Ingresa tus credenciales.';
+    try{
+      const { data:{ session } } = await sb.auth.getSession();
+      if(session){ unlockWith({ kind:'sb', email: session.user.email }); return; }
+    }catch(_){}
+    document.getElementById('email').focus();
+  }else{
+    formPin.style.display='flex';
+    hint.innerHTML = 'PIN demo: <code style="color:var(--lime)">1234</code> · llena <code>SUPABASE_URL</code>+<code>SUPABASE_ANON_KEY</code> en el script para auth real';
+    sub.textContent = 'Sólo socios y empleados de TORO KAIZEN. Ingresa tu PIN para continuar.';
+    if(sessionStorage.getItem(SESS_KEY)==='1'){ unlockWith({ kind:'pin', email:'SOCIO' }); }
+    else{ document.getElementById('pin').focus(); }
+  }
+});
+
+async function signIn(e){
+  e.preventDefault();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  const err = document.getElementById('gateErr');
+  const btn = document.getElementById('signInBtn');
+  err.textContent='';
+  btn.disabled=true; btn.textContent='Entrando...';
+  try{
+    const { data, error } = await sb.auth.signInWithPassword({ email, password });
+    if(error) throw error;
+    unlockWith({ kind:'sb', email: data.user.email });
+  }catch(ex){
+    err.textContent = (ex.message||'Credenciales incorrectas') + ' · intenta de nuevo';
+    document.getElementById('password').value='';
+    setTimeout(()=>{err.textContent=''},4000);
+  }finally{
+    btn.disabled=false; btn.textContent='Entrar';
+  }
+}
+
+function tryUnlockPin(e){
   e.preventDefault();
   const v=document.getElementById('pin').value.trim();
-  const err=document.getElementById('gateErr');
+  const err=document.getElementById('gateErrPin');
   if(v===PIN_OK){
     sessionStorage.setItem(SESS_KEY,'1');
-    showPortal();
+    unlockWith({ kind:'pin', email:'SOCIO' });
   }else{
     err.textContent='PIN incorrecto · intenta de nuevo';
     document.getElementById('pin').value='';
     setTimeout(()=>{err.textContent=''},3000);
   }
+}
+
+function unlockWith(info){
+  const tag = document.getElementById('userTag');
+  if(tag) tag.textContent = info.email || 'SOCIO';
+  showPortal();
 }
 
 function showPortal(){
@@ -460,21 +557,11 @@ function showPortal(){
   document.getElementById('portalFoot').style.display='flex';
 }
 
-function logout(){
+async function logout(){
+  if(sb){ try{ await sb.auth.signOut(); }catch(_){} }
   sessionStorage.removeItem(SESS_KEY);
   location.reload();
 }
-
-// Auto-unlock if session present
-if(sessionStorage.getItem(SESS_KEY)==='1'){
-  showPortal();
-}
-
-// Focus PIN input on load
-document.addEventListener('DOMContentLoaded',()=>{
-  const p=document.getElementById('pin');
-  if(p && !sessionStorage.getItem(SESS_KEY))p.focus();
-});
 
 // ═══════════════ TOAST helper (used by operator JS) ═══════════════
 let _opToastTimer;
