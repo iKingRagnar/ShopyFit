@@ -343,5 +343,73 @@ ELSE:
 
 ---
 
+## 16. Scroll-morph videos (frontend AI showcase)
+
+**Problema:** páginas web genéricas se reconocen al instante como AI-slop. Para verse "premium agency" necesitas algo que llame la atención sin ser cringe.
+
+**Solución:** efecto donde el `currentTime` de un `<video>` se ata al progreso de scroll del usuario. El usuario "controla" la animación con el mouse-wheel/dedo. Combinado con videos AI-generados que muestran un estado A → estado B (ej: bull mark → atleta usando la prenda), el efecto se siente high-budget.
+
+**Stack de generación:**
+1. **Frame inicial** — imagen real o generada con Nano Banana 2 (Google AI Studio)
+2. **Frame final** — ChatGPT genera prompt para Nano Banana 2 que crea el end frame
+3. **Veo 3.1 prompt** — ChatGPT genera prompt segundo-a-segundo para el morph 8s, vertical, 4K
+4. **Generar video** en Google AI Studio
+5. **Embed** con HTML5 `<video>` + JS scroll listener
+
+**JS pattern (vanilla):**
+```js
+function initScrollMorph(section){
+  const video = section.querySelector('video');
+  video.muted = true; video.playsInline = true; video.preload = 'auto';
+  let ticking = false;
+  function onScroll(){
+    if(ticking)return; ticking=true;
+    requestAnimationFrame(()=>{
+      const rect = section.getBoundingClientRect();
+      const total = rect.height - window.innerHeight;
+      const progress = Math.max(0, Math.min(1, -rect.top / total));
+      if(video.duration) video.currentTime = progress * video.duration;
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+}
+```
+
+**HTML structure:**
+```html
+<section class="scroll-morph"><!-- height: 240vh -->
+  <div class="scroll-morph-sticky"><!-- position: sticky; top:0; height:100vh -->
+    <h2>Tu copy</h2>
+    <video muted playsinline preload="auto">
+      <source src="/morphs/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+```
+
+**Costo aprox por video:** ~$3 USD (1 imagen Nano Banana + 1 video Veo). Total página de 4 morphs: ~$15.
+
+**Cuándo NO hacerlo:**
+- Audiencia tiene conexión lenta (videos pesan 10-30MB cada uno)
+- Mobile-first crítico con rendimiento estricto (la decode de video frames cuesta CPU)
+- Sitios institucionales serios (banks, gov) — el efecto se siente pop
+
+**Cuándo SÍ:**
+- E-commerce premium (apparel, beauty, design)
+- Landing pages de SaaS con producto visual
+- Brand storytelling pages (manifesto, drop announcement)
+- Portfolios creativos
+
+**Pitfalls comunes:**
+- Olvidar `muted` y `playsinline` → mobile no autoplay
+- No usar `requestAnimationFrame` → scroll choca con jank
+- Videos con frame rate bajo (24fps) se ven "saltados" cuando scrolleas rápido — exporta 30fps+
+- No `+faststart` en metadata → video tarda en empezar a render
+
+**Aplicación en TORO KAIZEN:** 4 morphs ya cableados en index.html (hero, drop, fabric→garment) + manifesto.html (toro→改善→juntos). Ver `docs/claude-config/MORPH_VIDEOS.md` para los prompts exactos.
+
+---
+
 > Inspirado en sistemas reales de e-commerce mexicano con n8n + WhatsApp Business API + Postgres + Telegram.
 > Aplica en cualquier orquestador (n8n, Make, Pipedream, Temporal, Inngest, Cloudflare Workflows, Anthropic Agent SDK).

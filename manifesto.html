@@ -44,6 +44,24 @@ h1 .outline{-webkit-text-stroke:2px var(--text)}
 footer{background:var(--bg-2);color:var(--text-3);border-top-color:var(--border)}
 footer a{color:var(--text-2)}
 footer a:hover{color:var(--text)}
+
+/* ═══════════ SCROLL-MORPH ═══════════ */
+.scroll-morph{position:relative;height:240vh;background:var(--bg-2);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border)}
+.scroll-morph.dark{background:#0d0d0e;color:#fff;border-color:#1c1c1f}
+.scroll-morph-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding:40px 6vw}
+.scroll-morph-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--lime);margin-bottom:14px;display:flex;align-items:center;gap:14px;position:relative;z-index:2}
+.scroll-morph-eyebrow::before{content:'';width:36px;height:1px;background:var(--lime)}
+.scroll-morph .sm-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,80px);line-height:.95;letter-spacing:.02em;color:inherit;text-align:center;max-width:880px;position:relative;z-index:2;margin-bottom:8px}
+.scroll-morph .sm-title .lime{color:var(--lime)}
+.scroll-morph .sm-title .kanji-jp{font-family:'Noto Serif JP',serif;font-weight:700}
+.scroll-morph .sm-sub{color:var(--text-2);font-size:15px;text-align:center;max-width:520px;margin-bottom:32px;position:relative;z-index:2}
+.scroll-morph.dark .sm-sub{color:#c8c8c2}
+.scroll-morph-stage{position:relative;width:min(420px,80vw);height:min(640px,68vh);display:flex;align-items:center;justify-content:center}
+.scroll-morph-video{width:100%;height:100%;object-fit:cover;border-radius:14px;box-shadow:0 30px 90px rgba(0,0,0,.12);background:#000}
+.scroll-morph-placeholder{width:100%;height:100%;border-radius:14px;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;background:linear-gradient(135deg,var(--bg-3) 0%,var(--lime) 50%,var(--bg-3) 100%);background-size:200% 200%;animation:morphGrad 8s ease infinite;color:var(--text);font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;font-size:14px;line-height:1.6}
+@keyframes morphGrad{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.scroll-morph-progress{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);width:140px;height:2px;background:rgba(0,0,0,.1);z-index:2;border-radius:2px;overflow:hidden}
+.scroll-morph-progress-bar{position:absolute;left:0;top:0;height:100%;width:0;background:var(--lime);transition:width .08s linear}
 body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;line-height:1.7}
 
 .topbar{position:fixed;top:0;left:0;right:0;height:64px;background:rgba(13,13,14,.92);backdrop-filter:blur(22px);border-bottom:.5px solid var(--border-soft);display:flex;align-items:center;justify-content:space-between;padding:0 28px;z-index:100}
@@ -136,6 +154,25 @@ footer a:hover{color:var(--lime)}
       filosofía japonesa del <b>kaizen</b> — mejorar un poquito todos los días.
       Ropa que aguanta tu peor día y se ve mejor en tu mejor.
     </p>
+  </div>
+</section>
+
+<!-- ═══════════ SCROLL-MORPH · TORO → 改善 → JUNTOS ═══════════ -->
+<!-- Drop: assets/morphs/toro-kaizen-juntos.mp4 -->
+<section class="scroll-morph dark" id="morph-philosophy" data-morph-id="toro-kaizen-juntos">
+  <div class="scroll-morph-sticky">
+    <div class="scroll-morph-eyebrow">3 estados · 1 código</div>
+    <h2 class="sm-title">TORO <span class="lime">→</span> <span class="kanji-jp lime">改善</span> <span class="lime">→</span><br>JUNTOS</h2>
+    <p class="sm-sub">Embistes (caos). Mejoras 1% (orden). Te fundes con la disciplina (síntesis). El video lo cuenta sin palabras.</p>
+    <div class="scroll-morph-stage">
+      <video class="scroll-morph-video" muted playsinline preload="auto" hidden>
+        <source src="assets/morphs/toro-kaizen-juntos.mp4" type="video/mp4">
+      </video>
+      <div class="scroll-morph-placeholder">
+        ⬇<br><br>SCROLL-MORPH<br>TORO → KAIZEN → JUNTOS<br><br><code style="font-family:'JetBrains Mono';font-size:11px;color:var(--lime)">assets/morphs/toro-kaizen-juntos.mp4</code>
+      </div>
+    </div>
+    <div class="scroll-morph-progress"><div class="scroll-morph-progress-bar"></div></div>
   </div>
 </section>
 
@@ -254,5 +291,40 @@ footer a:hover{color:var(--lime)}
   © 2026 TORO KAIZEN · <a href="index.html">Tienda</a> · <a href="marks.html">Brand marks</a> · <a href="socios.html">Acceso socios</a>
 </footer>
 
+<script>
+/* SCROLL-MORPH ENGINE (shared with index.html) */
+function initScrollMorph(section){
+  const video=section.querySelector('.scroll-morph-video');
+  const placeholder=section.querySelector('.scroll-morph-placeholder');
+  const bar=section.querySelector('.scroll-morph-progress-bar');
+  if(!video)return;
+  let videoReady=false;
+  video.addEventListener('loadedmetadata',()=>{
+    if(video.duration && isFinite(video.duration)){
+      videoReady=true;video.hidden=false;
+      if(placeholder)placeholder.style.display='none';
+      onScroll();
+    }
+  });
+  video.addEventListener('error',()=>{video.hidden=true});
+  let ticking=false;
+  function onScroll(){
+    if(ticking)return;ticking=true;
+    requestAnimationFrame(()=>{
+      const rect=section.getBoundingClientRect();
+      const total=Math.max(1,rect.height-window.innerHeight);
+      const scrolled=Math.max(0,Math.min(total,-rect.top));
+      const progress=scrolled/total;
+      if(videoReady && video.duration){try{video.currentTime=progress*video.duration}catch(_){}}
+      if(bar)bar.style.width=(progress*100).toFixed(1)+'%';
+      ticking=false;
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll,{passive:true});
+  onScroll();
+}
+document.querySelectorAll('.scroll-morph').forEach(initScrollMorph);
+</script>
 </body>
 </html>
