@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KÖRE · Ops AI Dashboard</title>
+<title>TORO KAIZEN · Ops AI Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -21,7 +21,7 @@ body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;fo
 .topbar{position:fixed;top:0;left:0;right:0;height:64px;background:rgba(13,13,14,.92);backdrop-filter:blur(22px);border-bottom:.5px solid var(--border-soft);display:flex;align-items:center;justify-content:space-between;padding:0 28px;z-index:100}
 .tb-l{display:flex;align-items:center;gap:18px}
 .tb-brand{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.12em;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:10px}
-.tb-badge{width:26px;height:26px;border:1.5px solid var(--lime);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--lime);font-weight:700}
+.tb-badge{width:30px;height:26px;border:1.5px solid var(--lime);display:flex;align-items:center;justify-content:center;padding:2px;color:var(--lime)}
 .tb-crumb{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-3);padding-left:18px;border-left:1px solid var(--border-soft)}
 .tb-crumb b{color:var(--lime);font-weight:700}
 .tb-r{display:flex;align-items:center;gap:14px}
@@ -121,7 +121,7 @@ body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;fo
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="tb-l">
-    <a href="index.html" class="tb-brand"><div class="tb-badge">KÖ</div>KÖRE</a>
+    <a href="index.html" class="tb-brand"><div class="tb-badge"><svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:18px;height:14px;color:var(--lime)"><g fill="currentColor"><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g><circle cx="40" cy="46" r="3.5" fill="#0d0d0e"/><circle cx="60" cy="46" r="3.5" fill="#0d0d0e"/></svg></div>TORO KAIZEN</a>
     <div class="tb-crumb">Ops · <b>AI Dashboard</b></div>
   </div>
   <div class="tb-r">
@@ -269,7 +269,7 @@ body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;fo
       </header>
 
       <div class="alert red"><span class="ico">🔴</span><div><b>Stock muerto detectado</b> · 2 SKUs sin venta en los últimos 60 días — capital inmovilizado: $8,420</div><div class="right"><button class="btn sm" onclick="toast('Liquidación al 30% activada','warn')">Liquidar 30%</button></div></div>
-      <div class="alert amber"><span class="ico">⚠️</span><div><b>Reorden urgente</b> · Hoodie Void KÖ — 14 unidades restantes, lead time 12d, velocidad 4.1/día</div><div class="right"><button class="btn sm" onclick="suggestReorder('TQ-HOOD-VOID')">Sugerir reorden</button></div></div>
+      <div class="alert amber"><span class="ico">⚠️</span><div><b>Reorden urgente</b> · Hoodie Void Mortal — 14 unidades restantes, lead time 12d, velocidad 4.1/día</div><div class="right"><button class="btn sm" onclick="suggestReorder('TQ-HOOD-VOID')">Sugerir reorden</button></div></div>
 
       <div class="grid grid-4" style="margin:20px 0">
         <div class="kpi"><div class="kpi-l">SKUs activos</div><div class="kpi-v">42</div><div class="kpi-d">8 nichos</div></div>
@@ -346,7 +346,7 @@ body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;fo
               <tr><td><b>Tank Stringer TQ</b></td><td class="mono">$148</td><td>$549</td><td>$449</td><td><b style="color:var(--lime)">$549</b></td><td>$649</td><td>73.0%</td><td><button class="btn sm" onclick="toast('Edit Tank Stringer')">Editar</button></td></tr>
               <tr><td><b>Short Obsidian 5"</b></td><td class="mono">$175</td><td>$649</td><td>$549</td><td><b style="color:var(--lime)">$649</b></td><td>$799</td><td>73.0%</td><td><button class="btn sm" onclick="toast('Edit Short Obsidian')">Editar</button></td></tr>
               <tr><td><b>Set Titan Edition</b></td><td class="mono">$385</td><td>$1,199</td><td>$999</td><td><b style="color:var(--lime)">$1,199</b></td><td>$1,499</td><td>67.9%</td><td><button class="btn sm" onclick="toast('Edit Set Titan')">Editar</button></td></tr>
-              <tr><td><b>Hoodie Void KÖ</b></td><td class="mono">$268</td><td>$899</td><td>$799</td><td>$899</td><td><b style="color:var(--amber)">$949 ↑</b></td><td>71.7%</td><td><button class="btn sm primary" onclick="toast('✓ Hoodie Void → $949','success')">Subir</button></td></tr>
+              <tr><td><b>Hoodie Void Mortal</b></td><td class="mono">$268</td><td>$899</td><td>$799</td><td>$899</td><td><b style="color:var(--amber)">$949 ↑</b></td><td>71.7%</td><td><button class="btn sm primary" onclick="toast('✓ Hoodie Void → $949','success')">Subir</button></td></tr>
               <tr><td><b>Jogger Phantom TQ</b></td><td class="mono">$232</td><td>$849</td><td>$749</td><td><b style="color:var(--lime)">$849</b></td><td>$999</td><td>72.7%</td><td><button class="btn sm" onclick="toast('Edit Jogger Phantom')">Editar</button></td></tr>
               <tr><td><b>Set Venom W</b></td><td class="mono">$348</td><td>$1,099</td><td><b style="color:var(--amber)">$999 ↓</b></td><td>$1,099</td><td>$1,299</td><td>68.3%</td><td><button class="btn sm primary" onclick="toast('✓ Set Venom → $999','success')">Bajar</button></td></tr>
             </tbody>
