@@ -982,19 +982,147 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="ft">
-    <div>
-      <div class="ft-logo">TOMASQ</div>
-      <p class="ft-tag">Ropa de alto rendimiento. Backend MRP impulsado por FastAPI + Anthropic Claude + scrapers Python.</p>
+<!-- ═══════════════════ REVIEWS ═══════════════════ -->
+<section class="reviews" id="reviews">
+  <div class="rv-head">
+    <div class="rv-stat rv">
+      <div class="num">4.9</div>
+      <div>
+        <div class="stars">★★★★★</div>
+        <span>1,847 reviews verificados</span>
+      </div>
     </div>
-    <div class="ft-col"><div class="ft-h">Tienda</div><ul><li>Novedades</li><li>Hombre</li><li>Mujer</li><li>Outlet</li></ul></div>
-    <div class="ft-col"><div class="ft-h">B2B Tools</div><ul><li>Sourcing Dashboard</li><li>Fulfillment MRP</li><li>API Acceso</li><li>Mayoreo</li></ul></div>
-    <div class="ft-col"><div class="ft-h">Soporte</div><ul><li>Guía de Tallas</li><li>Devoluciones</li><li>FAQ</li><li>Contacto</li></ul></div>
+    <h2 class="s-title rv" style="font-size:48px">LO QUE DICE <span class="lime">EL SQUAD</span></h2>
   </div>
-  <div class="ft-b">
-    <div class="ft-copy">© 2025 <span>TOMASQ</span> — Sourcing & MRP via FastAPI + Claude + Postgres.</div>
+  <div class="rv-grid">
+    <div class="rv-card rv">
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"La calidad supera a Gymshark de lejos. La tela del Stringer no se deforma con el sudor, y el corte oversize ajusta perfecto en delts."</p>
+      <div class="rv-meta">
+        <div class="rv-avatar">J</div>
+        <div>
+          <div class="rv-name">Javier R.</div>
+          <div>Monterrey · Gym</div>
+        </div>
+        <div class="rv-verified">✓ Verificado</div>
+      </div>
+    </div>
+    <div class="rv-card rv">
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"Ya llevo 4 compras y todas llegaron en menos de 3 días. El Set Venom es de lo más cómodo que tengo, voy a yoga y no me molesta nada."</p>
+      <div class="rv-meta">
+        <div class="rv-avatar">M</div>
+        <div>
+          <div class="rv-name">María C.</div>
+          <div>CDMX · Yoga</div>
+        </div>
+        <div class="rv-verified">✓ Verificado</div>
+      </div>
+    </div>
+    <div class="rv-card rv">
+      <div class="rv-stars">★★★★★</div>
+      <p class="rv-text">"El Hoodie Void es mi pieza favorita del closet. Valió cada peso, la atención al cliente vía WhatsApp fue rápida y resolvieron mi cambio de talla en horas."</p>
+      <div class="rv-meta">
+        <div class="rv-avatar">A</div>
+        <div>
+          <div class="rv-name">Andrés P.</div>
+          <div>Guadalajara · Streetwear</div>
+        </div>
+        <div class="rv-verified">✓ Verificado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ RECENTLY VIEWED ═══════════════════ -->
+<section class="recent" id="recent" hidden>
+  <div class="recent-head">
+    <div class="s-label">Visto recientemente</div>
+    <a href="#productos" style="font-size:11px;font-family:'Barlow Condensed';letter-spacing:.16em;text-transform:uppercase;color:var(--lime);text-decoration:none">Ver todo →</a>
+  </div>
+  <div class="recent-strip" id="recentStrip"></div>
+</section>
+
+<!-- ═══════════════════ UGC / AMBASSADORS ═══════════════════ -->
+<section class="ugc" id="ugc">
+  <div class="ugc-head">
+    <div class="s-label rv">@TOMASQ.MX</div>
+    <h2 class="s-title rv">EL <span class="lime">SQUAD</span> EN VIVO</h2>
+    <p class="rv" style="color:var(--text-2);max-width:480px;margin:14px auto 0;font-size:14px">Tagueate con #BuiltDifferent y aparece en nuestra tienda. Atletas reales con la ropa real.</p>
+  </div>
+  <div class="ugc-grid">
+    <div class="ugc-cell rv"><img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=400&h=400&q=85" alt=""></div>
+    <div class="ugc-cell rv"><img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=400&h=400&q=85" alt=""></div>
+    <div class="ugc-cell rv"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&h=400&q=85" alt=""></div>
+    <div class="ugc-cell rv"><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=400&h=400&q=85" alt=""></div>
+    <div class="ugc-cell rv"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&h=400&q=85" alt=""></div>
+    <div class="ugc-cell rv"><img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=400&h=400&q=85" alt=""></div>
+  </div>
+</section>
+
+<!-- FOOTER (expanded) -->
+<footer class="foot-x">
+  <div class="foot-x-grid">
+    <div class="foot-x-col">
+      <div class="foot-x-brand">TOMASQ</div>
+      <p class="foot-x-tag">Built different. Ropa de alto rendimiento diseñada y producida en México. Para los que entrenan duro y se ven mejor.</p>
+      <div class="foot-x-social">
+        <a href="#" aria-label="Instagram" title="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
+        <a href="#" aria-label="TikTok" title="TikTok"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.6a4.8 4.8 0 0 1-3-1.7 5 5 0 0 1-1.1-3H12v13.5a2.5 2.5 0 1 1-2.5-2.5h.5v-3.4h-.5a5.9 5.9 0 1 0 5.9 5.9V9.6a8.3 8.3 0 0 0 4.2 1.2V7.5a4.7 4.7 0 0 1 0-.9z"/></svg></a>
+        <a href="#" aria-label="YouTube" title="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="WhatsApp" title="WhatsApp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.1-.7.9-.9 1.1-.4.1-.6 0a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2c-.1-.3 0-.4.1-.6l.4-.4c.1-.1.2-.3.3-.4s0-.3 0-.5l-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4 0-.6.3a3 3 0 0 0-.9 2.2 5 5 0 0 0 1.1 2.7 11 11 0 0 0 4.5 4c.6.3 1.1.4 1.5.5a3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.7-1.2 2 2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3zM12 2A10 10 0 0 0 3.4 17.4L2 22l4.7-1.3A10 10 0 1 0 12 2z"/></svg></a>
+      </div>
+    </div>
+    <div class="foot-x-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#productos">Novedades</a></li>
+        <li><a href="#hombre">Hombre</a></li>
+        <li><a href="#mujer">Mujer</a></li>
+        <li><a href="#accesorios">Accesorios</a></li>
+        <li><a href="#sale" style="color:var(--lime)">Sale ★</a></li>
+        <li><a href="#lookbook">Lookbook</a></li>
+      </ul>
+    </div>
+    <div class="foot-x-col">
+      <h4>Ayuda</h4>
+      <ul>
+        <li><a>Rastrea tu pedido</a></li>
+        <li><a>Guía de tallas</a></li>
+        <li><a>Devoluciones &amp; cambios</a></li>
+        <li><a>Envíos</a></li>
+        <li><a>FAQ</a></li>
+        <li><a>Contacto</a></li>
+      </ul>
+    </div>
+    <div class="foot-x-col">
+      <h4>Sobre TOMASQ</h4>
+      <ul>
+        <li><a>Nuestra historia</a></li>
+        <li><a>Atletas &amp; embajadores</a></li>
+        <li><a>Sostenibilidad</a></li>
+        <li><a>Trabaja con nosotros</a></li>
+        <li><a href="dashboard.html">B2B Ops AI</a></li>
+        <li><a>Mayoreo</a></li>
+      </ul>
+    </div>
+    <div class="foot-x-col foot-x-news">
+      <h4>Únete al Squad</h4>
+      <p style="color:var(--text-2);font-size:12px;margin-bottom:14px;line-height:1.5">−10% en tu primer drop + acceso anticipado a colecciones nuevas.</p>
+      <form onsubmit="submitEmail(event)">
+        <input type="email" placeholder="tu@email.com" required>
+        <button class="btn-p" type="submit" style="width:100%;justify-content:center;padding:11px">Suscribirme</button>
+      </form>
+    </div>
+  </div>
+  <div class="foot-x-bot">
+    <div>© 2026 TOMASQ · Built Different · Hecho en México con ♥</div>
+    <div>
+      <a>Privacidad</a>·<a>Términos</a>·<a>Cookies</a>
+    </div>
+    <div class="foot-x-pay">
+      <span>VISA</span><span>MC</span><span>AMEX</span><span>OXXO</span><span>SPEI</span>
+    </div>
   </div>
 </footer>
 
@@ -1590,6 +1718,7 @@ function openQuickAdd(sku){
     name:card.dataset.name,price:card.dataset.price,cat:card.dataset.cat,
     img:card.dataset.img,sku:card.dataset.sku
   };
+  trackRecent(data);
   const m=document.getElementById('qaModal');
   if(!m){showToast(`+ ${data.name}`,'success');return}
   m.querySelector('[data-qa="img"]').src=data.img;
@@ -1612,6 +1741,31 @@ function qaAddCart(){
   const b=document.getElementById('cbadge');
   if(b)b.textContent=parseInt(b.textContent||'0')+1;
 }
+
+// Recently viewed — store last 6 viewed SKUs
+const REC_KEY='tomasq_recent_v1';
+function trackRecent(p){
+  let r=[];try{r=JSON.parse(localStorage.getItem(REC_KEY)||'[]')}catch(_){}
+  r=r.filter(x=>x.sku!==p.sku);
+  r.unshift(p);
+  r=r.slice(0,6);
+  localStorage.setItem(REC_KEY,JSON.stringify(r));
+  renderRecent();
+}
+function renderRecent(){
+  let r=[];try{r=JSON.parse(localStorage.getItem(REC_KEY)||'[]')}catch(_){}
+  const sec=document.getElementById('recent');const strip=document.getElementById('recentStrip');
+  if(!sec||!strip)return;
+  if(!r.length){sec.hidden=true;return}
+  sec.hidden=false;
+  strip.innerHTML=r.map(p=>`
+    <a class="rs-item" href="#productos" onclick="openQuickAdd('${p.sku}');return false">
+      <div class="rs-img"><img src="${p.img}" alt="${p.name}"></div>
+      <div class="rs-name">${p.name}</div>
+      <div class="rs-price">$${Number(p.price).toLocaleString()}</div>
+    </a>`).join('');
+}
+renderRecent();
 
 // Email popup — show once per session, after 12s
 (function(){
