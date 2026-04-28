@@ -292,6 +292,205 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 ::-webkit-scrollbar{width:2px}
 ::-webkit-scrollbar-track{background:var(--black)}
 ::-webkit-scrollbar-thumb{background:var(--lime)}
+
+/* ═══════════ V6 SUPREME UPGRADE ═══════════ */
+
+/* MEGA MENU */
+.mega-trigger{position:relative}
+.mega-trigger > a{cursor:none;padding:8px 0;display:inline-flex;align-items:center;gap:5px}
+.mega-trigger > a::after{content:'';width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);margin-left:3px;opacity:.6}
+.mega{position:fixed;left:0;right:0;top:68px;background:rgba(13,13,14,.97);backdrop-filter:blur(28px);border-top:.5px solid var(--border-soft);border-bottom:.5px solid var(--border-soft);padding:36px 6vw 44px;display:none;animation:megaIn .25s ease}
+.mega-trigger:hover .mega,.mega:hover{display:grid}
+.mega{grid-template-columns:1.4fr 1fr 1fr 1.6fr;gap:48px}
+@keyframes megaIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.mega-col{display:flex;flex-direction:column;gap:10px}
+.mega-h{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.18em;color:var(--lime);margin-bottom:10px;border-bottom:.5px solid var(--border-soft);padding-bottom:10px}
+.mega-link{font-family:'Barlow',sans-serif;font-size:13px;color:var(--text-2);text-decoration:none;transition:color .15s;display:flex;align-items:center;justify-content:space-between}
+.mega-link:hover{color:var(--lime)}
+.mega-link .new{font-family:'Barlow Condensed';font-size:9px;letter-spacing:.16em;color:var(--lime);text-transform:uppercase}
+.mega-feat{position:relative;overflow:hidden;height:240px;display:block;text-decoration:none}
+.mega-feat img{width:100%;height:100%;object-fit:cover;filter:brightness(.85);transition:transform .8s,filter .3s}
+.mega-feat:hover img{transform:scale(1.06);filter:brightness(1)}
+.mega-feat-cap{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(to top,rgba(13,13,14,.95),transparent);color:var(--white)}
+.mega-feat-cap b{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;display:block}
+.mega-feat-cap span{font-family:'Barlow Condensed';font-size:10px;letter-spacing:.16em;color:var(--lime);text-transform:uppercase}
+
+/* TRUST BAR */
+.trust-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:.5px solid var(--border-soft);border-bottom:.5px solid var(--border-soft);background:var(--bg-1)}
+.trust-cell{padding:18px 22px;display:flex;align-items:center;gap:14px;border-right:.5px solid var(--border-soft)}
+.trust-cell:last-child{border-right:none}
+.trust-ico{font-size:22px;flex-shrink:0}
+.trust-cell b{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.06em;color:var(--white);display:block;line-height:1.1}
+.trust-cell span{font-family:'Barlow',sans-serif;font-size:11px;color:var(--text-3);line-height:1.3}
+@media(max-width:900px){.trust-bar{grid-template-columns:repeat(2,1fr)}.trust-cell:nth-child(2){border-right:none}}
+
+/* HERO V2 */
+.hero-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:.5px solid var(--lime);background:rgba(212,255,0,.06);font-family:'Barlow Condensed';font-size:10px;letter-spacing:.22em;color:var(--lime);text-transform:uppercase;margin-bottom:24px}
+.hero-pill .ldot{width:6px;height:6px;background:var(--lime);border-radius:50%;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.cnt-down{display:flex;gap:10px;margin:18px 0 28px;font-family:'JetBrains Mono',monospace}
+.cnt-cell{background:var(--bg-2);border:.5px solid var(--border-soft);padding:8px 14px;text-align:center;min-width:54px}
+.cnt-cell b{display:block;font-family:'Bebas Neue';font-size:24px;color:var(--lime);line-height:1}
+.cnt-cell span{font-size:9px;letter-spacing:.18em;color:var(--text-3);text-transform:uppercase}
+
+/* PRODUCT CARDS V2 */
+.pc-img-wrap{position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--bg-2)}
+.pc-img-2{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;filter:brightness(.92);opacity:0;transition:opacity .5s}
+.pc:hover .pc-img-2{opacity:1}
+.pc-rating{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-2);margin-bottom:6px;font-family:'JetBrains Mono'}
+.pc-rating .stars{color:var(--lime);letter-spacing:1px;font-size:10px}
+.pc-rating .cnt{color:var(--text-3)}
+.pc-swatches{display:flex;gap:5px;margin-top:8px}
+.pc-sw{width:14px;height:14px;border-radius:50%;border:1px solid var(--border);cursor:none;transition:transform .15s}
+.pc-sw:hover{transform:scale(1.2)}
+.pc-sw.on{box-shadow:0 0 0 2px var(--bg-2),0 0 0 3px var(--lime)}
+.pc-sw[data-c="black"]{background:#0d0d0e}
+.pc-sw[data-c="white"]{background:#f5f5f2}
+.pc-sw[data-c="lime"]{background:var(--lime)}
+.pc-sw[data-c="gray"]{background:#8e8e88}
+.pc-sw[data-c="navy"]{background:#1a2740}
+.pc-sw[data-c="olive"]{background:#3e4a2e}
+.pc-sw[data-c="red"]{background:#a62828}
+.pc-sw[data-c="purple"]{background:#5d4a8c}
+
+/* SHOP BY ACTIVITY */
+.activities{padding:90px 6vw;background:var(--bg-1)}
+.act-head{text-align:center;margin-bottom:50px}
+.act-head .s-label{justify-content:center;display:inline-flex}
+.act-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.act-card{position:relative;height:380px;overflow:hidden;cursor:none;text-decoration:none;display:block}
+.act-card img{width:100%;height:100%;object-fit:cover;filter:brightness(.7) contrast(1.05);transition:filter .4s,transform .8s}
+.act-card:hover img{filter:brightness(1) contrast(1.05);transform:scale(1.06)}
+.act-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(13,13,14,.85) 100%);z-index:1;pointer-events:none}
+.act-card-cap{position:absolute;left:0;right:0;bottom:0;padding:24px;z-index:2;color:var(--white)}
+.act-card-cap b{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:.04em;line-height:1;display:block;margin-bottom:6px}
+.act-card-cap span{font-family:'Barlow Condensed';font-size:11px;letter-spacing:.18em;color:var(--lime);text-transform:uppercase}
+.act-card .arrow{position:absolute;top:24px;right:24px;width:36px;height:36px;border:1px solid rgba(255,255,255,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);transition:all .3s;z-index:2}
+.act-card:hover .arrow{background:var(--lime);border-color:var(--lime);color:var(--black);transform:rotate(-45deg)}
+@media(max-width:1100px){.act-grid{grid-template-columns:repeat(3,1fr)}.act-card{height:320px}}
+@media(max-width:600px){.act-grid{grid-template-columns:repeat(2,1fr)}.act-card{height:260px}}
+
+/* QUICK ADD MODAL */
+.qa-bd{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:400;animation:fadeIn .25s}
+.qa-bd.on{display:flex}
+.qa-modal{background:var(--bg-2);max-width:680px;width:90%;max-height:90vh;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.qa-img{aspect-ratio:3/4;background:var(--bg-3)}
+.qa-img img{width:100%;height:100%;object-fit:cover}
+.qa-body{padding:28px;position:relative}
+.qa-x{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--text-2);cursor:none;font-size:22px}
+.qa-x:hover{color:var(--lime)}
+.qa-cat{font-family:'Barlow Condensed';font-size:10px;letter-spacing:.18em;color:var(--text-3);text-transform:uppercase;margin-bottom:8px}
+.qa-name{font-family:'Bebas Neue';font-size:32px;color:var(--white);line-height:1;margin-bottom:10px}
+.qa-price{font-family:'Bebas Neue';font-size:26px;color:var(--lime);margin-bottom:18px}
+.qa-row{margin-bottom:18px}
+.qa-row-l{font-family:'Barlow Condensed';font-size:10px;letter-spacing:.16em;color:var(--text-3);text-transform:uppercase;margin-bottom:8px}
+.qa-sizes{display:flex;gap:6px;flex-wrap:wrap}
+.qa-size{padding:10px 16px;border:.5px solid var(--border);background:transparent;color:var(--text);cursor:none;font-family:'Barlow Condensed';font-size:11px;letter-spacing:.12em;font-weight:700;transition:all .15s;min-width:42px;text-align:center}
+.qa-size:hover,.qa-size.on{background:var(--lime);color:var(--black);border-color:var(--lime)}
+.qa-size.out{opacity:.3;text-decoration:line-through}
+.qa-link{font-size:11px;color:var(--text-3);text-decoration:underline;background:none;border:none;cursor:none;margin-top:6px;display:inline-block}
+.qa-link:hover{color:var(--lime)}
+@media(max-width:600px){.qa-modal{grid-template-columns:1fr}.qa-img{aspect-ratio:1/1}}
+
+/* WISHLIST */
+.pc-wish{position:absolute;top:12px;right:12px;width:34px;height:34px;background:rgba(13,13,14,.7);backdrop-filter:blur(8px);border:.5px solid rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:none;z-index:3;color:var(--white);transition:all .2s}
+.pc-wish:hover{background:var(--lime);color:var(--black);border-color:var(--lime)}
+.pc-wish.on{background:var(--lime);color:var(--black);border-color:var(--lime)}
+.pc-wish svg{width:16px;height:16px}
+.wish-badge{position:relative}
+.wish-badge .c-badge{background:var(--lime);color:var(--black);position:absolute;top:-4px;right:-6px}
+
+/* LOOKBOOK */
+.lookbook{padding:90px 6vw;background:var(--black)}
+.lb-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:8px;height:780px}
+.lb-cell{position:relative;overflow:hidden;cursor:none;display:block;text-decoration:none}
+.lb-cell:nth-child(1){grid-row:span 2}
+.lb-cell img{width:100%;height:100%;object-fit:cover;filter:brightness(.85);transition:filter .4s,transform .8s}
+.lb-cell:hover img{filter:brightness(1);transform:scale(1.04)}
+.lb-cap{position:absolute;left:0;right:0;bottom:0;padding:24px;background:linear-gradient(to top,rgba(13,13,14,.92),transparent)}
+.lb-cap b{font-family:'Bebas Neue';font-size:24px;color:var(--white);letter-spacing:.04em;display:block;margin-bottom:4px}
+.lb-cap span{font-family:'Barlow Condensed';font-size:10px;letter-spacing:.18em;color:var(--lime);text-transform:uppercase}
+@media(max-width:900px){.lb-grid{grid-template-columns:1fr;grid-template-rows:auto;height:auto}.lb-cell{height:340px}.lb-cell:nth-child(1){grid-row:auto}}
+
+/* EMAIL POPUP */
+.em-bd{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;z-index:500;animation:fadeIn .3s}
+.em-bd.on{display:flex}
+.em-modal{background:var(--bg-2);max-width:500px;width:90%;padding:42px 36px;position:relative;text-align:center;border:1px solid var(--border-soft)}
+.em-x{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--text-2);cursor:none;font-size:22px}
+.em-eyebrow{font-family:'Barlow Condensed';font-size:10px;letter-spacing:.22em;color:var(--lime);text-transform:uppercase;margin-bottom:14px}
+.em-h{font-family:'Bebas Neue';font-size:42px;color:var(--white);line-height:1;margin-bottom:14px}
+.em-h .lime{color:var(--lime)}
+.em-p{color:var(--text-2);font-size:14px;margin-bottom:24px;max-width:320px;margin-left:auto;margin-right:auto}
+.em-form{display:flex;gap:8px;margin-bottom:14px}
+.em-input{flex:1;background:var(--bg-3);border:.5px solid var(--border);color:var(--text);padding:13px 16px;font-family:inherit;font-size:13px}
+.em-input:focus{outline:none;border-color:var(--lime)}
+.em-foot{font-size:10px;color:var(--text-3);letter-spacing:.04em}
+.em-foot a{color:var(--text-2);text-decoration:underline;cursor:none}
+
+/* REVIEWS */
+.reviews{padding:90px 6vw;background:var(--bg-1)}
+.rv-head{text-align:center;margin-bottom:48px}
+.rv-stat{display:inline-flex;align-items:center;gap:14px;padding:14px 22px;border:.5px solid var(--border-soft);background:var(--bg-2);margin-bottom:20px}
+.rv-stat .num{font-family:'Bebas Neue';font-size:36px;color:var(--lime);line-height:1}
+.rv-stat .stars{color:var(--lime);letter-spacing:2px;font-size:13px}
+.rv-stat span{font-family:'Barlow Condensed';font-size:10px;letter-spacing:.16em;color:var(--text-3);text-transform:uppercase}
+.rv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rv-card{background:var(--bg-2);border:.5px solid var(--border-soft);padding:22px}
+.rv-stars{color:var(--lime);letter-spacing:2px;font-size:13px;margin-bottom:10px}
+.rv-text{color:var(--text);font-size:14px;line-height:1.6;margin-bottom:18px;font-style:italic}
+.rv-meta{display:flex;align-items:center;gap:10px;border-top:.5px solid var(--border-soft);padding-top:14px}
+.rv-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--lime),var(--purple));display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--black);font-size:13px}
+.rv-name{font-size:13px;color:var(--white);font-weight:600}
+.rv-name + div{font-size:10px;color:var(--text-3);font-family:'Barlow Condensed';letter-spacing:.16em;text-transform:uppercase;margin-top:2px}
+.rv-verified{margin-left:auto;font-size:10px;color:var(--green);display:flex;align-items:center;gap:4px}
+@media(max-width:900px){.rv-grid{grid-template-columns:1fr}}
+
+/* RECENTLY VIEWED */
+.recent{padding:60px 6vw;background:var(--black);border-top:.5px solid var(--border-soft)}
+.recent-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.recent-strip{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px}
+.recent-strip::-webkit-scrollbar{height:4px}
+.rs-item{flex:0 0 200px;text-decoration:none}
+.rs-img{aspect-ratio:1/1;background:var(--bg-2);overflow:hidden;margin-bottom:8px}
+.rs-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.92);transition:transform .5s}
+.rs-item:hover img{transform:scale(1.06)}
+.rs-name{color:var(--white);font-size:13px;font-weight:600}
+.rs-price{color:var(--lime);font-size:12px;font-family:'JetBrains Mono'}
+
+/* UGC / AMBASSADORS */
+.ugc{padding:90px 6vw;background:var(--bg-1)}
+.ugc-head{text-align:center;margin-bottom:40px}
+.ugc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.ugc-cell{position:relative;aspect-ratio:1/1;overflow:hidden;cursor:none}
+.ugc-cell img{width:100%;height:100%;object-fit:cover;filter:brightness(.92);transition:filter .3s,transform .6s}
+.ugc-cell:hover img{filter:brightness(1);transform:scale(1.08)}
+.ugc-cell::after{content:'@';position:absolute;top:8px;right:8px;background:rgba(13,13,14,.7);color:var(--lime);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;backdrop-filter:blur(6px)}
+@media(max-width:1100px){.ugc-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.ugc-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* FOOTER EXPANDED */
+.foot-x{background:var(--bg-2);padding:64px 6vw 32px;border-top:.5px solid var(--border-soft)}
+.foot-x-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1.2fr;gap:48px;margin-bottom:40px}
+.foot-x-col h4{font-family:'Bebas Neue';font-size:14px;letter-spacing:.16em;color:var(--white);margin-bottom:18px}
+.foot-x-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.foot-x-col a,.foot-x-col li{font-size:13px;color:var(--text-2);text-decoration:none;cursor:none;transition:color .15s}
+.foot-x-col a:hover{color:var(--lime)}
+.foot-x-brand{font-family:'Bebas Neue';font-size:32px;letter-spacing:.08em;color:var(--white);margin-bottom:14px}
+.foot-x-tag{color:var(--text-2);font-size:13px;line-height:1.6;margin-bottom:18px;max-width:280px}
+.foot-x-social{display:flex;gap:10px}
+.foot-x-social a{width:34px;height:34px;border:.5px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-2);transition:all .2s}
+.foot-x-social a:hover{border-color:var(--lime);color:var(--lime)}
+.foot-x-news input{width:100%;background:var(--bg-3);border:.5px solid var(--border);color:var(--text);padding:11px 14px;font-family:inherit;font-size:12px;margin-bottom:8px}
+.foot-x-news button{width:100%}
+.foot-x-bot{display:flex;justify-content:space-between;padding-top:24px;border-top:.5px solid var(--border-soft);font-size:11px;color:var(--text-3);flex-wrap:wrap;gap:14px}
+.foot-x-bot a{color:var(--text-3);text-decoration:none;margin:0 10px;cursor:none}
+.foot-x-bot a:hover{color:var(--lime)}
+.foot-x-pay{display:flex;gap:6px;align-items:center;font-family:'Barlow Condensed';font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+.foot-x-pay span{padding:3px 8px;border:.5px solid var(--border-soft);font-weight:700;color:var(--text-2)}
+@media(max-width:1000px){.foot-x-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.foot-x-grid{grid-template-columns:1fr}}
+
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 </style>
 </head>
 <body>
@@ -304,13 +503,100 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 <nav>
   <a href="#" class="logo"><div class="logo-badge">TQ</div>TOMASQ</a>
   <ul class="nav-links">
-    <li><a href="#productos">Productos</a></li>
-    <li><a href="#sourcing">Sourcing</a></li>
-    <li><a href="#fulfillment">⚡ Fulfillment MRP</a></li>
+    <li class="mega-trigger"><a href="#hombre">Hombre</a>
+      <div class="mega">
+        <div class="mega-col">
+          <div class="mega-h">Tops</div>
+          <a class="mega-link" href="#productos">Oversize Tees <span class="new">Drop</span></a>
+          <a class="mega-link" href="#productos">Tank Tops</a>
+          <a class="mega-link" href="#productos">Polos</a>
+          <a class="mega-link" href="#productos">Long Sleeves</a>
+          <a class="mega-link" href="#productos">Hoodies</a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-h">Bottoms</div>
+          <a class="mega-link" href="#productos">Shorts <span class="new">Hot</span></a>
+          <a class="mega-link" href="#productos">Joggers</a>
+          <a class="mega-link" href="#productos">Cargos</a>
+          <a class="mega-link" href="#productos">Pants</a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-h">Sets &amp; Más</div>
+          <a class="mega-link" href="#productos">Sets Completos</a>
+          <a class="mega-link" href="#productos">Outerwear</a>
+          <a class="mega-link" href="#productos">Underwear</a>
+          <a class="mega-link" href="#productos">Calcetines</a>
+          <a class="mega-link" href="#sale">Sale Hombre</a>
+        </div>
+        <a class="mega-feat" href="#productos">
+          <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=600&h=480&q=85" alt="">
+          <div class="mega-feat-cap"><span>SS25 Drop</span><b>Gothic Collection</b></div>
+        </a>
+      </div>
+    </li>
+    <li class="mega-trigger"><a href="#mujer">Mujer</a>
+      <div class="mega">
+        <div class="mega-col">
+          <div class="mega-h">Tops</div>
+          <a class="mega-link" href="#productos">Crop Tops <span class="new">Drop</span></a>
+          <a class="mega-link" href="#productos">Sports Bras</a>
+          <a class="mega-link" href="#productos">Tank Tops</a>
+          <a class="mega-link" href="#productos">Hoodies</a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-h">Bottoms</div>
+          <a class="mega-link" href="#productos">Leggings <span class="new">Best</span></a>
+          <a class="mega-link" href="#productos">Biker Shorts</a>
+          <a class="mega-link" href="#productos">Joggers</a>
+          <a class="mega-link" href="#productos">Faldas Tech</a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-h">Sets &amp; Más</div>
+          <a class="mega-link" href="#productos">Sets Completos</a>
+          <a class="mega-link" href="#productos">Bodysuits</a>
+          <a class="mega-link" href="#productos">Outerwear</a>
+          <a class="mega-link" href="#sale">Sale Mujer</a>
+        </div>
+        <a class="mega-feat" href="#productos">
+          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&h=480&q=85" alt="">
+          <div class="mega-feat-cap"><span>Studio · Yoga</span><b>Venom Edition</b></div>
+        </a>
+      </div>
+    </li>
+    <li class="mega-trigger"><a href="#accesorios">Accesorios</a>
+      <div class="mega">
+        <div class="mega-col">
+          <div class="mega-h">Headwear</div>
+          <a class="mega-link" href="#productos">Gorras</a>
+          <a class="mega-link" href="#productos">Beanies</a>
+          <a class="mega-link" href="#productos">Bandanas</a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-h">Gym Gear</div>
+          <a class="mega-link" href="#productos">Lifting Belts</a>
+          <a class="mega-link" href="#productos">Wrist Wraps</a>
+          <a class="mega-link" href="#productos">Shaker Bottles</a>
+          <a class="mega-link" href="#productos">Toallas</a>
+        </div>
+        <div class="mega-col">
+          <div class="mega-h">Bags</div>
+          <a class="mega-link" href="#productos">Gym Bags</a>
+          <a class="mega-link" href="#productos">Mochilas</a>
+          <a class="mega-link" href="#productos">Cinturones</a>
+        </div>
+        <a class="mega-feat" href="#productos">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&h=480&q=85" alt="">
+          <div class="mega-feat-cap"><span>Equipa tu sesión</span><b>Gym Essentials</b></div>
+        </a>
+      </div>
+    </li>
+    <li><a href="#sale" style="color:var(--lime)">Sale ★</a></li>
+    <li><a href="#lookbook">Lookbook</a></li>
     <li><a href="dashboard.html" class="b2b">🤖 Ops AI</a></li>
   </ul>
   <div class="nav-r">
-    <button class="nav-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+    <button class="nav-ico" title="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+    <button class="nav-ico wish-badge" onclick="openWish()" title="Wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="c-badge" id="wbadge" style="display:none">0</span></button>
     <button class="cart-pill" onclick="showToast('Abriendo carrito...')">Carrito <span class="c-badge" id="cbadge">3</span></button>
   </div>
 </nav>
@@ -318,12 +604,18 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 <!-- HERO -->
 <section class="hero" id="inicio">
   <div class="hero-l">
-    <div class="hero-tag">Nueva Drop — Colección SS25</div>
+    <div class="hero-pill"><span class="ldot"></span> SS26 Drop · live now</div>
     <h1 class="hero-t">BUILT<br><span class="lime">DIFF</span><span class="outline">ERENT</span></h1>
     <p class="hero-desc">Ropa diseñada para los que no conocen el límite. Cortes oversize, telas premium y una identidad que se nota en el gimnasio y en la calle.</p>
+    <div class="cnt-down" id="cntDown" aria-label="Countdown próximo drop">
+      <div class="cnt-cell"><b id="cd-d">—</b><span>días</span></div>
+      <div class="cnt-cell"><b id="cd-h">—</b><span>hrs</span></div>
+      <div class="cnt-cell"><b id="cd-m">—</b><span>min</span></div>
+      <div class="cnt-cell"><b id="cd-s">—</b><span>seg</span></div>
+    </div>
     <div class="hero-ctas">
       <a href="#productos" class="btn-p">Shop Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      <a href="#fulfillment" class="btn-g">Panel Operativo</a>
+      <a href="#lookbook" class="btn-g">Ver Lookbook</a>
     </div>
   </div>
   <div class="hero-r">
@@ -340,6 +632,14 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
     </div>
   </div>
 </section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-cell"><div class="trust-ico">🇲🇽</div><div><b>Hecho en México</b><span>Producción ética y local</span></div></div>
+  <div class="trust-cell"><div class="trust-ico">📦</div><div><b>Envío gratis +$799</b><span>2–4 días hábiles</span></div></div>
+  <div class="trust-cell"><div class="trust-ico">↩️</div><div><b>Devoluciones 30 días</b><span>Cambio de talla sin costo</span></div></div>
+  <div class="trust-cell"><div class="trust-ico">⭐</div><div><b>4.9 / 5 estrellas</b><span>1,847 reviews verificados</span></div></div>
+</div>
 
 <div class="ticker">
   <div class="t-track">
@@ -385,16 +685,194 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
     </div>
   </div>
   <div class="prod-grid" id="prodGrid">
-    <div class="pc rv" data-niche="streetwear gym" data-age="18-24 25-34"><div class="pc-badge b-new">Nuevo</div><div class="pc-img"><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt=""><div class="pc-overlay"></div><div class="pc-quick"><button class="q-btn" onclick="addCart()">+ Agregar</button></div></div><div class="pc-info"><div class="pc-cat">Oversize Tee · Hombre</div><div class="pc-name">Tee Gothic Black</div><div class="pc-tags"><span class="tg">Streetwear</span><span class="tg">Gym</span></div><div class="pc-foot"><div><span class="pc-price">$699</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div></div></div>
-    <div class="pc rv" data-niche="gym crossfit" data-age="18-24 25-34"><div class="pc-badge b-hot">Hot</div><div class="pc-img"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt=""><div class="pc-overlay"></div><div class="pc-quick"><button class="q-btn" onclick="addCart()">+ Agregar</button></div></div><div class="pc-info"><div class="pc-cat">Tank Top · Hombre</div><div class="pc-name">Tank Stringer TQ</div><div class="pc-tags"><span class="tg">Gym</span><span class="tg">Crossfit</span></div><div class="pc-foot"><div><span class="pc-price">$549</span><span class="pc-old">$649</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div></div></div>
-    <div class="pc rv" data-niche="running gym" data-age="18-24 25-34 35-44"><div class="pc-img"><img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt=""><div class="pc-overlay"></div><div class="pc-quick"><button class="q-btn" onclick="addCart()">+ Agregar</button></div></div><div class="pc-info"><div class="pc-cat">Shorts · Gym</div><div class="pc-name">Short Obsidian 5"</div><div class="pc-tags"><span class="tg">Running</span><span class="tg">Gym</span></div><div class="pc-foot"><div><span class="pc-price">$649</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div></div></div>
-    <div class="pc rv" data-niche="crossfit gym" data-age="25-34 35-44"><div class="pc-badge b-ltd">Limitado</div><div class="pc-img"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt=""><div class="pc-overlay"></div><div class="pc-quick"><button class="q-btn" onclick="addCart()">+ Agregar</button></div></div><div class="pc-info"><div class="pc-cat">Set Completo · Unisex</div><div class="pc-name">Set Titan Edition</div><div class="pc-tags"><span class="tg">Crossfit</span><span class="tg">Gym</span></div><div class="pc-foot"><div><span class="pc-price">$1,199</span><span class="pc-old">$1,499</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div></div></div>
-    <div class="pc rv" data-niche="streetwear gym" data-age="18-24 25-34"><div class="pc-badge b-new">Nuevo</div><div class="pc-img"><img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt=""><div class="pc-overlay"></div><div class="pc-quick"><button class="q-btn" onclick="addCart()">+ Agregar</button></div></div><div class="pc-info"><div class="pc-cat">Oversize Tee · Hombre</div><div class="pc-name">Tee Gothic White</div><div class="pc-tags"><span class="tg">Streetwear</span><span class="tg">Gym</span></div><div class="pc-foot"><div><span class="pc-price">$699</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div></div></div>
-    <div class="pc rv" data-niche="streetwear yoga" data-age="25-34 35-44 45+"><div class="pc-badge b-hot">Hot</div><div class="pc-img"><img src="https://images.unsplash.com/photo-1541534741688-6078c8985bca?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt=""><div class="pc-overlay"></div><div class="pc-quick"><button class="q-btn" onclick="addCart()">+ Agregar</button></div></div><div class="pc-info"><div class="pc-cat">Jogger · Street</div><div class="pc-name">Jogger Phantom TQ</div><div class="pc-tags"><span class="tg">Streetwear</span><span class="tg">Yoga</span></div><div class="pc-foot"><div><span class="pc-price">$849</span><span class="pc-old">$999</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div></div></div>
-    <div class="pc rv" data-niche="streetwear" data-age="18-24 25-34 35-44 45+"><div class="pc-img"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt=""><div class="pc-overlay"></div><div class="pc-quick"><button class="q-btn" onclick="addCart()">+ Agregar</button></div></div><div class="pc-info"><div class="pc-cat">Hoodie · Unisex</div><div class="pc-name">Hoodie Void TQ</div><div class="pc-tags"><span class="tg">Streetwear</span></div><div class="pc-foot"><div><span class="pc-price">$899</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div></div></div>
-    <div class="pc rv" data-niche="yoga gym" data-age="18-24 25-34"><div class="pc-badge b-ltd">Limitado</div><div class="pc-img"><img src="https://images.unsplash.com/photo-1507398941214-162a8de16b98?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt=""><div class="pc-overlay"></div><div class="pc-quick"><button class="q-btn" onclick="addCart()">+ Agregar</button></div></div><div class="pc-info"><div class="pc-cat">Set · Mujer</div><div class="pc-name">Set Venom W</div><div class="pc-tags"><span class="tg">Yoga</span><span class="tg">Gym</span></div><div class="pc-foot"><div><span class="pc-price">$1,099</span><span class="pc-old">$1,299</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div></div></div>
+    <div class="pc rv" data-niche="streetwear gym" data-age="18-24 25-34" data-sku="TQ-TEE-GBLK" data-name="Tee Gothic Black" data-price="699" data-cat="Oversize Tee · Hombre" data-img="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=700&q=85">
+      <div class="pc-badge b-new">Nuevo</div>
+      <button class="pc-wish" onclick="toggleWish('TQ-TEE-GBLK',this)" title="Wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+      <div class="pc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt="Tee Gothic Black">
+        <img class="pc-img-2" src="https://images.unsplash.com/photo-1542327897-d73f4005b533?auto=format&fit=crop&w=600&h=800&q=85" alt="">
+        <div class="pc-overlay"></div>
+        <div class="pc-quick"><button class="q-btn" onclick="openQuickAdd('TQ-TEE-GBLK')">+ Quick Add</button></div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">Oversize Tee · Hombre</div>
+        <div class="pc-name">Tee Gothic Black</div>
+        <div class="pc-rating"><span class="stars">★★★★★</span> 4.9 <span class="cnt">(124)</span></div>
+        <div class="pc-tags"><span class="tg">Streetwear</span><span class="tg">Gym</span></div>
+        <div class="pc-foot"><div><span class="pc-price">$699</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
+        <div class="pc-swatches"><span class="pc-sw on" data-c="black"></span><span class="pc-sw" data-c="white"></span><span class="pc-sw" data-c="gray"></span><span class="pc-sw" data-c="navy"></span></div>
+      </div>
+    </div>
+
+    <div class="pc rv" data-niche="gym crossfit" data-age="18-24 25-34" data-sku="TQ-TANK-STR" data-name="Tank Stringer TQ" data-price="549" data-cat="Tank Top · Hombre" data-img="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=85">
+      <div class="pc-badge b-hot">Hot</div>
+      <button class="pc-wish" onclick="toggleWish('TQ-TANK-STR',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+      <div class="pc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt="Tank Stringer TQ">
+        <img class="pc-img-2" src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=600&h=800&q=85" alt="">
+        <div class="pc-overlay"></div>
+        <div class="pc-quick"><button class="q-btn" onclick="openQuickAdd('TQ-TANK-STR')">+ Quick Add</button></div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">Tank Top · Hombre</div>
+        <div class="pc-name">Tank Stringer TQ</div>
+        <div class="pc-rating"><span class="stars">★★★★★</span> 4.8 <span class="cnt">(312)</span></div>
+        <div class="pc-tags"><span class="tg">Gym</span><span class="tg">Crossfit</span></div>
+        <div class="pc-foot"><div><span class="pc-price">$549</span><span class="pc-old">$649</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
+        <div class="pc-swatches"><span class="pc-sw on" data-c="black"></span><span class="pc-sw" data-c="white"></span><span class="pc-sw" data-c="lime"></span></div>
+      </div>
+    </div>
+
+    <div class="pc rv" data-niche="running gym" data-age="18-24 25-34 35-44" data-sku="TQ-SHORT-OBS" data-name="Short Obsidian 5&quot;" data-price="649" data-cat="Shorts · Gym" data-img="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=700&q=85">
+      <div class="pc-badge" style="background:rgba(91,158,255,.85);color:var(--white)">Bestseller</div>
+      <button class="pc-wish" onclick="toggleWish('TQ-SHORT-OBS',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+      <div class="pc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt="Short Obsidian">
+        <img class="pc-img-2" src="https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=600&h=800&q=85" alt="">
+        <div class="pc-overlay"></div>
+        <div class="pc-quick"><button class="q-btn" onclick="openQuickAdd('TQ-SHORT-OBS')">+ Quick Add</button></div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">Shorts · Gym</div>
+        <div class="pc-name">Short Obsidian 5"</div>
+        <div class="pc-rating"><span class="stars">★★★★★</span> 4.9 <span class="cnt">(528)</span></div>
+        <div class="pc-tags"><span class="tg">Running</span><span class="tg">Gym</span></div>
+        <div class="pc-foot"><div><span class="pc-price">$649</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
+        <div class="pc-swatches"><span class="pc-sw on" data-c="black"></span><span class="pc-sw" data-c="navy"></span><span class="pc-sw" data-c="olive"></span><span class="pc-sw" data-c="gray"></span><span class="pc-sw" data-c="red"></span></div>
+      </div>
+    </div>
+
+    <div class="pc rv" data-niche="crossfit gym" data-age="25-34 35-44" data-sku="TQ-SET-TITAN" data-name="Set Titan Edition" data-price="1199" data-cat="Set Completo · Unisex" data-img="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=700&q=85">
+      <div class="pc-badge b-ltd">Limitado</div>
+      <button class="pc-wish" onclick="toggleWish('TQ-SET-TITAN',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+      <div class="pc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt="Set Titan">
+        <img class="pc-img-2" src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=600&h=800&q=85" alt="">
+        <div class="pc-overlay"></div>
+        <div class="pc-quick"><button class="q-btn" onclick="openQuickAdd('TQ-SET-TITAN')">+ Quick Add</button></div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">Set Completo · Unisex</div>
+        <div class="pc-name">Set Titan Edition</div>
+        <div class="pc-rating"><span class="stars">★★★★★</span> 5.0 <span class="cnt">(48)</span></div>
+        <div class="pc-tags"><span class="tg">Crossfit</span><span class="tg">Gym</span></div>
+        <div class="pc-foot"><div><span class="pc-price">$1,199</span><span class="pc-old">$1,499</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
+        <div class="pc-swatches"><span class="pc-sw on" data-c="black"></span><span class="pc-sw" data-c="navy"></span></div>
+      </div>
+    </div>
+
+    <div class="pc rv" data-niche="streetwear gym" data-age="18-24 25-34" data-sku="TQ-TEE-GWHT" data-name="Tee Gothic White" data-price="699" data-cat="Oversize Tee · Hombre" data-img="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=700&q=85">
+      <div class="pc-badge b-new">Nuevo</div>
+      <button class="pc-wish" onclick="toggleWish('TQ-TEE-GWHT',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+      <div class="pc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt="Tee Gothic White">
+        <img class="pc-img-2" src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=600&h=800&q=85" alt="">
+        <div class="pc-overlay"></div>
+        <div class="pc-quick"><button class="q-btn" onclick="openQuickAdd('TQ-TEE-GWHT')">+ Quick Add</button></div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">Oversize Tee · Hombre</div>
+        <div class="pc-name">Tee Gothic White</div>
+        <div class="pc-rating"><span class="stars">★★★★★</span> 4.8 <span class="cnt">(98)</span></div>
+        <div class="pc-tags"><span class="tg">Streetwear</span><span class="tg">Gym</span></div>
+        <div class="pc-foot"><div><span class="pc-price">$699</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
+        <div class="pc-swatches"><span class="pc-sw" data-c="black"></span><span class="pc-sw on" data-c="white"></span><span class="pc-sw" data-c="gray"></span></div>
+      </div>
+    </div>
+
+    <div class="pc rv" data-niche="streetwear yoga" data-age="25-34 35-44 45+" data-sku="TQ-JOG-PHN" data-name="Jogger Phantom TQ" data-price="849" data-cat="Jogger · Street" data-img="https://images.unsplash.com/photo-1541534741688-6078c8985bca?auto=format&fit=crop&w=700&q=85">
+      <div class="pc-badge b-hot">Hot</div>
+      <button class="pc-wish" onclick="toggleWish('TQ-JOG-PHN',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+      <div class="pc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1541534741688-6078c8985bca?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt="Jogger Phantom">
+        <img class="pc-img-2" src="https://images.unsplash.com/photo-1552902019-ebcd97aa9aa0?auto=format&fit=crop&w=600&h=800&q=85" alt="">
+        <div class="pc-overlay"></div>
+        <div class="pc-quick"><button class="q-btn" onclick="openQuickAdd('TQ-JOG-PHN')">+ Quick Add</button></div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">Jogger · Street</div>
+        <div class="pc-name">Jogger Phantom TQ</div>
+        <div class="pc-rating"><span class="stars">★★★★★</span> 4.7 <span class="cnt">(216)</span></div>
+        <div class="pc-tags"><span class="tg">Streetwear</span><span class="tg">Yoga</span></div>
+        <div class="pc-foot"><div><span class="pc-price">$849</span><span class="pc-old">$999</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
+        <div class="pc-swatches"><span class="pc-sw on" data-c="black"></span><span class="pc-sw" data-c="gray"></span><span class="pc-sw" data-c="olive"></span></div>
+      </div>
+    </div>
+
+    <div class="pc rv" data-niche="streetwear" data-age="18-24 25-34 35-44 45+" data-sku="TQ-HOOD-VOID" data-name="Hoodie Void TQ" data-price="899" data-cat="Hoodie · Unisex" data-img="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=700&q=85">
+      <div class="pc-badge" style="background:rgba(167,139,250,.85);color:var(--white)">Restock</div>
+      <button class="pc-wish" onclick="toggleWish('TQ-HOOD-VOID',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+      <div class="pc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt="Hoodie Void">
+        <img class="pc-img-2" src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&h=800&q=85" alt="">
+        <div class="pc-overlay"></div>
+        <div class="pc-quick"><button class="q-btn" onclick="openQuickAdd('TQ-HOOD-VOID')">+ Quick Add</button></div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">Hoodie · Unisex</div>
+        <div class="pc-name">Hoodie Void TQ</div>
+        <div class="pc-rating"><span class="stars">★★★★★</span> 4.9 <span class="cnt">(404)</span></div>
+        <div class="pc-tags"><span class="tg">Streetwear</span></div>
+        <div class="pc-foot"><div><span class="pc-price">$899</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
+        <div class="pc-swatches"><span class="pc-sw on" data-c="black"></span><span class="pc-sw" data-c="gray"></span><span class="pc-sw" data-c="purple"></span></div>
+      </div>
+    </div>
+
+    <div class="pc rv" data-niche="yoga gym" data-age="18-24 25-34" data-sku="TQ-SET-VENOM" data-name="Set Venom W" data-price="1099" data-cat="Set · Mujer" data-img="https://images.unsplash.com/photo-1507398941214-162a8de16b98?auto=format&fit=crop&w=700&q=85">
+      <div class="pc-badge b-ltd">Limitado</div>
+      <button class="pc-wish" onclick="toggleWish('TQ-SET-VENOM',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+      <div class="pc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1507398941214-162a8de16b98?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt="Set Venom W">
+        <img class="pc-img-2" src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=600&h=800&q=85" alt="">
+        <div class="pc-overlay"></div>
+        <div class="pc-quick"><button class="q-btn" onclick="openQuickAdd('TQ-SET-VENOM')">+ Quick Add</button></div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-cat">Set · Mujer</div>
+        <div class="pc-name">Set Venom W</div>
+        <div class="pc-rating"><span class="stars">★★★★★</span> 5.0 <span class="cnt">(67)</span></div>
+        <div class="pc-tags"><span class="tg">Yoga</span><span class="tg">Gym</span></div>
+        <div class="pc-foot"><div><span class="pc-price">$1,099</span><span class="pc-old">$1,299</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
+        <div class="pc-swatches"><span class="pc-sw on" data-c="black"></span><span class="pc-sw" data-c="purple"></span><span class="pc-sw" data-c="lime"></span></div>
+      </div>
+    </div>
   </div>
   <p class="prod-empty rv" id="prodEmpty" hidden>Sin coincidencias para esta combinación · <button class="link" onclick="resetFilt()">Resetear filtros</button></p>
+</section>
+
+<!-- ═══════════════════ SHOP BY ACTIVITY ═══════════════════ -->
+<section class="activities" id="actividades">
+  <div class="act-head">
+    <div class="s-label rv">Shop by Activity</div>
+    <h2 class="s-title rv">ENCUENTRA <span class="lime">TU LIGA</span></h2>
+  </div>
+  <div class="act-grid">
+    <a class="act-card rv" href="#productos" onclick="setNiche('running')">
+      <img src="https://images.unsplash.com/photo-1571008887538-b36bb32f4571?auto=format&fit=crop&w=600&h=800&q=85" alt="Running">
+      <div class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+      <div class="act-card-cap"><span>🏃 Asfalto · Pista</span><b>RUNNING</b></div>
+    </a>
+    <a class="act-card rv" href="#productos" onclick="setNiche('gym')">
+      <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=600&h=800&q=85" alt="Gym">
+      <div class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+      <div class="act-card-cap"><span>🏋 Fierros · Hipertrofia</span><b>GYM</b></div>
+    </a>
+    <a class="act-card rv" href="#productos" onclick="setNiche('crossfit')">
+      <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=600&h=800&q=85" alt="Crossfit">
+      <div class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+      <div class="act-card-cap"><span>⚡ Box · WOD</span><b>CROSSFIT</b></div>
+    </a>
+    <a class="act-card rv" href="#productos" onclick="setNiche('yoga')">
+      <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&h=800&q=85" alt="Yoga">
+      <div class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+      <div class="act-card-cap"><span>🧘 Studio · Mat</span><b>YOGA</b></div>
+    </a>
+    <a class="act-card rv" href="#productos" onclick="setNiche('streetwear')">
+      <img src="https://images.unsplash.com/photo-1542327897-d73f4005b533?auto=format&fit=crop&w=600&h=800&q=85" alt="Streetwear">
+      <div class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+      <div class="act-card-cap"><span>🏙 Off-duty · Lifestyle</span><b>STREETWEAR</b></div>
+    </a>
+  </div>
 </section>
 
 <!-- ═══════════════════ B2B SOURCING (compact) ═══════════════════ -->
@@ -1006,6 +1484,119 @@ setInterval(()=>{
     else el.textContent='hace 1 min';
   }
 },3000);
+
+/* ═══════════ V6 SUPREME — countdown, swatches, wishlist, quick-add stubs ═══════════ */
+
+// Countdown to next drop (rolling 7-day target so it never expires in demo)
+(function(){
+  const target=Date.now()+(6*24+7)*3600*1000+42*60000+18000;
+  function tick(){
+    const d=Math.max(0,target-Date.now());
+    const dd=Math.floor(d/86400000);
+    const hh=Math.floor((d%86400000)/3600000);
+    const mm=Math.floor((d%3600000)/60000);
+    const ss=Math.floor((d%60000)/1000);
+    const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=String(v).padStart(2,'0')};
+    set('cd-d',dd);set('cd-h',hh);set('cd-m',mm);set('cd-s',ss);
+  }
+  tick();setInterval(tick,1000);
+})();
+
+// Color swatches — click to "select" (visual only)
+document.querySelectorAll('.pc-swatches').forEach(row=>{
+  row.addEventListener('click',e=>{
+    const sw=e.target.closest('.pc-sw');
+    if(!sw)return;
+    row.querySelectorAll('.pc-sw').forEach(s=>s.classList.remove('on'));
+    sw.classList.add('on');
+    e.stopPropagation();
+  });
+});
+
+// Wishlist (localStorage backed)
+const WISH_KEY='tomasq_wish_v1';
+function getWish(){try{return JSON.parse(localStorage.getItem(WISH_KEY)||'[]')}catch(_){return[]}}
+function setWish(arr){localStorage.setItem(WISH_KEY,JSON.stringify(arr));renderWishBadge()}
+function toggleWish(sku,btn){
+  const w=getWish();
+  const i=w.indexOf(sku);
+  if(i>=0){w.splice(i,1);btn.classList.remove('on');showToast('Removido de favoritos')}
+  else{w.push(sku);btn.classList.add('on');showToast('✓ Guardado en favoritos','success')}
+  setWish(w);
+}
+function renderWishBadge(){
+  const w=getWish();const b=document.getElementById('wbadge');
+  if(!b)return;
+  if(w.length){b.textContent=w.length;b.style.display='flex'}
+  else b.style.display='none';
+  // also re-paint heart state in cards
+  w.forEach(sku=>{
+    const btn=document.querySelector(`.pc-wish[onclick*="${sku}"]`);
+    if(btn)btn.classList.add('on');
+  });
+}
+function openWish(){
+  const w=getWish();
+  showToast(w.length?`💚 ${w.length} en tu wishlist`:'Tu wishlist está vacía','info');
+}
+renderWishBadge();
+
+// Niche shortcut from "Shop by Activity" cards
+function setNiche(niche){
+  if(typeof filtState==='undefined')return;
+  filtState.niche=niche;
+  document.querySelectorAll('[data-axis="niche"] .f-btn').forEach(b=>b.classList.toggle('on',b.dataset.val===niche));
+  applyFilt();
+}
+
+// Quick-add modal — populate from clicked product
+function openQuickAdd(sku){
+  const card=document.querySelector(`.pc[data-sku="${sku}"]`);
+  if(!card){showToast('Producto no encontrado');return}
+  const data={
+    name:card.dataset.name,price:card.dataset.price,cat:card.dataset.cat,
+    img:card.dataset.img,sku:card.dataset.sku
+  };
+  const m=document.getElementById('qaModal');
+  if(!m){showToast(`+ ${data.name}`,'success');return}
+  m.querySelector('[data-qa="img"]').src=data.img;
+  m.querySelector('[data-qa="cat"]').textContent=data.cat;
+  m.querySelector('[data-qa="name"]').textContent=data.name;
+  m.querySelector('[data-qa="price"]').textContent='$'+Number(data.price).toLocaleString();
+  m.querySelectorAll('.qa-size').forEach(s=>s.classList.remove('on'));
+  document.getElementById('qaBd').classList.add('on');
+}
+function closeQuickAdd(){document.getElementById('qaBd').classList.remove('on')}
+function pickSize(btn){
+  btn.parentElement.querySelectorAll('.qa-size').forEach(s=>s.classList.remove('on'));
+  btn.classList.add('on');
+}
+function qaAddCart(){
+  const sel=document.querySelector('.qa-size.on');
+  if(!sel){showToast('Elige una talla');return}
+  closeQuickAdd();
+  showToast(`✓ Agregado · talla ${sel.textContent}`,'success');
+  const b=document.getElementById('cbadge');
+  if(b)b.textContent=parseInt(b.textContent||'0')+1;
+}
+
+// Email popup — show once per session, after 12s
+(function(){
+  if(sessionStorage.getItem('em_seen'))return;
+  setTimeout(()=>{
+    const bd=document.getElementById('emBd');
+    if(bd)bd.classList.add('on');
+    sessionStorage.setItem('em_seen','1');
+  },12000);
+})();
+function closeEmail(){document.getElementById('emBd').classList.remove('on')}
+function submitEmail(e){
+  e.preventDefault();
+  const v=e.target.querySelector('input').value;
+  if(!v||!v.includes('@')){showToast('Email inválido');return}
+  closeEmail();
+  showToast('✓ Tu cupón -10% va en camino al correo','success');
+}
 </script>
 </body>
 </html>
