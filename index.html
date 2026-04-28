@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TORO KAIZEN — Built Different</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -506,6 +506,14 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 .lookbook-bull{position:absolute;right:24px;top:24px;width:64px;height:54px;color:var(--lime);opacity:.6;z-index:3;pointer-events:none}
 .lb-cell:nth-child(1){position:relative}
 
+/* PRINT MOCKUP — bull stamped on chest area of product images */
+.pc-img-wrap::after{content:'';position:absolute;left:50%;top:42%;width:32%;aspect-ratio:1.25/1;transform:translate(-50%,-50%);background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 80'><g fill='%23D4FF00'><path d='M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z'/><path d='M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z'/><path d='M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z'/></g></svg>") no-repeat center/contain;opacity:.55;mix-blend-mode:screen;pointer-events:none;transition:opacity .4s;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
+.pc:hover .pc-img-wrap::after{opacity:.85}
+/* white-tee variants — invert print to black so it reads on light fabric */
+.pc[data-print="dark"] .pc-img-wrap::after{background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 80'><g fill='%230d0d0e'><path d='M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z'/><path d='M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z'/><path d='M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z'/></g></svg>") no-repeat center/contain;mix-blend-mode:multiply;opacity:.7}
+/* opt-out for products that shouldn't show the print (shorts, accessories) */
+.pc[data-print="off"] .pc-img-wrap::after{display:none}
+
 /* CHATBOT */
 .cb-fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:var(--lime);color:var(--black);border:none;cursor:none;display:flex;align-items:center;justify-content:center;z-index:380;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:transform .2s}
 .cb-fab:hover{transform:scale(1.08)}
@@ -778,7 +786,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       </div>
     </div>
 
-    <div class="pc rv" data-niche="running gym" data-age="18-24 25-34 35-44" data-sku="TQ-SHORT-OBS" data-name="Short Obsidian 5&quot;" data-price="649" data-cat="Shorts · Gym" data-img="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=700&q=85">
+    <div class="pc rv" data-niche="running gym" data-age="18-24 25-34 35-44" data-sku="TQ-SHORT-OBS" data-name="Short Obsidian 5&quot;" data-price="649" data-cat="Shorts · Gym" data-img="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=700&q=85" data-print="off">
       <div class="pc-badge" style="background:rgba(91,158,255,.85);color:var(--white)">Bestseller</div>
       <button class="pc-wish" onclick="toggleWish('TQ-SHORT-OBS',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
       <div class="pc-img-wrap">
@@ -816,7 +824,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       </div>
     </div>
 
-    <div class="pc rv" data-niche="streetwear gym" data-age="18-24 25-34" data-sku="TQ-TEE-GWHT" data-name="Tee Gothic White" data-price="699" data-cat="Oversize Tee · Hombre" data-img="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=700&q=85">
+    <div class="pc rv" data-niche="streetwear gym" data-age="18-24 25-34" data-sku="TQ-TEE-GWHT" data-name="Tee Gothic White" data-price="699" data-cat="Oversize Tee · Hombre" data-img="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=700&q=85" data-print="dark">
       <div class="pc-badge b-new">Nuevo</div>
       <button class="pc-wish" onclick="toggleWish('TQ-TEE-GWHT',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
       <div class="pc-img-wrap">
