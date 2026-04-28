@@ -949,6 +949,39 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
   </div>
 </section>
 
+<!-- ═══════════════════ LOOKBOOK ═══════════════════ -->
+<section class="lookbook" id="lookbook">
+  <div class="act-head" style="text-align:left;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div class="s-label rv">Lookbook · SS26</div>
+      <h2 class="s-title rv">EDIT <span class="lime">SHOOT</span></h2>
+    </div>
+    <a href="#productos" class="btn-g rv">Shop The Look →</a>
+  </div>
+  <div class="lb-grid">
+    <a class="lb-cell rv" href="#productos">
+      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&h=1200&q=85" alt="Look 01">
+      <div class="lb-cap"><span>Look 01 · Studio</span><b>TITAN EDITION</b></div>
+    </a>
+    <a class="lb-cell rv" href="#productos">
+      <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=700&h=600&q=85" alt="Look 02">
+      <div class="lb-cap"><span>Look 02 · Iron Floor</span><b>STRINGER PACK</b></div>
+    </a>
+    <a class="lb-cell rv" href="#productos">
+      <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=700&h=600&q=85" alt="Look 03">
+      <div class="lb-cap"><span>Look 03 · Off-duty</span><b>VOID HOODIE</b></div>
+    </a>
+    <a class="lb-cell rv" href="#productos">
+      <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=700&h=600&q=85" alt="Look 04">
+      <div class="lb-cap"><span>Look 04 · Concrete</span><b>GOTHIC TEE</b></div>
+    </a>
+    <a class="lb-cell rv" href="#productos">
+      <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=700&h=600&q=85" alt="Look 05">
+      <div class="lb-cap"><span>Look 05 · Studio W</span><b>VENOM SET</b></div>
+    </a>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="ft">
@@ -1598,5 +1631,57 @@ function submitEmail(e){
   showToast('✓ Tu cupón -10% va en camino al correo','success');
 }
 </script>
+
+<!-- QUICK-ADD MODAL -->
+<div class="qa-bd" id="qaBd" onclick="if(event.target===this)closeQuickAdd()">
+  <div class="qa-modal" id="qaModal">
+    <div class="qa-img"><img data-qa="img" src="" alt=""></div>
+    <div class="qa-body">
+      <button class="qa-x" onclick="closeQuickAdd()" aria-label="Cerrar">×</button>
+      <div class="qa-cat" data-qa="cat">—</div>
+      <h3 class="qa-name" data-qa="name">—</h3>
+      <div class="qa-price" data-qa="price">—</div>
+      <div class="qa-row">
+        <div class="qa-row-l">Color</div>
+        <div class="pc-swatches" style="margin-top:0">
+          <span class="pc-sw on" data-c="black"></span>
+          <span class="pc-sw" data-c="white"></span>
+          <span class="pc-sw" data-c="gray"></span>
+          <span class="pc-sw" data-c="navy"></span>
+        </div>
+      </div>
+      <div class="qa-row">
+        <div class="qa-row-l">Talla</div>
+        <div class="qa-sizes">
+          <button class="qa-size" onclick="pickSize(this)">XS</button>
+          <button class="qa-size" onclick="pickSize(this)">S</button>
+          <button class="qa-size" onclick="pickSize(this)">M</button>
+          <button class="qa-size" onclick="pickSize(this)">L</button>
+          <button class="qa-size out" disabled>XL</button>
+          <button class="qa-size" onclick="pickSize(this)">XXL</button>
+        </div>
+        <button class="qa-link" onclick="showToast('Guía de tallas abierta')">Guía de tallas</button>
+      </div>
+      <button class="btn-p" style="width:100%;justify-content:center;padding:14px" onclick="qaAddCart()">Agregar al carrito</button>
+      <p style="font-size:11px;color:var(--text-3);margin-top:10px;text-align:center">Envío gratis +$799 · Devoluciones 30 días</p>
+    </div>
+  </div>
+</div>
+
+<!-- EMAIL POPUP -->
+<div class="em-bd" id="emBd" onclick="if(event.target===this)closeEmail()">
+  <div class="em-modal">
+    <button class="em-x" onclick="closeEmail()" aria-label="Cerrar">×</button>
+    <div class="em-eyebrow">★ Bienvenido a TOMASQ</div>
+    <h3 class="em-h">−10% en tu <span class="lime">primer drop</span></h3>
+    <p class="em-p">Únete al Squad y recibe acceso anticipado a nuevos drops, contenido exclusivo y un cupón de bienvenida directo a tu correo.</p>
+    <form class="em-form" onsubmit="submitEmail(event)">
+      <input class="em-input" type="email" placeholder="tu@email.com" required>
+      <button class="btn-p" type="submit">Reclamar</button>
+    </form>
+    <div class="em-foot">Cero spam · puedes salirte cuando quieras · <a onclick="closeEmail()">No, gracias</a></div>
+  </div>
+</div>
+
 </body>
 </html>
