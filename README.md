@@ -1,6 +1,6 @@
-# ShopyFit · TOMASQ v5 — Storefront + Ops AI
+# ShopyFit · KÖRE v5 — Storefront + Ops AI
 
-Plataforma fashion-tech estática para **TOMASQ — Built Different**. Incluye:
+Plataforma fashion-tech estática para **KÖRE — Built Different**. Incluye:
 
 ### 🛍️ Storefront público (`index.html`)
 - Catálogo segmentado por **nicho deportivo** (🏃 Running · 🏋 Gym · ⚡ Crossfit · 🧘 Yoga · 🏙 Streetwear)
@@ -19,7 +19,7 @@ Panel de operación para que la marca corra sola. 6 módulos:
 | **Automation Flows** | Calendario 12 meses · Carrito abandonado 3-toques (email → WA → cupón) · Loyalty (Bronze/Silver/Gold) · workflows propios en FastAPI |
 | **Suppliers**        | Score 0–100 (precio + lead + defectos + cumplimiento), alerta proveedor único, auto-recotización |
 
-### 📐 Sistema de diseño TOMASQ v4
+### 📐 Sistema de diseño KÖRE v4
 Lime `#D4FF00`, fondos `#141416 / #1c1c1f / #26262a`, texto `#f5f5f2 / #c8c8c2`. Bebas Neue / Barlow Condensed / Barlow / JetBrains Mono.
 
 El sitio es **100% estático** (HTML + CSS y JS inline) — cero build step.
