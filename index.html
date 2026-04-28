@@ -23,6 +23,8 @@ body{background:var(--black);color:var(--text);font-family:'Barlow',sans-serif;f
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;height:68px;padding:0 4vw;display:flex;align-items:center;justify-content:space-between;background:rgba(13,13,14,.92);backdrop-filter:blur(22px);border-bottom:.5px solid var(--border-soft)}
 .logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.12em;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:10px}
+.kanji{font-family:'Noto Serif JP',serif;font-size:.55em;color:var(--lime);letter-spacing:0;margin-left:.35em;font-weight:700;vertical-align:middle}
+.foot-x-brand .kanji{font-size:.45em;margin-left:.4em}
 .logo-badge{width:28px;height:28px;border:1.5px solid var(--lime);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--lime);font-weight:700}
 .nav-links{display:flex;gap:1.6rem;list-style:none}
 .nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-2);text-decoration:none;transition:color .2s}
@@ -407,7 +409,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="logo"><div class="logo-badge"><svg class="bull-mark" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="currentColor"><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g><circle cx="40" cy="46" r="3.5" fill="#0d0d0e"/><circle cx="60" cy="46" r="3.5" fill="#0d0d0e"/><ellipse cx="45" cy="62" rx="2" ry="2.5" fill="#0d0d0e"/><ellipse cx="55" cy="62" rx="2" ry="2.5" fill="#0d0d0e"/><circle cx="50" cy="70" r="2.5" fill="none" stroke="#0d0d0e" stroke-width="1.5"/></svg></div>TORO KAIZEN</a>
+  <a href="#" class="logo"><div class="logo-badge"><svg class="bull-mark" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="currentColor"><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g><circle cx="40" cy="46" r="3.5" fill="#0d0d0e"/><circle cx="60" cy="46" r="3.5" fill="#0d0d0e"/><ellipse cx="45" cy="62" rx="2" ry="2.5" fill="#0d0d0e"/><ellipse cx="55" cy="62" rx="2" ry="2.5" fill="#0d0d0e"/><circle cx="50" cy="70" r="2.5" fill="none" stroke="#0d0d0e" stroke-width="1.5"/></svg></div>TORO KAIZEN<span class="kanji">改善</span></a>
   <ul class="nav-links">
     <li class="mega-trigger"><a href="#hombre">Hombre</a>
       <div class="mega">
@@ -498,7 +500,6 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
     </li>
     <li><a href="#sale" style="color:var(--lime)">Sale ★</a></li>
     <li><a href="#lookbook">Lookbook</a></li>
-    <li><a href="dashboard.html" class="b2b">🤖 Ops AI</a></li>
   </ul>
   <div class="nav-r">
     <button class="nav-ico" title="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
@@ -902,7 +903,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 <footer class="foot-x">
   <div class="foot-x-grid">
     <div class="foot-x-col">
-      <div class="foot-x-brand"><svg class="bull-mark" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="currentColor"><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g><circle cx="40" cy="46" r="3.5" fill="#1c1c1f"/><circle cx="60" cy="46" r="3.5" fill="#1c1c1f"/><ellipse cx="45" cy="62" rx="2" ry="2.5" fill="#1c1c1f"/><ellipse cx="55" cy="62" rx="2" ry="2.5" fill="#1c1c1f"/><circle cx="50" cy="70" r="2.5" fill="none" stroke="#1c1c1f" stroke-width="1.5"/></svg>TORO KAIZEN</div>
+      <div class="foot-x-brand"><svg class="bull-mark" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="currentColor"><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g><circle cx="40" cy="46" r="3.5" fill="#1c1c1f"/><circle cx="60" cy="46" r="3.5" fill="#1c1c1f"/><ellipse cx="45" cy="62" rx="2" ry="2.5" fill="#1c1c1f"/><ellipse cx="55" cy="62" rx="2" ry="2.5" fill="#1c1c1f"/><circle cx="50" cy="70" r="2.5" fill="none" stroke="#1c1c1f" stroke-width="1.5"/></svg>TORO KAIZEN<span class="kanji">改善</span></div>
       <p class="foot-x-tag">Built different. Ropa de alto rendimiento diseñada y producida en México. Para los que entrenan duro y se ven mejor.</p>
       <div class="foot-x-social">
         <a href="#" aria-label="Instagram" title="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
@@ -936,11 +937,11 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
     <div class="foot-x-col">
       <h4>Sobre TORO KAIZEN</h4>
       <ul>
-        <li><a>Nuestra historia</a></li>
+        <li><a href="manifesto.html">Manifesto</a></li>
+        <li><a href="marks.html">Brand marks</a></li>
         <li><a>Atletas &amp; embajadores</a></li>
         <li><a>Sostenibilidad</a></li>
         <li><a>Trabaja con nosotros</a></li>
-        <li><a href="dashboard.html">B2B Ops AI</a></li>
         <li><a>Mayoreo</a></li>
       </ul>
     </div>
@@ -956,7 +957,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
   <div class="foot-x-bot">
     <div>© 2026 TORO KAIZEN · Built Different · Hecho en México con ♥</div>
     <div>
-      <a>Privacidad</a>·<a>Términos</a>·<a>Cookies</a>
+      <a>Privacidad</a>·<a>Términos</a>·<a>Cookies</a>·<a href="socios.html" style="opacity:.7">Acceso socios</a>
     </div>
     <div class="foot-x-pay">
       <span>VISA</span><span>MC</span><span>AMEX</span><span>OXXO</span><span>SPEI</span>
