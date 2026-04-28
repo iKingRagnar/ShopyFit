@@ -476,14 +476,14 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
   <div class="ft">
     <div>
       <div class="ft-logo">TOMASQ</div>
-      <p class="ft-tag">Ropa de alto rendimiento. Backend MRP impulsado por n8n + FastAPI + scrapers Python.</p>
+      <p class="ft-tag">Ropa de alto rendimiento. Backend MRP impulsado por FastAPI + Anthropic Claude + scrapers Python.</p>
     </div>
     <div class="ft-col"><div class="ft-h">Tienda</div><ul><li>Novedades</li><li>Hombre</li><li>Mujer</li><li>Outlet</li></ul></div>
     <div class="ft-col"><div class="ft-h">B2B Tools</div><ul><li>Sourcing Dashboard</li><li>Fulfillment MRP</li><li>API Acceso</li><li>Mayoreo</li></ul></div>
     <div class="ft-col"><div class="ft-h">Soporte</div><ul><li>Guía de Tallas</li><li>Devoluciones</li><li>FAQ</li><li>Contacto</li></ul></div>
   </div>
   <div class="ft-b">
-    <div class="ft-copy">© 2025 <span>TOMASQ</span> — Sourcing & MRP via n8n + Python + Neon.</div>
+    <div class="ft-copy">© 2025 <span>TOMASQ</span> — Sourcing & MRP via FastAPI + Claude + Postgres.</div>
   </div>
 </footer>
 
@@ -934,7 +934,8 @@ function exportCSV(orderId){
   showToast(`📊 CSV ${orderId} exportado`,'success');
 }
 function sendAllPO(orderId,count){
-  showToast(`⚡ ${count} órdenes enviadas para ${orderId} via n8n`,'success');
+  // TODO: POST {orderId, plan} to your FastAPI backend (see /api/README.md)
+  showToast(`⚡ ${count} órdenes enviadas para ${orderId}`,'success');
 }
 
 // ═══════════════ COMMON ═══════════════
@@ -979,7 +980,7 @@ function showToast(msg,type){
 }
 function refreshScrap(btn){
   btn.classList.add('spin');
-  showToast('Ejecutando scrapers... [n8n + Python]','info');
+  showToast('Ejecutando scrapers... [FastAPI + Python]','info');
   setTimeout(()=>{
     btn.classList.remove('spin');
     document.getElementById('lastUpdate').textContent='hace 1 seg';

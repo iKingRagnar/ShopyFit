@@ -16,7 +16,7 @@ Panel de operación para que la marca corra sola. 6 módulos:
 | **AI Advisor**       | Recomendación destacada del día + grid de acciones (descuento, envío gratis dinámico, giveaway, bundle, recovery, restock, loyalty) + chat con Claude |
 | **Inventario FIFO**  | Tabla de lotes ordenada por antigüedad, alertas de stock muerto (>60d), reorden sugerido (velocidad × lead time) |
 | **Pricing Engine**   | 3 tiers (Value/Mid/Premium) calculados desde BOM real, A/B test continuo, reglas dinámicas por rotación |
-| **Automation Flows** | Calendario 12 meses · Carrito abandonado 3-toques (email → WA → cupón) · Loyalty (Bronze/Silver/Gold) · 8 workflows n8n live |
+| **Automation Flows** | Calendario 12 meses · Carrito abandonado 3-toques (email → WA → cupón) · Loyalty (Bronze/Silver/Gold) · workflows propios en FastAPI |
 | **Suppliers**        | Score 0–100 (precio + lead + defectos + cumplimiento), alerta proveedor único, auto-recotización |
 
 ### 📐 Sistema de diseño TOMASQ v4
@@ -102,33 +102,40 @@ Abre http://localhost:8000.
 
 ---
 
-## Conectar con backend real
+## Backend (FastAPI en Railway)
 
-Todos los handlers JS del dashboard tienen un `// TODO:` que apunta al fetch a
-implementar. Resumen de endpoints / webhooks pendientes:
+El backend vive en [`api/`](./api/) — FastAPI + Anthropic SDK, deployable como
+**segundo servicio en Railway** (root directory `api/`). El sitio estático
+queda intacto.
 
-| Acción                     | Función JS              | Endpoint sugerido                                                |
-| -------------------------- | ----------------------- | ---------------------------------------------------------------- |
-| Aplicar recomendación IA   | `applyRec(id)`          | `POST /api/ai-advisor/apply` o `https://…n8n.cloud/webhook/apply-rec` |
-| Chat con AI Advisor        | `askAI()`               | `POST /api/ai-advisor` → Anthropic Claude / OpenAI               |
-| Sugerir reorden            | `suggestReorder(sku)`   | `POST /api/fifo-suggest` (Postgres + lógica velocidad)           |
-| Auto-recotizar proveedores | `runAutoRequote()`      | `POST https://…n8n.cloud/webhook/requote`                        |
-| Enviar PO consolidada      | `sendAllPO(orderId)`    | `POST https://…n8n.cloud/webhook/po-send`                        |
-| Refresh scraping           | `refreshScrap(btn)`     | `POST /api/refresh` (FastAPI)                                    |
+### Endpoints
 
-Ejemplo de migración:
+| Función JS (`dashboard.html`) | Endpoint                              |
+| ----------------------------- | ------------------------------------- |
+| `applyRec(id)`                | `POST /api/recommendations/apply`     |
+| `askAI()`                     | `POST /api/ai-advisor` → Claude       |
+| `suggestReorder(sku)`         | `POST /api/fifo/suggest-reorder`      |
+| `runAutoRequote()`            | `POST /api/suppliers/requote`         |
+| (futuro) precios              | `POST /api/pricing/apply`             |
+| (futuro) PO MRP               | `POST /api/po/send`                   |
+
+### Activar el backend desde el front
+
+En `dashboard.html`, al inicio del `<script>`:
 
 ```js
-async function applyRec(id) {
-  const r = await fetch('https://guillermocantuu.app.n8n.cloud/webhook/apply-rec', {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ rec_id: id }),
-  });
-  const { ok, message } = await r.json();
-  toast(message, ok ? 'success' : 'error');
-}
+const API_BASE = 'https://shopyfit-api-production.up.railway.app';
+const USE_API  = true;
 ```
 
-Arquitectura completa (Postgres schema, scrapers Python, workflow n8n,
-endpoints FastAPI) en [`tomasq-sourcing-backend.md`](./tomasq-sourcing-backend.md).
+Mientras `USE_API=false` los handlers usan respuestas mock locales (útil para
+demo sin backend desplegado).
+
+### Detalles de deploy
+
+Pasos completos (Railway → segundo servicio → root `api/` → env vars
+`ANTHROPIC_API_KEY` y `ALLOWED_ORIGINS`) en [`api/README.md`](./api/README.md).
+
+> El doc histórico [`tomasq-sourcing-backend.md`](./tomasq-sourcing-backend.md)
+> describe la arquitectura original con n8n. Se mantiene como referencia,
+> pero la implementación vigente es la de `api/` (FastAPI directo).

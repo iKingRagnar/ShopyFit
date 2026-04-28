@@ -1,4 +1,10 @@
-# TOMASQ Sourcing — Arquitectura Backend
+# TOMASQ Sourcing — Arquitectura Backend (referencia histórica)
+
+> ⚠️ **Doc histórico.** Esta arquitectura usa n8n como orquestador. La
+> implementación actual del repo es **FastAPI directo** en
+> [`api/`](./api/) (sin n8n). Mantén este archivo solo como referencia
+> de la lógica de scraping y el schema de Postgres — los webhooks n8n
+> de aquí ya no se usan.
 
 > Cómo conectar el dashboard del HTML con scraping real de precios.
 
