@@ -356,7 +356,7 @@ body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;fo
     </section>
     <section id="m-automation" class="module">
       <header class="mod-head">
-        <div class="mod-eyebrow">Automation Flows · n8n + Postgres</div>
+        <div class="mod-eyebrow">Automation Flows · FastAPI + Postgres</div>
         <h1 class="mod-title">FLOWS <span style="color:var(--lime)">QUE CORREN SOLOS</span></h1>
         <p class="mod-sub">Calendario de campañas, recovery de carrito 3-toques, loyalty automático. Tú no tocas el producto: la IA dispara, segmenta y mide.</p>
       </header>
@@ -402,7 +402,7 @@ body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;fo
       </div>
 
       <div class="card">
-        <div class="card-head"><div><div class="card-h">Workflows n8n conectados</div><div class="card-sub">Cron + webhooks · guillermocantuu.app.n8n.cloud</div></div><span class="pill green">8/8 healthy</span></div>
+        <div class="card-head"><div><div class="card-h">Workflows backend</div><div class="card-sub">Cron + webhooks · FastAPI en Railway</div></div><span class="pill green">8/8 healthy</span></div>
         <div style="overflow-x:auto">
           <table class="tbl">
             <thead><tr><th>Flow</th><th>Trigger</th><th>Última ejec</th><th>Status</th><th></th></tr></thead>
@@ -476,60 +476,90 @@ function toast(msg,type){
   if(type)t.classList.add(type);
   clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove('show'),2800);
 }
-// ───────────── AI / automation handlers ─────────────
-// All handlers below are MOCK. Replace each with a fetch() to your backend
-// (n8n webhook / FastAPI / Anthropic SDK) when going to production.
+// ───────────── Backend wiring ─────────────
+// Cambia API_BASE por la URL pública de tu servicio FastAPI en Railway
+// (ej. https://shopyfit-api-production.up.railway.app) y pon USE_API=true.
+// Mientras esté en false, los handlers responden con mocks locales.
+const API_BASE='';                // ← rellena cuando tengas el deploy
+const USE_API=false;              // ← flip a true cuando API_BASE esté listo
 
-function applyRec(id){
-  // TODO: await fetch('https://guillermocantuu.app.n8n.cloud/webhook/apply-rec',
-  //   { method:'POST', body: JSON.stringify({ rec_id: id }) });
-  const map={
-    'tank-15':'✓ Descuento 15% Tank Tops · activo martes 18–22h',
-    'shipping-799':'✓ Envío gratis subido a $799',
-    'giveaway-titan':'✓ Giveaway Set Titan lanzado en IG',
-    'bundle-tee-short':'✓ Bundle Tee+Short $999 activo',
-    'recovery-38':'✓ Recovery flow disparado · 38 carritos',
-    'reorder-hoodie':'✓ PO Hoodie Void enviada · Maquila GZ · 60u',
-    'reactivate-gold':'✓ 142 cupones Gold enviados (-15%, 7d)'
-  };
-  toast(map[id]||'Aplicado','success');
+async function api(path,body){
+  const r=await fetch(API_BASE+path,{
+    method:'POST',
+    headers:{'content-type':'application/json'},
+    body:JSON.stringify(body||{})
+  });
+  if(!r.ok)throw new Error(`API ${path} → ${r.status}`);
+  return r.json();
 }
 
-function askAI(){
+// ───────────── Handlers ─────────────
+
+const REC_MOCK={
+  'tank-15':'✓ Descuento 15% Tank Tops · activo martes 18–22h',
+  'shipping-799':'✓ Envío gratis subido a $799',
+  'giveaway-titan':'✓ Giveaway Set Titan lanzado en IG',
+  'bundle-tee-short':'✓ Bundle Tee+Short $999 activo',
+  'recovery-38':'✓ Recovery flow disparado · 38 carritos',
+  'reorder-hoodie':'✓ PO Hoodie Void enviada · Maquila GZ · 60u',
+  'reactivate-gold':'✓ 142 cupones Gold enviados (-15%, 7d)'
+};
+
+async function applyRec(id){
+  if(USE_API){
+    try{const r=await api('/api/recommendations/apply',{rec_id:id});toast('✓ '+r.message,'success')}
+    catch(e){toast('Error: '+e.message,'error')}
+  }else{
+    toast(REC_MOCK[id]||'Aplicado','success');
+  }
+}
+
+const AI_MOCK_REPLIES=[
+  'Tank Stringer L está perdiendo: rotación 0.4/d, 106 días en lote. Recomiendo liquidar 30% o donar a giveaway.',
+  'Tu mejor SKU esta semana: Short Obsidian 5" (3.8/d, margen 73%). Sugiero subir presupuesto Meta +$500 sólo en este SKU.',
+  'Si subes envío gratis a $799, AOV proyectado pasa de $682 a $769 (+13%). Conversión cae 0.3pts pero ingreso neto sube $14k/sem.',
+  'BFCM está a 7 meses. Empezaría a producir Tee Gothic White en 60u extra desde julio para llegar con stock cómodo.'
+];
+
+async function askAI(){
   const input=document.getElementById('chatInput');
   const log=document.getElementById('chatLog');
   const q=input.value.trim();
   if(!q)return;
   log.innerHTML+=`<div style="margin-top:10px"><b style="color:var(--text)">Tú:</b> ${q}</div>`;
   input.value='';
-  // TODO: replace with real AI call:
-  //   const r = await fetch('/api/ai-advisor', {
-  //     method:'POST',
-  //     body: JSON.stringify({ prompt: q, context: { sales, inventory, costs } })
-  //   });
-  //   const { reply } = await r.json();
-  setTimeout(()=>{
-    const replies=[
-      'Tank Stringer L está perdiendo: rotación 0.4/d, 106 días en lote. Recomiendo liquidar 30% o donar a giveaway.',
-      'Tu mejor SKU esta semana: Short Obsidian 5" (3.8/d, margen 73%). Sugiero subir presupuesto Meta +$500 sólo en este SKU.',
-      'Si subes envío gratis a $799, AOV proyectado pasa de $682 a $769 (+13%). Conversión cae 0.3pts pero ingreso neto sube $14k/sem.',
-      'BFCM está a 7 meses. Empezaría a producir Tee Gothic White en 60u extra desde julio para llegar con stock cómodo.'
-    ];
-    const reply=replies[Math.floor(Math.random()*replies.length)];
-    log.innerHTML+=`<div style="margin-top:10px"><b style="color:var(--lime)">AI:</b> ${reply}</div>`;
-    log.scrollTop=log.scrollHeight;
-  },800);
+
+  let reply;
+  if(USE_API){
+    try{const r=await api('/api/ai-advisor',{prompt:q});reply=r.reply}
+    catch(e){reply='⚠️ '+e.message}
+  }else{
+    await new Promise(r=>setTimeout(r,800));
+    reply=AI_MOCK_REPLIES[Math.floor(Math.random()*AI_MOCK_REPLIES.length)];
+  }
+  log.innerHTML+=`<div style="margin-top:10px"><b style="color:var(--lime)">AI:</b> ${reply}</div>`;
+  log.scrollTop=log.scrollHeight;
 }
 
-function suggestReorder(sku){
-  // TODO: fetch('/api/fifo-suggest', { method:'POST', body: JSON.stringify({sku}) })
-  toast(`📦 Reorden sugerido · ${sku} · 60u con Maquila GZ · llegada 12 May`,'success');
+async function suggestReorder(sku){
+  if(USE_API){
+    try{
+      const r=await api('/api/fifo/suggest-reorder',{sku});
+      toast(`📦 ${r.sku} · ${r.suggested_qty}u con ${r.supplier} · ETA ${r.eta_days}d`,'success');
+    }catch(e){toast('Error: '+e.message,'error')}
+  }else{
+    toast(`📦 Reorden sugerido · ${sku} · 60u con Maquila GZ · llegada 12 May`,'success');
+  }
 }
 
-function runAutoRequote(){
-  // TODO: trigger n8n workflow that loops through suppliers and re-quotes
+async function runAutoRequote(){
   toast('⚡ Auto-recotización lanzada · 14 proveedores en cola...','warn');
-  setTimeout(()=>toast('✓ 14/14 cotizaciones recibidas · 3 mejoras detectadas','success'),2200);
+  if(USE_API){
+    try{const r=await api('/api/suppliers/requote');toast('✓ '+r.summary,'success')}
+    catch(e){toast('Error: '+e.message,'error')}
+  }else{
+    setTimeout(()=>toast('✓ 14/14 cotizaciones recibidas · 3 mejoras detectadas','success'),2200);
+  }
 }
 
 // Submit chat on Enter
