@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOMASQ · Ops AI Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --lime:#D4FF00;--black:#0d0d0e;--bg-1:#141416;--bg-2:#1c1c1f;--bg-3:#26262a;
+  --bg-4:#33333a;--border:#3a3a40;--border-soft:#2a2a30;--white:#ffffff;
+  --text:#f5f5f2;--text-2:#c8c8c2;--text-3:#8e8e88;--red:#ff3b41;
+  --green:#3dd96f;--amber:#ffb547;--blue:#5b9eff;--purple:#a78bfa;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;font-weight:400;line-height:1.6;min-height:100vh}
+
+/* TOP BAR */
+.topbar{position:fixed;top:0;left:0;right:0;height:64px;background:rgba(13,13,14,.92);backdrop-filter:blur(22px);border-bottom:.5px solid var(--border-soft);display:flex;align-items:center;justify-content:space-between;padding:0 28px;z-index:100}
+.tb-l{display:flex;align-items:center;gap:18px}
+.tb-brand{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.12em;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:10px}
+.tb-badge{width:26px;height:26px;border:1.5px solid var(--lime);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--lime);font-weight:700}
+.tb-crumb{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-3);padding-left:18px;border-left:1px solid var(--border-soft)}
+.tb-crumb b{color:var(--lime);font-weight:700}
+.tb-r{display:flex;align-items:center;gap:14px}
+.tb-back{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:8px 14px;border:.5px solid var(--border);transition:all .2s}
+.tb-back:hover{color:var(--lime);border-color:var(--lime)}
+.tb-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--lime),var(--purple));display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--black);font-size:13px}
+
+/* SIDEBAR */
+.shell{display:grid;grid-template-columns:240px 1fr;min-height:100vh;padding-top:64px}
+.side{position:fixed;top:64px;left:0;width:240px;bottom:0;background:var(--bg-2);border-right:.5px solid var(--border-soft);padding:22px 14px;overflow-y:auto}
+.side-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-3);padding:0 12px;margin:14px 0 8px}
+.side-link{display:flex;align-items:center;gap:11px;padding:10px 12px;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);text-decoration:none;background:transparent;border:none;width:100%;cursor:pointer;text-align:left;transition:all .15s;border-left:2px solid transparent;font-weight:600}
+.side-link:hover{color:var(--white);background:var(--bg-3)}
+.side-link.on{color:var(--lime);background:var(--bg-3);border-left-color:var(--lime)}
+.side-link .ico{font-size:15px;width:18px;text-align:center}
+.side-link .pill{margin-left:auto;background:var(--lime);color:var(--black);font-size:9px;padding:2px 6px;font-weight:800;letter-spacing:.06em}
+
+/* MAIN */
+.main{grid-column:2;padding:32px 36px 80px;max-width:1500px}
+.module{display:none;animation:fadeIn .3s ease}
+.module.on{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.mod-head{margin-bottom:28px}
+.mod-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--lime);margin-bottom:10px}
+.mod-title{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:.02em;color:var(--white);line-height:1;margin-bottom:8px}
+.mod-sub{color:var(--text-2);font-size:14px;max-width:680px}
+
+/* CARDS */
+.card{background:var(--bg-2);border:.5px solid var(--border-soft);padding:22px;transition:border-color .2s}
+.card:hover{border-color:var(--border)}
+.card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:12px;flex-wrap:wrap}
+.card-h{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.06em;color:var(--white)}
+.card-sub{font-size:12px;color:var(--text-3);margin-top:3px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:4px 10px;background:var(--bg-3);color:var(--text-2);border:.5px solid var(--border-soft)}
+.pill.lime{background:var(--lime);color:var(--black);border-color:var(--lime)}
+.pill.green{background:rgba(61,217,111,.12);color:var(--green);border-color:rgba(61,217,111,.4)}
+.pill.amber{background:rgba(255,181,71,.12);color:var(--amber);border-color:rgba(255,181,71,.4)}
+.pill.red{background:rgba(255,59,65,.12);color:var(--red);border-color:rgba(255,59,65,.4)}
+.pill.blue{background:rgba(91,158,255,.12);color:var(--blue);border-color:rgba(91,158,255,.4)}
+
+/* BUTTONS */
+.btn{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:10px 18px;border:.5px solid var(--border);background:transparent;color:var(--text);cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn:hover{border-color:var(--lime);color:var(--lime)}
+.btn.primary{background:var(--lime);color:var(--black);border-color:var(--lime)}
+.btn.primary:hover{background:var(--white);border-color:var(--white);color:var(--black)}
+.btn.ghost{background:transparent}
+.btn.sm{font-size:10px;padding:7px 13px}
+.btn.danger:hover{border-color:var(--red);color:var(--red)}
+
+/* GRID HELPERS */
+.grid{display:grid;gap:14px}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1100px){.grid-4{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.shell{grid-template-columns:1fr}.side{position:relative;width:100%;height:auto}.main{grid-column:1;padding:24px}.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+
+/* KPI */
+.kpi{padding:20px;background:var(--bg-2);border:.5px solid var(--border-soft);position:relative;overflow:hidden}
+.kpi-l{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px}
+.kpi-v{font-family:'Bebas Neue',sans-serif;font-size:38px;letter-spacing:.01em;line-height:1;color:var(--white);margin-bottom:6px}
+.kpi-v.lime{color:var(--lime)}
+.kpi-d{font-size:11px;color:var(--text-2)}
+.kpi-d.up{color:var(--green)}
+.kpi-d.down{color:var(--red)}
+.kpi::after{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--lime);opacity:.6}
+
+/* TABLES */
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{text-align:left;font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-3);padding:10px 12px;border-bottom:.5px solid var(--border-soft);font-weight:600}
+.tbl td{padding:12px;border-bottom:.5px solid var(--border-soft);color:var(--text-2);vertical-align:middle}
+.tbl tr:hover td{background:var(--bg-3);color:var(--text)}
+.tbl b{color:var(--white)}
+.tbl .mono{font-family:'JetBrains Mono',monospace;font-size:11px}
+
+/* MISC */
+.alert{padding:14px 16px;border:.5px solid;background:var(--bg-3);display:flex;align-items:center;gap:12px;font-size:13px;margin-bottom:12px}
+.alert.red{border-color:rgba(255,59,65,.4);background:rgba(255,59,65,.06)}
+.alert.amber{border-color:rgba(255,181,71,.4);background:rgba(255,181,71,.06)}
+.alert.green{border-color:rgba(61,217,111,.4);background:rgba(61,217,111,.06)}
+.alert .ico{font-size:18px;flex-shrink:0}
+.alert b{color:var(--white)}
+.alert .right{margin-left:auto;display:flex;gap:6px}
+
+.placeholder{padding:60px 20px;text-align:center;color:var(--text-3);border:1px dashed var(--border-soft);font-size:14px}
+
+/* TOAST */
+.toast{position:fixed;bottom:30px;right:30px;background:var(--bg-3);color:var(--white);border-left:3px solid var(--lime);padding:14px 22px;font-size:13px;letter-spacing:.04em;box-shadow:0 8px 32px rgba(0,0,0,.5);transform:translateX(120%);transition:transform .35s cubic-bezier(.2,.9,.3,1.2);z-index:300;max-width:380px}
+.toast.show{transform:translateX(0)}
+.toast.success{border-left-color:var(--green)}
+.toast.warn{border-left-color:var(--amber)}
+.toast.error{border-left-color:var(--red)}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="tb-l">
+    <a href="index.html" class="tb-brand"><div class="tb-badge">TQ</div>TOMASQ</a>
+    <div class="tb-crumb">Ops · <b>AI Dashboard</b></div>
+  </div>
+  <div class="tb-r">
+    <a href="index.html" class="tb-back">← Tienda</a>
+    <div class="tb-avatar">G</div>
+  </div>
+</div>
+
+<div class="shell">
+  <!-- SIDEBAR -->
+  <aside class="side">
+    <div class="side-label">Panel</div>
+    <button class="side-link on" onclick="tab('overview',this)"><span class="ico">📊</span>Overview</button>
+    <button class="side-link" onclick="tab('ai',this)"><span class="ico">🤖</span>AI Advisor<span class="pill">3</span></button>
+    <div class="side-label">Operación</div>
+    <button class="side-link" onclick="tab('fifo',this)"><span class="ico">📦</span>Inventario FIFO</button>
+    <button class="side-link" onclick="tab('pricing',this)"><span class="ico">💰</span>Pricing Engine</button>
+    <button class="side-link" onclick="tab('automation',this)"><span class="ico">⚡</span>Automation</button>
+    <button class="side-link" onclick="tab('suppliers',this)"><span class="ico">🏭</span>Suppliers</button>
+    <div class="side-label">Externo</div>
+    <a class="side-link" href="index.html#fulfillment"><span class="ico">📋</span>Fulfillment MRP</a>
+    <a class="side-link" href="index.html#sourcing"><span class="ico">🔍</span>B2B Sourcing</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <section id="m-overview" class="module on">
+      <header class="mod-head">
+        <div class="mod-eyebrow">Centro de mando</div>
+        <h1 class="mod-title">OVERVIEW</h1>
+        <p class="mod-sub">Estado en vivo de tu marca: ventas, márgenes, riesgos y decisiones automáticas que la IA ejecutó hoy por ti.</p>
+      </header>
+
+      <div class="grid grid-4" style="margin-bottom:18px">
+        <div class="kpi"><div class="kpi-l">Ventas hoy</div><div class="kpi-v lime">$32,480</div><div class="kpi-d up">▲ 18% vs ayer</div></div>
+        <div class="kpi"><div class="kpi-l">Margen bruto</div><div class="kpi-v">72.6%</div><div class="kpi-d up">▲ 1.4 pts mes</div></div>
+        <div class="kpi"><div class="kpi-l">Stock muerto</div><div class="kpi-v">$8,420</div><div class="kpi-d down">▼ 6 SKUs sin venta 60d</div></div>
+        <div class="kpi"><div class="kpi-l">Acciones IA pend.</div><div class="kpi-v lime">7</div><div class="kpi-d">3 alta prioridad</div></div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-head"><div><div class="card-h">Ventas — últimos 14 días</div><div class="card-sub">Revenue diario · MXN</div></div><span class="pill lime">+24% sem</span></div>
+          <svg viewBox="0 0 420 140" style="width:100%;height:160px">
+            <defs><linearGradient id="g1" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#D4FF00" stop-opacity=".35"/><stop offset="100%" stop-color="#D4FF00" stop-opacity="0"/></linearGradient></defs>
+            <polyline fill="url(#g1)" stroke="none" points="0,110 30,95 60,100 90,80 120,85 150,70 180,72 210,55 240,60 270,45 300,50 330,32 360,38 390,22 420,28 420,140 0,140"/>
+            <polyline fill="none" stroke="#D4FF00" stroke-width="2" points="0,110 30,95 60,100 90,80 120,85 150,70 180,72 210,55 240,60 270,45 300,50 330,32 360,38 390,22 420,28"/>
+            <g fill="#8e8e88" font-family="JetBrains Mono" font-size="9">
+              <text x="0" y="135">14d</text><text x="195" y="135">7d</text><text x="395" y="135">hoy</text>
+            </g>
+          </svg>
+        </div>
+        <div class="card">
+          <div class="card-head"><div><div class="card-h">Decisiones automáticas (hoy)</div><div class="card-sub">Acciones que la IA ya ejecutó</div></div><span class="pill green">5 ✓</span></div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+            <li style="padding:10px;background:var(--bg-3);border-left:2px solid var(--green);font-size:13px"><b>09:14</b> · Pausó campaña Meta "Hoodie Void" (CPA &gt; $480) — ahorró $1,200</li>
+            <li style="padding:10px;background:var(--bg-3);border-left:2px solid var(--green);font-size:13px"><b>10:47</b> · Aumentó stock Tee Gothic Black de 60 a 120 (vel. venta ↑42%)</li>
+            <li style="padding:10px;background:var(--bg-3);border-left:2px solid var(--lime);font-size:13px"><b>11:32</b> · Disparó email recovery a 38 carritos abandonados</li>
+            <li style="padding:10px;background:var(--bg-3);border-left:2px solid var(--amber);font-size:13px"><b>14:08</b> · Sugirió bajar 8% Set Venom W (rotación lenta) — <button class="btn sm" onclick="toast('✓ Aplicado · Set Venom W ahora $1,011','success')">Aprobar</button></li>
+            <li style="padding:10px;background:var(--bg-3);border-left:2px solid var(--blue);font-size:13px"><b>15:51</b> · Re-cotizó algodón con 3 proveedores — Casa Cervantes ganó por $0.30/m</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="m-ai" class="module">
+      <header class="mod-head">
+        <div class="mod-eyebrow">AI Advisor · powered by Claude / OpenAI</div>
+        <h1 class="mod-title">RECOMENDACIONES <span style="color:var(--lime)">EN VIVO</span></h1>
+        <p class="mod-sub">La IA analiza ventas, inventario, costos y temporalidad cada hora. Te entrega decisiones accionables; tú apruebas con un click.</p>
+      </header>
+
+      <!-- Recomendación destacada -->
+      <div class="card" style="background:linear-gradient(135deg,rgba(212,255,0,.08),var(--bg-2));border-color:rgba(212,255,0,.3);margin-bottom:18px">
+        <div class="card-head">
+          <div><div class="card-h" style="color:var(--lime)">★ RECOMENDACIÓN DEL DÍA</div><div class="card-sub">Confianza del modelo: 92%</div></div>
+          <span class="pill lime">+$8,400 / sem est.</span>
+        </div>
+        <h2 style="font-family:'Bebas Neue';font-size:30px;color:var(--white);line-height:1.1;margin-bottom:10px">Aplicar 15% off a Tank Tops · martes 18:00–22:00</h2>
+        <p style="color:var(--text-2);font-size:14px;margin-bottom:14px">El histórico muestra que tus tanks rotan 3.2x más rápido en martes después de las 6pm (gym time). Subir envío gratis a $599 + 15% off creará urgencia sin canibalizar margen del finde.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn primary" onclick="applyRec('tank-15')">⚡ Aplicar ahora</button>
+          <button class="btn ghost" onclick="toast('Pospuesto 24h')">Posponer 24h</button>
+          <button class="btn ghost" onclick="toast('Detalle abierto en sidepanel')">Ver desglose</button>
+        </div>
+      </div>
+
+      <!-- Recomendaciones secundarias -->
+      <div class="grid grid-3" style="margin-bottom:18px">
+        <div class="card">
+          <span class="pill amber">Envío gratis</span>
+          <h3 style="font-family:'Bebas Neue';font-size:22px;margin:8px 0;color:var(--white)">Subir umbral a $799</h3>
+          <p style="color:var(--text-2);font-size:13px;margin-bottom:10px">AOV actual $682. Subir umbral aumenta ticket promedio +$87 sin perder conversión &gt; 3.2%.</p>
+          <button class="btn sm" onclick="applyRec('shipping-799')">Aplicar</button>
+        </div>
+        <div class="card">
+          <span class="pill green">Giveaway</span>
+          <h3 style="font-family:'Bebas Neue';font-size:22px;margin:8px 0;color:var(--white)">Sortea Set Titan</h3>
+          <p style="color:var(--text-2);font-size:13px;margin-bottom:10px">Stock de 18 unidades. Giveaway IG genera ~340 leads orgánicos · costo $1,199 (1 unidad).</p>
+          <button class="btn sm" onclick="applyRec('giveaway-titan')">Lanzar</button>
+        </div>
+        <div class="card">
+          <span class="pill blue">Bundle</span>
+          <h3 style="font-family:'Bebas Neue';font-size:22px;margin:8px 0;color:var(--white)">Tee + Short combo $999</h3>
+          <p style="color:var(--text-2);font-size:13px;margin-bottom:10px">Cross-sell automático cuando el carrito tiene Tee Gothic. Conversión cross-sell histórica: 22%.</p>
+          <button class="btn sm" onclick="applyRec('bundle-tee-short')">Activar</button>
+        </div>
+        <div class="card">
+          <span class="pill red">Recovery</span>
+          <h3 style="font-family:'Bebas Neue';font-size:22px;margin:8px 0;color:var(--white)">38 carritos abandonados</h3>
+          <p style="color:var(--text-2);font-size:13px;margin-bottom:10px">Lanzar flow 3-toques (email 15min → WA 24h → 10% off 48h). ROI esperado 280%.</p>
+          <button class="btn sm" onclick="applyRec('recovery-38')">Disparar</button>
+        </div>
+        <div class="card">
+          <span class="pill">Restock</span>
+          <h3 style="font-family:'Bebas Neue';font-size:22px;margin:8px 0;color:var(--white)">Reorder Hoodie Void</h3>
+          <p style="color:var(--text-2);font-size:13px;margin-bottom:10px">Quedan 14 unidades · velocidad 4.1/día · lead time 12d → reorder ya 60u con Maquila GZ.</p>
+          <button class="btn sm" onclick="applyRec('reorder-hoodie')">Reordenar</button>
+        </div>
+        <div class="card">
+          <span class="pill amber">Loyalty</span>
+          <h3 style="font-family:'Bebas Neue';font-size:22px;margin:8px 0;color:var(--white)">Reactivar 142 inactivos</h3>
+          <p style="color:var(--text-2);font-size:13px;margin-bottom:10px">Clientes Gold sin compra 60d. Cupón -15% personal con expiración 7d.</p>
+          <button class="btn sm" onclick="applyRec('reactivate-gold')">Enviar</button>
+        </div>
+      </div>
+
+      <!-- Chat -->
+      <div class="card">
+        <div class="card-head"><div><div class="card-h">Chat con tu AI Advisor</div><div class="card-sub">Pregunta lo que necesites · Claude Sonnet</div></div></div>
+        <div id="chatLog" style="background:var(--bg-3);padding:14px;font-size:13px;line-height:1.7;color:var(--text-2);min-height:80px;margin-bottom:12px;border-left:2px solid var(--border-soft)">
+          <b style="color:var(--lime)">AI:</b> Hola Guillermo. Hoy te recomiendo enfocarte en Tank Tops (martes alto rendimiento) y reactivar Gold inactivos. ¿Qué quieres explorar?
+        </div>
+        <div style="display:flex;gap:10px">
+          <input type="text" id="chatInput" placeholder="Ej: ¿qué SKU está perdiendo dinero esta semana?" style="flex:1;background:var(--bg-3);border:.5px solid var(--border);color:var(--text);padding:11px 14px;font-family:inherit;font-size:13px"/>
+          <button class="btn primary" onclick="askAI()">Enviar</button>
+        </div>
+      </div>
+    </section>
+    <section id="m-fifo" class="module">
+      <header class="mod-head">
+        <div class="mod-eyebrow">Inventario · regla FIFO automatizada</div>
+        <h1 class="mod-title">INVENTARIO <span style="color:var(--lime)">FIFO</span></h1>
+        <p class="mod-sub">Picking automático del lote más viejo. Alertas de stock muerto (&gt;60d) y reorden inteligente basado en velocidad de venta × lead time del proveedor.</p>
+      </header>
+
+      <div class="alert red"><span class="ico">🔴</span><div><b>Stock muerto detectado</b> · 2 SKUs sin venta en los últimos 60 días — capital inmovilizado: $8,420</div><div class="right"><button class="btn sm" onclick="toast('Liquidación al 30% activada','warn')">Liquidar 30%</button></div></div>
+      <div class="alert amber"><span class="ico">⚠️</span><div><b>Reorden urgente</b> · Hoodie Void TQ — 14 unidades restantes, lead time 12d, velocidad 4.1/día</div><div class="right"><button class="btn sm" onclick="suggestReorder('TQ-HOOD-VOID')">Sugerir reorden</button></div></div>
+
+      <div class="grid grid-4" style="margin:20px 0">
+        <div class="kpi"><div class="kpi-l">SKUs activos</div><div class="kpi-v">42</div><div class="kpi-d">8 nichos</div></div>
+        <div class="kpi"><div class="kpi-l">Lotes en stock</div><div class="kpi-v">128</div><div class="kpi-d">edad prom 23d</div></div>
+        <div class="kpi"><div class="kpi-l">Stock muerto</div><div class="kpi-v" style="color:var(--red)">2</div><div class="kpi-d down">$8,420 atado</div></div>
+        <div class="kpi"><div class="kpi-l">Reorden hoy</div><div class="kpi-v lime">3</div><div class="kpi-d">total $14,800</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div><div class="card-h">Lotes activos · ordenados FIFO</div><div class="card-sub">El más viejo se despacha primero</div></div><span class="pill">Auto-pick: ON</span></div>
+        <div style="overflow-x:auto">
+          <table class="tbl">
+            <thead><tr><th>SKU</th><th>Lote</th><th>Entrada</th><th>Días</th><th>Cant.</th><th>Velocidad</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><b>TQ-TEE-GBLK</b><div class="card-sub">Tee Gothic Black · M</div></td><td class="mono">L-2025-0142</td><td>Feb 28</td><td><b>59d</b></td><td>12</td><td>2.3/d</td><td><span class="pill amber">Atención</span></td><td><button class="btn sm" onclick="toast('Pick programado · L-2025-0142','success')">Pick FIFO</button></td></tr>
+              <tr><td><b>TQ-TEE-GBLK</b><div class="card-sub">Tee Gothic Black · M</div></td><td class="mono">L-2025-0188</td><td>Mar 22</td><td>37d</td><td>48</td><td>2.3/d</td><td><span class="pill green">OK</span></td><td><button class="btn sm" disabled style="opacity:.5">Esperar</button></td></tr>
+              <tr><td><b>TQ-TANK-STR</b><div class="card-sub">Tank Stringer · L</div></td><td class="mono">L-2025-0099</td><td>Ene 12</td><td><b style="color:var(--red)">106d</b></td><td>22</td><td>0.4/d</td><td><span class="pill red">Stock muerto</span></td><td><button class="btn sm danger" onclick="toast('Liquidación 30% · Tank Stringer L','warn')">Liquidar</button></td></tr>
+              <tr><td><b>TQ-SHORT-OBS</b><div class="card-sub">Short Obsidian · 32</div></td><td class="mono">L-2025-0177</td><td>Mar 14</td><td>45d</td><td>34</td><td>3.8/d</td><td><span class="pill green">OK</span></td><td><button class="btn sm" onclick="toast('Pick · L-2025-0177','success')">Pick FIFO</button></td></tr>
+              <tr><td><b>TQ-SET-TITAN</b><div class="card-sub">Set Titan Edition · M</div></td><td class="mono">L-2025-0203</td><td>Abr 02</td><td>26d</td><td>18</td><td>1.1/d</td><td><span class="pill green">OK</span></td><td><button class="btn sm" onclick="toast('Pick · L-2025-0203','success')">Pick FIFO</button></td></tr>
+              <tr><td><b>TQ-HOOD-VOID</b><div class="card-sub">Hoodie Void · L</div></td><td class="mono">L-2025-0211</td><td>Abr 09</td><td>19d</td><td>14</td><td>4.1/d</td><td><span class="pill amber">Reorden ya</span></td><td><button class="btn sm primary" onclick="suggestReorder('TQ-HOOD-VOID')">Reorden</button></td></tr>
+              <tr><td><b>TQ-JOG-PHN</b><div class="card-sub">Jogger Phantom · 30</div></td><td class="mono">L-2025-0095</td><td>Ene 08</td><td><b style="color:var(--red)">110d</b></td><td>9</td><td>0.2/d</td><td><span class="pill red">Stock muerto</span></td><td><button class="btn sm danger" onclick="toast('Liquidación 40% · Jogger 30','warn')">Liquidar</button></td></tr>
+              <tr><td><b>TQ-SET-VENOM</b><div class="card-sub">Set Venom W · S</div></td><td class="mono">L-2025-0198</td><td>Mar 28</td><td>31d</td><td>27</td><td>1.6/d</td><td><span class="pill green">OK</span></td><td><button class="btn sm" onclick="toast('Pick · L-2025-0198','success')">Pick FIFO</button></td></tr>
+              <tr><td><b>TQ-TEE-GWHT</b><div class="card-sub">Tee Gothic White · L</div></td><td class="mono">L-2025-0220</td><td>Abr 18</td><td>10d</td><td>62</td><td>2.7/d</td><td><span class="pill green">OK</span></td><td><button class="btn sm" onclick="toast('Pick · L-2025-0220','success')">Pick FIFO</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="m-pricing" class="module">
+      <header class="mod-head">
+        <div class="mod-eyebrow">Pricing Engine · datos en tiempo real</div>
+        <h1 class="mod-title">PRECIOS <span style="color:var(--lime)">DINÁMICOS</span></h1>
+        <p class="mod-sub">3 tiers de PV (Value / Mid / Premium) calculados desde tu BOM real. A/B test continuo, reglas dinámicas por rotación, y benchmark vs competencia.</p>
+      </header>
+
+      <div class="grid grid-3" style="margin-bottom:18px">
+        <div class="card">
+          <span class="pill amber">↓ Bajar precio</span>
+          <h3 style="font-family:'Bebas Neue';font-size:22px;margin:8px 0;color:var(--white)">Tank Stringer · -10%</h3>
+          <p style="color:var(--text-2);font-size:13px;margin-bottom:8px">Rotación 0.4/d (vs target 1.5). Bajar a $494 mantiene margen 64% y debería reactivar venta.</p>
+          <button class="btn sm primary" onclick="toast('✓ Precio actualizado · Tank Stringer $494','success')">Aplicar</button>
+        </div>
+        <div class="card">
+          <span class="pill green">↑ Subir precio</span>
+          <h3 style="font-family:'Bebas Neue';font-size:22px;margin:8px 0;color:var(--white)">Hoodie Void · +$50</h3>
+          <p style="color:var(--text-2);font-size:13px;margin-bottom:8px">Demanda alta, stock bajo, lead time largo. Subir a $949 captura más margen sin frenar venta.</p>
+          <button class="btn sm primary" onclick="toast('✓ Precio actualizado · Hoodie Void $949','success')">Aplicar</button>
+        </div>
+        <div class="card">
+          <span class="pill">= Mantener</span>
+          <h3 style="font-family:'Bebas Neue';font-size:22px;margin:8px 0;color:var(--white)">Set Titan · sin cambio</h3>
+          <p style="color:var(--text-2);font-size:13px;margin-bottom:8px">PV $1,199 está en sweet spot: rotación 1.1/d con margen 68%. No tocar.</p>
+          <button class="btn sm" disabled style="opacity:.5">Sin acción</button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:18px">
+        <div class="card-head"><div><div class="card-h">A/B test activo</div><div class="card-sub">Tee Gothic Black · 2,840 sesiones · 6 días corriendo</div></div><span class="pill green">Ganador 95% conf</span></div>
+        <div class="grid grid-2">
+          <div style="padding:14px;background:var(--bg-3);border-left:2px solid var(--text-3)"><div class="card-sub">Variante A · $649</div><div style="font-family:'Bebas Neue';font-size:32px;color:var(--white);margin:6px 0">3.8% conv</div><div style="font-size:12px;color:var(--text-2)">54 ventas · ingresos $35,046</div></div>
+          <div style="padding:14px;background:rgba(212,255,0,.06);border-left:2px solid var(--lime)"><div class="card-sub" style="color:var(--lime)">Variante B · $699 ★</div><div style="font-family:'Bebas Neue';font-size:32px;color:var(--lime);margin:6px 0">3.6% conv</div><div style="font-size:12px;color:var(--text-2)">51 ventas · ingresos $35,649 (+$603)</div></div>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:10px"><button class="btn primary" onclick="toast('✓ Variante B promovida a default','success')">Promover B</button><button class="btn ghost" onclick="toast('Test extendido 3 días más')">Extender 3d</button></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div><div class="card-h">Catálogo · pricing tiers sugeridos</div><div class="card-sub">Costo BOM real · 3 niveles de PV</div></div><span class="pill lime">Margen prom 71%</span></div>
+        <div style="overflow-x:auto">
+          <table class="tbl">
+            <thead><tr><th>Producto</th><th>BOM</th><th>PV actual</th><th>Value</th><th>Mid ★</th><th>Premium</th><th>Margen</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><b>Tee Gothic Black</b></td><td class="mono">$192</td><td>$699</td><td>$549</td><td><b style="color:var(--lime)">$699</b></td><td>$849</td><td>72.5%</td><td><button class="btn sm" onclick="toast('Edit Tee Gothic Black')">Editar</button></td></tr>
+              <tr><td><b>Tank Stringer TQ</b></td><td class="mono">$148</td><td>$549</td><td>$449</td><td><b style="color:var(--lime)">$549</b></td><td>$649</td><td>73.0%</td><td><button class="btn sm" onclick="toast('Edit Tank Stringer')">Editar</button></td></tr>
+              <tr><td><b>Short Obsidian 5"</b></td><td class="mono">$175</td><td>$649</td><td>$549</td><td><b style="color:var(--lime)">$649</b></td><td>$799</td><td>73.0%</td><td><button class="btn sm" onclick="toast('Edit Short Obsidian')">Editar</button></td></tr>
+              <tr><td><b>Set Titan Edition</b></td><td class="mono">$385</td><td>$1,199</td><td>$999</td><td><b style="color:var(--lime)">$1,199</b></td><td>$1,499</td><td>67.9%</td><td><button class="btn sm" onclick="toast('Edit Set Titan')">Editar</button></td></tr>
+              <tr><td><b>Hoodie Void TQ</b></td><td class="mono">$268</td><td>$899</td><td>$799</td><td>$899</td><td><b style="color:var(--amber)">$949 ↑</b></td><td>71.7%</td><td><button class="btn sm primary" onclick="toast('✓ Hoodie Void → $949','success')">Subir</button></td></tr>
+              <tr><td><b>Jogger Phantom TQ</b></td><td class="mono">$232</td><td>$849</td><td>$749</td><td><b style="color:var(--lime)">$849</b></td><td>$999</td><td>72.7%</td><td><button class="btn sm" onclick="toast('Edit Jogger Phantom')">Editar</button></td></tr>
+              <tr><td><b>Set Venom W</b></td><td class="mono">$348</td><td>$1,099</td><td><b style="color:var(--amber)">$999 ↓</b></td><td>$1,099</td><td>$1,299</td><td>68.3%</td><td><button class="btn sm primary" onclick="toast('✓ Set Venom → $999','success')">Bajar</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section id="m-automation" class="module">
+      <header class="mod-head">
+        <div class="mod-eyebrow">Automation Flows · n8n + Postgres</div>
+        <h1 class="mod-title">FLOWS <span style="color:var(--lime)">QUE CORREN SOLOS</span></h1>
+        <p class="mod-sub">Calendario de campañas, recovery de carrito 3-toques, loyalty automático. Tú no tocas el producto: la IA dispara, segmenta y mide.</p>
+      </header>
+
+      <div class="card" style="margin-bottom:18px">
+        <div class="card-head"><div><div class="card-h">Calendario de campañas 2026</div><div class="card-sub">Hot months marcados · campañas se arman 14d antes</div></div><span class="pill lime">3 activas</span></div>
+        <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:6px;margin-top:12px">
+          <div style="padding:10px 6px;background:var(--bg-3);text-align:center;border-top:2px solid transparent"><div style="font-size:10px;color:var(--text-3)">ENE</div><div style="font-size:11px;color:var(--text-2);margin-top:4px">—</div></div>
+          <div style="padding:10px 6px;background:var(--bg-3);text-align:center;border-top:2px solid var(--amber)"><div style="font-size:10px;color:var(--amber)">FEB</div><div style="font-size:11px;color:var(--text);margin-top:4px">San Valentín</div></div>
+          <div style="padding:10px 6px;background:var(--bg-3);text-align:center;border-top:2px solid transparent"><div style="font-size:10px;color:var(--text-3)">MAR</div><div style="font-size:11px;color:var(--text-2);margin-top:4px">—</div></div>
+          <div style="padding:10px 6px;background:rgba(212,255,0,.08);text-align:center;border-top:2px solid var(--lime)"><div style="font-size:10px;color:var(--lime)">ABR ★</div><div style="font-size:11px;color:var(--white);margin-top:4px">Aniversario</div></div>
+          <div style="padding:10px 6px;background:rgba(212,255,0,.08);text-align:center;border-top:2px solid var(--lime)"><div style="font-size:10px;color:var(--lime)">MAY ★</div><div style="font-size:11px;color:var(--white);margin-top:4px">Día Madre</div></div>
+          <div style="padding:10px 6px;background:var(--bg-3);text-align:center;border-top:2px solid transparent"><div style="font-size:10px;color:var(--text-3)">JUN</div><div style="font-size:11px;color:var(--text-2);margin-top:4px">Mid-Year</div></div>
+          <div style="padding:10px 6px;background:var(--bg-3);text-align:center;border-top:2px solid var(--amber)"><div style="font-size:10px;color:var(--amber)">JUL</div><div style="font-size:11px;color:var(--text);margin-top:4px">Verano</div></div>
+          <div style="padding:10px 6px;background:var(--bg-3);text-align:center;border-top:2px solid transparent"><div style="font-size:10px;color:var(--text-3)">AGO</div><div style="font-size:11px;color:var(--text-2);margin-top:4px">Back2School</div></div>
+          <div style="padding:10px 6px;background:var(--bg-3);text-align:center;border-top:2px solid var(--amber)"><div style="font-size:10px;color:var(--amber)">SEP</div><div style="font-size:11px;color:var(--text);margin-top:4px">Patrias</div></div>
+          <div style="padding:10px 6px;background:var(--bg-3);text-align:center;border-top:2px solid transparent"><div style="font-size:10px;color:var(--text-3)">OCT</div><div style="font-size:11px;color:var(--text-2);margin-top:4px">—</div></div>
+          <div style="padding:10px 6px;background:rgba(212,255,0,.08);text-align:center;border-top:2px solid var(--lime)"><div style="font-size:10px;color:var(--lime)">NOV ★</div><div style="font-size:11px;color:var(--white);margin-top:4px">BFCM</div></div>
+          <div style="padding:10px 6px;background:rgba(212,255,0,.08);text-align:center;border-top:2px solid var(--lime)"><div style="font-size:10px;color:var(--lime)">DIC ★</div><div style="font-size:11px;color:var(--white);margin-top:4px">Navidad</div></div>
+        </div>
+      </div>
+
+      <div class="grid grid-2" style="margin-bottom:18px">
+        <div class="card">
+          <div class="card-head"><div><div class="card-h">Carrito abandonado · flow activo</div><div class="card-sub">3 toques · 38 carritos en pipeline</div></div><span class="pill green">ROI 280%</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px">
+            <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--bg-3);border-left:2px solid var(--lime)"><div style="width:32px;height:32px;background:var(--lime);color:var(--black);display:flex;align-items:center;justify-content:center;font-weight:800">1</div><div style="flex:1"><b style="color:var(--white)">Email · 15 min</b><div style="font-size:12px;color:var(--text-2)">Recordatorio suave + foto producto</div></div><span class="pill green">22% open</span></div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--bg-3);border-left:2px solid var(--lime)"><div style="width:32px;height:32px;background:var(--lime);color:var(--black);display:flex;align-items:center;justify-content:center;font-weight:800">2</div><div style="flex:1"><b style="color:var(--white)">WhatsApp · 24 h</b><div style="font-size:12px;color:var(--text-2)">"Tu carrito te espera" · template Twilio</div></div><span class="pill green">68% lectura</span></div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--bg-3);border-left:2px solid var(--amber)"><div style="width:32px;height:32px;background:var(--amber);color:var(--black);display:flex;align-items:center;justify-content:center;font-weight:800">3</div><div style="flex:1"><b style="color:var(--white)">Cupón -10% · 48 h</b><div style="font-size:12px;color:var(--text-2)">Solo si carrito &gt; $799</div></div><span class="pill amber">14% conv</span></div>
+          </div>
+          <button class="btn sm" style="margin-top:12px" onclick="toast('Flow editor abierto')">Editar flow</button>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><div><div class="card-h">Loyalty Program</div><div class="card-sub">3 tiers · 8,247 miembros activos</div></div><span class="pill lime">+12% retención</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px">
+            <div style="padding:14px;background:linear-gradient(90deg,rgba(205,127,50,.15),transparent);border-left:2px solid #cd7f32"><b style="color:#cd7f32">BRONZE · 0–999 pts</b><div style="font-size:12px;color:var(--text-2);margin-top:4px">5,142 miembros · 1pt = $1 gastado · envío gratis +$899</div></div>
+            <div style="padding:14px;background:linear-gradient(90deg,rgba(192,192,192,.15),transparent);border-left:2px solid #c0c0c0"><b style="color:#c0c0c0">SILVER · 1,000–4,999 pts</b><div style="font-size:12px;color:var(--text-2);margin-top:4px">2,683 miembros · 1.5x pts · early access drops · envío gratis +$599</div></div>
+            <div style="padding:14px;background:linear-gradient(90deg,rgba(212,255,0,.15),transparent);border-left:2px solid var(--lime)"><b style="color:var(--lime)">GOLD · 5,000+ pts</b><div style="font-size:12px;color:var(--text-2);margin-top:4px">422 miembros · 2x pts · cashback 5% · regalo cumple · envío gratis siempre</div></div>
+          </div>
+          <div style="margin-top:14px;padding:10px;background:var(--bg-3);font-size:12px;color:var(--text-2)"><b style="color:var(--lime)">Auto-triggers activos:</b> +50pts review · +200pts referido · +100pts foto IG · 2x pts cumpleaños</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div><div class="card-h">Workflows n8n conectados</div><div class="card-sub">Cron + webhooks · guillermocantuu.app.n8n.cloud</div></div><span class="pill green">8/8 healthy</span></div>
+        <div style="overflow-x:auto">
+          <table class="tbl">
+            <thead><tr><th>Flow</th><th>Trigger</th><th>Última ejec</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><b>price-scraper</b></td><td class="mono">cron · 06:00 daily</td><td>hace 4h</td><td><span class="pill green">OK</span></td><td><button class="btn sm" onclick="toast('Logs abiertos')">Logs</button></td></tr>
+              <tr><td><b>cart-recovery</b></td><td class="mono">webhook · cart.abandoned</td><td>hace 12 min</td><td><span class="pill green">OK</span></td><td><button class="btn sm" onclick="toast('Logs abiertos')">Logs</button></td></tr>
+              <tr><td><b>po-send</b></td><td class="mono">webhook · po.created</td><td>hace 1h</td><td><span class="pill green">OK</span></td><td><button class="btn sm" onclick="toast('Logs abiertos')">Logs</button></td></tr>
+              <tr><td><b>fifo-pick</b></td><td class="mono">webhook · order.paid</td><td>hace 2 min</td><td><span class="pill green">OK</span></td><td><button class="btn sm" onclick="toast('Logs abiertos')">Logs</button></td></tr>
+              <tr><td><b>loyalty-points</b></td><td class="mono">webhook · order.fulfilled</td><td>hace 18 min</td><td><span class="pill green">OK</span></td><td><button class="btn sm" onclick="toast('Logs abiertos')">Logs</button></td></tr>
+              <tr><td><b>ai-advisor</b></td><td class="mono">cron · hourly</td><td>hace 22 min</td><td><span class="pill green">OK</span></td><td><button class="btn sm" onclick="toast('Logs abiertos')">Logs</button></td></tr>
+              <tr><td><b>review-request</b></td><td class="mono">cron · 7d post-delivery</td><td>hace 6h</td><td><span class="pill green">OK</span></td><td><button class="btn sm" onclick="toast('Logs abiertos')">Logs</button></td></tr>
+              <tr><td><b>reorder-trigger</b></td><td class="mono">webhook · stock.low</td><td>hace 30 min</td><td><span class="pill green">OK</span></td><td><button class="btn sm" onclick="toast('Logs abiertos')">Logs</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="m-suppliers" class="module">
+      <header class="mod-head">
+        <div class="mod-eyebrow">Suppliers · score automático</div>
+        <h1 class="mod-title">PROVEEDORES <span style="color:var(--lime)">RANKEADOS</span></h1>
+        <p class="mod-sub">Score 0–100 calculado de precio + lead time + defectos + cumplimiento. Auto-recotización trimestral. Alertas de riesgo cuando dependes de uno solo.</p>
+      </header>
+
+      <div class="alert amber"><span class="ico">⚠️</span><div><b>Riesgo de proveedor único</b> · Algodón premium 30/1 viene 100% de Casa Cervantes. Recomendación: diversificar con Modatelas como secundario (-3% precio, +2d lead).</div><div class="right"><button class="btn sm" onclick="toast('Modatelas agregado como secundario','success')">Diversificar</button></div></div>
+
+      <div class="grid grid-4" style="margin:20px 0">
+        <div class="kpi"><div class="kpi-l">Activos</div><div class="kpi-v">14</div><div class="kpi-d up">▲ 2 nuevos</div></div>
+        <div class="kpi"><div class="kpi-l">Score promedio</div><div class="kpi-v lime">82</div><div class="kpi-d">/ 100</div></div>
+        <div class="kpi"><div class="kpi-l">Lead time prom</div><div class="kpi-v">5.2d</div><div class="kpi-d down">▼ 0.8d vs mes</div></div>
+        <div class="kpi"><div class="kpi-l">Ahorro mensual</div><div class="kpi-v lime">$48,320</div><div class="kpi-d up">vs proveedor inicial</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div><div class="card-h">Ranking · top proveedores</div><div class="card-sub">Score = precio (40%) + lead time (25%) + defectos (20%) + cumplimiento (15%)</div></div><button class="btn sm primary" onclick="runAutoRequote()">⚡ Auto-recotizar</button></div>
+        <div style="overflow-x:auto">
+          <table class="tbl">
+            <thead><tr><th>#</th><th>Proveedor</th><th>Material</th><th>Precio</th><th>Lead</th><th>Defectos</th><th>Score</th><th>Riesgo</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><b style="color:var(--lime)">1</b></td><td><b>Casa Cervantes</b><div class="card-sub">Monterrey</div></td><td>Algodón 30/1</td><td>$78/m</td><td>3d</td><td>0.4%</td><td><b style="color:var(--lime)">94</b></td><td><span class="pill amber">Único</span></td><td><button class="btn sm" onclick="toast('Cotización enviada · Casa Cervantes')">Cotizar</button></td></tr>
+              <tr><td><b style="color:var(--lime)">2</b></td><td><b>Modatelas</b><div class="card-sub">CDMX</div></td><td>Microfibra · Etiquetas</td><td>$83/m</td><td>4d</td><td>0.6%</td><td><b style="color:var(--lime)">89</b></td><td><span class="pill green">OK</span></td><td><button class="btn sm" onclick="toast('Cotización enviada · Modatelas')">Cotizar</button></td></tr>
+              <tr><td><b>3</b></td><td><b>El Tejedor</b><div class="card-sub">Guadalajara</div></td><td>Hilo · Cintas</td><td>$81/m</td><td>5d</td><td>1.2%</td><td><b>85</b></td><td><span class="pill green">OK</span></td><td><button class="btn sm" onclick="toast('Cotización enviada · El Tejedor')">Cotizar</button></td></tr>
+              <tr><td><b>4</b></td><td><b>Maquila GZ</b><div class="card-sub">Aguascalientes</div></td><td>Confección completa</td><td>$118/u</td><td>7d</td><td>2.1%</td><td><b>81</b></td><td><span class="pill green">OK</span></td><td><button class="btn sm" onclick="toast('Cotización enviada · Maquila GZ')">Cotizar</button></td></tr>
+              <tr><td><b>5</b></td><td><b>Telas Parisina</b><div class="card-sub">CDMX</div></td><td>Lycra · Spandex</td><td>$92/m</td><td>4d</td><td>1.8%</td><td><b>78</b></td><td><span class="pill green">OK</span></td><td><button class="btn sm" onclick="toast('Cotización enviada · Parisina')">Cotizar</button></td></tr>
+              <tr><td><b>6</b></td><td><b>ML Mayoreo</b><div class="card-sub">Puebla</div></td><td>Empaque · Etiquetas</td><td>$8/u</td><td>6d</td><td>2.4%</td><td><b>74</b></td><td><span class="pill amber">Vigilar</span></td><td><button class="btn sm" onclick="toast('Cotización enviada · ML Mayoreo')">Cotizar</button></td></tr>
+              <tr><td><b>7</b></td><td><b>Alibaba (CN)</b><div class="card-sub">Guangzhou</div></td><td>Trims · Accesorios</td><td>$0.85/u</td><td>22d</td><td>4.8%</td><td><b style="color:var(--amber)">62</b></td><td><span class="pill red">Lead largo</span></td><td><button class="btn sm" onclick="toast('Cotización enviada · Alibaba')">Cotizar</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="toast" id="toast">Listo</div>
+
+<script>
+function tab(id,btn){
+  document.querySelectorAll('.module').forEach(m=>m.classList.remove('on'));
+  document.getElementById('m-'+id).classList.add('on');
+  document.querySelectorAll('.side-link').forEach(b=>b.classList.remove('on'));
+  if(btn)btn.classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+let _tt;
+function toast(msg,type){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.className='toast show';
+  if(type)t.classList.add(type);
+  clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove('show'),2800);
+}
+// ───────────── AI / automation handlers ─────────────
+// All handlers below are MOCK. Replace each with a fetch() to your backend
+// (n8n webhook / FastAPI / Anthropic SDK) when going to production.
+
+function applyRec(id){
+  // TODO: await fetch('https://guillermocantuu.app.n8n.cloud/webhook/apply-rec',
+  //   { method:'POST', body: JSON.stringify({ rec_id: id }) });
+  const map={
+    'tank-15':'✓ Descuento 15% Tank Tops · activo martes 18–22h',
+    'shipping-799':'✓ Envío gratis subido a $799',
+    'giveaway-titan':'✓ Giveaway Set Titan lanzado en IG',
+    'bundle-tee-short':'✓ Bundle Tee+Short $999 activo',
+    'recovery-38':'✓ Recovery flow disparado · 38 carritos',
+    'reorder-hoodie':'✓ PO Hoodie Void enviada · Maquila GZ · 60u',
+    'reactivate-gold':'✓ 142 cupones Gold enviados (-15%, 7d)'
+  };
+  toast(map[id]||'Aplicado','success');
+}
+
+function askAI(){
+  const input=document.getElementById('chatInput');
+  const log=document.getElementById('chatLog');
+  const q=input.value.trim();
+  if(!q)return;
+  log.innerHTML+=`<div style="margin-top:10px"><b style="color:var(--text)">Tú:</b> ${q}</div>`;
+  input.value='';
+  // TODO: replace with real AI call:
+  //   const r = await fetch('/api/ai-advisor', {
+  //     method:'POST',
+  //     body: JSON.stringify({ prompt: q, context: { sales, inventory, costs } })
+  //   });
+  //   const { reply } = await r.json();
+  setTimeout(()=>{
+    const replies=[
+      'Tank Stringer L está perdiendo: rotación 0.4/d, 106 días en lote. Recomiendo liquidar 30% o donar a giveaway.',
+      'Tu mejor SKU esta semana: Short Obsidian 5" (3.8/d, margen 73%). Sugiero subir presupuesto Meta +$500 sólo en este SKU.',
+      'Si subes envío gratis a $799, AOV proyectado pasa de $682 a $769 (+13%). Conversión cae 0.3pts pero ingreso neto sube $14k/sem.',
+      'BFCM está a 7 meses. Empezaría a producir Tee Gothic White en 60u extra desde julio para llegar con stock cómodo.'
+    ];
+    const reply=replies[Math.floor(Math.random()*replies.length)];
+    log.innerHTML+=`<div style="margin-top:10px"><b style="color:var(--lime)">AI:</b> ${reply}</div>`;
+    log.scrollTop=log.scrollHeight;
+  },800);
+}
+
+function suggestReorder(sku){
+  // TODO: fetch('/api/fifo-suggest', { method:'POST', body: JSON.stringify({sku}) })
+  toast(`📦 Reorden sugerido · ${sku} · 60u con Maquila GZ · llegada 12 May`,'success');
+}
+
+function runAutoRequote(){
+  // TODO: trigger n8n workflow that loops through suppliers and re-quotes
+  toast('⚡ Auto-recotización lanzada · 14 proveedores en cola...','warn');
+  setTimeout(()=>toast('✓ 14/14 cotizaciones recibidas · 3 mejoras detectadas','success'),2200);
+}
+
+// Submit chat on Enter
+document.addEventListener('DOMContentLoaded',()=>{
+  const ci=document.getElementById('chatInput');
+  if(ci)ci.addEventListener('keydown',e=>{if(e.key==='Enter')askAI()});
+});
+</script>
+</body>
+</html>
