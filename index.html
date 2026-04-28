@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KÖRE — Built Different</title>
+<title>TORO KAIZEN — Built Different</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -492,6 +492,20 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
+/* BULL MARK */
+.bull-mark{display:block;width:100%;height:100%;color:var(--lime)}
+.bull-mark.dark{color:var(--black)}
+.logo-badge{padding:2px;width:30px;height:26px}
+.logo-badge .bull-mark{width:100%;height:100%}
+.cb-avatar{padding:4px}
+.cb-avatar .bull-mark{width:100%;height:100%}
+.hero-bull-wm{position:absolute;right:-8%;top:6%;width:520px;height:420px;color:var(--lime);opacity:.04;pointer-events:none;z-index:0}
+.hero-bull-wm svg{width:100%;height:100%}
+.foot-x-brand{display:flex;align-items:center;gap:12px}
+.foot-x-brand .bull-mark{width:38px;height:32px;color:var(--lime)}
+.lookbook-bull{position:absolute;right:24px;top:24px;width:64px;height:54px;color:var(--lime);opacity:.6;z-index:3;pointer-events:none}
+.lb-cell:nth-child(1){position:relative}
+
 /* CHATBOT */
 .cb-fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:var(--lime);color:var(--black);border:none;cursor:none;display:flex;align-items:center;justify-content:center;z-index:380;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:transform .2s}
 .cb-fab:hover{transform:scale(1.08)}
@@ -539,7 +553,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="logo"><div class="logo-badge">KÖ</div>KÖRE</a>
+  <a href="#" class="logo"><div class="logo-badge"><svg class="bull-mark" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="currentColor"><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g><circle cx="40" cy="46" r="3.5" fill="#0d0d0e"/><circle cx="60" cy="46" r="3.5" fill="#0d0d0e"/><ellipse cx="45" cy="62" rx="2" ry="2.5" fill="#0d0d0e"/><ellipse cx="55" cy="62" rx="2" ry="2.5" fill="#0d0d0e"/><circle cx="50" cy="70" r="2.5" fill="none" stroke="#0d0d0e" stroke-width="1.5"/></svg></div>TORO KAIZEN</a>
   <ul class="nav-links">
     <li class="mega-trigger"><a href="#hombre">Hombre</a>
       <div class="mega">
@@ -641,6 +655,9 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 
 <!-- HERO -->
 <section class="hero" id="inicio">
+  <div class="hero-bull-wm" aria-hidden="true">
+    <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></svg>
+  </div>
   <div class="hero-l">
     <div class="hero-pill"><span class="ldot"></span> SS26 Drop · live now</div>
     <h1 class="hero-t">BUILT<br><span class="lime">DIFF</span><span class="outline">ERENT</span></h1>
@@ -659,12 +676,12 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
   <div class="hero-r">
     <div class="hero-split">
       <div class="hero-img-wrap">
-        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=700&h=900&q=88&crop=top" alt="Atleta KÖRE">
+        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=700&h=900&q=88&crop=top" alt="Atleta TORO KAIZEN">
         <div class="hero-img-badge">Nuevo</div>
         <div class="hero-img-label">OVERSIZE TEE</div>
       </div>
       <div class="hero-img-wrap">
-        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&h=900&q=88&crop=top" alt="Atleta KÖRE">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&h=900&q=88&crop=top" alt="Atleta TORO KAIZEN">
         <div class="hero-img-label">TANK TOP</div>
       </div>
     </div>
@@ -686,13 +703,13 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
     <div class="t-item">SS25 Disponible<span class="t-dot"></span></div>
     <div class="t-item">Devoluciones 30 días<span class="t-dot"></span></div>
     <div class="t-item">+8,000 atletas activos<span class="t-dot"></span></div>
-    <div class="t-item">Gym. Street. KÖRE.<span class="t-dot"></span></div>
+    <div class="t-item">Gym. Street. TORO KAIZEN.<span class="t-dot"></span></div>
     <div class="t-item">Envío gratis +$799<span class="t-dot"></span></div>
     <div class="t-item">100% Hecho en México<span class="t-dot"></span></div>
     <div class="t-item">SS25 Disponible<span class="t-dot"></span></div>
     <div class="t-item">Devoluciones 30 días<span class="t-dot"></span></div>
     <div class="t-item">+8,000 atletas activos<span class="t-dot"></span></div>
-    <div class="t-item">Gym. Street. KÖRE.<span class="t-dot"></span></div>
+    <div class="t-item">Gym. Street. TORO KAIZEN.<span class="t-dot"></span></div>
   </div>
 </div>
 
@@ -742,18 +759,18 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       </div>
     </div>
 
-    <div class="pc rv" data-niche="gym crossfit" data-age="18-24 25-34" data-sku="TQ-TANK-STR" data-name="Tank Stringer KÖ" data-price="549" data-cat="Tank Top · Hombre" data-img="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=85">
+    <div class="pc rv" data-niche="gym crossfit" data-age="18-24 25-34" data-sku="TQ-TANK-STR" data-name="Tank Stringer Bravío" data-price="549" data-cat="Tank Top · Hombre" data-img="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=85">
       <div class="pc-badge b-hot">Hot</div>
       <button class="pc-wish" onclick="toggleWish('TQ-TANK-STR',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
       <div class="pc-img-wrap">
-        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt="Tank Stringer KÖ">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt="Tank Stringer Bravío">
         <img class="pc-img-2" src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=600&h=800&q=85" alt="">
         <div class="pc-overlay"></div>
         <div class="pc-quick"><button class="q-btn" onclick="openQuickAdd('TQ-TANK-STR')">+ Quick Add</button></div>
       </div>
       <div class="pc-info">
         <div class="pc-cat">Tank Top · Hombre</div>
-        <div class="pc-name">Tank Stringer KÖ</div>
+        <div class="pc-name">Tank Stringer Bravío</div>
         <div class="pc-rating"><span class="stars">★★★★★</span> 4.8 <span class="cnt">(312)</span></div>
         <div class="pc-tags"><span class="tg">Gym</span><span class="tg">Crossfit</span></div>
         <div class="pc-foot"><div><span class="pc-price">$549</span><span class="pc-old">$649</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
@@ -818,7 +835,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       </div>
     </div>
 
-    <div class="pc rv" data-niche="streetwear yoga" data-age="25-34 35-44 45+" data-sku="TQ-JOG-PHN" data-name="Jogger Phantom KÖ" data-price="849" data-cat="Jogger · Street" data-img="https://images.unsplash.com/photo-1541534741688-6078c8985bca?auto=format&fit=crop&w=700&q=85">
+    <div class="pc rv" data-niche="streetwear yoga" data-age="25-34 35-44 45+" data-sku="TQ-JOG-PHN" data-name="Jogger Phantom Toro" data-price="849" data-cat="Jogger · Street" data-img="https://images.unsplash.com/photo-1541534741688-6078c8985bca?auto=format&fit=crop&w=700&q=85">
       <div class="pc-badge b-hot">Hot</div>
       <button class="pc-wish" onclick="toggleWish('TQ-JOG-PHN',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
       <div class="pc-img-wrap">
@@ -829,7 +846,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       </div>
       <div class="pc-info">
         <div class="pc-cat">Jogger · Street</div>
-        <div class="pc-name">Jogger Phantom KÖ</div>
+        <div class="pc-name">Jogger Phantom Toro</div>
         <div class="pc-rating"><span class="stars">★★★★★</span> 4.7 <span class="cnt">(216)</span></div>
         <div class="pc-tags"><span class="tg">Streetwear</span><span class="tg">Yoga</span></div>
         <div class="pc-foot"><div><span class="pc-price">$849</span><span class="pc-old">$999</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
@@ -837,7 +854,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       </div>
     </div>
 
-    <div class="pc rv" data-niche="streetwear" data-age="18-24 25-34 35-44 45+" data-sku="TQ-HOOD-VOID" data-name="Hoodie Void KÖ" data-price="899" data-cat="Hoodie · Unisex" data-img="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=700&q=85">
+    <div class="pc rv" data-niche="streetwear" data-age="18-24 25-34 35-44 45+" data-sku="TQ-HOOD-VOID" data-name="Hoodie Void Mortal" data-price="899" data-cat="Hoodie · Unisex" data-img="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=700&q=85">
       <div class="pc-badge" style="background:rgba(167,139,250,.85);color:var(--white)">Restock</div>
       <button class="pc-wish" onclick="toggleWish('TQ-HOOD-VOID',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
       <div class="pc-img-wrap">
@@ -848,7 +865,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       </div>
       <div class="pc-info">
         <div class="pc-cat">Hoodie · Unisex</div>
-        <div class="pc-name">Hoodie Void KÖ</div>
+        <div class="pc-name">Hoodie Void Mortal</div>
         <div class="pc-rating"><span class="stars">★★★★★</span> 4.9 <span class="cnt">(404)</span></div>
         <div class="pc-tags"><span class="tg">Streetwear</span></div>
         <div class="pc-foot"><div><span class="pc-price">$899</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
@@ -999,6 +1016,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
   <div class="lb-grid">
     <a class="lb-cell rv" href="#productos">
       <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&h=1200&q=85" alt="Look 01">
+      <svg class="lookbook-bull" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true"><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></svg>
       <div class="lb-cap"><span>Look 01 · Studio</span><b>TITAN EDITION</b></div>
     </a>
     <a class="lb-cell rv" href="#productos">
@@ -1084,7 +1102,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 <!-- ═══════════════════ UGC / AMBASSADORS ═══════════════════ -->
 <section class="ugc" id="ugc">
   <div class="ugc-head">
-    <div class="s-label rv">@KÖRE.MX</div>
+    <div class="s-label rv">@TOROKAIZEN.MX</div>
     <h2 class="s-title rv">EL <span class="lime">SQUAD</span> EN VIVO</h2>
     <p class="rv" style="color:var(--text-2);max-width:480px;margin:14px auto 0;font-size:14px">Tagueate con #BuiltDifferent y aparece en nuestra tienda. Atletas reales con la ropa real.</p>
   </div>
@@ -1102,7 +1120,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 <footer class="foot-x">
   <div class="foot-x-grid">
     <div class="foot-x-col">
-      <div class="foot-x-brand">KÖRE</div>
+      <div class="foot-x-brand"><svg class="bull-mark" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="currentColor"><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g><circle cx="40" cy="46" r="3.5" fill="#1c1c1f"/><circle cx="60" cy="46" r="3.5" fill="#1c1c1f"/><ellipse cx="45" cy="62" rx="2" ry="2.5" fill="#1c1c1f"/><ellipse cx="55" cy="62" rx="2" ry="2.5" fill="#1c1c1f"/><circle cx="50" cy="70" r="2.5" fill="none" stroke="#1c1c1f" stroke-width="1.5"/></svg>TORO KAIZEN</div>
       <p class="foot-x-tag">Built different. Ropa de alto rendimiento diseñada y producida en México. Para los que entrenan duro y se ven mejor.</p>
       <div class="foot-x-social">
         <a href="#" aria-label="Instagram" title="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
@@ -1134,7 +1152,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       </ul>
     </div>
     <div class="foot-x-col">
-      <h4>Sobre KÖRE</h4>
+      <h4>Sobre TORO KAIZEN</h4>
       <ul>
         <li><a>Nuestra historia</a></li>
         <li><a>Atletas &amp; embajadores</a></li>
@@ -1154,7 +1172,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
     </div>
   </div>
   <div class="foot-x-bot">
-    <div>© 2026 KÖRE · Built Different · Hecho en México con ♥</div>
+    <div>© 2026 TORO KAIZEN · Built Different · Hecho en México con ♥</div>
     <div>
       <a>Privacidad</a>·<a>Términos</a>·<a>Cookies</a>
     </div>
@@ -1279,11 +1297,11 @@ const SUPPLIERS = {
 const PRODUCTS = {
   'tee-blk':{name:'Tee Gothic Black',img:'photo-1583454110551-21f2fa2afe61',price:699},
   'tee-wht':{name:'Tee Gothic White',img:'photo-1549060279-7e168fcee0c2',price:699},
-  'tank-tq':{name:'Tank Stringer KÖ',img:'photo-1534438327276-14e5300c3a48',price:549},
+  'tank-tq':{name:'Tank Stringer Bravío',img:'photo-1534438327276-14e5300c3a48',price:549},
   'short-obs':{name:'Short Obsidian 5"',img:'photo-1526506118085-60ce8714f8c5',price:649},
   'set-titan':{name:'Set Titan Edition',img:'photo-1571019613454-1cb2f99b2d8b',price:1199},
-  'jogger':{name:'Jogger Phantom KÖ',img:'photo-1541534741688-6078c8985bca',price:849},
-  'hoodie':{name:'Hoodie Void KÖ',img:'photo-1518611012118-696072aa579a',price:899},
+  'jogger':{name:'Jogger Phantom Toro',img:'photo-1541534741688-6078c8985bca',price:849},
+  'hoodie':{name:'Hoodie Void Mortal',img:'photo-1518611012118-696072aa579a',price:899},
   'set-venom':{name:'Set Venom W',img:'photo-1507398941214-162a8de16b98',price:1099},
 };
 
@@ -1594,7 +1612,7 @@ function selectOrder(orderId){
 // ═══════════════ ACTIONS (mock — wire to backend) ═══════════════
 
 function sendWhatsApp(supplier,phone,total,matCount){
-  const msg = encodeURIComponent(`Hola ${supplier}, soy de KÖRE Apparel. Necesito cotizar ${matCount} materiales por un total estimado de $${total} MXN. ¿Pueden confirmar disponibilidad y precio?`);
+  const msg = encodeURIComponent(`Hola ${supplier}, soy de TORO KAIZEN Apparel. Necesito cotizar ${matCount} materiales por un total estimado de $${total} MXN. ¿Pueden confirmar disponibilidad y precio?`);
   window.open(`https://wa.me/${phone}?text=${msg}`,'_blank');
   showToast(`WhatsApp abierto: ${supplier}`,'success');
 }
@@ -1713,7 +1731,7 @@ document.querySelectorAll('.pc-swatches').forEach(row=>{
 });
 
 // Wishlist (localStorage backed)
-const WISH_KEY='kore_wish_v1';
+const WISH_KEY='tk_wish_v1';
 function getWish(){try{return JSON.parse(localStorage.getItem(WISH_KEY)||'[]')}catch(_){return[]}}
 function setWish(arr){localStorage.setItem(WISH_KEY,JSON.stringify(arr));renderWishBadge()}
 function toggleWish(sku,btn){
@@ -1781,7 +1799,7 @@ function qaAddCart(){
 }
 
 // Recently viewed — store last 6 viewed SKUs
-const REC_KEY='kore_recent_v1';
+const REC_KEY='tk_recent_v1';
 function trackRecent(p){
   let r=[];try{r=JSON.parse(localStorage.getItem(REC_KEY)||'[]')}catch(_){}
   r=r.filter(x=>x.sku!==p.sku);
@@ -1864,7 +1882,7 @@ function submitEmail(e){
 <div class="em-bd" id="emBd" onclick="if(event.target===this)closeEmail()">
   <div class="em-modal">
     <button class="em-x" onclick="closeEmail()" aria-label="Cerrar">×</button>
-    <div class="em-eyebrow">★ Bienvenido a KÖRE</div>
+    <div class="em-eyebrow">★ Bienvenido a TORO KAIZEN</div>
     <h3 class="em-h">−10% en tu <span class="lime">primer drop</span></h3>
     <p class="em-p">Únete al Squad y recibe acceso anticipado a nuevos drops, contenido exclusivo y un cupón de bienvenida directo a tu correo.</p>
     <form class="em-form" onsubmit="submitEmail(event)">
@@ -1881,14 +1899,14 @@ function submitEmail(e){
   <span class="cb-pulse"></span>
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
 </button>
-<div class="cb-panel" id="cbPanel" role="dialog" aria-label="Asistente KÖRE">
+<div class="cb-panel" id="cbPanel" role="dialog" aria-label="Asistente TORO KAIZEN">
   <div class="cb-head">
-    <div class="cb-avatar">TQ</div>
-    <div class="cb-head-i"><b>Asistente KÖRE</b><span>en línea · responde en seg</span></div>
+    <div class="cb-avatar"><svg class="bull-mark" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="currentColor"><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g><circle cx="40" cy="46" r="3.5" fill="#0d0d0e"/><circle cx="60" cy="46" r="3.5" fill="#0d0d0e"/><ellipse cx="45" cy="62" rx="2" ry="2.5" fill="#0d0d0e"/><ellipse cx="55" cy="62" rx="2" ry="2.5" fill="#0d0d0e"/><circle cx="50" cy="70" r="2.5" fill="none" stroke="#0d0d0e" stroke-width="1.5"/></svg></div>
+    <div class="cb-head-i"><b>Asistente Toro</b><span>en línea · responde en seg</span></div>
     <button class="cb-x" onclick="cbToggle()" aria-label="Cerrar">×</button>
   </div>
   <div class="cb-log" id="cbLog">
-    <div class="cb-msg bot">¡Hey! 👋 Soy el asistente de KÖRE. Te ayudo con tallas, envíos, recomendaciones de productos según tu rutina, devoluciones, seguimiento de pedidos y todo lo que necesites. ¿En qué te ayudo?</div>
+    <div class="cb-msg bot">¡Hey! 👋 Soy el asistente de TORO KAIZEN. Te ayudo con tallas, envíos, recomendaciones de productos según tu rutina, devoluciones, seguimiento de pedidos y todo lo que necesites. ¿En qué te ayudo?</div>
   </div>
   <div class="cb-quick" id="cbQuick">
     <button class="cb-chip" onclick="cbSend('¿Cuál es mi talla?')">Guía de tallas</button>
@@ -1910,7 +1928,7 @@ function submitEmail(e){
 const CB_API_BASE='';
 const CB_USE_API=false;
 
-const CB_SYSTEM=`Eres el asistente de tienda de KÖRE, marca mexicana de ropa
+const CB_SYSTEM=`Eres el asistente de tienda de TORO KAIZEN, marca mexicana de ropa
 deportiva premium. Hablas en español natural, eres amigable, breve y resolutivo.
 Reglas:
 - Tallas: orienta con guía estándar (S=88-92cm pecho, M=93-98, L=99-104, XL=105-110).
@@ -1928,21 +1946,21 @@ const CB_RULES=[
   {k:/env[ií]o|tarda|llega|c[uú]ando/i,r:'📦 Envío gratis en pedidos +$799 dentro de MX (2-4 días hábiles). Express disponible 24h. Internacional 7-12 días. ¿Te ayudo a rastrear un pedido?'},
   {k:/devolu|cambio|return/i,r:'↩️ Devoluciones gratis dentro de 30 días. Solo dale al link "Devoluciones" en el footer, te generamos guía prepagada. Cambios de talla sin costo.'},
   {k:/descuento|cup[oó]n|promo|sale|oferta/i,r:'🎁 Te doy −10% en tu primera compra. Suscríbete con tu email y te llega el código al toque. También tenemos sección Sale ★ con piezas hasta 30% off.'},
-  {k:/gym|ejercicio|pesas|fierr/i,r:'Para gym te recomiendo: **Tank Stringer KÖ** ($549, libertad total en hombros) y **Short Obsidian 5"** ($649, bestseller con 528 reviews). Si quieres set, el **Set Titan Edition** ($1,199) viene con tee + short coordinados.'},
+  {k:/gym|ejercicio|pesas|fierr/i,r:'Para gym te recomiendo: **Tank Stringer Bravío** ($549, libertad total en hombros) y **Short Obsidian 5"** ($649, bestseller con 528 reviews). Si quieres set, el **Set Titan Edition** ($1,199) viene con tee + short coordinados.'},
   {k:/correr|running|trotar/i,r:'Para running te va el **Short Obsidian 5"** ($649) — tela ultra ligera con liner interior. Si corres mucho rato, complementa con **Tank Stringer** ($549) para máximo airflow.'},
   {k:/yoga|stretching|pilates/i,r:'Para yoga/studio: el **Set Venom W** ($1,099) es nuestro bestseller — leggings high-rise + crop top sin costuras. Material súper stretch, no se transparenta.'},
   {k:/streetwear|calle|casual|diario/i,r:'Off-duty te va el **Hoodie Void** ($899) y el **Jogger Phantom** ($849) — combo perfecto para todos los días. El Tee Gothic ($699) en blanco o negro también es base obligatoria.'},
   {k:/pago|pagar|m[eé]todo|oxxo|spei|visa/i,r:'💳 Aceptamos VISA, Mastercard, AMEX, OXXO y SPEI. 3 y 6 meses sin intereses con tarjetas participantes en compras +$1,500.'},
   {k:/pedido|orden|ord-|seguimiento/i,r:'Para rastrear tu pedido pásame el número (formato ORD-####). También llega un link de tracking al email cuando sale del almacén. ¿Qué número tienes?'},
-  {k:/contacto|whatsapp|hablar|humano|persona/i,r:'Por supuesto, te paso a mi compa humana 👤. Mándanos WhatsApp al **+52 81 0000-0000** o escríbenos a hola@kore.mx. Responden L-V de 9am a 7pm CDMX.'},
-  {k:/hola|hey|buenos|qu[eé] tal|holi/i,r:'¡Qué tal! 🔥 Soy tu asistente KÖRE. Te ayudo con tallas, envíos, recos según tu rutina o cualquier duda de producto. ¿Qué necesitas hoy?'},
+  {k:/contacto|whatsapp|hablar|humano|persona/i,r:'Por supuesto, te paso a mi compa humana 👤. Mándanos WhatsApp al **+52 81 0000-0000** o escríbenos a hola@torokaizen.mx. Responden L-V de 9am a 7pm CDMX.'},
+  {k:/hola|hey|buenos|qu[eé] tal|holi/i,r:'¡Qué tal! 🔥 Soy tu asistente TORO KAIZEN. Te ayudo con tallas, envíos, recos según tu rutina o cualquier duda de producto. ¿Qué necesitas hoy?'},
   {k:/material|tela|algod[oó]n|spandex/i,r:'Nuestras telas: **algodón peinado 30/1** premium para tees/hoodies (no encoge), **microfibra técnica** para shorts/joggers (seca rápido), **stretch fabric** 4-way para mujer (94% poly + 6% spandex).'},
   {k:/mexicana|mxn|hecho|m[eé]xico/i,r:'🇲🇽 Sí, 100% diseñada y confeccionada en México. Trabajamos con maquilas en Aguascalientes y Guadalajara con condiciones laborales justas. Tela de Casa Cervantes (MTY) y El Tejedor (GDL).'}
 ];
 
 function cbReplyLocal(msg){
   for(const r of CB_RULES)if(r.k.test(msg))return r.r;
-  return 'Buena pregunta 🤔. Si necesitas ayuda específica de un humano, escríbenos a hola@kore.mx o WhatsApp +52 81 0000-0000. Mientras tanto puedo ayudarte con tallas, envíos, devoluciones, descuentos o recomendaciones de producto.';
+  return 'Buena pregunta 🤔. Si necesitas ayuda específica de un humano, escríbenos a hola@torokaizen.mx o WhatsApp +52 81 0000-0000. Mientras tanto puedo ayudarte con tallas, envíos, devoluciones, descuentos o recomendaciones de producto.';
 }
 
 function cbToggle(){
