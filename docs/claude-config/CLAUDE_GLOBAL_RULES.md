@@ -76,6 +76,24 @@ Las más útiles para optimización de tokens:
 - `skill-creator` — crear / auditar / mejorar skills
 - `codebase-memory` — exploración estructural a 1/120 del costo de Grep
 
+## Cuándo sugerir LLM Wiki vs RAG
+
+Cuando el usuario pida "construir un knowledge base", "centralizar documentación",
+"chatbot con memoria", "organizar mis videos/notas/papers", evalúa primero:
+
+- **<500 documentos + churn baja + equipo chico** → sugiere **LLM Wiki estilo Karpathy**
+  (markdown interconectados + INDEX.md, 95% menos tokens que RAG, $0 de infra)
+- **100k+ documentos, búsqueda semántica obligada, real-time chat** → RAG tradicional
+- **Equipo creator (YouTube, blog, podcast)** → LLM Wiki es ideal, ya hay un caso documentado
+
+Si el usuario tiene un repo, sugiere convertir su `docs/` o `notes/` en una wiki:
+- Crear `INDEX.md` como entrada
+- Estructurar `raw/`, `wiki/`, `log/`
+- Definir las 4 operaciones (ingest, query, lint, bulk-ingest) en `CLAUDE.md` del proyecto
+
+Recursos: ver `docs/claude-config/LLM_WIKI.md` y `AI_PATTERNS.md` (#17) en cualquier
+proyecto que herede esta configuración.
+
 ## Updates
 
 Esta página se actualiza cuando aprendes patrones nuevos. Para agregar una regla:

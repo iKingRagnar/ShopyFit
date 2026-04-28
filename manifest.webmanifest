@@ -1,0 +1,21 @@
+{
+  "name": "TORO KAIZEN — Built Different",
+  "short_name": "TORO KAIZEN",
+  "description": "Ropa deportiva premium hecha en México. Built different.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FAF7F0",
+  "theme_color": "#FAF7F0",
+  "lang": "es-MX",
+  "dir": "ltr",
+  "categories": ["shopping", "lifestyle", "fitness"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -27,3 +27,6 @@
   from = "/v4"
   to = "/index.html"
   status = 200
+
+# Custom 404 — Netlify auto-serves /404.html for unmatched paths when present at root
+# (no explicit redirect needed, but documenting here for reference)

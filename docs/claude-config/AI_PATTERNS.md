@@ -411,5 +411,67 @@ function initScrollMorph(section){
 
 ---
 
+## 17. LLM Wiki — conocimiento interconectado (vs RAG)
+
+**Problema:** RAG tradicional (embeddings + chunks + vector DB) cuesta dinero, es difícil de mantener, devuelve resultados por similitud semántica que a veces no son relevantes, y cada nueva query reproduce el lookup desde cero.
+
+**Solución (Karpathy):** wiki estilo Wikipedia hecha de markdown interconectados. Un INDEX.md es la entrada; el LLM navega siguiendo wikilinks `[[archivo]]`. Para bases de hasta ~500 documentos, ahorra 95%+ tokens vs RAG y produce respuestas más precisas porque las relaciones son explícitas, no inferidas.
+
+**Arquitectura — 3 capas:**
+
+```
+raw/  → archivos crudos sin clasificar (PDFs, transcripts, captures)
+wiki/ → markdown organizados por categoría, interconectados con [[wikilinks]]
+CLAUDE.md → reglas para el agente que mantiene la wiki
+```
+
+**4 operaciones (todas son prompts al LLM):**
+
+| Op | Función | Frecuencia |
+|----|---------|------------|
+| `ingest <file>` | Clasifica, etiqueta, conecta 1 archivo nuevo | Por archivo nuevo |
+| `query <pregunta>` | Lee INDEX, navega wikilinks, responde | Diario en chat |
+| `lint` | Busca huérfanos, sugiere conexiones | Mensual |
+| `bulk-ingest <dir>` | Procesa N archivos + lint automático | Setup inicial |
+
+**HTML/CSS estructura típica del vault:**
+
+```
+mi-wiki/
+├── CLAUDE.md           # Reglas del agente
+├── INDEX.md            # Mapa principal con [[wikilinks]] a todo
+├── raw/                # Crudos (transcripts, papers, etc.)
+│   └── processed/      # Movidos aquí tras ingest
+├── wiki/
+│   ├── conceptos/      # Conceptos abstractos
+│   ├── entidades/      # Personas, empresas, productos
+│   └── sintesis/       # Análisis derivados
+└── log/
+    └── YYYY-MM-DD.md   # Logs operacionales
+```
+
+**Cuándo usarlo:**
+- Knowledge base personal o de equipo chico (creator, dev team, soporte)
+- Hasta ~500 docs con baja churn
+- Necesitas portabilidad entre agentes (Claude Code, OpenCode, Manus, Cursor)
+- Quieres editar a mano cuando el LLM se equivoca
+
+**Cuándo NO usarlo:**
+- 100k+ documentos con búsqueda semántica obligada → RAG sigue ganando
+- Real-time chat con miles de queries/min → latencia de RAG es menor
+- Multi-tenant con datos aislados por usuario → infra de RAG es más limpia
+
+**Stack:**
+- **Obsidian** (gratis) para visualizar grafo + editar
+- **Claude Code** (o cualquier agente) para operaciones
+- **Git** para versionado
+- **Obsidian Clipper** plugin para mandar webpages al raw con un click
+
+**Costo:** $0 de infra. Solo tu plan de Claude.
+
+**Aplicación en este repo:** `docs/claude-config/` ES un mini LLM Wiki. INDEX.md es la entrada, 6 nodos especializados (SETUP, RULES, OPTIMIZATION, PATTERNS, MORPH, LLM_WIKI), todos enlazados. Cuando preguntas algo de Claude Code, leo INDEX primero y navego — no releo todo cada vez. Documentación completa en [`LLM_WIKI.md`](./LLM_WIKI.md).
+
+---
+
 > Inspirado en sistemas reales de e-commerce mexicano con n8n + WhatsApp Business API + Postgres + Telegram.
 > Aplica en cualquier orquestador (n8n, Make, Pipedream, Temporal, Inngest, Cloudflare Workflows, Anthropic Agent SDK).
