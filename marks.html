@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Marks · TORO KAIZEN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--lime:#D4FF00;--black:#0d0d0e;--bg-1:#141416;--bg-2:#1c1c1f;--bg-3:#26262a;--border:#3a3a40;--border-soft:#2a2a30;--white:#fff;--text:#f5f5f2;--text-2:#c8c8c2;--text-3:#8e8e88}
+body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;line-height:1.6;min-height:100vh;padding:80px 6vw 120px}
+
+.topbar{position:fixed;top:0;left:0;right:0;height:64px;background:rgba(13,13,14,.92);backdrop-filter:blur(22px);border-bottom:.5px solid var(--border-soft);display:flex;align-items:center;justify-content:space-between;padding:0 28px;z-index:100}
+.tb-l{display:flex;align-items:center;gap:18px}
+.tb-brand{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.12em;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:10px}
+.tb-badge{width:30px;height:26px;border:1.5px solid var(--lime);display:flex;align-items:center;justify-content:center;padding:2px;color:var(--lime)}
+.tb-back{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:8px 14px;border:.5px solid var(--border);transition:all .2s}
+.tb-back:hover{color:var(--lime);border-color:var(--lime)}
+
+.head{margin-bottom:60px;max-width:880px}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.22em;color:var(--lime);text-transform:uppercase;margin-bottom:14px}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,84px);letter-spacing:.02em;line-height:.95;color:var(--white);margin-bottom:18px}
+h1 .lime{color:var(--lime)}
+h1 .kanji{font-family:'Noto Serif JP',serif;font-size:.55em;color:var(--lime);letter-spacing:0;margin-left:.4em;font-weight:700}
+.lead{color:var(--text-2);font-size:15px;max-width:640px}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--bg-2);border:.5px solid var(--border-soft);padding:36px}
+.card-canvas{aspect-ratio:1.4/1;background:var(--bg-3);display:flex;align-items:center;justify-content:center;margin-bottom:24px;border:.5px solid var(--border-soft);position:relative;overflow:hidden}
+.card-canvas svg{width:50%;max-width:240px;color:var(--lime);filter:drop-shadow(0 0 24px rgba(212,255,0,.15))}
+.card-canvas.dark{background:#0a0a0c}
+.card-canvas.lime{background:var(--lime)}
+.card-canvas.lime svg{color:var(--black);filter:none}
+.card-canvas.outline svg{color:transparent;stroke:var(--lime);stroke-width:1.5}
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:24px}
+.card-grid .card-canvas{aspect-ratio:1/1;margin:0}
+.card-grid .card-canvas svg{width:55%;max-width:none}
+.tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--text-3);text-transform:uppercase}
+.label{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:.04em;color:var(--white);line-height:1;margin:6px 0 10px}
+.desc{font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:18px}
+.specs{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.spec{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:5px 11px;border:.5px solid var(--border-soft);color:var(--text-2)}
+.spec.lime{background:rgba(212,255,0,.08);color:var(--lime);border-color:rgba(212,255,0,.4)}
+
+.app-strip{margin-top:80px}
+.app-strip h2{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:.04em;color:var(--white);margin-bottom:6px}
+.app-strip .sub{color:var(--text-3);font-size:13px;margin-bottom:30px}
+.app-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:900px){.app-grid{grid-template-columns:repeat(2,1fr)}}
+.app{aspect-ratio:1/1;background:var(--bg-3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;border:.5px solid var(--border-soft);padding:18px}
+.app svg{width:40%;color:var(--lime)}
+.app.tee{background:#000;color:#fff}
+.app.tee svg{color:var(--lime);width:25%}
+.app.cap{background:linear-gradient(180deg,#1a1a1a 60%,#0d0d0e 60%);color:#fff;justify-content:flex-start;padding-top:30%}
+.app.cap svg{width:30%}
+.app.lime-ko{background:var(--lime);color:var(--black)}
+.app.lime-ko svg{color:var(--black);width:35%}
+.app .ttl{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-3)}
+.app.tee .ttl,.app.cap .ttl{color:rgba(255,255,255,.6)}
+.app.lime-ko .ttl{color:rgba(0,0,0,.55)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="tb-l">
+    <a href="index.html" class="tb-brand">
+      <div class="tb-badge"><svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:18px;height:14px;color:var(--lime)"><g fill="currentColor"><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g><circle cx="40" cy="46" r="3.5" fill="#0d0d0e"/><circle cx="60" cy="46" r="3.5" fill="#0d0d0e"/></svg></div>
+      TORO KAIZEN
+    </a>
+  </div>
+  <a href="index.html" class="tb-back">← Volver</a>
+</div>
+
+<header class="head">
+  <div class="eyebrow">Brand System · v1</div>
+  <h1>Sistema de <span class="lime">marcas</span> <span class="kanji">改善</span></h1>
+  <p class="lead">4 variantes del mark del toro para distintos usos: hangtag, label interno, prints grandes en hoodies, embroidery en gorras y stickers de empaque. Todas vectoriales, escalan a cualquier tamaño y heredan color con <code style="color:var(--lime);font-family:'JetBrains Mono'">currentColor</code>.</p>
+</header>
+
+<section class="grid">
+
+  <!-- MARK 01 — Frontal Head -->
+  <article class="card">
+    <div class="card-canvas">
+      <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+        <g><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g>
+        <circle cx="40" cy="46" r="3.5" fill="#26262a"/><circle cx="60" cy="46" r="3.5" fill="#26262a"/>
+        <ellipse cx="45" cy="62" rx="2" ry="2.5" fill="#26262a"/><ellipse cx="55" cy="62" rx="2" ry="2.5" fill="#26262a"/>
+        <circle cx="50" cy="70" r="2.5" fill="none" stroke="#26262a" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div class="tag">Mark 01 · primary</div>
+    <div class="label">FRONTAL HEAD</div>
+    <p class="desc">El mark principal. Cabeza frontal con cuernos curvos hacia arriba, ojos, nariz y nose ring. Pensado para badge del logo, avatar del chat, watermark del hero.</p>
+    <div class="specs"><span class="spec lime">Primary</span><span class="spec">SVG · 480 B</span><span class="spec">Min size 16px</span></div>
+  </article>
+
+  <!-- MARK 02 — Skull -->
+  <article class="card">
+    <div class="card-canvas">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+        <g><path d="M28 36Q12 28 6 8Q12 4 22 8Q32 18 38 34Z"/><path d="M72 36Q88 28 94 8Q88 4 78 8Q68 18 62 34Z"/><path d="M28 34L72 34Q80 46 76 60L66 70L62 88L54 80L46 80L38 88L34 70L24 60Q20 46 28 34Z"/></g>
+        <path d="M34 50L44 60L34 60Z" fill="#26262a"/>
+        <path d="M66 50L56 60L66 60Z" fill="#26262a"/>
+        <path d="M48 64L52 64L52 76L48 76Z" fill="#26262a"/>
+        <path d="M44 78L56 78L52 86L48 86Z" fill="#26262a"/>
+      </svg>
+    </div>
+    <div class="tag">Mark 02 · alternate</div>
+    <div class="label">SKULL · X-EYES</div>
+    <p class="desc">Versión calavera con ojos en X y mandíbula expuesta. Más agresiva — para drops limitados, prints grandes en espalda de hoodies, gorras tipo trucker. Lee fuerte a 200px+.</p>
+    <div class="specs"><span class="spec">SVG · 540 B</span><span class="spec">Min size 32px</span><span class="spec">Streetwear</span></div>
+  </article>
+
+  <!-- MARK 03 — Charging Bull -->
+  <article class="card">
+    <div class="card-canvas">
+      <svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+        <!-- body -->
+        <path d="M20 50Q22 36 36 32L60 32Q64 22 76 22Q86 22 92 28L94 22L98 24L96 30Q104 30 110 36L116 32L114 38Q120 42 122 50L122 56L116 56L114 60L108 60L106 56L84 56L82 60L76 60L74 56L52 56L50 60L44 60L42 56L36 56Q26 56 22 50Z"/>
+        <!-- horn -->
+        <path d="M82 22Q80 14 86 8L92 12Q92 18 90 24Z"/>
+        <!-- legs -->
+        <rect x="42" y="56" width="6" height="14"/>
+        <rect x="74" y="56" width="6" height="14"/>
+        <rect x="106" y="56" width="6" height="14"/>
+        <rect x="50" y="56" width="6" height="14"/>
+        <!-- tail -->
+        <path d="M22 44L14 40L12 44L18 50Z"/>
+        <!-- eye/nostril -->
+        <circle cx="98" cy="36" r="1.8" fill="#26262a"/>
+        <circle cx="106" cy="40" r="1.5" fill="#26262a"/>
+      </svg>
+    </div>
+    <div class="tag">Mark 03 · narrative</div>
+    <div class="label">CHARGING BULL</div>
+    <p class="desc">Toro embistiendo de perfil. Para usos editoriales: lookbook, banners de campaña, stickers de empaque. Funciona en composiciones horizontales (hangtag, label, web hero).</p>
+    <div class="specs"><span class="spec">SVG · 720 B</span><span class="spec">Editorial</span><span class="spec">Horizontal</span></div>
+  </article>
+
+  <!-- MARK 04 — Horns Only -->
+  <article class="card">
+    <div class="card-canvas">
+      <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+        <path d="M30 36Q14 28 8 8Q14 4 22 8Q32 18 38 36Z"/>
+        <path d="M70 36Q86 28 94 8Q88 4 78 8Q68 18 62 36Z"/>
+        <rect x="42" y="36" width="16" height="3"/>
+      </svg>
+    </div>
+    <div class="tag">Mark 04 · monogram</div>
+    <div class="label">HORNS ONLY</div>
+    <p class="desc">Solo los cuernos + barra base. Versión minimal para favicon, sello de prenda interior, embossing en piel, embroidery pequeño en cuff de calcetín o gorra. Lee perfecto a 12px.</p>
+    <div class="specs"><span class="spec">SVG · 220 B</span><span class="spec">Min size 12px</span><span class="spec">Embroidery-ready</span></div>
+  </article>
+
+</section>
+
+<!-- COLOR / BACKGROUND TREATMENTS -->
+<section class="app-strip">
+  <h2>Tratamientos de color</h2>
+  <div class="sub">El primary mark sobre 4 fondos. Mantiene legibilidad en lime/black/outline.</div>
+  <div class="grid">
+    <div class="card-grid">
+      <div class="card-canvas"><svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g></svg></div>
+      <div class="card-canvas dark"><svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g></svg></div>
+      <div class="card-canvas lime"><svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g></svg></div>
+      <div class="card-canvas outline"><svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></svg></div>
+      <div class="card-canvas"><svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="opacity:.4"><g><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g></svg></div>
+      <div class="card-canvas dark"><svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="#fff"><g><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g></svg></div>
+    </div>
+    <article class="card" style="display:flex;flex-direction:column;justify-content:center">
+      <div class="tag">Reglas de color</div>
+      <div class="label">USO RESPONSABLE</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;color:var(--text-2);font-size:13px;line-height:1.6;margin-top:8px">
+        <li>✓ <b style="color:var(--white)">Lime sobre negro</b> — preferido en digital y dark wear</li>
+        <li>✓ <b style="color:var(--white)">Negro sobre lime</b> — para hangtags y cajas</li>
+        <li>✓ <b style="color:var(--white)">Outline lime</b> — superpuesto a foto editorial</li>
+        <li>✓ <b style="color:var(--white)">Blanco sobre negro</b> — wear claro/casual</li>
+        <li>✗ <b style="color:#ff3b41">Lime sobre lime</b> — nunca</li>
+        <li>✗ <b style="color:#ff3b41">Distorsionar proporciones</b> — siempre vectorial</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- PRODUCT APPLICATION -->
+<section class="app-strip">
+  <h2>Aplicaciones físicas</h2>
+  <div class="sub">Mockups conceptuales — cómo se ve aplicado en cada touchpoint.</div>
+  <div class="app-grid">
+    <div class="app tee">
+      <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g></svg>
+      <div class="ttl">Print pecho · Tee black</div>
+    </div>
+    <div class="app cap">
+      <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g></svg>
+      <div class="ttl">Embroidery · cap front</div>
+    </div>
+    <div class="app lime-ko">
+      <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g></svg>
+      <div class="ttl">Hangtag · lime KO</div>
+    </div>
+    <div class="app">
+      <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M30 36Q14 28 8 8Q14 4 22 8Q32 18 38 36Z"/><path d="M70 36Q86 28 94 8Q88 4 78 8Q68 18 62 36Z"/><rect x="42" y="36" width="16" height="3"/></svg>
+      <div class="ttl">Sello · package &amp; sock cuff</div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal de Socios · TORO KAIZEN</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--lime:#D4FF00;--black:#0d0d0e;--bg-1:#141416;--bg-2:#1c1c1f;--bg-3:#26262a;--border:#3a3a40;--border-soft:#2a2a30;--white:#fff;--text:#f5f5f2;--text-2:#c8c8c2;--text-3:#8e8e88;--red:#ff3b41;--green:#3dd96f;--amber:#ffb547}
+body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;line-height:1.6;min-height:100vh}
+
+/* TOPBAR */
+.topbar{position:fixed;top:0;left:0;right:0;height:64px;background:rgba(13,13,14,.92);backdrop-filter:blur(22px);border-bottom:.5px solid var(--border-soft);display:flex;align-items:center;justify-content:space-between;padding:0 28px;z-index:100}
+.tb-brand{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.12em;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:10px}
+.tb-badge{width:30px;height:26px;border:1.5px solid var(--lime);display:flex;align-items:center;justify-content:center;padding:2px;color:var(--lime)}
+.tb-crumb{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-3);padding-left:18px;border-left:1px solid var(--border-soft);margin-left:18px}
+.tb-crumb b{color:var(--lime)}
+.tb-r{display:flex;align-items:center;gap:14px}
+.tb-back{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:8px 14px;border:.5px solid var(--border);transition:all .2s}
+.tb-back:hover{color:var(--lime);border-color:var(--lime)}
+.tb-user{font-size:12px;color:var(--text-3)}
+.tb-user b{color:var(--white)}
+
+/* GATE (login) */
+.gate{position:fixed;inset:0;background:linear-gradient(135deg,var(--black) 0%,var(--bg-1) 100%);display:flex;align-items:center;justify-content:center;z-index:200;padding:32px}
+.gate.off{display:none}
+.gate-card{background:var(--bg-2);border:.5px solid var(--border-soft);padding:48px 40px;max-width:440px;width:100%;text-align:center;position:relative;overflow:hidden}
+.gate-bull{position:absolute;right:-30px;top:-30px;width:160px;height:130px;color:var(--lime);opacity:.06;pointer-events:none}
+.gate-bull svg{width:100%;height:100%}
+.gate-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.22em;color:var(--lime);text-transform:uppercase;margin-bottom:14px}
+.gate-h{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--white);line-height:1;margin-bottom:8px}
+.gate-h .kanji{font-family:'Noto Serif JP',serif;font-size:.55em;color:var(--lime);letter-spacing:0;margin-left:.3em}
+.gate-sub{color:var(--text-2);font-size:13px;margin-bottom:30px}
+.gate-form{display:flex;flex-direction:column;gap:10px}
+.gate-input{background:var(--bg-3);border:.5px solid var(--border);color:var(--text);padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:18px;text-align:center;letter-spacing:.4em}
+.gate-input:focus{outline:none;border-color:var(--lime)}
+.gate-btn{font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;background:var(--lime);color:var(--black);border:none;cursor:pointer;padding:14px 18px;transition:background .2s}
+.gate-btn:hover{background:var(--white)}
+.gate-err{color:var(--red);font-size:12px;margin-top:8px;min-height:18px}
+.gate-foot{margin-top:28px;font-size:11px;color:var(--text-3);line-height:1.6}
+.gate-foot a{color:var(--text-2);text-decoration:underline}
+
+/* PORTAL */
+.portal{padding:96px 6vw 80px;max-width:1400px;margin:0 auto;display:none}
+.portal.on{display:block}
+.welcome{margin-bottom:48px}
+.welcome .eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.22em;color:var(--lime);text-transform:uppercase;margin-bottom:14px}
+.welcome h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,88px);line-height:.95;color:var(--white);margin-bottom:14px}
+.welcome h1 .lime{color:var(--lime)}
+.welcome h1 .kanji{font-family:'Noto Serif JP',serif;font-size:.5em;color:var(--lime);letter-spacing:0;margin-left:.3em}
+.welcome p{color:var(--text-2);font-size:15px;max-width:640px}
+
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:36px}
+@media(max-width:900px){.kpi-row{grid-template-columns:repeat(2,1fr)}}
+.kpi{padding:20px;background:var(--bg-2);border:.5px solid var(--border-soft);border-left:2px solid var(--lime)}
+.kpi-l{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px}
+.kpi-v{font-family:'Bebas Neue',sans-serif;font-size:36px;line-height:1;color:var(--white);margin-bottom:6px}
+.kpi-v.lime{color:var(--lime)}
+.kpi-d{font-size:11px;color:var(--text-2)}
+.kpi-d.up{color:var(--green)}
+.kpi-d.down{color:var(--red)}
+
+.tile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:48px}
+@media(max-width:900px){.tile-grid{grid-template-columns:1fr}}
+.tile{background:var(--bg-2);border:.5px solid var(--border-soft);padding:28px;text-decoration:none;color:inherit;transition:all .2s;position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:200px}
+.tile:hover{border-color:var(--lime);transform:translateY(-2px)}
+.tile-icon{font-size:30px;margin-bottom:14px}
+.tile h3{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.04em;color:var(--white);line-height:1.1;margin-bottom:8px}
+.tile p{color:var(--text-2);font-size:13px;line-height:1.5;margin-bottom:14px;flex:1}
+.tile-arrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--lime);font-weight:700;display:flex;align-items:center;gap:8px}
+.tile.featured{background:linear-gradient(135deg,rgba(212,255,0,.08),var(--bg-2));border-color:rgba(212,255,0,.3)}
+.tile-pill{position:absolute;top:14px;right:14px;font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;background:var(--lime);color:var(--black);padding:3px 9px}
+
+.section-h{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:.04em;color:var(--white);margin-bottom:18px;display:flex;align-items:center;gap:14px}
+.section-h::before{content:'';width:30px;height:2px;background:var(--lime)}
+
+.foot{padding:24px 6vw;border-top:.5px solid var(--border-soft);display:flex;justify-content:space-between;font-size:11px;color:var(--text-3);flex-wrap:wrap;gap:14px}
+.foot button{background:none;border:none;color:var(--text-3);cursor:pointer;font-size:11px;text-decoration:underline}
+.foot button:hover{color:var(--lime)}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ GATE ═══════════ -->
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <div class="gate-bull">
+      <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g></svg>
+    </div>
+    <div class="gate-eyebrow">Acceso restringido</div>
+    <h1 class="gate-h">PORTAL <span style="color:var(--lime)">SOCIOS</span><span class="kanji">改善</span></h1>
+    <p class="gate-sub">Sólo socios y empleados de TORO KAIZEN. Ingresa tu PIN para continuar.</p>
+    <form class="gate-form" onsubmit="tryUnlock(event)">
+      <input class="gate-input" type="password" id="pin" inputmode="numeric" maxlength="6" placeholder="• • • •" autocomplete="off" required>
+      <button class="gate-btn" type="submit">Entrar</button>
+      <div class="gate-err" id="gateErr"></div>
+    </form>
+    <div class="gate-foot">
+      ¿Cliente buscando comprar? <a href="index.html">Volver a la tienda →</a><br>
+      <span style="opacity:.5">PIN demo: <code style="color:var(--lime)">1234</code> · auth real con Supabase pronto</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ TOPBAR (visible only after unlock) ═══════════ -->
+<div class="topbar" style="display:none" id="topbar">
+  <div style="display:flex;align-items:center">
+    <a href="index.html" class="tb-brand">
+      <div class="tb-badge"><svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:18px;height:14px;color:var(--lime)"><g fill="currentColor"><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g><circle cx="40" cy="46" r="3.5" fill="#0d0d0e"/><circle cx="60" cy="46" r="3.5" fill="#0d0d0e"/></svg></div>
+      TORO KAIZEN
+    </a>
+    <div class="tb-crumb">Socios · <b>Portal</b></div>
+  </div>
+  <div class="tb-r">
+    <span class="tb-user">Sesión: <b id="userTag">SOCIO</b></span>
+    <a href="index.html" class="tb-back">← Tienda</a>
+    <button class="tb-back" onclick="logout()" style="cursor:pointer">Salir</button>
+  </div>
+</div>
+
+<!-- ═══════════ PORTAL ═══════════ -->
+<main class="portal" id="portal">
+
+  <header class="welcome">
+    <div class="eyebrow">Centro operativo · acceso restringido</div>
+    <h1>BIENVENIDO AL <span class="lime">SQUAD</span> <span class="kanji">改善</span></h1>
+    <p>Aquí ves todo lo que el cliente <b>no ve</b>: cotizaciones de proveedores, márgenes, métricas, MRP, decisiones automáticas de IA. Mejora continua, en vivo.</p>
+  </header>
+
+  <!-- KPIs -->
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-l">Ventas hoy</div><div class="kpi-v lime">$32,480</div><div class="kpi-d up">▲ 18% vs ayer</div></div>
+    <div class="kpi"><div class="kpi-l">Margen bruto</div><div class="kpi-v">72.6%</div><div class="kpi-d up">▲ 1.4 pts mes</div></div>
+    <div class="kpi"><div class="kpi-l">Pedidos pendientes</div><div class="kpi-v">5</div><div class="kpi-d">3 con MRP listo</div></div>
+    <div class="kpi"><div class="kpi-l">Acciones IA</div><div class="kpi-v lime">7</div><div class="kpi-d">3 alta prioridad</div></div>
+  </div>
+
+  <!-- Tiles to operator tools -->
+  <h2 class="section-h">Herramientas</h2>
+  <div class="tile-grid">
+
+    <a class="tile featured" href="dashboard.html">
+      <span class="tile-pill">★ NUEVO</span>
+      <div class="tile-icon">🤖</div>
+      <h3>OPS AI DASHBOARD</h3>
+      <p>Centro completo de operación con AI Advisor (Claude), inventario FIFO, pricing engine, automation flows y ranking de proveedores.</p>
+      <div class="tile-arrow">Abrir dashboard →</div>
+    </a>
+
+    <a class="tile" href="#sourcing">
+      <div class="tile-icon">🔍</div>
+      <h3>B2B SOURCING</h3>
+      <p>Comparador en vivo de proveedores textiles mexicanos. Precios actualizados diariamente, mejor costo por SKU resaltado en lime.</p>
+      <div class="tile-arrow">Ver comparador ↓</div>
+    </a>
+
+    <a class="tile" href="#fulfillment">
+      <div class="tile-icon">⚡</div>
+      <h3>FULFILLMENT MRP</h3>
+      <p>Cuando entra un pedido, el sistema calcula BOM, agrupa por proveedor y genera la PO lista para enviar. Click en cualquier pedido.</p>
+      <div class="tile-arrow">Ver pedidos ↓</div>
+    </a>
+
+    <a class="tile" href="dashboard.html#m-pricing">
+      <div class="tile-icon">💰</div>
+      <h3>PRICING ENGINE</h3>
+      <p>3 tiers de PV calculados desde tu BOM real (Value / Mid / Premium). A/B test continuo y reglas dinámicas por rotación.</p>
+      <div class="tile-arrow">Abrir pricing →</div>
+    </a>
+
+    <a class="tile" href="dashboard.html#m-fifo">
+      <div class="tile-icon">📦</div>
+      <h3>INVENTARIO FIFO</h3>
+      <p>Lotes ordenados por antigüedad, alertas de stock muerto (>60d) y reorden sugerido por velocidad × lead time.</p>
+      <div class="tile-arrow">Ver inventario →</div>
+    </a>
+
+    <a class="tile" href="marks.html">
+      <div class="tile-icon">🐂</div>
+      <h3>BRAND MARKS</h3>
+      <p>Las 4 variantes del mark del toro y sus aplicaciones (tee print, embroidery, hangtag, sticker). Vectorial, escala libre.</p>
+      <div class="tile-arrow">Ver brand system →</div>
+    </a>
+
+  </div>
+
+  <!-- Embedded sourcing + fulfillment placeholders (filled by next chunks) -->
+  <div id="sourcing-mount"></div>
+  <div id="fulfillment-mount"></div>
+
+</main>
+
+<!-- ═══════════ FOOT ═══════════ -->
+<footer class="foot" style="display:none" id="portalFoot">
+  <div>© 2026 TORO KAIZEN · Portal interno · No compartir credenciales</div>
+  <div><button onclick="logout()">Cerrar sesión</button></div>
+</footer>
+
+<script>
+// ═══════ Auth gate (frontend-only, demo) ═══════
+// TODO: replace with Supabase Auth (or similar) — endpoint /api/auth + JWT cookie.
+// Right now uses a hardcoded PIN so we can demo the separation. Move to backend before
+// putting any real data behind it. The PIN is NOT a security boundary today.
+const PIN_OK='1234';
+const SESS_KEY='tk_socio_session';
+
+function tryUnlock(e){
+  e.preventDefault();
+  const v=document.getElementById('pin').value.trim();
+  const err=document.getElementById('gateErr');
+  if(v===PIN_OK){
+    sessionStorage.setItem(SESS_KEY,'1');
+    showPortal();
+  }else{
+    err.textContent='PIN incorrecto · intenta de nuevo';
+    document.getElementById('pin').value='';
+    setTimeout(()=>{err.textContent=''},3000);
+  }
+}
+
+function showPortal(){
+  document.getElementById('gate').classList.add('off');
+  document.getElementById('topbar').style.display='flex';
+  document.getElementById('portal').classList.add('on');
+  document.getElementById('portalFoot').style.display='flex';
+}
+
+function logout(){
+  sessionStorage.removeItem(SESS_KEY);
+  location.reload();
+}
+
+// Auto-unlock if session present
+if(sessionStorage.getItem(SESS_KEY)==='1'){
+  showPortal();
+}
+
+// Focus PIN input on load
+document.addEventListener('DOMContentLoaded',()=>{
+  const p=document.getElementById('pin');
+  if(p && !sessionStorage.getItem(SESS_KEY))p.focus();
+});
+</script>
+</body>
+</html>
