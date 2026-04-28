@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TOMASQ · Ops AI Dashboard</title>
+<title>KÖRE · Ops AI Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -121,7 +121,7 @@ body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;fo
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="tb-l">
-    <a href="index.html" class="tb-brand"><div class="tb-badge">TQ</div>TOMASQ</a>
+    <a href="index.html" class="tb-brand"><div class="tb-badge">KÖ</div>KÖRE</a>
     <div class="tb-crumb">Ops · <b>AI Dashboard</b></div>
   </div>
   <div class="tb-r">
@@ -269,7 +269,7 @@ body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;fo
       </header>
 
       <div class="alert red"><span class="ico">🔴</span><div><b>Stock muerto detectado</b> · 2 SKUs sin venta en los últimos 60 días — capital inmovilizado: $8,420</div><div class="right"><button class="btn sm" onclick="toast('Liquidación al 30% activada','warn')">Liquidar 30%</button></div></div>
-      <div class="alert amber"><span class="ico">⚠️</span><div><b>Reorden urgente</b> · Hoodie Void TQ — 14 unidades restantes, lead time 12d, velocidad 4.1/día</div><div class="right"><button class="btn sm" onclick="suggestReorder('TQ-HOOD-VOID')">Sugerir reorden</button></div></div>
+      <div class="alert amber"><span class="ico">⚠️</span><div><b>Reorden urgente</b> · Hoodie Void KÖ — 14 unidades restantes, lead time 12d, velocidad 4.1/día</div><div class="right"><button class="btn sm" onclick="suggestReorder('TQ-HOOD-VOID')">Sugerir reorden</button></div></div>
 
       <div class="grid grid-4" style="margin:20px 0">
         <div class="kpi"><div class="kpi-l">SKUs activos</div><div class="kpi-v">42</div><div class="kpi-d">8 nichos</div></div>
@@ -346,7 +346,7 @@ body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;fo
               <tr><td><b>Tank Stringer TQ</b></td><td class="mono">$148</td><td>$549</td><td>$449</td><td><b style="color:var(--lime)">$549</b></td><td>$649</td><td>73.0%</td><td><button class="btn sm" onclick="toast('Edit Tank Stringer')">Editar</button></td></tr>
               <tr><td><b>Short Obsidian 5"</b></td><td class="mono">$175</td><td>$649</td><td>$549</td><td><b style="color:var(--lime)">$649</b></td><td>$799</td><td>73.0%</td><td><button class="btn sm" onclick="toast('Edit Short Obsidian')">Editar</button></td></tr>
               <tr><td><b>Set Titan Edition</b></td><td class="mono">$385</td><td>$1,199</td><td>$999</td><td><b style="color:var(--lime)">$1,199</b></td><td>$1,499</td><td>67.9%</td><td><button class="btn sm" onclick="toast('Edit Set Titan')">Editar</button></td></tr>
-              <tr><td><b>Hoodie Void TQ</b></td><td class="mono">$268</td><td>$899</td><td>$799</td><td>$899</td><td><b style="color:var(--amber)">$949 ↑</b></td><td>71.7%</td><td><button class="btn sm primary" onclick="toast('✓ Hoodie Void → $949','success')">Subir</button></td></tr>
+              <tr><td><b>Hoodie Void KÖ</b></td><td class="mono">$268</td><td>$899</td><td>$799</td><td>$899</td><td><b style="color:var(--amber)">$949 ↑</b></td><td>71.7%</td><td><button class="btn sm primary" onclick="toast('✓ Hoodie Void → $949','success')">Subir</button></td></tr>
               <tr><td><b>Jogger Phantom TQ</b></td><td class="mono">$232</td><td>$849</td><td>$749</td><td><b style="color:var(--lime)">$849</b></td><td>$999</td><td>72.7%</td><td><button class="btn sm" onclick="toast('Edit Jogger Phantom')">Editar</button></td></tr>
               <tr><td><b>Set Venom W</b></td><td class="mono">$348</td><td>$1,099</td><td><b style="color:var(--amber)">$999 ↓</b></td><td>$1,099</td><td>$1,299</td><td>68.3%</td><td><button class="btn sm primary" onclick="toast('✓ Set Venom → $999','success')">Bajar</button></td></tr>
             </tbody>
