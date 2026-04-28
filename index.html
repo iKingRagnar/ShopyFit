@@ -1217,8 +1217,11 @@ function submitEmail(e){
 /* ═══════════ Chatbot logic ═══════════ */
 // Optional: si tienes el FastAPI desplegado en Railway, define aquí la URL pública
 // y pon CB_USE_API=true. Mientras tanto responde con un router local de palabras clave.
-const CB_API_BASE='';
-const CB_USE_API=false;
+// API base + flag — runtime-configurable from socios.html ("Configurar API" tile)
+// Or via devtools: localStorage.setItem('tk_api_base','https://your-api.up.railway.app');
+//                  localStorage.setItem('tk_use_api','1');
+const CB_API_BASE = localStorage.getItem('tk_api_base') || '';
+const CB_USE_API  = localStorage.getItem('tk_use_api') === '1' && !!CB_API_BASE;
 
 const CB_SYSTEM=`Eres el asistente de tienda de TORO KAIZEN, marca mexicana de ropa
 deportiva premium. Hablas en español natural, eres amigable, breve y resolutivo.
