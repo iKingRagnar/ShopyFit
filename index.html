@@ -1309,15 +1309,36 @@ function markShapeFallback(img){
 // Pretty Spanish names for swatch tooltips
 const COLOR_NAMES={black:'Negro',white:'Blanco',lime:'Lime',gray:'Gris',navy:'Marino',olive:'Olivo',red:'Rojo',purple:'Morado'};
 
-// Sync the card's --pc-color CSS var (drives the silhouette tint AND the pulse overlay)
+// CSS filters per color — tuned to recolor any photo into a believable variant
+const COLOR_FILTERS={
+  black:'brightness(.5) contrast(1.15) saturate(.4)',
+  white:'brightness(1.55) saturate(.25) contrast(.92)',
+  gray:'saturate(.18) brightness(.85)',
+  navy:'hue-rotate(215deg) saturate(1.5) brightness(.7) contrast(1.1)',
+  olive:'hue-rotate(75deg) saturate(.75) brightness(.85)',
+  red:'hue-rotate(-15deg) saturate(1.6) brightness(.92) contrast(1.1)',
+  purple:'hue-rotate(275deg) saturate(1.4) brightness(.82)',
+  lime:'hue-rotate(85deg) saturate(2.2) brightness(1.18) contrast(1.05)'
+};
+
+// Sync the card's --pc-color CSS var + recolor the photo via CSS filter
+// Order of preference: real per-color photo (data-img-{c}) > CSS filter recolor > silhouette tint
 function applyPcColor(card,c){
   card.style.setProperty('--pc-color',`var(--c-${c})`);
   card.dataset.cActive=c;
   const variantSrc=card.dataset['img'+c.charAt(0).toUpperCase()+c.slice(1)];
-  const img=card.querySelector('.pc-img-wrap > img:not(.pc-img-2)');
-  if(img && variantSrc){img.src=variantSrc;return 'real-photo'}
+  const imgs=card.querySelectorAll('.pc-img-wrap > img');
+  if(variantSrc && imgs[0]){
+    imgs[0].src=variantSrc;
+    imgs.forEach(img=>img.style.filter='');  // real photo, no recolor needed
+    return 'real-photo';
+  }
+  // CSS filter recolor — works on the existing photo, deterministic, instant
+  const f=COLOR_FILTERS[c]||'';
+  imgs.forEach(img=>img.style.filter=f);
+  // Pulse animation only on the first click for tactile feedback
   card.classList.remove('color-pulse');void card.offsetWidth;card.classList.add('color-pulse');
-  return 'tinted-pulse';
+  return 'css-filter';
 }
 
 // Color tooltip + swatch select (also drives quickview swatches)
@@ -1337,12 +1358,16 @@ document.querySelectorAll('.pc-swatches').forEach(row=>{
     if(card)applyPcColor(card,c);
     const tip=row.querySelector('.pc-color-tip');
     if(tip){tip.textContent='Color: '+(COLOR_NAMES[c]||c).toUpperCase();tip.classList.add('on');clearTimeout(row._tipTo);row._tipTo=setTimeout(()=>tip.classList.remove('on'),1400)}
-    // Inside quickview: also tint qa shape + update color name label
+    // Inside quickview: also tint qa shape, update color name label, and recolor the hero image
     const qaName=document.querySelector('.qa-color-name b');
     if(row.closest('.qa-bd') && qaName){
       qaName.textContent=COLOR_NAMES[c]||c;
       const main=document.querySelector('.qa-img-main');
-      if(main)main.style.setProperty('--pc-color',`var(--c-${c})`);
+      if(main){
+        main.style.setProperty('--pc-color',`var(--c-${c})`);
+        const qaImg=main.querySelector('img');
+        if(qaImg)qaImg.style.filter=COLOR_FILTERS[c]||'';
+      }
     }
   });
   const init=row.querySelector('.pc-sw.on');
