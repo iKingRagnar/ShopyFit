@@ -1331,6 +1331,83 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   .ticker .t-track,.tag-rotator .tag-line{animation:none !important}
 }
 
+/* ═══════════ BRAND IMAGE TREATMENT (universal photo → brand-consistent) ═══════════ */
+/* Aplica filter monocromático + tinte lime a todas las fotos hot-linkeadas */
+.act-card img,
+.lb-cell img,
+.ugc-cell img,
+.rs-img img,
+.mega-feat img,
+.hero-img-wrap img,
+.search-row .sr-thumb img,
+.cart-item-thumb img,
+.wish-item-thumb img {
+  filter: grayscale(.85) contrast(1.18) brightness(.72) saturate(.6);
+  transition: filter .4s ease, transform .8s ease;
+}
+.act-card:hover img,
+.lb-cell:hover img,
+.ugc-cell:hover img,
+.mega-feat:hover img {
+  filter: grayscale(.65) contrast(1.15) brightness(.85) saturate(.85);
+}
+/* Lime overlay duotone — subtle on hover, stronger normal state */
+.act-card::after,
+.lb-cell::after,
+.ugc-cell::before,
+.mega-feat::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(212,255,0,.08) 0%, rgba(13,13,14,.55) 60%, rgba(13,13,14,.85) 100%);
+  pointer-events: none; z-index: 1;
+  mix-blend-mode: multiply;
+  transition: opacity .4s ease;
+}
+.act-card:hover::after,
+.lb-cell:hover::after,
+.mega-feat:hover::after { opacity: .7 }
+.ugc-cell::before { opacity: .55 }
+.ugc-cell:hover::before { opacity: .25 }
+.mega-feat { position: relative }
+
+/* Hero images: slightly less aggressive treatment to preserve detail */
+.hero-img-wrap img { filter: grayscale(.6) contrast(1.15) brightness(.78) saturate(.65) }
+.hero-img-wrap::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 0%, transparent 50%, rgba(13,13,14,.7) 100%);
+  pointer-events: none;
+}
+
+/* ═══════════ FEATURED SHOWCASE — TQ mockup style ═══════════ */
+.showcase{background:var(--black);padding:90px 6vw;border-top:.5px solid var(--border);position:relative;overflow:hidden}
+.showcase-bg{position:absolute;right:-10%;top:50%;transform:translateY(-50%);width:780px;color:var(--lime);opacity:.04;pointer-events:none}
+.showcase-bg svg{width:100%}
+.showcase-grid{display:grid;grid-template-columns:1fr 380px;gap:50px;max-width:1200px;margin:0 auto;align-items:center;position:relative;z-index:1}
+.showcase-main{position:relative;background:var(--bg-2);border:.5px solid var(--border-soft);padding:48px 32px;min-height:540px;display:flex;align-items:center;justify-content:center}
+.showcase-main svg.shape{width:60%;color:var(--text-2);filter:drop-shadow(0 16px 40px rgba(0,0,0,.5))}
+.showcase-eyebrow{position:absolute;top:24px;left:28px;font-family:'Bebas Neue',Impact,sans-serif;font-size:18px;letter-spacing:.18em;color:var(--white);line-height:1}
+.showcase-eyebrow span{display:block;font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.22em;color:var(--lime);font-weight:700;margin-top:4px;text-transform:uppercase}
+.showcase-tagline{position:absolute;top:24px;right:28px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.18em;color:var(--text-2);text-align:right;line-height:1.5;text-transform:uppercase}
+.showcase-tk{position:absolute;left:28px;bottom:24px;width:34px;height:34px;color:var(--lime)}
+.showcase-foot{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:.32em;color:var(--text-3);text-transform:uppercase}
+.showcase-callouts{display:flex;flex-direction:column;gap:18px}
+.showcase-callout{background:var(--bg-2);border:.5px solid var(--border-soft);padding:18px 20px;display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:center;transition:border-color .2s}
+.showcase-callout:hover{border-color:var(--lime)}
+.showcase-callout-thumb{width:48px;height:48px;background:var(--bg-3);display:flex;align-items:center;justify-content:center;border:.5px solid var(--border)}
+.showcase-callout-thumb svg{width:60%;height:60%;color:var(--lime)}
+.showcase-callout b{display:block;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.14em;color:var(--white);text-transform:uppercase;font-weight:700;margin-bottom:2px}
+.showcase-callout span{font-size:11px;color:var(--text-2);line-height:1.4}
+@media(max-width:900px){
+  .showcase{padding:60px 5vw}
+  .showcase-grid{grid-template-columns:1fr;gap:24px}
+  .showcase-main{min-height:380px;padding:64px 24px 50px}
+  .showcase-main svg.shape{width:55%}
+  .showcase-eyebrow{font-size:14px}
+  .showcase-callouts{gap:10px}
+  .showcase-callout{padding:14px 16px;grid-template-columns:38px 1fr;gap:10px}
+  .showcase-callout-thumb{width:38px;height:38px}
+}
+
 /* WHATSAPP FLOATING BUTTON */
 .wa-fab{position:fixed;bottom:80px;right:20px;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(37,211,102,.4);z-index:120;text-decoration:none;transition:transform .2s,box-shadow .2s;animation:waPulse 2.5s ease-in-out infinite}
 .wa-fab:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(37,211,102,.55)}
@@ -1851,6 +1928,40 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 </section>
 
 <!-- ═══════════════════ SHOP BY ACTIVITY ═══════════════════ -->
+<!-- ═══════════ FEATURED SHOWCASE · estilo TQ mockup ═══════════ -->
+<section class="showcase" id="showcase">
+  <div class="showcase-bg" aria-hidden="true">
+    <svg viewBox="0 0 120 100"><use href="#bull-aggressive"/></svg>
+  </div>
+  <div class="showcase-grid">
+    <div class="showcase-main">
+      <div class="showcase-eyebrow">TORO KAIZEN<span>Performance compression</span></div>
+      <div class="showcase-tagline">DESIGNED FOR GYMRATS<br>BUILT FOR GREATNESS</div>
+      <svg class="shape" viewBox="0 0 240 260"><use href="#shape-tee"/></svg>
+      <svg class="showcase-tk" aria-hidden="true"><use href="#tk-mono"/></svg>
+      <div class="showcase-foot">— Discipline over everything —</div>
+    </div>
+    <div class="showcase-callouts">
+      <div class="showcase-callout">
+        <div class="showcase-callout-thumb"><svg aria-hidden="true"><use href="#feat-silicone"/></svg></div>
+        <div><b>Premium silicone print</b><span>Bull mark resistente a 30+ lavadas</span></div>
+      </div>
+      <div class="showcase-callout">
+        <div class="showcase-callout-thumb"><svg aria-hidden="true"><use href="#feat-compression"/></svg></div>
+        <div><b>Contoured panels</b><span>Realza tu físico, no lo aplasta</span></div>
+      </div>
+      <div class="showcase-callout">
+        <div class="showcase-callout-thumb"><svg aria-hidden="true"><use href="#feat-mesh"/></svg></div>
+        <div><b>Breathable mesh zones</b><span>Airflow donde más sudas</span></div>
+      </div>
+      <div class="showcase-callout">
+        <div class="showcase-callout-thumb"><svg aria-hidden="true"><use href="#feat-woven"/></svg></div>
+        <div><b>Woven label</b><span>Etiqueta cosida · premium finish</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="activities cream-band" id="actividades">
   <div class="act-head">
     <div class="s-label rv">Shop by Activity</div>
