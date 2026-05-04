@@ -1010,6 +1010,70 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
   .cnt-down { display: none }
 }
 
+/* ═══════════════════════ COMING SOON / MADE-TO-ORDER ═══════════════════════ */
+.pc[data-status="coming-soon"]{opacity:.65;position:relative}
+.pc[data-status="coming-soon"] .pc-img-wrap::after{
+  content:'PRÓXIMAMENTE';
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  background:rgba(13,13,14,.88);color:var(--lime);
+  font-family:'Bebas Neue',Impact,sans-serif;font-size:18px;letter-spacing:.16em;
+  padding:8px 16px;border:1px solid var(--lime);z-index:5;
+  pointer-events:none;text-align:center;line-height:1;
+}
+.pc[data-status="coming-soon"] .add-btn,
+.pc[data-status="coming-soon"] .pc-quick{display:none}
+.pc[data-status="coming-soon"] .pc-foot{justify-content:flex-start}
+.pc[data-status="coming-soon"] .pc-wish{display:none}
+
+/* Made-to-Order ribbon en hero SKUs */
+.pc[data-mto="1"] .pc-img-wrap > .mto-ribbon{
+  position:absolute;bottom:10px;left:10px;z-index:4;
+  background:var(--lime);color:var(--black);
+  font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;
+  letter-spacing:.16em;padding:4px 9px;pointer-events:none;
+}
+.cream-band .pc[data-mto="1"] .pc-img-wrap > .mto-ribbon{background:var(--cream-text);color:var(--cream-card)}
+
+/* ═══════════════════════ COMPARATIVA vs MARCAS GRINGAS ═══════════════════════ */
+.vs-band{background:var(--bg-1);padding:80px 6vw;border-top:.5px solid var(--border)}
+.vs-band .vs-head{text-align:center;max-width:760px;margin:0 auto 50px}
+.vs-band .vs-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.28em;
+  color:var(--lime);text-transform:uppercase;margin-bottom:14px}
+.vs-band h2.vs-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,5.5vw,76px);
+  line-height:.95;letter-spacing:.02em;color:var(--white);margin-bottom:18px}
+.vs-band h2.vs-title .lime{color:var(--lime)}
+.vs-band .vs-desc{color:var(--text-2);font-size:15px;line-height:1.7;max-width:600px;margin:0 auto}
+.vs-table{max-width:920px;margin:0 auto;background:var(--bg-2);border:.5px solid var(--border)}
+.vs-row{display:grid;grid-template-columns:1.4fr repeat(4,1fr) 1.2fr;align-items:center;
+  border-bottom:.5px solid var(--border-soft)}
+.vs-row:last-child{border-bottom:none}
+.vs-row.head{background:var(--black);color:var(--lime)}
+.vs-row.head > div{padding:14px 12px;font-family:'Barlow Condensed',sans-serif;font-size:10px;
+  letter-spacing:.18em;text-transform:uppercase;font-weight:700;text-align:center}
+.vs-row.head .vs-them{color:var(--text-3)}
+.vs-row.head .vs-tk{color:var(--lime)}
+.vs-row > div{padding:18px 12px;font-family:'Barlow',sans-serif;font-size:14px}
+.vs-name{color:var(--white);font-weight:600}
+.vs-price{text-align:center;color:var(--text-3)}
+.vs-tk-price{text-align:center;color:var(--lime);font-family:'Bebas Neue',sans-serif;
+  font-size:22px;font-weight:700}
+.vs-delta{text-align:center;color:var(--lime);font-family:'Barlow Condensed',sans-serif;
+  font-size:13px;letter-spacing:.12em;font-weight:700;background:rgba(212,255,0,.06);
+  border-left:.5px solid var(--border-soft)}
+.vs-foot{text-align:center;margin-top:28px;color:var(--text-2);font-size:13px;line-height:1.7;max-width:680px;margin-left:auto;margin-right:auto}
+.vs-foot b{color:var(--white)}
+@media(max-width:768px){
+  .vs-row{grid-template-columns:1.4fr 1fr 1.2fr}
+  .vs-row > div:nth-child(2),
+  .vs-row > div:nth-child(3),
+  .vs-row > div:nth-child(4){display:none}
+  .vs-row.head > div:nth-child(2),
+  .vs-row.head > div:nth-child(3),
+  .vs-row.head > div:nth-child(4){display:none}
+  .vs-band{padding:60px 5vw}
+  .vs-row > div{padding:12px 10px;font-size:13px}
+  .vs-tk-price{font-size:18px}
+}
 </style>
 </head>
 <body>
@@ -1126,7 +1190,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
     <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></svg>
   </div>
   <div class="hero-l">
-    <div class="hero-pill"><span class="ldot"></span> SS26 Drop · live now</div>
+    <div class="hero-pill"><span class="ldot"></span> SS26 Drop · Made-to-Order · Built Different</div>
     <h1 class="hero-t">BUILT<br><span class="lime">DIFF</span><span class="outline">ERENT</span></h1>
     <p class="hero-desc">Ropa diseñada para los que no conocen el límite. Cortes oversize, telas premium y una identidad que se nota en el gimnasio y en la calle.</p>
     <div class="cnt-down" id="cntDown" aria-label="Countdown próximo drop">
@@ -1157,10 +1221,10 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
-  <div class="trust-cell"><div class="trust-ico">🇲🇽</div><div><b>Hecho en México</b><span>Producción ética y local</span></div></div>
-  <div class="trust-cell"><div class="trust-ico">📦</div><div><b>Envío gratis +$799</b><span>2–4 días hábiles</span></div></div>
-  <div class="trust-cell"><div class="trust-ico">↩️</div><div><b>Devoluciones 30 días</b><span>Cambio de talla sin costo</span></div></div>
-  <div class="trust-cell"><div class="trust-ico">⭐</div><div><b>4.9 / 5 estrellas</b><span>1,847 reviews verificados</span></div></div>
+  <div class="trust-cell"><div class="trust-ico">🇲🇽</div><div><b>Hecho en México 100%</b><span>Maquila local · sin import duties</span></div></div>
+  <div class="trust-cell"><div class="trust-ico">⚡</div><div><b>Made-to-order</b><span>Producimos solo lo que pides</span></div></div>
+  <div class="trust-cell"><div class="trust-ico">💳</div><div><b>12 MSI MercadoPago</b><span>Pago a meses sin intereses</span></div></div>
+  <div class="trust-cell"><div class="trust-ico">📦</div><div><b>Llega en 7-14 días</b><span>Envío gratis +$799</span></div></div>
 </div>
 
 <!-- ═══════════ SCROLL-MORPH 01 · HERO BULL → ATHLETE ═══════════ -->
@@ -1185,20 +1249,68 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 
 <div class="ticker">
   <div class="t-track">
-    <div class="t-item">Envío gratis +$799<span class="t-dot"></span></div>
-    <div class="t-item">100% Hecho en México<span class="t-dot"></span></div>
-    <div class="t-item">SS25 Disponible<span class="t-dot"></span></div>
-    <div class="t-item">Devoluciones 30 días<span class="t-dot"></span></div>
-    <div class="t-item">+8,000 atletas activos<span class="t-dot"></span></div>
-    <div class="t-item">Gym. Street. TORO KAIZEN.<span class="t-dot"></span></div>
-    <div class="t-item">Envío gratis +$799<span class="t-dot"></span></div>
-    <div class="t-item">100% Hecho en México<span class="t-dot"></span></div>
-    <div class="t-item">SS25 Disponible<span class="t-dot"></span></div>
-    <div class="t-item">Devoluciones 30 días<span class="t-dot"></span></div>
-    <div class="t-item">+8,000 atletas activos<span class="t-dot"></span></div>
-    <div class="t-item">Gym. Street. TORO KAIZEN.<span class="t-dot"></span></div>
+    <div class="t-item">Made-to-Order Â· 7-14 dÃ­as<span class="t-dot"></span></div>
+    <div class="t-item">100% Hecho en MÃ©xico<span class="t-dot"></span></div>
+    <div class="t-item">12 MSI con MercadoPago<span class="t-dot"></span></div>
+    <div class="t-item">EnvÃ­o gratis +$799<span class="t-dot"></span></div>
+    <div class="t-item">Devoluciones 30 dÃ­as<span class="t-dot"></span></div>
+    <div class="t-item">Built different. Built local.<span class="t-dot"></span></div>
+    <div class="t-item">Made-to-Order Â· 7-14 dÃ­as<span class="t-dot"></span></div>
+    <div class="t-item">100% Hecho en MÃ©xico<span class="t-dot"></span></div>
+    <div class="t-item">12 MSI con MercadoPago<span class="t-dot"></span></div>
+    <div class="t-item">EnvÃ­o gratis +$799<span class="t-dot"></span></div>
+    <div class="t-item">Devoluciones 30 dÃ­as<span class="t-dot"></span></div>
+    <div class="t-item">Built different. Built local.<span class="t-dot"></span></div>
   </div>
 </div>
+
+<!-- â VS MARCAS GRINGAS â -->
+<section class="vs-band" id="comparativa">
+  <div class="vs-head">
+    <div class="vs-eyebrow">Calidad gringa Â· Precio mexicano</div>
+    <h2 class="vs-title">LA MISMA TELA <span class="lime">A LA MITAD</span></h2>
+    <p class="vs-desc">240 gsm cotton premium, fit oversize editorial, hecho en MÃ©xico. Sin pagar import duties, sin esperar 3 semanas de envÃ­o internacional. <b>Built different. Built local.</b></p>
+  </div>
+  <div class="vs-table" role="table" aria-label="Comparativa de precios vs marcas americanas">
+    <div class="vs-row head" role="row">
+      <div role="columnheader">Producto</div>
+      <div role="columnheader" class="vs-them">YoungLA</div>
+      <div role="columnheader" class="vs-them">Gymshark</div>
+      <div role="columnheader" class="vs-them">Vuori</div>
+      <div role="columnheader" class="vs-them">Lululemon</div>
+      <div role="columnheader" class="vs-tk">TORO KAIZEN</div>
+      <div role="columnheader" class="vs-them">Î</div>
+    </div>
+    <div class="vs-row" role="row">
+      <div class="vs-name" role="cell">Tee oversize</div>
+      <div class="vs-price" role="cell">$1,100</div>
+      <div class="vs-price" role="cell">$950</div>
+      <div class="vs-price" role="cell">$1,400</div>
+      <div class="vs-price" role="cell">$1,800</div>
+      <div class="vs-tk-price" role="cell">$649</div>
+      <div class="vs-delta" role="cell">â51%</div>
+    </div>
+    <div class="vs-row" role="row">
+      <div class="vs-name" role="cell">Hoodie heavyweight</div>
+      <div class="vs-price" role="cell">$2,200</div>
+      <div class="vs-price" role="cell">$1,850</div>
+      <div class="vs-price" role="cell">$2,400</div>
+      <div class="vs-price" role="cell">$3,200</div>
+      <div class="vs-tk-price" role="cell">$899</div>
+      <div class="vs-delta" role="cell">â63%</div>
+    </div>
+    <div class="vs-row" role="row">
+      <div class="vs-name" role="cell">Jogger / sweatpants</div>
+      <div class="vs-price" role="cell">$1,800</div>
+      <div class="vs-price" role="cell">$1,500</div>
+      <div class="vs-price" role="cell">$2,100</div>
+      <div class="vs-price" role="cell">$2,600</div>
+      <div class="vs-tk-price" role="cell">$849</div>
+      <div class="vs-delta" role="cell">â58%</div>
+    </div>
+  </div>
+  <p class="vs-foot">La tela que YoungLA cobra $1,100, hecha en MÃ©xico, a <b>$649</b>. Pago a meses sin intereses con MercadoPago. Made-to-order â produce solo lo que pides, llega a tu puerta en 7-14 dÃ­as.</p>
+</section>
 
 <!-- PRODUCTS -->
 <section class="products cream-band" id="productos">
@@ -1227,10 +1339,11 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
     </div>
   </div>
   <div class="prod-grid" id="prodGrid">
-    <div class="pc rv" data-niche="streetwear gym" data-age="18-24 25-34" data-sku="TQ-TEE-GBLK" data-name="Tee Gothic Black" data-price="699" data-shape="tee" data-cat="Oversize Tee · Hombre" data-img="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=700&q=85">
+    <div class="pc rv" data-niche="streetwear gym" data-age="18-24 25-34" data-sku="TQ-TEE-GBLK" data-mto="1" data-name="Tee Gothic Black" data-price="649" data-shape="tee" data-cat="Oversize Tee · Hombre" data-img="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=700&q=85">
       <div class="pc-badge b-new">Nuevo</div>
       <button class="pc-wish" onclick="toggleWish('TQ-TEE-GBLK',this)" title="Wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
       <div class="pc-img-wrap">
+        <span class="mto-ribbon">MADE-TO-ORDER · 7-14 DÍAS</span>
         <svg class="pc-shape-fallback" aria-hidden="true"><use href="#shape-tee"/></svg>
         <img onerror="markShapeFallback(this)" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt="Tee Gothic Black">
         <img loading="lazy" decoding="async" class="pc-img-2" src="https://images.unsplash.com/photo-1542327897-d73f4005b533?auto=format&fit=crop&w=600&h=800&q=85" alt="">
@@ -1242,12 +1355,12 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
         <div class="pc-name">Tee Gothic Black</div>
         <div class="pc-rating"><span class="stars">★★★★★</span> 4.9 <span class="cnt">(124)</span></div>
         <div class="pc-tags"><span class="tg">Streetwear</span><span class="tg">Gym</span></div>
-        <div class="pc-foot"><div><span class="pc-price">$699</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
+        <div class="pc-foot"><div><span class="pc-price">$649</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
         <div class="pc-swatches"><span class="pc-sw on" data-c="black"></span><span class="pc-sw" data-c="white"></span><span class="pc-sw" data-c="gray"></span><span class="pc-sw" data-c="navy"></span></div>
       </div>
     </div>
 
-    <div class="pc rv" data-niche="gym crossfit" data-age="18-24 25-34" data-sku="TQ-TANK-STR" data-name="Tank Stringer Bravío" data-price="549" data-shape="tank" data-cat="Tank Top · Hombre" data-img="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=85">
+    <div class="pc rv" data-niche="gym crossfit" data-age="18-24 25-34" data-sku="TQ-TANK-STR" data-status="coming-soon" data-name="Tank Stringer Bravío" data-price="549" data-shape="tank" data-cat="Tank Top · Hombre" data-img="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=85">
       <div class="pc-badge b-hot">Hot</div>
       <button class="pc-wish" onclick="toggleWish('TQ-TANK-STR',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
       <div class="pc-img-wrap">
@@ -1267,7 +1380,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       </div>
     </div>
 
-    <div class="pc rv" data-niche="running gym" data-age="18-24 25-34 35-44" data-sku="TQ-SHORT-OBS" data-name="Short Obsidian 5&quot;" data-price="649" data-shape="shorts" data-cat="Shorts · Gym" data-img="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=700&q=85" data-print="off">
+    <div class="pc rv" data-niche="running gym" data-age="18-24 25-34 35-44" data-sku="TQ-SHORT-OBS" data-status="coming-soon" data-name="Short Obsidian 5&quot;" data-price="649" data-shape="shorts" data-cat="Shorts · Gym" data-img="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=700&q=85" data-print="off">
       <div class="pc-badge" style="background:rgba(91,158,255,.85);color:var(--white)">Bestseller</div>
       <button class="pc-wish" onclick="toggleWish('TQ-SHORT-OBS',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
       <div class="pc-img-wrap">
@@ -1287,7 +1400,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       </div>
     </div>
 
-    <div class="pc rv" data-niche="crossfit gym" data-age="25-34 35-44" data-sku="TQ-SET-TITAN" data-name="Set Titan Edition" data-price="1199" data-shape="set" data-cat="Set Completo · Unisex" data-img="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=700&q=85">
+    <div class="pc rv" data-niche="crossfit gym" data-age="25-34 35-44" data-sku="TQ-SET-TITAN" data-status="coming-soon" data-name="Set Titan Edition" data-price="1199" data-shape="set" data-cat="Set Completo · Unisex" data-img="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=700&q=85">
       <div class="pc-badge b-ltd">Limitado</div>
       <button class="pc-wish" onclick="toggleWish('TQ-SET-TITAN',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
       <div class="pc-img-wrap">
@@ -1307,7 +1420,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       </div>
     </div>
 
-    <div class="pc rv" data-niche="streetwear gym" data-age="18-24 25-34" data-sku="TQ-TEE-GWHT" data-name="Tee Gothic White" data-price="699" data-shape="tee" data-cat="Oversize Tee · Hombre" data-img="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=700&q=85" data-print="dark">
+    <div class="pc rv" data-niche="streetwear gym" data-age="18-24 25-34" data-sku="TQ-TEE-GWHT" data-status="coming-soon" data-name="Tee Gothic White" data-price="699" data-shape="tee" data-cat="Oversize Tee · Hombre" data-img="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=700&q=85" data-print="dark">
       <div class="pc-badge b-new">Nuevo</div>
       <button class="pc-wish" onclick="toggleWish('TQ-TEE-GWHT',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
       <div class="pc-img-wrap">
@@ -1327,10 +1440,11 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       </div>
     </div>
 
-    <div class="pc rv" data-niche="streetwear yoga" data-age="25-34 35-44 45+" data-sku="TQ-JOG-PHN" data-name="Jogger Phantom Toro" data-price="849" data-shape="jogger" data-cat="Jogger · Street" data-img="https://images.unsplash.com/photo-1541534741688-6078c8985bca?auto=format&fit=crop&w=700&q=85">
+    <div class="pc rv" data-niche="streetwear yoga" data-age="25-34 35-44 45+" data-sku="TQ-JOG-PHN" data-mto="1" data-name="Jogger Phantom Toro" data-price="849" data-shape="jogger" data-cat="Jogger · Street" data-img="https://images.unsplash.com/photo-1541534741688-6078c8985bca?auto=format&fit=crop&w=700&q=85">
       <div class="pc-badge b-hot">Hot</div>
       <button class="pc-wish" onclick="toggleWish('TQ-JOG-PHN',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
       <div class="pc-img-wrap">
+        <span class="mto-ribbon">MADE-TO-ORDER · 7-14 DÍAS</span>
         <svg class="pc-shape-fallback" aria-hidden="true"><use href="#shape-jogger"/></svg>
         <img onerror="markShapeFallback(this)" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1541534741688-6078c8985bca?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt="Jogger Phantom">
         <img loading="lazy" decoding="async" class="pc-img-2" src="https://images.unsplash.com/photo-1552902019-ebcd97aa9aa0?auto=format&fit=crop&w=600&h=800&q=85" alt="">
@@ -1347,10 +1461,11 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       </div>
     </div>
 
-    <div class="pc rv" data-niche="streetwear" data-age="18-24 25-34 35-44 45+" data-sku="TQ-HOOD-VOID" data-name="Hoodie Void Mortal" data-price="899" data-shape="hoodie" data-cat="Hoodie · Unisex" data-img="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=700&q=85">
+    <div class="pc rv" data-niche="streetwear" data-age="18-24 25-34 35-44 45+" data-sku="TQ-HOOD-VOID" data-mto="1" data-name="Hoodie Void Mortal" data-price="899" data-shape="hoodie" data-cat="Hoodie · Unisex" data-img="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=700&q=85">
       <div class="pc-badge" style="background:rgba(167,139,250,.85);color:var(--white)">Restock</div>
       <button class="pc-wish" onclick="toggleWish('TQ-HOOD-VOID',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
       <div class="pc-img-wrap">
+        <span class="mto-ribbon">MADE-TO-ORDER · 7-14 DÍAS</span>
         <svg class="pc-shape-fallback" aria-hidden="true"><use href="#shape-hoodie"/></svg>
         <img onerror="markShapeFallback(this)" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&h=800&q=85&crop=top" alt="Hoodie Void">
         <img loading="lazy" decoding="async" class="pc-img-2" src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&h=800&q=85" alt="">
@@ -1367,7 +1482,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       </div>
     </div>
 
-    <div class="pc rv" data-niche="yoga gym" data-age="18-24 25-34" data-sku="TQ-SET-VENOM" data-name="Set Venom W" data-price="1099" data-shape="set" data-cat="Set · Mujer" data-img="https://images.unsplash.com/photo-1507398941214-162a8de16b98?auto=format&fit=crop&w=700&q=85">
+    <div class="pc rv" data-niche="yoga gym" data-age="18-24 25-34" data-sku="TQ-SET-VENOM" data-status="coming-soon" data-name="Set Venom W" data-price="1099" data-shape="set" data-cat="Set · Mujer" data-img="https://images.unsplash.com/photo-1507398941214-162a8de16b98?auto=format&fit=crop&w=700&q=85">
       <div class="pc-badge b-ltd">Limitado</div>
       <button class="pc-wish" onclick="toggleWish('TQ-SET-VENOM',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
       <div class="pc-img-wrap">
@@ -2355,7 +2470,7 @@ if(document.readyState!=='loading')renderCart();
     <div class="cart-foot">
       <div class="cart-sub">Subtotal <b id="cartSubtotal">$0</b></div>
       <button class="cart-pay" id="cartPay" onclick="checkout()">Proceder al pago →</button>
-      <p class="cart-fine">Envío gratis +$799 · Devoluciones 30 días · WhatsApp +52 81 1234 5678</p>
+      <p class="cart-fine">Made-to-order · Llega en 7-14 días · Envío gratis +$799<br>Hasta 12 meses sin intereses con MercadoPago · Devoluciones 30 días<br>Hecho en México 🇲🇽 · WhatsApp +52 81 1234 5678</p>
     </div>
   </div>
 </div>
