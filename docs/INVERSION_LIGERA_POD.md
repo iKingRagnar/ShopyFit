@@ -292,6 +292,84 @@ Con $11.5K en ads + ROAS 3.5×, ventas esperadas: $40K = ~60 unidades/mes.
 
 ---
 
+## Plan inicial: arrancar con 3 SKUs (recomendado por TQ)
+
+> *"Vamos a empezar despacio, con algunos tres diseños, para ver cómo va pegando la marca"* — TQ
+
+### Los 3 SKUs estratégicos para validar
+
+Eligen **un hero por categoría** para cubrir el wardrobe completo del target:
+
+| SKU | Por qué arrancar con este |
+|---|---|
+| **Tee Gothic Black 240gsm + bull print** | Producto puerta, precio entrada $649, fácil viralizar en TikTok, alta demanda Gen Z |
+| **Hoodie Void Mortal 380gsm** | Statement piece de margen alto, captura compras de invierno + transición SS, look streetwear |
+| **Jogger Phantom Toro french terry** | Forma el "outfit completo" con el tee — hace bundle/set vendible naturalmente |
+
+### Por qué esos 3 (no otros)
+
+- **Cubren las 3 zonas del cuerpo** (top + bottom + outerwear) — un cliente puede armar look completo sin pedir 2 marcas
+- **Precios escalonados** ($649 / $899 / $849) — entrada barata + upsell + cross-sell
+- **Mismo print bull** = un solo art file para los 3 = ahorro en producción de mockups
+- **Fáciles de cotizar con maquila local** (no requieren bordado, herrajes especiales, ni materiales raros)
+- **Permiten testear 3 swatches de color cada uno** = 9 variaciones para Meta/TikTok ads sin fragmentar producción
+
+### Cronograma de pruebas de tela (4-6 semanas)
+
+> *"Tardaremos en hacer pruebas de las telas y evaluar costos"* — TQ
+
+**Semana 1-2: Discovery**
+- TQ contacta 3 maquilas + 2 textileras
+- Pide muestras de tela (NO prendas terminadas todavía):
+  - 3 swatches de cotton 220-260gsm para tee
+  - 2 swatches de french terry 280-320gsm para jogger
+  - 2 swatches de fleece 360-400gsm para hoodie
+- Costo muestras telas: $200-500 MXN total
+
+**Semana 3-4: Sampling de prendas**
+- Maquila finalista hace 1 prenda muestra de cada SKU con tela seleccionada
+- Costo samples: ~$1,500-2,500 MXN total
+- Lavar 5-10 veces, evaluar:
+  - Encogimiento
+  - Pilling
+  - Resistencia del estampado
+  - Comodidad fit
+
+**Semana 5: Decisión + cotización formal**
+- Eligen tela final por SKU
+- Cotización para batch de 30, 50, 100 piezas (precio baja con volumen)
+- Negociación de plazos y pago
+
+**Semana 6: Photoshoot + lanzamiento web**
+- Fotos de los 3 SKUs en variantes principales (~9 fotos clave)
+- Update web: solo se muestran los 3 SKUs reales, los demás "Coming soon"
+- Soft launch a contactos cercanos via WhatsApp para primeras 5-10 ventas
+
+### Inversión inicial AJUSTADA al plan de 3 SKUs
+
+| Item | Costo MXN |
+|---|---|
+| Muestras de tela (5-7 swatches) | $400 |
+| Samples de prendas (3 piezas, 2 rondas) | $4,500 |
+| Photoshoot DIY (luces + fondo paper) | $2,000 |
+| Stickers + bolsas custom (100u) | $1,500 |
+| Registro IMPI 1 clase | $2,800 |
+| Apertura cuenta business | $500 |
+| Mockups AI (Gemini billing) | $200 |
+| Buffer | $3,000 |
+| **Total inversión inicial** | **$14,900** |
+| **Por socio** | **$7,450** |
+
+**Diferencia vs plan completo (8 SKUs):** ~mismo total, pero MUCHO menos riesgo de quemar plata en SKUs que no peguen.
+
+### Después de validar (mes 3-4)
+
+- Si los 3 SKUs venden: agregar 2-3 más por mes (tank, shorts, cap, set)
+- Si NO venden: pivotar fit, color o estampado del SKU débil ANTES de expandir
+- Métricas para "validó": >40 ventas/mes consistentes en mes 3, recompra >15%, NPS >50
+
+---
+
 ## Maquilas MX para arrancar
 
 TQ va a cotizar — esto es solo lista de candidatos:
