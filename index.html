@@ -1149,9 +1149,140 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 .hex-divider svg{width:18px;height:18px;color:var(--lime)}
 .hex-divider span{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.22em;
   text-transform:uppercase}
+
+/* ═══════════════════════ DROP BANNER (sticky top) ═══════════════════════ */
+.drop-banner{background:var(--lime);color:var(--black);padding:10px 5vw;
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;
+  justify-content:center;gap:10px;position:sticky;top:0;z-index:210;
+  border-bottom:1px solid var(--black)}
+.drop-banner b{font-family:'Bebas Neue',Impact,sans-serif;font-size:13px;letter-spacing:.06em}
+.drop-banner .db-cd{display:inline-flex;gap:4px;font-family:'JetBrains Mono',monospace;font-size:10px}
+.drop-banner .db-cd span{background:var(--black);color:var(--lime);padding:2px 5px;letter-spacing:.04em}
+nav{top:38px}  /* push nav below the drop banner */
+.mega{top:106px}  /* nav 68 + banner 38 = 106 */
+@media(max-width:768px){
+  .drop-banner{font-size:10px;padding:8px 4vw;letter-spacing:.12em}
+  .drop-banner .db-cd{font-size:9px}
+  nav{top:34px}
+}
+
+/* ═══════════════════════ SEARCH DRAWER ═══════════════════════ */
+.search-bd{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);
+  display:none;z-index:520;animation:fadeIn .2s}
+.search-bd.on{display:block}
+.search-panel{position:absolute;top:0;left:0;right:0;background:var(--bg-1);
+  padding:24px 5vw;border-bottom:.5px solid var(--border);
+  animation:slideInTop .3s cubic-bezier(.23,1,.32,1)}
+@keyframes slideInTop{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+.search-bar{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:14px;
+  border-bottom:.5px solid var(--lime);padding-bottom:10px}
+.search-bar svg{width:22px;height:22px;color:var(--lime);flex-shrink:0}
+.search-bar input{flex:1;background:transparent;border:none;outline:none;
+  font-family:'Bebas Neue',Impact,sans-serif;font-size:28px;color:var(--white);
+  letter-spacing:.04em;padding:6px 0}
+.search-bar input::placeholder{color:var(--text-3)}
+.search-close{background:none;border:none;color:var(--text-2);font-size:24px;cursor:pointer;flex-shrink:0}
+.search-close:hover{color:var(--lime)}
+.search-results{max-width:760px;margin:18px auto 0;max-height:60vh;overflow-y:auto}
+.search-empty{padding:30px 0;text-align:center;color:var(--text-3);font-size:13px;font-family:'Barlow',sans-serif}
+.search-empty span{display:block;margin-top:6px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-2)}
+.search-row{display:grid;grid-template-columns:60px 1fr auto;gap:14px;padding:12px 6px;
+  border-bottom:.5px solid var(--border-soft);align-items:center;cursor:pointer;text-decoration:none;color:var(--text)}
+.search-row:hover{background:var(--bg-2)}
+.search-row .sr-thumb{width:60px;height:72px;background:var(--bg-3);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.search-row .sr-thumb img{width:100%;height:100%;object-fit:cover}
+.search-row .sr-thumb svg{width:80%;height:80%;color:var(--text-2)}
+.search-row .sr-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--white)}
+.search-row .sr-cat{font-size:11px;color:var(--text-3);margin-top:3px}
+.search-row .sr-price{font-family:'Bebas Neue',Impact,sans-serif;font-size:20px;color:var(--lime)}
+
+/* ═══════════════════════ WISHLIST DRAWER ═══════════════════════ */
+.wish-bd{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);
+  display:none;z-index:500}
+.wish-bd.on{display:block;animation:fadeIn .25s}
+.wish-drawer{position:absolute;right:0;top:0;height:100vh;width:380px;max-width:100vw;
+  background:var(--bg-1);display:flex;flex-direction:column;
+  animation:slideInR .35s cubic-bezier(.23,1,.32,1)}
+.wish-head{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;
+  border-bottom:.5px solid var(--border)}
+.wish-head h3{font-family:'Bebas Neue',Impact,sans-serif;font-size:24px;letter-spacing:.04em;
+  color:var(--white);margin:0;display:flex;align-items:center;gap:10px}
+.wish-head h3 svg{width:18px;height:18px;color:var(--lime)}
+.wish-items{flex:1;overflow-y:auto;padding:14px 24px}
+.wish-empty{padding:60px 0;text-align:center;color:var(--text-3);font-size:13px}
+.wish-empty svg{width:48px;height:48px;color:var(--lime);opacity:.5;margin-bottom:14px}
+.wish-empty a{display:block;margin-top:14px;color:var(--lime);text-decoration:none;
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+.wish-item{display:grid;grid-template-columns:74px 1fr auto;gap:14px;padding:14px 0;
+  border-bottom:.5px solid var(--border-soft);align-items:center}
+.wish-item-thumb{width:74px;height:90px;background:var(--bg-3);overflow:hidden}
+.wish-item-thumb img{width:100%;height:100%;object-fit:cover}
+.wish-item-thumb svg{width:80%;height:80%;color:var(--text-2);margin:10%}
+.wish-item-info{min-width:0}
+.wish-item-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--white);line-height:1.2}
+.wish-item-price{font-family:'Barlow Condensed',sans-serif;font-size:14px;color:var(--lime);margin-top:6px}
+.wish-actions{display:flex;flex-direction:column;gap:6px}
+.wish-actions button{background:none;border:.5px solid var(--border);color:var(--text-2);
+  cursor:pointer;font-size:11px;padding:6px 8px;font-family:'Barlow Condensed',sans-serif;
+  letter-spacing:.12em;text-transform:uppercase;font-weight:700;transition:all .2s}
+.wish-actions button:hover{background:var(--lime);color:var(--black);border-color:var(--lime)}
+.wish-actions .wish-x{padding:4px 8px;font-size:14px}
+@media(max-width:768px){.wish-drawer{width:100vw}}
+
+/* ═══════════════════════ PROMO CODE INPUT (in cart) ═══════════════════════ */
+.cart-promo{padding:0 24px 14px;display:flex;gap:8px;align-items:center}
+.cart-promo input{flex:1;background:var(--bg-2);border:.5px solid var(--border);
+  color:var(--white);padding:10px 12px;font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;outline:none;font-weight:700}
+.cart-promo input:focus{border-color:var(--lime)}
+.cart-promo button{background:var(--bg-3);border:.5px solid var(--border);color:var(--text);
+  padding:10px 16px;font-family:'Barlow Condensed',sans-serif;font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:all .2s}
+.cart-promo button:hover{background:var(--lime);color:var(--black);border-color:var(--lime)}
+.cart-promo-msg{padding:0 24px 8px;font-family:'Barlow Condensed',sans-serif;font-size:10px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);min-height:14px}
+.cart-promo-msg.ok{color:var(--lime)}
+.cart-promo-msg.err{color:var(--red)}
+
+/* ═══════════════════════ MICROINTERACTIONS + A11Y ═══════════════════════ */
+.cart-pill.pulse{animation:cartPulse .55s cubic-bezier(.23,1,.32,1)}
+@keyframes cartPulse{0%{transform:scale(1)}30%{transform:scale(1.16);box-shadow:0 0 0 8px rgba(212,255,0,.25)}100%{transform:scale(1)}}
+
+/* Skip link (a11y) */
+.skip-link{position:absolute;top:-40px;left:8px;background:var(--lime);color:var(--black);
+  padding:8px 14px;font-family:'Barlow Condensed',sans-serif;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;font-weight:700;z-index:9999;
+  transition:top .15s}
+.skip-link:focus{top:8px}
+
+/* Focus rings (a11y) */
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+.pc-sw:focus-visible{outline-offset:3px}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .ticker .t-track,.tag-rotator .tag-line{animation:none !important}
+}
+
 </style>
 </head>
 <body>
+
+<!-- a11y skip link -->
+<a class="skip-link" href="#productos">Saltar al contenido</a>
+
+<!-- DROP BANNER (sticky top) -->
+<div class="drop-banner" role="banner" aria-label="Drop activo">
+  <span>🔥 SS26 DROP</span>
+  <b>BUILT DIFFERENT</b>
+  <span class="db-cd" id="dbCD" aria-hidden="true">
+    <span id="dbcd-d">--</span><span id="dbcd-h">--</span><span id="dbcd-m">--</span>
+  </span>
+  <span>Made-to-Order · 7-14 días</span>
+</div>
 
 <div class="cur" id="cur"></div>
 <div class="cur-r" id="curR"></div>
@@ -1252,7 +1383,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
     <li><a href="#lookbook">Lookbook</a></li>
   </ul>
   <div class="nav-r">
-    <button class="nav-ico" title="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+    <button class="nav-ico" title="Buscar" onclick="openSearch()" aria-label="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
     <button class="nav-ico wish-badge" onclick="openWish()" title="Wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="c-badge" id="wbadge" style="display:none">0</span></button>
     <button class="cart-pill" onclick="openCart()">Carrito <span class="c-badge" id="cbadge" style="display:none">0</span></button>
     <button class="nav-burger" onclick="openMobileNav()" aria-label="Abrir menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
@@ -2027,10 +2158,147 @@ function renderWishBadge(){
     if(btn)btn.classList.add('on');
   });
 }
-function openWish(){
+function openWish(){renderWishDrawer();document.getElementById('wishBd').classList.add('on');document.body.style.overflow='hidden'}
+function closeWishDrawer(){document.getElementById('wishBd').classList.remove('on');document.body.style.overflow=''}
+function renderWishDrawer(){
   const w=getWish();
-  showToast(w.length?`💚 ${w.length} en tu wishlist`:'Tu wishlist está vacía','info');
+  const lbl=document.getElementById('wishCountLbl');
+  if(lbl)lbl.textContent=w.length?'· '+w.length:'';
+  const body=document.getElementById('wishItems');
+  if(!body)return;
+  if(!w.length){
+    body.innerHTML='<div class="wish-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><div>Tu wishlist está vacía</div><a href="#productos" onclick="closeWishDrawer()">Ver productos →</a></div>';
+    return;
+  }
+  const esc=s=>String(s).replace(/[<>"'&]/g,c=>({'<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','&':'&amp;'})[c]);
+  body.innerHTML=w.map(sku=>{
+    const card=document.querySelector(`.pc[data-sku="${sku}"]`);
+    if(!card)return '';
+    const name=card.dataset.name||'—';
+    const price=Number(card.dataset.price)||0;
+    const img=card.dataset.img||'';
+    const shape=card.dataset.shape||'tee';
+    return `<div class="wish-item">
+      <div class="wish-item-thumb">${img?`<img src="${esc(img)}" alt="${esc(name)}" onerror="this.outerHTML='<svg viewBox=&quot;0 0 240 260&quot;><use href=&quot;#shape-${esc(shape)}&quot;/></svg>'">`:`<svg viewBox="0 0 240 260"><use href="#shape-${esc(shape)}"/></svg>`}</div>
+      <div class="wish-item-info">
+        <div class="wish-item-name">${esc(name)}</div>
+        <div class="wish-item-price">$${price.toLocaleString()}</div>
+      </div>
+      <div class="wish-actions">
+        <button onclick="wishToCart('${esc(sku)}')">Add</button>
+        <button class="wish-x" onclick="wishRemove('${esc(sku)}')" aria-label="Quitar">×</button>
+      </div>
+    </div>`;
+  }).join('');
 }
+function wishToCart(sku){addCart({sku});const w=getWish().filter(s=>s!==sku);setWish(w);renderWishDrawer()}
+function wishRemove(sku){const w=getWish().filter(s=>s!==sku);setWish(w);renderWishDrawer();showToast('Removido de favoritos')}
+
+// ═══════════════════════ SEARCH DRAWER ═══════════════════════
+function openSearch(){
+  const bd=document.getElementById('searchBd');
+  bd.classList.add('on');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>document.getElementById('searchInput').focus(),100);
+}
+function closeSearch(){
+  document.getElementById('searchBd').classList.remove('on');
+  document.body.style.overflow='';
+  document.getElementById('searchInput').value='';
+  renderSearchResults('');
+}
+function renderSearchResults(q){
+  const out=document.getElementById('searchResults');
+  if(!out)return;
+  const query=(q||'').trim().toLowerCase();
+  if(!query){
+    out.innerHTML='<div class="search-empty">Empieza a escribir<span>Tee · Hoodie · Jogger · Tank · Cap...</span></div>';
+    return;
+  }
+  const cards=Array.from(document.querySelectorAll('.pc'));
+  const matches=cards.filter(c=>{
+    const hay=`${c.dataset.name||''} ${c.dataset.cat||''} ${c.dataset.niche||''} ${c.dataset.shape||''}`.toLowerCase();
+    return hay.includes(query);
+  }).slice(0,8);
+  if(!matches.length){
+    out.innerHTML='<div class="search-empty">Sin resultados<span>Probá "tee", "hoodie" o "jogger"</span></div>';
+    return;
+  }
+  const esc=s=>String(s).replace(/[<>"'&]/g,c=>({'<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','&':'&amp;'})[c]);
+  out.innerHTML=matches.map(c=>{
+    const sku=c.dataset.sku;const name=c.dataset.name||'';const cat=c.dataset.cat||'';
+    const price=Number(c.dataset.price)||0;const img=c.dataset.img||'';const shape=c.dataset.shape||'tee';
+    return `<a class="search-row" href="#productos" onclick="closeSearch();setTimeout(()=>openQuickAdd('${esc(sku)}'),250);return false">
+      <div class="sr-thumb">${img?`<img src="${esc(img)}" alt="" onerror="this.outerHTML='<svg viewBox=&quot;0 0 240 260&quot;><use href=&quot;#shape-${esc(shape)}&quot;/></svg>'">`:`<svg viewBox="0 0 240 260"><use href="#shape-${esc(shape)}"/></svg>`}</div>
+      <div><div class="sr-name">${esc(name)}</div><div class="sr-cat">${esc(cat)}</div></div>
+      <div class="sr-price">$${price.toLocaleString()}</div>
+    </a>`;
+  }).join('');
+}
+
+// ═══════════════════════ PROMO CODES ═══════════════════════
+const PROMOS={
+  'BIENVENIDO10':{type:'pct',val:10,msg:'-10% aplicado · welcome'},
+  'SQUAD15':{type:'pct',val:15,msg:'-15% aplicado · #BuiltDifferent'},
+  'ENVIO0':{type:'ship',val:0,msg:'Envío gratis sin mínimo'},
+  'TORO20':{type:'pct',val:20,msg:'-20% aplicado · drop especial'}
+};
+let activePromo=null;
+function applyPromo(){
+  const inp=document.getElementById('promoInput');
+  const msg=document.getElementById('promoMsg');
+  if(!inp||!msg)return;
+  const code=(inp.value||'').trim().toUpperCase();
+  if(!code){msg.className='cart-promo-msg err';msg.textContent='Ingresa un código';return}
+  const promo=PROMOS[code];
+  if(!promo){msg.className='cart-promo-msg err';msg.textContent='Código inválido';activePromo=null;renderCart();return}
+  activePromo={code,...promo};
+  msg.className='cart-promo-msg ok';
+  msg.textContent='✓ '+promo.msg;
+  renderCart();
+}
+
+// Patch renderCart to apply discount if activePromo exists
+const _origRenderCart=renderCart;
+renderCart=function(){
+  _origRenderCart.apply(this,arguments);
+  if(activePromo){
+    const sub=cartSubtotal();
+    let final=sub;
+    if(activePromo.type==='pct')final=sub*(1-activePromo.val/100);
+    const el=document.getElementById('cartSubtotal');
+    if(el && sub>0)el.innerHTML=`<s style="opacity:.5;font-size:16px">$${sub.toLocaleString()}</s> $${Math.round(final).toLocaleString()}`;
+  }
+};
+
+// ═══════════════════════ CART ADD MICROINTERACTION ═══════════════════════
+const _origAddCart=addCart;
+addCart=function(){
+  _origAddCart.apply(this,arguments);
+  const pill=document.querySelector('.cart-pill');
+  if(pill){pill.classList.remove('pulse');void pill.offsetWidth;pill.classList.add('pulse')}
+};
+
+// ═══════════════════════ DROP BANNER COUNTDOWN ═══════════════════════
+(function(){
+  // Drop ends 14 days from first visit
+  const KEY='tk_drop_end';
+  let endTs=parseInt(localStorage.getItem(KEY)||'0',10);
+  if(!endTs || endTs<Date.now()){
+    endTs=Date.now()+14*24*60*60*1000;
+    localStorage.setItem(KEY,endTs.toString());
+  }
+  function tick(){
+    const now=Date.now();
+    const diff=Math.max(0,endTs-now);
+    const d=Math.floor(diff/86400000);
+    const h=Math.floor((diff%86400000)/3600000);
+    const m=Math.floor((diff%3600000)/60000);
+    const setT=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=String(v).padStart(2,'0')+(id==='dbcd-d'?'D':id==='dbcd-h'?'H':'M')};
+    setT('dbcd-d',d);setT('dbcd-h',h);setT('dbcd-m',m);
+  }
+  tick();setInterval(tick,30000);
+})();
 renderWishBadge();
 
 // Niche shortcut from "Shop by Activity" cards
@@ -2151,12 +2419,31 @@ renderRecent();
   },12000);
 })();
 function closeEmail(){document.getElementById('emBd').classList.remove('on')}
+const EMAIL_KEY='tk_newsletter_v1';
 function submitEmail(e){
   e.preventDefault();
-  const v=e.target.querySelector('input').value;
-  if(!v||!v.includes('@')){showToast('Email inválido');return}
-  closeEmail();
-  showToast('✓ Tu cupón -10% va en camino al correo','success');
+  const v=e.target.querySelector('input').value.trim();
+  if(!v||!v.includes('@')||v.length<5){showToast('Email inválido');return}
+  // Persist to localStorage (in lieu of real backend)
+  try{
+    const list=JSON.parse(localStorage.getItem(EMAIL_KEY)||'[]');
+    if(!list.includes(v))list.push(v);
+    localStorage.setItem(EMAIL_KEY,JSON.stringify(list));
+  }catch(_){}
+  // Reveal welcome code in modal
+  const modal=document.querySelector('.em-modal');
+  if(modal){
+    modal.innerHTML=`<button class="em-x" onclick="closeEmail()" aria-label="Cerrar">×</button>
+      <h3 style="font-family:'Bebas Neue',Impact,sans-serif;font-size:32px;color:var(--white);margin-bottom:10px;letter-spacing:.04em">¡WELCOME TO THE SQUAD!</h3>
+      <p style="color:var(--text-2);font-size:14px;margin-bottom:18px;line-height:1.6">Tu código de descuento <b style="color:var(--lime)">-10%</b> está listo. Aplicalo en tu carrito o copialo aquí:</p>
+      <div style="display:flex;gap:8px;align-items:stretch;margin-bottom:14px">
+        <div style="flex:1;background:var(--bg-3);border:1px dashed var(--lime);padding:14px;font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--lime);text-align:center;letter-spacing:.12em;font-weight:700">BIENVENIDO10</div>
+        <button onclick="navigator.clipboard&&navigator.clipboard.writeText('BIENVENIDO10').then(()=>showToast('Copiado al portapapeles','success'))" style="background:var(--lime);color:var(--black);border:none;padding:0 16px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:11px;cursor:pointer">Copiar</button>
+      </div>
+      <a href="#productos" onclick="closeEmail()" class="btn-p" style="display:flex;justify-content:center;width:100%;text-decoration:none">Empezar a comprar →</a>`;
+  } else {
+    showToast('✓ Tu código BIENVENIDO10 va en camino','success');
+  }
 }
 
 /* ═══════════ SCROLL-MORPH ENGINE ═══════════
@@ -2590,6 +2877,25 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){
     closeCart();closeMobileNav();closeSizeGuide();
     if(typeof closeQuickAdd==='function')closeQuickAdd();
+    if(typeof closeSearch==='function')closeSearch();
+    if(typeof closeWishDrawer==='function')closeWishDrawer();
+  }
+  // Cmd/Ctrl+K opens search
+  if((e.metaKey||e.ctrlKey)&&e.key==='k'){
+    e.preventDefault();
+    if(typeof openSearch==='function')openSearch();
+  }
+});
+
+// Wire search input live filter
+document.addEventListener('DOMContentLoaded',()=>{
+  const inp=document.getElementById('searchInput');
+  if(inp){
+    let to;
+    inp.addEventListener('input',e=>{
+      clearTimeout(to);
+      to=setTimeout(()=>renderSearchResults(e.target.value),120);
+    });
   }
 });
 
@@ -2626,10 +2932,46 @@ if(document.readyState!=='loading')renderCart();
     <div class="cart-items" id="cartItems">
       <div class="cart-empty">Tu carrito está vacío.<a href="#productos" onclick="closeCart()">Ver productos →</a></div>
     </div>
+    <div class="cart-promo">
+      <input type="text" id="promoInput" placeholder="Código de descuento" autocomplete="off" maxlength="20">
+      <button onclick="applyPromo()">Aplicar</button>
+    </div>
+    <div class="cart-promo-msg" id="promoMsg"></div>
     <div class="cart-foot">
       <div class="cart-sub">Subtotal <b id="cartSubtotal">$0</b></div>
       <button class="cart-pay" id="cartPay" onclick="checkout()">Proceder al pago →</button>
       <p class="cart-fine">Made-to-order · Llega en 7-14 días · Envío gratis +$799<br>Hasta 12 meses sin intereses con MercadoPago · Devoluciones 30 días<br>Hecho en México 🇲🇽 · WhatsApp +52 81 1234 5678</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SEARCH DRAWER ═══════════ -->
+<div class="search-bd" id="searchBd" role="dialog" aria-modal="true" aria-label="Buscar productos" onclick="if(event.target===this)closeSearch()">
+  <div class="search-panel">
+    <div class="search-bar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" id="searchInput" placeholder="Tee, hoodie, jogger..." autocomplete="off" aria-label="Buscar">
+      <button class="search-close" onclick="closeSearch()" aria-label="Cerrar">×</button>
+    </div>
+    <div class="search-results" id="searchResults">
+      <div class="search-empty">Empieza a escribir<span>Tee · Hoodie · Jogger · Tank · Cap...</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ WISHLIST DRAWER ═══════════ -->
+<div class="wish-bd" id="wishBd" role="dialog" aria-modal="true" aria-label="Tu wishlist" onclick="if(event.target===this)closeWishDrawer()">
+  <div class="wish-drawer">
+    <div class="wish-head">
+      <h3><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Wishlist <span id="wishCountLbl">0</span></h3>
+      <button class="cart-close" onclick="closeWishDrawer()" aria-label="Cerrar">×</button>
+    </div>
+    <div class="wish-items" id="wishItems">
+      <div class="wish-empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <div>Tu wishlist está vacía</div>
+        <a href="#productos" onclick="closeWishDrawer()">Ver productos →</a>
+      </div>
     </div>
   </div>
 </div>
