@@ -5,5 +5,7 @@ Disallow: /dashboard.html
 Disallow: /api/
 Disallow: /tomasq-v3.html
 Disallow: /tomasq-v4.html
+Disallow: /docs/
+Disallow: /scripts/
 
 Sitemap: https://torokaizen.mx/sitemap.xml
