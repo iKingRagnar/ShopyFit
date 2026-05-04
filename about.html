@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About · TORO KAIZEN</title>
+<meta name="description" content="TORO KAIZEN: la marca mexicana de athletic apparel que une fuerza del toro mexicano con la disciplina del kaizen japonés. Hecho en México · Built different.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://torokaizen.mx/about.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About · TORO KAIZEN">
+<meta property="og:description" content="La marca mexicana que une fuerza del toro y disciplina kaizen.">
+<meta property="og:url" content="https://torokaizen.mx/about.html">
+<meta property="og:image" content="https://torokaizen.mx/og-image.jpg">
+<meta property="og:locale" content="es_MX">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--lime:#D4FF00;--black:#0d0d0e;--bg-1:#141416;--bg-2:#1c1c1f;--bg-3:#26262a;--border:#3a3a40;--border-soft:#2a2a30;--white:#fff;--text:#f5f5f2;--text-2:#c8c8c2;--text-3:#8e8e88}
+body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;line-height:1.7;min-height:100vh}
+.topbar{position:fixed;top:0;left:0;right:0;height:64px;background:rgba(13,13,14,.92);backdrop-filter:blur(22px);border-bottom:.5px solid var(--border-soft);display:flex;align-items:center;justify-content:space-between;padding:0 28px;z-index:100}
+.tb-brand{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.12em;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:10px}
+.tb-badge{width:30px;height:26px;border:1.5px solid var(--lime);display:flex;align-items:center;justify-content:center;padding:2px;color:var(--lime)}
+.tb-back{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:8px 14px;border:.5px solid var(--border);transition:all .2s}
+.tb-back:hover{color:var(--lime);border-color:var(--lime)}
+.kanji{font-family:'Noto Serif JP',serif;font-weight:700;color:var(--lime);font-size:.6em;margin-left:.4em}
+
+.hero{min-height:80vh;padding:140px 6vw 80px;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-bull{position:absolute;right:-8%;top:8%;width:520px;height:420px;color:var(--lime);opacity:.05;pointer-events:none}
+.hero-bull svg{width:100%;height:100%}
+.hero-inner{max-width:780px;position:relative;z-index:1}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--lime);margin-bottom:18px;display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:'';width:36px;height:1px;background:var(--lime)}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,9vw,128px);line-height:.88;letter-spacing:.01em;color:var(--white);margin-bottom:24px}
+h1 .lime{color:var(--lime)}
+h1 .outline{-webkit-text-stroke:2px var(--white);color:transparent}
+.lead{font-size:18px;color:var(--text-2);max-width:620px;line-height:1.75}
+.lead b{color:var(--white)}
+
+section.story{padding:90px 6vw;border-top:.5px solid var(--border-soft);background:var(--bg-2)}
+section.story:nth-of-type(2n){background:var(--bg-1)}
+.story-inner{max-width:880px;margin:0 auto;display:grid;grid-template-columns:200px 1fr;gap:60px;align-items:flex-start}
+.story-num{font-family:'Bebas Neue',sans-serif;font-size:128px;color:var(--lime);line-height:.8;letter-spacing:.04em}
+.story-body h2{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:.04em;color:var(--white);margin-bottom:18px;line-height:1}
+.story-body h2 .kanji-jp{font-family:'Noto Serif JP',serif;font-size:.5em;color:var(--lime);margin-left:.4em}
+.story-body p{color:var(--text-2);font-size:15px;line-height:1.8;margin-bottom:14px}
+.story-body p b{color:var(--white)}
+@media(max-width:760px){.story-inner{grid-template-columns:1fr;gap:18px}.story-num{font-size:80px}.story-body h2{font-size:36px}}
+
+.values{padding:90px 6vw;background:var(--bg-1);border-top:.5px solid var(--border-soft)}
+.values-h{text-align:center;margin-bottom:60px}
+.values-h h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,80px);letter-spacing:.04em;color:var(--white);line-height:1}
+.values-h h2 .lime{color:var(--lime)}
+.v-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto}
+.v-card{background:var(--bg-2);border:.5px solid var(--border-soft);padding:34px 26px;transition:border-color .2s}
+.v-card:hover{border-color:var(--lime)}
+.v-card .v-num{font-family:'JetBrains Mono',monospace;color:var(--lime);font-size:11px;letter-spacing:.2em;margin-bottom:16px}
+.v-card h3{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.04em;color:var(--white);margin-bottom:12px;line-height:1}
+.v-card p{color:var(--text-2);font-size:14px;line-height:1.7}
+@media(max-width:900px){.v-grid{grid-template-columns:1fr;gap:14px}.v-card{padding:28px 22px}}
+
+.cta-band{background:#0d0d0e;padding:90px 6vw;text-align:center;border-top:.5px solid var(--border-soft)}
+.cta-band h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,96px);letter-spacing:.04em;color:var(--white);line-height:1;margin-bottom:18px}
+.cta-band h2 .lime{color:var(--lime)}
+.cta-band p{color:var(--text-2);font-size:16px;max-width:540px;margin:0 auto 32px}
+.cta-band .ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-p{font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;background:var(--lime);color:var(--black);border:none;padding:15px 34px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;transition:background .2s}
+.btn-p:hover{background:var(--white)}
+.btn-g{font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.22);padding:15px 34px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;transition:all .2s}
+.btn-g:hover{border-color:var(--lime);color:var(--lime)}
+
+footer{padding:36px 6vw;background:var(--bg-2);border-top:.5px solid var(--border-soft);text-align:center;color:var(--text-3);font-size:12px;font-family:'Barlow Condensed',sans-serif;letter-spacing:.16em;text-transform:uppercase}
+footer a{color:var(--lime);text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="index.html" class="tb-brand">
+    <div class="tb-badge"><svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:14px;color:var(--lime)" aria-hidden="true"><g fill="currentColor"><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g></svg></div>
+    TORO KAIZEN<span class="kanji">改善</span>
+  </a>
+  <a href="index.html" class="tb-back">← Volver al sitio</a>
+</div>
+
+<section class="hero">
+  <div class="hero-bull" aria-hidden="true">
+    <svg viewBox="0 0 120 100" fill="currentColor"><path d="M12 28 Q4 14 2 4 Q14 4 24 12 Q34 22 40 32 Z"/><path d="M108 28 Q116 14 118 4 Q106 4 96 12 Q86 22 80 32 Z"/><path d="M40 30 Q40 16 60 14 Q80 16 80 30 L80 50 Q80 56 76 60 L60 72 L44 60 Q40 56 40 50 Z"/><path d="M44 60 L76 60 Q80 70 76 80 L60 90 L44 80 Q40 70 44 60 Z"/></svg>
+  </div>
+  <div class="hero-inner">
+    <div class="eyebrow">About TORO KAIZEN</div>
+    <h1>FUERZA <span class="outline">DEL TORO</span><br><span class="lime">DISCIPLINA</span> KAIZEN</h1>
+    <p class="lead">Somos una marca <b>100% mexicana</b> de athletic apparel que une lo mejor de dos culturas: la <b>fuerza salvaje del toro mexicano</b> y la <b>disciplina del kaizen japonés</b> — el arte de mejorar 1% cada día.</p>
+  </div>
+</section>
+
+<section class="story">
+  <div class="story-inner">
+    <div class="story-num">01</div>
+    <div class="story-body">
+      <h2>El origen <span class="kanji-jp">起源</span></h2>
+      <p>Empezamos en CDMX viendo cómo los gymrats mexicanos pagaban <b>el doble</b> por marcas importadas que ni siquiera entendían el cuerpo latino. Tela cara, fits que no quedan, talles gringos. Nadie hacía algo serio para nuestro mercado.</p>
+      <p>TORO KAIZEN nace para cerrar ese gap: <b>calidad premium, fits diseñados para nosotros, precios honestos</b>. Sin pagar branding inflado, sin pagar import duties.</p>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="story-inner">
+    <div class="story-num">02</div>
+    <div class="story-body">
+      <h2>El símbolo <span class="kanji-jp">象徴</span></h2>
+      <p>El <b>toro</b> representa la fuerza explosiva, la presencia que se siente cuando entras al gym y todo el mundo voltea. Mexicano por raíz, indomable por elección.</p>
+      <p>El <b>kaizen</b> (改善) es el código operativo de Toyota y de los maestros japoneses: <b>1% mejor cada día</b>. No buscas perfección, buscas progresión constante. Cada repetición, cada drop, cada decisión de marca: kaizen.</p>
+      <p>Ambos juntos: la fuerza para empujar más, la disciplina para no parar nunca. <b>Built different.</b></p>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="story-inner">
+    <div class="story-num">03</div>
+    <div class="story-body">
+      <h2>Cómo trabajamos</h2>
+      <p><b>Made-to-order:</b> producimos cada prenda solo después de que la pides. Cero stock muerto, cero desperdicio, cero presión de "vender lo que sobra". Tu prenda es tuya desde la fibra.</p>
+      <p><b>Maquila local:</b> trabajamos con talleres en Aguascalientes y CDMX con condiciones laborales justas. Visitamos a nuestros maquiladores. Conocemos sus nombres.</p>
+      <p><b>Tela honesta:</b> algodón peinado 240 gsm con elastano para tees. French terry 320 gsm para joggers. Fleece 380 gsm para hoodies. Mismo gramaje que las marcas que cuestan el doble — porque venimos de las mismas textileras.</p>
+    </div>
+  </div>
+</section>
+
+<section class="values">
+  <div class="values-h">
+    <h2>NUESTROS <span class="lime">PRINCIPIOS</span></h2>
+  </div>
+  <div class="v-grid">
+    <div class="v-card">
+      <div class="v-num">001 / DISCIPLINE</div>
+      <h3>Discipline over everything</h3>
+      <p>La marca antes que el ego. La calidad antes que el margen. El cliente antes que la moda.</p>
+    </div>
+    <div class="v-card">
+      <div class="v-num">002 / LOCAL</div>
+      <h3>Built local, built better</h3>
+      <p>Diseño en México, tela mexicana, maquila mexicana. Cada peso queda en el ecosistema local.</p>
+    </div>
+    <div class="v-card">
+      <div class="v-num">003 / HONEST</div>
+      <h3>Precio honesto siempre</h3>
+      <p>No inflamos precios para "verse premium". Pagas la prenda + el márgen justo, nada más.</p>
+    </div>
+    <div class="v-card">
+      <div class="v-num">004 / KAIZEN</div>
+      <h3>1% mejor cada día</h3>
+      <p>Cada drop mejora el anterior. Cada review se lee. Cada feedback aterriza. Sin parar.</p>
+    </div>
+    <div class="v-card">
+      <div class="v-num">005 / MADE-TO-ORDER</div>
+      <h3>Cero stock muerto</h3>
+      <p>Producimos lo que pides, en el orden que lo pides. Sin almacén lleno de prendas que nadie quiere.</p>
+    </div>
+    <div class="v-card">
+      <div class="v-num">006 / SQUAD</div>
+      <h3>Squad, no clientes</h3>
+      <p>Si compras TORO KAIZEN, eres parte del squad. WhatsApp directo con nosotros, siempre.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <h2>JOIN THE <span class="lime">SQUAD</span></h2>
+  <p>SS26 Drop ya está abierto. Made-to-order. Llega en 7-14 días. Pago a meses sin intereses con MercadoPago.</p>
+  <div class="ctas">
+    <a href="index.html#productos" class="btn-p">Ver el drop →</a>
+    <a href="manifesto.html" class="btn-g">Lee el manifesto</a>
+  </div>
+</section>
+
+<footer>
+  TORO KAIZEN · Hecho en México · <a href="index.html">torokaizen.mx</a> · <a href="https://wa.me/525511223344">WhatsApp +52 55 1122 3344</a>
+</footer>
+
+</body>
+</html>
