@@ -1065,6 +1065,14 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
   font-size:13px;letter-spacing:.12em;font-weight:700;background:rgba(212,255,0,.06);
   border-left:.5px solid var(--border-soft)}
 .vs-foot{text-align:center;margin-top:28px;color:var(--text-2);font-size:13px;line-height:1.7;max-width:680px;margin-left:auto;margin-right:auto}
+.vs-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1100px;margin:0 auto}
+.vs-pillar{background:var(--bg-2);border:.5px solid var(--border-soft);padding:28px 22px;text-align:left;transition:border-color .2s}
+.vs-pillar:hover{border-color:var(--lime)}
+.vs-pillar svg{width:32px;height:32px;color:var(--lime);margin-bottom:14px}
+.vs-pillar h3{font-family:'Bebas Neue',Impact,sans-serif;font-size:22px;letter-spacing:.04em;color:var(--white);margin:0 0 10px;line-height:1}
+.vs-pillar p{font-size:13px;color:var(--text-2);line-height:1.6;margin:0}
+@media(max-width:900px){.vs-pillars{grid-template-columns:repeat(2,1fr);gap:12px}.vs-pillar{padding:22px 18px}}
+@media(max-width:480px){.vs-pillars{grid-template-columns:1fr}}
 .vs-foot b{color:var(--white)}
 @media(max-width:768px){
   .vs-row{grid-template-columns:1.4fr 1fr 1.2fr}
@@ -1432,7 +1440,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
       <svg class="hex-bg" aria-hidden="true"><use href="#hex-frame"/></svg>
       <svg class="hex-glyph" aria-hidden="true"><use href="#feat-mexico"/></svg>
     </div>
-    <div><b>Hecho en MÃ©xico 100%</b><span>Maquila local Â· sin import duties</span></div>
+    <div><b>Hecho en México 100%</b><span>Maquila local · sin import duties</span></div>
   </div>
   <div class="trust-cell">
     <div class="trust-ico-hex">
@@ -1453,18 +1461,18 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
       <svg class="hex-bg" aria-hidden="true"><use href="#hex-frame"/></svg>
       <svg class="hex-glyph" aria-hidden="true"><use href="#feat-quickdry"/></svg>
     </div>
-    <div><b>Llega en 7-14 dÃ­as</b><span>EnvÃ­o gratis +$799</span></div>
+    <div><b>Llega en 7-14 días</b><span>Envío gratis +$799</span></div>
   </div>
 </div>
 
-<!-- TAGLINE ROTATOR Â· cycle through brand mantras -->
+<!-- TAGLINE ROTATOR · cycle through brand mantras -->
 <div class="tag-rotator" role="banner" aria-live="polite">
   <svg class="tk-mono" aria-hidden="true"><use href="#tk-mono"/></svg>
   <div class="tag-track" id="tagTrack">
     <div class="tag-line on">DISCIPLINE <span class="lime">OVER</span> EVERYTHING</div>
     <div class="tag-line">DESIGNED FOR <span class="lime">GYMRATS</span></div>
-    <div class="tag-line">TRAIN Â· EVOLVE Â· <span class="lime">DOMINATE</span></div>
-    <div class="tag-line">MIND Â· BODY Â· <span class="lime">KAIZEN</span></div>
+    <div class="tag-line">TRAIN · EVOLVE · <span class="lime">DOMINATE</span></div>
+    <div class="tag-line">MIND · BODY · <span class="lime">KAIZEN</span></div>
     <div class="tag-line">BUILT FOR <span class="lime">GREATNESS</span></div>
   </div>
   <svg class="tk-mono-r" aria-hidden="true"><use href="#tk-mono"/></svg>
@@ -1493,67 +1501,51 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 
 <div class="ticker">
   <div class="t-track">
-    <div class="t-item">Made-to-Order Â· 7-14 dÃ­as<span class="t-dot"></span></div>
-    <div class="t-item">100% Hecho en MÃ©xico<span class="t-dot"></span></div>
+    <div class="t-item">Made-to-Order · 7-14 días<span class="t-dot"></span></div>
+    <div class="t-item">100% Hecho en México<span class="t-dot"></span></div>
     <div class="t-item">12 MSI con MercadoPago<span class="t-dot"></span></div>
-    <div class="t-item">EnvÃ­o gratis +$799<span class="t-dot"></span></div>
-    <div class="t-item">Devoluciones 30 dÃ­as<span class="t-dot"></span></div>
+    <div class="t-item">Envío gratis +$799<span class="t-dot"></span></div>
+    <div class="t-item">Devoluciones 30 días<span class="t-dot"></span></div>
     <div class="t-item">Built different. Built local.<span class="t-dot"></span></div>
-    <div class="t-item">Made-to-Order Â· 7-14 dÃ­as<span class="t-dot"></span></div>
-    <div class="t-item">100% Hecho en MÃ©xico<span class="t-dot"></span></div>
+    <div class="t-item">Made-to-Order · 7-14 días<span class="t-dot"></span></div>
+    <div class="t-item">100% Hecho en México<span class="t-dot"></span></div>
     <div class="t-item">12 MSI con MercadoPago<span class="t-dot"></span></div>
-    <div class="t-item">EnvÃ­o gratis +$799<span class="t-dot"></span></div>
-    <div class="t-item">Devoluciones 30 dÃ­as<span class="t-dot"></span></div>
+    <div class="t-item">Envío gratis +$799<span class="t-dot"></span></div>
+    <div class="t-item">Devoluciones 30 días<span class="t-dot"></span></div>
     <div class="t-item">Built different. Built local.<span class="t-dot"></span></div>
   </div>
 </div>
 
-<!-- â VS MARCAS GRINGAS â -->
-<section class="vs-band" id="comparativa">
+<!-- BRAND VALUE PROP — calidad + precio -->
+<section class="vs-band" id="propuesta">
   <div class="vs-head">
-    <div class="vs-eyebrow">Calidad gringa Â· Precio mexicano</div>
-    <h2 class="vs-title">LA MISMA TELA <span class="lime">A LA MITAD</span></h2>
-    <p class="vs-desc">240 gsm cotton premium, fit oversize editorial, hecho en MÃ©xico. Sin pagar import duties, sin esperar 3 semanas de envÃ­o internacional. <b>Built different. Built local.</b></p>
+    <div class="vs-eyebrow">Calidad premium · Precio justo</div>
+    <h2 class="vs-title">PREMIUM <span class="lime">DESDE MÉXICO</span></h2>
+    <p class="vs-desc">240 gsm cotton premium, fit oversize editorial, hecho en México. Sin pagar import duties, sin esperar tres semanas de envío internacional. <b>Built different. Built local.</b></p>
   </div>
-  <div class="vs-table" role="table" aria-label="Comparativa de precios vs marcas americanas">
-    <div class="vs-row head" role="row">
-      <div role="columnheader">Producto</div>
-      <div role="columnheader" class="vs-them">YoungLA</div>
-      <div role="columnheader" class="vs-them">Gymshark</div>
-      <div role="columnheader" class="vs-them">Vuori</div>
-      <div role="columnheader" class="vs-them">Lululemon</div>
-      <div role="columnheader" class="vs-tk">TORO KAIZEN</div>
-      <div role="columnheader" class="vs-them">Î</div>
+  <div class="vs-pillars">
+    <div class="vs-pillar">
+      <svg aria-hidden="true"><use href="#feat-stretch"/></svg>
+      <h3>Tela premium</h3>
+      <p>Algodón peinado 240 gsm con elastano. Mismo gramaje que las marcas que cuestan el doble.</p>
     </div>
-    <div class="vs-row" role="row">
-      <div class="vs-name" role="cell">Tee oversize</div>
-      <div class="vs-price" role="cell">$1,100</div>
-      <div class="vs-price" role="cell">$950</div>
-      <div class="vs-price" role="cell">$1,400</div>
-      <div class="vs-price" role="cell">$1,800</div>
-      <div class="vs-tk-price" role="cell">$649</div>
-      <div class="vs-delta" role="cell">â51%</div>
+    <div class="vs-pillar">
+      <svg aria-hidden="true"><use href="#feat-mexico"/></svg>
+      <h3>Hecho en México</h3>
+      <p>Maquilas en Aguascalientes y CDMX con condiciones laborales justas. Cero intermediarios.</p>
     </div>
-    <div class="vs-row" role="row">
-      <div class="vs-name" role="cell">Hoodie heavyweight</div>
-      <div class="vs-price" role="cell">$2,200</div>
-      <div class="vs-price" role="cell">$1,850</div>
-      <div class="vs-price" role="cell">$2,400</div>
-      <div class="vs-price" role="cell">$3,200</div>
-      <div class="vs-tk-price" role="cell">$899</div>
-      <div class="vs-delta" role="cell">â63%</div>
+    <div class="vs-pillar">
+      <svg aria-hidden="true"><use href="#feat-silicone"/></svg>
+      <h3>Made-to-Order</h3>
+      <p>Producimos solo lo que pides. Cero stock muerto, prenda hecha para ti, llega en 7-14 días.</p>
     </div>
-    <div class="vs-row" role="row">
-      <div class="vs-name" role="cell">Jogger / sweatpants</div>
-      <div class="vs-price" role="cell">$1,800</div>
-      <div class="vs-price" role="cell">$1,500</div>
-      <div class="vs-price" role="cell">$2,100</div>
-      <div class="vs-price" role="cell">$2,600</div>
-      <div class="vs-tk-price" role="cell">$849</div>
-      <div class="vs-delta" role="cell">â58%</div>
+    <div class="vs-pillar">
+      <svg aria-hidden="true"><use href="#feat-compression"/></svg>
+      <h3>Precio honesto</h3>
+      <p>Pagas la prenda, no el branding inflado. 12 meses sin intereses con MercadoPago.</p>
     </div>
   </div>
-  <p class="vs-foot">La tela que YoungLA cobra $1,100, hecha en MÃ©xico, a <b>$649</b>. Pago a meses sin intereses con MercadoPago. Made-to-order â produce solo lo que pides, llega a tu puerta en 7-14 dÃ­as.</p>
+  <p class="vs-foot">Tee desde <b>$649</b> · Hoodie desde <b>$899</b> · Jogger desde <b>$849</b><br>Made-to-order — produce solo lo que pides, llega a tu puerta en 7-14 días.</p>
 </section>
 
 <!-- PRODUCTS -->
@@ -1884,7 +1876,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   <div class="rv-grid">
     <div class="rv-card rv">
       <div class="rv-stars">★★★★★</div>
-      <p class="rv-text">"La calidad supera a Gymshark de lejos. La tela del Stringer no se deforma con el sudor, y el corte oversize ajusta perfecto en delts."</p>
+      <p class="rv-text">"La calidad supera por mucho a las marcas importadas. La tela del Stringer no se deforma con el sudor, y el corte oversize ajusta perfecto en delts."</p>
       <div class="rv-meta">
         <div class="rv-avatar">J</div>
         <div>
@@ -2521,7 +2513,7 @@ document.querySelectorAll('.scroll-morph').forEach(initScrollMorph);
 
       <!-- Tech specs callouts (TQ ref-image style) -->
       <div class="qa-specs">
-        <div class="qa-specs-h">FEATURES Â· BUILT DIFFERENT</div>
+        <div class="qa-specs-h">FEATURES · BUILT DIFFERENT</div>
         <div class="qa-specs-list">
           <div class="qa-spec">
             <svg aria-hidden="true"><use href="#feat-stretch"/></svg>
@@ -2537,7 +2529,7 @@ document.querySelectorAll('.scroll-morph').forEach(initScrollMorph);
           </div>
           <div class="qa-spec">
             <svg aria-hidden="true"><use href="#feat-woven"/></svg>
-            <div><b>Woven Label</b><span>Etiqueta cosida Â· premium finish</span></div>
+            <div><b>Woven Label</b><span>Etiqueta cosida · premium finish</span></div>
           </div>
         </div>
       </div>
