@@ -1275,6 +1275,29 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   .ticker .t-track,.tag-rotator .tag-line{animation:none !important}
 }
 
+/* WHATSAPP FLOATING BUTTON */
+.wa-fab{position:fixed;bottom:80px;right:20px;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(37,211,102,.4);z-index:120;text-decoration:none;transition:transform .2s,box-shadow .2s;animation:waPulse 2.5s ease-in-out infinite}
+.wa-fab:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(37,211,102,.55)}
+.wa-fab svg{width:28px;height:28px}
+.wa-fab .wa-tip{position:absolute;right:calc(100% + 12px);top:50%;transform:translateY(-50%);background:var(--bg-1);color:var(--white);padding:9px 14px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;border:.5px solid var(--lime);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
+.wa-fab:hover .wa-tip{opacity:1;transform:translateY(-50%) translateX(-4px)}
+@keyframes waPulse{0%,100%{box-shadow:0 6px 20px rgba(37,211,102,.4)}50%{box-shadow:0 6px 20px rgba(37,211,102,.4),0 0 0 12px rgba(37,211,102,.15)}}
+@media(max-width:600px){.wa-fab{bottom:74px;right:14px;width:50px;height:50px}.wa-fab svg{width:24px;height:24px}.wa-fab .wa-tip{display:none}}
+
+/* COOKIE CONSENT BANNER */
+.cookie-banner{position:fixed;bottom:14px;left:14px;right:14px;max-width:560px;background:var(--bg-2);border:.5px solid var(--lime);padding:18px 20px;z-index:540;display:none;font-family:'Barlow',sans-serif;font-size:13px;color:var(--text-2);line-height:1.55;box-shadow:0 12px 40px rgba(0,0,0,.5);animation:slideUp .3s ease-out}
+.cookie-banner.on{display:flex;flex-direction:column;gap:12px}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+.cookie-banner b{color:var(--white);font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;font-size:16px}
+.cookie-banner a{color:var(--lime);text-decoration:underline}
+.cookie-banner .cb-actions{display:flex;gap:10px;flex-wrap:wrap}
+.cookie-banner button{flex:1;min-width:120px;padding:10px 14px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:11px;cursor:pointer;border:none;transition:all .2s}
+.cookie-banner .cb-accept{background:var(--lime);color:var(--black)}
+.cookie-banner .cb-accept:hover{background:var(--white)}
+.cookie-banner .cb-reject{background:transparent;color:var(--text-2);border:.5px solid var(--border)}
+.cookie-banner .cb-reject:hover{color:var(--lime);border-color:var(--lime)}
+@media(max-width:600px){.cookie-banner{left:8px;right:8px;bottom:8px;padding:14px 16px;font-size:12px}}
+
 </style>
 </head>
 <body>
@@ -1966,12 +1989,14 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     <div class="foot-x-col">
       <h4>Ayuda</h4>
       <ul>
-        <li><a>Rastrea tu pedido</a></li>
-        <li><a>Guía de tallas</a></li>
-        <li><a>Devoluciones &amp; cambios</a></li>
-        <li><a>Envíos</a></li>
-        <li><a>FAQ</a></li>
-        <li><a>Contacto</a></li>
+        <li><a href="https://wa.me/525511223344">Rastrea tu pedido</a></li>
+        <li><a href="#" onclick="event.preventDefault();openSizeGuide()">Guía de tallas</a></li>
+        <li><a href="returns.html">Devoluciones &amp; cambios</a></li>
+        <li><a href="returns.html">Envíos</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="https://wa.me/525511223344">Contacto · WhatsApp</a></li>
+        <li><a href="privacy.html">Aviso de privacidad</a></li>
+        <li><a href="terms.html">Términos &amp; condiciones</a></li>
       </ul>
     </div>
     <div class="foot-x-col">
@@ -3348,6 +3373,34 @@ if(document.readyState!=='loading')renderCart();
 
   </defs>
 </svg>
+
+<!-- WhatsApp floating button -->
+<a class="wa-fab" href="https://wa.me/525511223344?text=Hola%2C%20vengo%20del%20sitio%20torokaizen.mx" target="_blank" rel="noopener" aria-label="Contacto WhatsApp">
+  <span class="wa-tip">Habla con nosotros</span>
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.1-.7.9-.9 1.1-.4.1-.6 0a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2c-.1-.3 0-.4.1-.6l.4-.4c.1-.1.2-.3.3-.4s0-.3 0-.5l-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4 0-.6.3a3 3 0 0 0-.9 2.2 5 5 0 0 0 1.1 2.7 11 11 0 0 0 4.5 4c.6.3 1.1.4 1.5.5a3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.7-1.2 2 2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3zM12 2A10 10 0 0 0 3.4 17.4L2 22l4.7-1.3A10 10 0 1 0 12 2z"/></svg>
+</a>
+
+<!-- Cookie consent banner -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+  <div><b>Cookies</b><br>Usamos cookies estrictamente necesarias (carrito, sesión) y analytics agregados anónimos para mejorar el sitio. Detalles en <a href="privacy.html">/privacy</a>.</div>
+  <div class="cb-actions">
+    <button class="cb-reject" onclick="cookieReject()">Solo necesarias</button>
+    <button class="cb-accept" onclick="cookieAccept()">Aceptar todo</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const KEY='tk_cookie_consent_v1';
+  const banner=document.getElementById('cookieBanner');
+  if(!banner)return;
+  if(!localStorage.getItem(KEY)){
+    setTimeout(()=>banner.classList.add('on'),1400);
+  }
+  window.cookieAccept=function(){localStorage.setItem(KEY,'all');banner.classList.remove('on')};
+  window.cookieReject=function(){localStorage.setItem(KEY,'essential');banner.classList.remove('on')};
+})();
+</script>
 
 </body>
 </html>
