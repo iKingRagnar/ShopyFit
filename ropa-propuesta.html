@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inversión Ligera POD · TORO KAIZEN</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #1a1a1a;
+    --ink-2: #5a5550;
+    --ink-3: #8a8580;
+    --lime: #c8d800;
+    --black: #0d0d0e;
+    --rule: #d9d2c2;
+    --soft: #f5f0e0;
+    --accent: #1a2740;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0 }
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.65;
+    font-size: 15px;
+  }
+  body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 56px 48px 80px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 22px;
+    margin-bottom: 36px;
+  }
+  .brand-logo {
+    width: 44px;
+    height: 36px;
+    background: var(--black);
+    color: var(--lime);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+  }
+  .brand-name {
+    font-family: 'Bebas Neue', Impact, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.12em;
+  }
+  .brand-sub {
+    color: var(--ink-3);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-left: auto;
+  }
+  #content { font-size: 15px }
+  h1 {
+    font-family: 'Bebas Neue', Impact, Arial, sans-serif;
+    font-weight: 800;
+    font-size: 38px;
+    letter-spacing: 0.02em;
+    color: var(--black);
+    line-height: 1.1;
+    margin: 32px 0 14px;
+    page-break-after: avoid;
+  }
+  h2 {
+    font-family: 'Bebas Neue', Impact, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.04em;
+    color: var(--black);
+    margin: 38px 0 14px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    page-break-after: avoid;
+  }
+  h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 22px 0 10px;
+    color: var(--accent);
+    page-break-after: avoid;
+  }
+  h4 { font-size: 15px; font-weight: 700; margin: 16px 0 8px }
+  p { margin: 0 0 12px }
+  blockquote {
+    border-left: 3px solid var(--lime);
+    background: var(--soft);
+    padding: 14px 18px;
+    margin: 16px 0;
+    color: var(--ink-2);
+    font-style: italic;
+  }
+  ul, ol { margin: 8px 0 16px 22px }
+  li { margin-bottom: 4px }
+  strong, b { color: var(--black); font-weight: 700 }
+  em, i { color: var(--accent) }
+  code {
+    background: var(--soft);
+    padding: 2px 6px;
+    font-family: 'JetBrains Mono', Menlo, Consolas, monospace;
+    font-size: 13px;
+    border-radius: 3px;
+    color: var(--accent);
+  }
+  pre code { display: block; padding: 12px; overflow-x: auto }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 22px;
+    font-size: 13.5px;
+  }
+  thead th {
+    background: var(--black);
+    color: var(--lime);
+    text-align: left;
+    padding: 10px 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  tbody td {
+    border-bottom: 1px solid var(--rule);
+    padding: 9px 12px;
+    vertical-align: top;
+  }
+  tbody tr:nth-child(odd) { background: #fafaf6 }
+  tbody tr:hover { background: var(--soft) }
+  hr {
+    border: none;
+    height: 1px;
+    background: var(--rule);
+    margin: 28px 0;
+  }
+  a { color: var(--accent); text-decoration: underline }
+  .toolbar {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    background: var(--black);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    font-size: 12px;
+    z-index: 999;
+  }
+  .toolbar button {
+    background: var(--lime);
+    color: var(--black);
+    border: none;
+    padding: 6px 12px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 8px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  .toolbar button:hover { background: white }
+  @media print {
+    .toolbar { display: none }
+    body { padding: 24px 32px }
+    h1, h2, h3, h4 { page-break-after: avoid }
+    table, blockquote { page-break-inside: avoid }
+    a { color: var(--ink); text-decoration: none }
+  }
+  @page { margin: 18mm 16mm }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  Para guardar como PDF
+  <button onclick="window.print()">Imprimir / Guardar PDF</button>
+</div>
+
+<header class="brand">
+  <div class="brand-logo">
+    <svg viewBox="0 0 100 80" width="34" height="26" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></g></svg>
+  </div>
+  <div>
+    <div class="brand-name">TORO KAIZEN</div>
+    <div style="font-size:11px;color:var(--ink-3);letter-spacing:.16em;text-transform:uppercase;margin-top:2px">改善 · Built different</div>
+  </div>
+  <div class="brand-sub">Inversión Ligera · POD</div>
+</header>
+
+<div id="content">
+  <p>Cargando documento…</p>
+</div>
+
+<footer style="margin-top:60px;padding-top:22px;border-top:1px solid var(--rule);color:var(--ink-3);font-size:12px;text-align:center">
+  Generado para reunión de socios · Editar libre · v4 con plan de seguimiento + governance entre socios (4-may-2026)
+</footer>
+
+<!-- Embedded markdown content -->
+<script type="text/markdown" id="md-source">
+# Inversión LIGERA · Modelo Pre-order / POD
+
+> Reescrito 2026-05-04 con info real del chat con socio. Costo objetivo prenda: $150-200 MXN. PVP: tee $649, cargo $799. Lead time customer: 1-2 semanas. **Cero stock, casi cero contacto con producto.**
+
+---
+
+## Target: morros y morras 15-26 años
+
+> *"Los que no le piensan tanto en precio. Compran calidad, branding y vibra. Se mueven en TikTok + Instagram. Confían en reviews de otros morros antes que en ads tradicionales."*
+
+### Implicaciones operativas
+
+- **TikTok > Instagram > Meta** en presupuesto de ads (orden de prioridad)
+- **Reels y TikToks con producto en uso real** (gym, calle, sesión de boxing) son la moneda
+- **Influencer micro fitness/streetwear** (1K-50K seguidores) > celebridades
+- **WhatsApp** como customer service principal (no email — Gen Z casi no lo usa)
+- **Bundle / sets** funcionan mejor que single items (mentalidad de "outfit completo")
+- **Drops limitados** generan FOMO real en este demo
+- **Pago a meses sin intereses** (Mercado Pago) es casi requisito en MX
+
+### Mix de marketing ajustado al target
+
+| Canal | % del budget | Por qué |
+|---|---|---|
+| TikTok Ads | 50% | Donde viven realmente |
+| Influencer micro (fitness/streetwear) | 25% | Recomendación > publicidad |
+| Instagram Reels Ads | 15% | Cross-post de TikToks |
+| Meta Feed/Stories | 10% | Retargeting + lookalike audiences |
+| Google Search | 0% (mes 1-3) | Brand awareness pre-existe poco |
+
+---
+
+## El concepto
+
+Cliente compra hoy → cobras hoy → mandas la orden a tu maquilador → maquilador produce + envía directo al cliente en 7-14 días → tú nunca tocas la prenda. Pagas al maquilador con la lana del cliente.
+
+---
+
+## 3 modelos de sourcing (de menos riesgo a más margen)
+
+### A. POD Platform pura (Printful, Tostadora)
+Plataforma ya tiene la prenda + se conecta a tu web. Cliente compra, ellos producen + envían automático.
+
+| | |
+|---|---|
+| Lead time customer | 7-14 días |
+| Costo unitario tee | $290-340 MXN |
+| Tu margen en tee $649 | ~$280 MXN (43%) |
+| MOQ | 1 unidad |
+| Inversión inicial | ~$0 (puro digital) |
+| **Pro** | Plug & play, automático, cero contacto |
+| **Contra** | Margen menor, prendas estándar (no fit oversize propio), packaging genérico |
+
+### B. Batch semanal con maquila local MX *(recomendado)*
+Tú abres la web normal (no drop). Acumulas órdenes 7 días. Cada lunes mandas la lista al maquilador. Maquilador produce 5-7 días + envía directo a cada cliente.
+
+| | |
+|---|---|
+| Lead time customer | 10-14 días |
+| Costo unitario tee | $150-200 MXN ← TQ target |
+| Tu margen en tee $649 | ~$420 MXN (65%) |
+| MOQ típico | 10-15 piezas/lote (semanal) |
+| Inversión inicial | ~$15K MXN (samples + foto + IMPI) |
+| **Pro** | Margen máximo, fit propio, made in MX, branding completo |
+| **Contra** | Si una semana no llegas a MOQ, tienes que esperar a juntar más o absorber el costo de un mini-lote |
+
+### C. Importación China/Bangladesh (mes 6+)
+Cuando ya validaron y tienen tracción, importan contenedor pequeño. Calidad alta, costo bajísimo.
+
+| | |
+|---|---|
+| Lead time producción | 30-45 días |
+| Costo unitario tee | $80-120 MXN (FOB) + envío + aduanas |
+| Costo final con import | $130-180 MXN |
+| Inversión inicial mínima | ~$80-120K MXN (1 contenedor pequeño) |
+| **Pro** | Margen brutal (~70%), calidad premium asiática, escalable |
+| **Contra** | YA es modelo inventory, no POD. Para mes 6+ con validación. |
+
+---
+
+## Recomendación: **Batch semanal local (B)**
+
+Por qué:
+
+1. **Costo $150-200/tee** — exactamente lo que TQ apunta
+2. **Margen 65%** — cubre marketing + ops + utilidad sana
+3. **Lead time 10-14 días** — comunicable como "made-to-order, hecho en México"
+4. **Inversión inicial bajísima** ($15K total = $7.5K por socio)
+5. **Tu fit propio** desde el día 1
+6. **Cero capital amarrado en stock**
+7. **Path natural a C** (importación) cuando valides volumen
+
+---
+
+## Presupuesto · Modelo B (Batch semanal local)
+
+### Inversión inicial (one-time)
+
+| Item | Costo | Notas |
+|---|---|---|
+| Samples para fotos (5 piezas) | $1,500 | $300 c/u, una de cada SKU principal |
+| Photoshoot DIY (luces + fondo) | $2,000 | Cámara prestada o celular pro |
+| Stickers + bolsas custom (100u) | $1,500 | Para maquilador empacar |
+| Registro IMPI (1 clase ropa) | $2,800 | **Crítico legal** |
+| Apertura cuenta business | $500 | BBVA / Banamex / MP Empresa |
+| Mockups AI (Gemini billing) | $200 | ~30 imágenes producto |
+| Buffer imprevistos | $5,000 | |
+| **Total** | **$13,500** | |
+| **Por socio (50/50)** | **$6,750** | |
+
+> Si quieren photoshoot pro con modelo: +$8,000 ($4K c/u). Recomendable el mes 2-3 con lana de ventas.
+
+### Mensual operativo (independiente de ventas)
+
+| Item | Costo |
+|---|---|
+| Hosting Railway free | $0 |
+| Dominio `.mx` amortizado | $30 |
+| Mailchimp free tier | $0 |
+| Contador básico | $1,500 |
+| AI APIs (Gemini para mockups) | $200 |
+| **Subtotal fijo** | **$1,730** |
+
+### Marketing mensual (donde sí hay que aportar)
+
+| Canal | Bootstrap | Realista |
+|---|---|---|
+| Meta Ads (FB/IG) | $3,000 | $7,000 |
+| TikTok Ads | $0 | $3,000 |
+| Influencer micro (1 colab/mes) | $0 | $1,500 |
+| **Subtotal marketing** | **$3,000** | **$11,500** |
+
+### TOTAL mensual
+
+| | Bootstrap | Realista |
+|---|---|---|
+| Fijos | $1,730 | $1,730 |
+| Marketing | $3,000 | $11,500 |
+| **Total mensual** | **$4,730** | **$13,230** |
+| **Por socio** | **$2,365** | **$6,615** |
+
+---
+
+## Cuánto sale hacer cada prenda (detallado)
+
+> Estimaciones MX para batch semanal de 10-30 piezas con maquila local. TQ ajusta cuando traiga cotización real.
+
+### Tee oversize 240gsm cotton + bull print
+
+| Concepto | Costo MXN |
+|---|---|
+| Tela (240gsm cotton, 0.8 m²) | $80 |
+| Corte + costura | $55 |
+| Estampado DTF / serigrafía bull | $30 |
+| Etiqueta cosida + hangtag | $15 |
+| **Costo unitario producción** | **$180** |
+
+### Pants/Cargo french terry
+
+| Concepto | Costo MXN |
+|---|---|
+| Tela (320gsm french terry, 1.4 m²) | $145 |
+| Corte + costura (más complejo, bolsillos) | $110 |
+| Cordones + herrajes | $20 |
+| Etiqueta + hangtag | $15 |
+| **Costo unitario producción** | **$290** |
+
+### Hoodie heavyweight 380gsm
+
+| Concepto | Costo MXN |
+|---|---|
+| Tela (380gsm fleece, 1.8 m²) | $210 |
+| Corte + costura (capucha + bolsillo + cordón) | $135 |
+| Estampado bull en chest | $30 |
+| Cordones metalizados + ojetes | $25 |
+| Etiqueta + hangtag | $20 |
+| **Costo unitario producción** | **$420** |
+
+### Shorts performance
+
+| Concepto | Costo MXN |
+|---|---|
+| Tela (poliéster light, 0.7 m²) | $55 |
+| Corte + costura + bolsillos malla | $80 |
+| Cordón elastizado | $15 |
+| Etiqueta + hangtag | $15 |
+| **Costo unitario producción** | **$165** |
+
+### Tank stringer
+
+| Concepto | Costo MXN |
+|---|---|
+| Tela (180gsm performance, 0.5 m²) | $50 |
+| Corte + costura | $45 |
+| Estampado bull | $30 |
+| Etiqueta + hangtag | $15 |
+| **Costo unitario producción** | **$140** |
+
+### Set completo (tee + jogger)
+
+| Concepto | Costo MXN |
+|---|---|
+| Tee oversize | $180 |
+| Jogger | $290 |
+| Empaque conjunto premium | $30 |
+| **Costo unitario producción** | **$500** |
+
+### Cap structured 6-panel
+
+| Concepto | Costo MXN |
+|---|---|
+| Tela washed cotton | $35 |
+| Corte + costura + visera | $40 |
+| Bordado bull | $40 |
+| Strap + closure | $15 |
+| **Costo unitario producción** | **$130** |
+
+---
+
+## Tabla margen completa
+
+| Producto | Costo prod. | PVP | Comisión + envío + pack | Margen neto | % margen |
+|---|---|---|---|---|---|
+| Tee | $180 | $649 | $120 | **$349** | **54%** |
+| Tank | $140 | $549 | $115 | **$294** | **54%** |
+| Shorts | $165 | $649 | $120 | **$364** | **56%** |
+| Pants/Cargo | $290 | $799 | $135 | **$374** | **47%** |
+| Jogger | $290 | $849 | $135 | **$424** | **50%** |
+| Hoodie | $420 | $899 | $145 | **$334** | **37%** |
+| Set | $500 | $1,199 | $160 | **$539** | **45%** |
+| Cap | $130 | $399 | $90 | **$179** | **45%** |
+
+**Margen ponderado promedio: ~50%** (con mix esperado 40% tees, 20% bottoms, 20% hoodies, 10% sets, 10% caps)
+
+### Costo por venta detallado (cualquier prenda)
+
+| Item | $ MXN | Notas |
+|---|---|---|
+| Costo producción | (variable, ver arriba) | Pagas al maquilador |
+| Comisión Stripe / MercadoPago | 3.6% + $3 | ej. $26 en $649 |
+| Envío maquila → cliente (paquetería estándar MX) | $70-100 | Depende de zona |
+| Empaque básico (bolsa polibag + sticker + thank-you card) | $14-20 | |
+| **Total costo por venta (no producción)** | **~$110-145** | |
+
+---
+
+## Punto de equilibrio
+
+Costo fijo realista: **$13,230/mes**
+Margen promedio por venta: **~$330 MXN** (mix de tees, cargos, hoodies)
+
+**Break-even: 40 ventas/mes** = ~10 ventas/semana
+
+Con $11.5K en ads + ROAS 3.5×, ventas esperadas: $40K = ~60 unidades/mes.
+
+| Mes | Ventas | Margen bruto | Net (margen − ops) |
+|---|---|---|---|
+| 1 | 15 | $4,950 | -$8,280 (lanzamiento) |
+| 2 | 35 | $11,550 | -$1,680 |
+| 3 | 60 | $19,800 | **+$6,570** ← break-even |
+| 4 | 90 | $29,700 | +$16,470 |
+| 5 | 130 | $42,900 | +$29,670 |
+| 6 | 170 | $56,100 | +$42,870 |
+
+**Recuperación de inversión inicial:** mes 4-5.
+
+---
+
+## Operación día a día (cómo se ve)
+
+### Lunes
+- Cierre de la semana anterior
+- Exportas órdenes pendientes a Excel: SKU, talla, color, dirección, cliente
+- Mandas al maquilador por WhatsApp
+- Pagas 50% upfront
+
+### Martes-Viernes
+- Atender DMs / WhatsApp
+- Marketing (ads, contenido)
+- TÚ NO TOCAS PRENDA
+
+### Sábado-Domingo
+- Maquilador termina producción
+- Tú revisas que todo esté en orden
+- Pagas el 50% restante
+
+### Lunes siguiente
+- Maquilador empaca con tus stickers
+- Maquilador entrega a paquetería
+- Cliente recibe tracking
+- Repites
+
+---
+
+## Plan inicial: arrancar con 3 SKUs (recomendado por TQ)
+
+> *"Vamos a empezar despacio, con algunos tres diseños, para ver cómo va pegando la marca"* — TQ
+
+### Los 3 SKUs estratégicos para validar
+
+Eligen **un hero por categoría** para cubrir el wardrobe completo del target:
+
+| SKU | Por qué arrancar con este |
+|---|---|
+| **Tee Gothic Black 240gsm + bull print** | Producto puerta, precio entrada $649, fácil viralizar en TikTok, alta demanda Gen Z |
+| **Hoodie Void Mortal 380gsm** | Statement piece de margen alto, captura compras de invierno + transición SS, look streetwear |
+| **Jogger Phantom Toro french terry** | Forma el "outfit completo" con el tee — hace bundle/set vendible naturalmente |
+
+### Por qué esos 3 (no otros)
+
+- **Cubren las 3 zonas del cuerpo** (top + bottom + outerwear) — un cliente puede armar look completo sin pedir 2 marcas
+- **Precios escalonados** ($649 / $899 / $849) — entrada barata + upsell + cross-sell
+- **Mismo print bull** = un solo art file para los 3 = ahorro en producción de mockups
+- **Fáciles de cotizar con maquila local** (no requieren bordado, herrajes especiales, ni materiales raros)
+- **Permiten testear 3 swatches de color cada uno** = 9 variaciones para Meta/TikTok ads sin fragmentar producción
+
+### Cronograma de pruebas de tela (4-6 semanas)
+
+> *"Tardaremos en hacer pruebas de las telas y evaluar costos"* — TQ
+
+**Semana 1-2: Discovery**
+- TQ contacta 3 maquilas + 2 textileras
+- Pide muestras de tela (NO prendas terminadas todavía):
+  - 3 swatches de cotton 220-260gsm para tee
+  - 2 swatches de french terry 280-320gsm para jogger
+  - 2 swatches de fleece 360-400gsm para hoodie
+- Costo muestras telas: $200-500 MXN total
+
+**Semana 3-4: Sampling de prendas**
+- Maquila finalista hace 1 prenda muestra de cada SKU con tela seleccionada
+- Costo samples: ~$1,500-2,500 MXN total
+- Lavar 5-10 veces, evaluar:
+  - Encogimiento
+  - Pilling
+  - Resistencia del estampado
+  - Comodidad fit
+
+**Semana 5: Decisión + cotización formal**
+- Eligen tela final por SKU
+- Cotización para batch de 30, 50, 100 piezas (precio baja con volumen)
+- Negociación de plazos y pago
+
+**Semana 6: Photoshoot + lanzamiento web**
+- Fotos de los 3 SKUs en variantes principales (~9 fotos clave)
+- Update web: solo se muestran los 3 SKUs reales, los demás "Coming soon"
+- Soft launch a contactos cercanos via WhatsApp para primeras 5-10 ventas
+
+### Inversión inicial AJUSTADA al plan de 3 SKUs
+
+| Item | Costo MXN |
+|---|---|
+| Muestras de tela (5-7 swatches) | $400 |
+| Samples de prendas (3 piezas, 2 rondas) | $4,500 |
+| Photoshoot DIY (luces + fondo paper) | $2,000 |
+| Stickers + bolsas custom (100u) | $1,500 |
+| Registro IMPI 1 clase | $2,800 |
+| Apertura cuenta business | $500 |
+| Mockups AI (Gemini billing) | $200 |
+| Buffer | $3,000 |
+| **Total inversión inicial** | **$14,900** |
+| **Por socio** | **$7,450** |
+
+**Diferencia vs plan completo (8 SKUs):** ~mismo total, pero MUCHO menos riesgo de quemar plata en SKUs que no peguen.
+
+### Después de validar (mes 3-4)
+
+- Si los 3 SKUs venden: agregar 2-3 más por mes (tank, shorts, cap, set)
+- Si NO venden: pivotar fit, color o estampado del SKU débil ANTES de expandir
+- Métricas para "validó": >40 ventas/mes consistentes en mes 3, recompra >15%, NPS >50
+
+---
+
+## Maquilas MX para arrancar
+
+TQ va a cotizar — esto es solo lista de candidatos:
+
+| Proveedor | Ubicación | MOQ típico | Lead time |
+|---|---|---|---|
+| **Maquilas Aguascalientes** | AGS | 10-30 | 7-12 días |
+| **Punto Fashion MX** | CDMX | 10-25 | 10-14 días |
+| **Konfekta MX** | MTY | 20-40 | 10-15 días |
+| **Talleres del Centro** | Puebla / Tlaxcala | 5-15 | 10-14 días |
+
+**Para serigrafía/estampado** (si TQ confirma que la maquila no graba):
+- DTF / serigrafía local: $25-45 MXN por estampado
+- Bordado: $40-80 MXN por logo
+
+> Dile a TQ que pida cotización de **dos cosas separadas:** (1) prenda en blanco con tela X gramaje Y, (2) estampado del bull. A veces sale más barato dividir.
+
+---
+
+## Comparativa final · 3 escenarios
+
+| | Inventory (doc anterior) | **Batch semanal POD** | POD platform pura |
+|---|---|---|---|
+| Inversión inicial socio | $34,300 | **$6,750** | ~$0 |
+| Mensual socio | $31,795 | **$6,615** | $4,500 |
+| Costo unitario tee | $260 | **$180** | $310 |
+| Margen tee $649 | $389 | **$420** | $280 |
+| Lead time customer | 2-5 días | **10-14 días** | 7-14 días |
+| Stock necesario | $30K+ | **$0** | $0 |
+| Tu fit propio | ✓ | ✓ | ✗ |
+| Hecho en MX | ✓ | ✓ | parcial |
+| Break-even ventas/mes | 140 | **40** | 50 |
+
+**Diferencia clave Batch vs Inventory:** **5× menos capital inicial**, **5× menos mensual**, **3.5× menos ventas para ser rentable**.
+
+---
+
+## TL;DR para conversar con socio
+
+> Empezamos con **Batch Semanal POD**. Cada uno aporta **$6,750 inicial + $6,615/mes** los primeros 4 meses.
+>
+> **Cero inventario.** Producimos solo lo que se vende. Maquilador local recibe la lista cada lunes y envía directo al cliente. Lead time 10-14 días.
+>
+> **Costo prenda: $150-200** (target TQ), **PVP $649-799**, **margen 54-65%**.
+>
+> **Break-even: 40 ventas/mes** = ~10/semana. Esperamos cruzarlo en mes 3-4.
+>
+> **Total comprometido por socio en 6 meses: ~$33K MXN** (vs $225K modelo inventory).
+
+---
+
+## Posicionamiento vs competencia americana
+
+Tu pricing **vs lo que cobran las gringas en MX** (precios reales 2026):
+
+| Producto | YoungLA | Gymshark | Vuori | Lululemon | **TORO KAIZEN** | Δ vs promedio |
+|---|---|---|---|---|---|---|
+| Tee oversize 240gsm | $1,100 | $950 | $1,400 | $1,800 | **$649** | **−51%** |
+| Hoodie heavyweight | $2,200 | $1,850 | $2,400 | $3,200 | **$899** | **−63%** |
+| Jogger / sweatpants | $1,800 | $1,500 | $2,100 | $2,600 | **$849** | **−58%** |
+| Set completo | $3,500 | $2,800 | $3,800 | $4,500 | **$1,199** | **−66%** |
+| Cap | $700 | $600 | $850 | $1,100 | **$399** | **−51%** |
+
+### Lo que esto comunica
+
+- **Precio 50-65% más bajo** que la competencia americana premium
+- **Misma o mejor calidad de tela** (240gsm cotton + elastano = grado YoungLA/Gymshark)
+- **Made in México** = no pagas import duties, no esperas 3-4 semanas de envío internacional
+- **Hangtag bilingüe MX/JP** = identidad propia, no copy de gringas
+
+### Mensaje de marketing
+
+> *"La tela que YoungLA cobra $1,100, hecha en México, a $649. Sin intermediarios. Sin shipping desde USA. Built different."*
+
+Esto es **el** ángulo de Meta Ads / TikTok desde el día 1. **Comparativa visual lado a lado** con precios de competencia. Brutal para conversion.
+
+### Calidad que hay que cumplir
+
+Para que el pricing competitivo sea **creíble** (no se sienta cheap), las prendas tienen que cumplir:
+
+| Atributo | Mínimo aceptable | Notas |
+|---|---|---|
+| Gramaje tee | 220-240 gsm | Por debajo se siente "delgado" |
+| Composición tee | 100% algodón peinado o 95/5 con elastano | No mezcla cheap |
+| Costuras | Doble pespunte en hombros + dobladillos | Estándar oversize premium |
+| Estampado | DTF resistente a 30+ lavadas | Pedir muestra de durabilidad |
+| Etiqueta | Cosida no transferida | Detalle que se nota |
+| Hangtag | Cartón 350+ gsm con cordón | Percepción de unboxing |
+
+**Si TQ en cotización ve gramaje <220gsm o costuras simples, no acepta** — es donde la mayoría de marcas MX nuevas se queman intentando ser baratas.
+
+---
+
+## Roadmap 4 semanas hasta primer cobro
+
+| Semana | Acción |
+|---|---|
+| **1** | TQ cotiza 3 maquilas. Decidir 1. Solicitar samples + cotización de estampado (2 opciones: incluido o aparte) |
+| **2** | Recibir samples. Photoshoot DIY. Subir productos a la web con badge "Made-to-Order · Envío 10-14 días". Configurar Stripe/MP. |
+| **3** | Lanzar campaña Meta Ads de teaser. WhatsApp marketing a contactos. Primeras órdenes. |
+| **4** | Lunes: mandar primer batch al maquilador. Cliente recibe en mes 2 día 7-10. |
+
+---
+
+# Plan de seguimiento · Reunión viernes (CRÍTICO)
+
+> Esta sección sale directo del chat del **4-may-2026** entre TQ y socio. Es el contrato de qué se lleva cada quien al viernes y cómo se arma el seguimiento después. Si no se respeta esta lista, llegamos a la reunión a improvisar y se pierde la sesión.
+
+### Quotes del chat (literal, para que no se diluya la intención)
+
+> **TQ — 10:55am:** *"¿Qué tareas nos llevamos pal viernes? ¿Qué seguidores sugieres para llevar algo ya para el brain?"*
+>
+> **Socio — 10:56am:** *"Yo digo que pensar bien qué plataformas de marketing usar, qué tipo de tela, qué tipo de proveedor o más bien cuál tomar. Y ver cuánto tenemos para invertir."*
+>
+> **TQ — 10:57am:** *"Yo pienso que igual pudiéramos empezar el viernes cada quien presentar 3 proveedores textiles nacionales y presentar precio al por menor y precio mayoreo. O sea el costo. De preferencia ya con el grabado del diseño. Alomejor varía el costo del diseño pero más o menos una idea. Dónde están ubicados, etc."*
+>
+> **TQ — 11:00am:** *"Y tres ideas de logo de TORO KAIZEN. Pero igual antes de checarlo bien el viernes avisarnos por aquí para no duplicar jaja."*
+
+---
+
+## A. Tareas individuales antes del viernes
+
+**Cada socio llega con esto resuelto. Sin esto NO hay reunión productiva.**
+
+### A1. Tres proveedores textiles nacionales (cada socio)
+
+Por cada uno, traer ficha con TODOS estos campos llenos:
+
+| Campo | Detalle requerido |
+|---|---|
+| Nombre + razón social | Para validar después que existe legalmente |
+| Ubicación | Ciudad / estado (afecta envío y visitas) |
+| Contacto | WhatsApp + correo + nombre de la persona que respondió |
+| Tipo | Maquila completa / textilera (solo tela) / servicio integral con grabado |
+| **Precio menudeo** | 1 unidad de tee 240gsm cotton terminada |
+| **Precio mayoreo** | Por escalones: 10, 30, 50, 100 unidades |
+| **Costo del estampado bull** | Aparte o incluido — DTF / serigrafía / bordado |
+| Lead time real | De OC pagada a producto terminado en almacén |
+| MOQ absoluto | Mínimo de piezas para correr la primer orden |
+| Tipo de tela disponible | Gramaje, composición, swatches que pueda mandar |
+| Forma de pago | 100% upfront / 50-50 / crédito |
+| Referencias | ¿A qué marcas mexicanas le maquila ya? Ver IG de esas marcas |
+| Capacidad mensual | ¿Aguanta si pasamos de 30 a 200 unidades/mes? |
+
+> **Aviso obligatorio:** mandar al chat la **lista de candidatos** (solo nombre + ciudad, no toda la ficha) **el jueves antes de las 8pm**. Si los dos vamos a contactar a la misma maquila, uno cambia. Esto es lo que pidió TQ literal: *"avisarnos por aquí para no duplicar"*.
+
+### A2. Tres ideas de logo de TORO KAIZEN (cada socio)
+
+Por cada idea:
+
+- **Mockup visual** (puede ser hecho a mano + foto, Figma, Illustrator o AI con Midjourney/Gemini)
+- **Aplicación en al menos 1 contexto:** hangtag, tee chest, hoodie back o cap front
+- **Paleta de 2-3 colores** con códigos HEX
+- **Justificación de una sola línea** — qué transmite y por qué encaja con target 15-26
+- **Versión en blanco sobre negro y negro sobre blanco** (mínimo, para imprimir en cualquier tela)
+
+> **Regla:** las 3 deben ser **direcciones distintas**, no 3 versiones del mismo concepto. Por ejemplo: 1 minimalista geométrico (toro estilizado en líneas), 1 ilustración detallada (toro realista con kanji 改善), 1 tipográfico (wordmark TORO KAIZEN sin ícono). Si los 6 conceptos al final son lo mismo, perdimos la sesión.
+
+### A3. Investigación previa de plataformas de marketing (cada socio)
+
+Cada socio llega con **una opinión informada** (no improvisación) sobre:
+
+- **TikTok Ads:** 3 ejemplos de creatividades que están funcionando en streetwear MX (links a videos de marcas tipo Capi, Toxic Sadness, Gotcha, Ríos, Drogadicción, etc.). Anotar qué hacen bien.
+- **CPA estimado:** Costo por adquisición que están viendo marcas tipo nuestras (preguntar en grupos de FB/Discord de e-commerce MX).
+- **Influencers micro fitness/streetwear** (1K-50K seguidores): listar 5 candidatos cada uno con handle de IG/TikTok + por qué encajan + tarifa estimada (DM y preguntar).
+- **Una recomendación accionable:** si fueras dictador del budget, ¿cómo lo repartirías el primer mes? Defender en 2 minutos.
+
+### A4. Capacidad real de inversión (cada socio)
+
+Cerrar números **antes del viernes**, no en la mesa con cara de sorpresa:
+
+| | Monto que cada socio puede aportar |
+|---|---|
+| Inversión inicial (one-time) | $___ MXN |
+| Aporte mensual sostenible (4-6 meses sin retorno garantizado) | $___ MXN |
+| Buffer de emergencia (si algo se descompone — máquina rota, ban de cuenta de ads, etc.) | $___ MXN |
+
+Sumar y comparar contra el **target del modelo Batch B**: $6,750 inicial + $6,615/mes por socio. Si alguno no llega, decidirlo el viernes — no patearlo.
+
+---
+
+## B. Agenda del viernes (estructura sugerida — 2.5 hrs)
+
+| Tiempo | Bloque | Output esperado |
+|---|---|---|
+| **0:00 – 0:10** | Apertura: alinear que el modelo elegido es **Batch Semanal POD (B)** | Si alguien tiene objeción al modelo, sale ahora. Después no |
+| **0:10 – 0:55** | **Proveedores** — cada socio 15 min presenta sus 3 + 7.5 min Q&A | Shortlist de 2-3 finalistas a contactar formalmente la semana siguiente |
+| **0:55 – 1:25** | **Logo** — los 6 conceptos en mesa, ronda de votación 1-5 + feedback | 1 dirección ganadora + 1 backup para refinar |
+| **1:25 – 1:55** | **Marketing & presupuesto** — confirmar canales, montos, calendario | Mix oficial de canales + capital comprometido por socio firmado |
+| **1:55 – 2:20** | **Decisiones críticas pendientes** (ver C) | Resoluciones documentadas, no "lo vemos después" |
+| **2:20 – 2:30** | **Action items** con dueño + deadline + canal de seguimiento | Cada acción asignada, sin huérfanos |
+
+### Rúbrica para evaluar proveedores en vivo (decidir con datos, no con feeling)
+
+Llenar esta tabla **durante la presentación** de cada uno:
+
+| Criterio | Peso | Cómo se mide |
+|---|---|---|
+| Precio (con estampado incluido) | 35% | $ por unidad final tee 240gsm |
+| Lead time | 20% | Días de OC pagada a entrega |
+| MOQ | 15% | Más bajo = mejor (queremos arrancar con 10-15) |
+| Calidad muestra (si trajo) | 15% | Subjetivo pero comparativo lado a lado |
+| Comunicación / responsiveness | 10% | Tiempo en responder primer mensaje |
+| Ubicación logística | 5% | Cercanía a paqueterías + costo de envío a clientes |
+
+Score 1-5 por criterio, ponderar, sale ganador con **número** — no con preferencia subjetiva.
+
+---
+
+## C. Decisiones críticas a cerrar el viernes (no se patean más)
+
+1. **Modelo legal.** ¿RFC personal de uno, sociedad mercantil (S. de R.L. / S.A.S.) o asociación informal? Afecta IMPI, cuenta bancaria, facturación y blindaje patrimonial.
+2. **Cuenta bancaria.** Mancomunada / separada / cada uno la suya con liquidación mensual al fondo común.
+3. **Reparto de roles.** ¿Quién es CEO / operaciones / marketing / diseño / customer service? Sin esto se pisan o se evaden tareas.
+4. **Términos de salida.** Si uno quiere salirse en mes 3, ¿qué pasa con el capital invertido y el uso de la marca? Hablarlo ahora, no en pelea.
+5. **Vesting de equity.** ¿50/50 fijo desde día 1 o vesting por aportación de tiempo y dinero a 12-24 meses?
+6. **Calendario de aportaciones.** ¿Se deposita todo el día 1 o se llama capital por mes según necesidad real?
+7. **Reglas para gasto.** Monto máximo que cada socio puede aprobar solo, y de qué en adelante requiere acuerdo escrito en chat.
+8. **Cuenta de ads (Meta/TikTok).** ¿A nombre de quién? ¿Quién maneja la chequera de marketing?
+9. **Propiedad de assets.** Logo, mockups, fotos, base de clientes — ¿de quién son si los socios se separan?
+
+---
+
+## D. Ritual de seguimiento post-viernes
+
+### Daily check-in (5 min, lunes-viernes 9am por WhatsApp)
+
+Formato fijo, copiar y pegar:
+
+```
+Hecho ayer: ___
+Hoy: ___
+Bloqueado en: ___
+```
+
+Si no hay nada que reportar: mandar `OK`. Si nadie reporta antes del mediodía, **el otro pregunta**. Silencio sostenido = problema sin reportar = más caro de resolver después.
+
+### Weekly review (viernes 6pm, 30 min)
+
+Agenda cerrada (no improvisar):
+
+1. **Métricas de la semana** (5 min) — números, sin narrativa
+2. **Lo que se hizo / lo que NO** (10 min) — factual, sin justificarse
+3. **Decisiones de la próxima semana** (10 min)
+4. **Action items con dueño + deadline** (5 min)
+
+### Métricas a trackear desde semana 1
+
+| Métrica | Meta semana 4 | Meta semana 12 |
+|---|---|---|
+| Visitas a la web | 500 | 3,000 |
+| Add-to-cart rate | 3% | 6% |
+| Conversion rate | 0.5% | 1.5% |
+| Ventas | 5 | 30 |
+| CPA Meta + TikTok | <$200 | <$120 |
+| ROAS | 1.5× | 3.5× |
+| Retorno de email/WhatsApp DM | <2 hrs | <1 hr |
+| Recompra en 60 días | — | >15% |
+| NPS de primeros clientes | — | >40 |
+
+---
+
+## E. Hitos no negociables (sin esto no avanzamos a la siguiente fase)
+
+| Fecha | Hito | Si no se cumple |
+|---|---|---|
+| **Jueves 7-may-2026** (8pm) | Lista de candidatos compartida en chat | Reunión del viernes se mueve |
+| **Viernes 8-may-2026** | Reunión + decisiones críticas cerradas | Sin decisiones, no se contacta a nadie la próxima semana |
+| **Lunes 11-may-2026** | Maquila ganadora contactada formalmente + samples pedidos | Buscamos 3 alternativas más esa semana |
+| **Lunes 18-may-2026** | Logo final aprobado + vector listo (.svg + .ai) | Lanzamos con placeholder y refinamos en mes 2 |
+| **Lunes 25-may-2026** | Samples recibidos + photoshoot DIY | Atrasamos lanzamiento 1 semana |
+| **Lunes 1-jun-2026** | Web up con los 3 SKUs y Stripe/MP funcionando | Soft launch retrasado |
+| **Viernes 5-jun-2026** | Soft launch a contactos cercanos por WhatsApp | — |
+| **Lunes 8-jun-2026** | Primer batch al maquilador (mínimo 5 órdenes) | Si <5 órdenes, ajustar ads y esperar 1 semana más |
+
+---
+
+## F. Riesgos a discutir el viernes (mejor preverlos)
+
+- **Si una semana no llegamos a MOQ:** ¿absorbemos costo de mini-batch, juntamos 2 semanas, o ofrecemos pre-order con lead time mayor publicado en la web?
+- **Si maquila #1 falla / da mala calidad:** ¿tenemos #2 y #3 como backup ya contactados con ficha lista?
+- **Si los 3 SKUs no venden en 60 días:** ¿pivotamos fit, color, estampado o canal — antes de meter más SKUs?
+- **Si un socio no puede aportar el mes X:** ¿se diluye su %, le presta el otro con interés, o se pausa la operación?
+- **Si Meta o TikTok banean la cuenta de ads** (común en marcas nuevas con creatividades agresivas): ¿quién es el plan-B owner para reabrir cuenta con otro RFC/persona?
+- **Si un competidor copia el bull print:** ¿lo registramos en IMPI antes de lanzar o nos enfocamos en escala?
+
+---
+
+## G. Templates a llenar el viernes (compartir vacíos antes)
+
+Un Google Sheet o Notion con 4 pestañas, vacías pero con headers, **compartido en chat antes del viernes**. En la reunión los llenamos en vivo:
+
+1. **Proveedores** — columnas de la rúbrica de evaluación de B
+2. **Logo voting** — 1 fila por concepto, columna por socio, voto 1-5 + comentario
+3. **Action items** — # / acción / dueño / deadline / status / fecha completada
+4. **Capital tracking** — fecha / quién aporta / monto / concepto / saldo acumulado
+
+> Si el viernes llegamos sin templates, perdemos 20 min armándolos en lugar de discutiendo. Que cada quien dedique 15 min antes a copiarlos de esta lista.
+
+---
+
+## H. TL;DR del plan de seguimiento
+
+1. **Antes del viernes 8-may:** cada socio hace tarea (3 proveedores con ficha completa + 3 logos + investigación marketing + capacidad de inversión).
+2. **Jueves 7-may 8pm:** compartir solo lista de candidatos en chat para no duplicar.
+3. **Viernes 8-may 2.5 hrs:** seguir agenda cerrada → salimos con maquila finalista, logo elegido, capital comprometido y action items con dueños.
+4. **Lunes 11-may en adelante:** daily check-in 9am + weekly review viernes 6pm.
+5. **Hitos cada lunes** hasta soft launch (5-jun) y primer batch (8-jun).
+6. **Decisiones legales/societarias** se cierran el viernes — no se patean más.
+
+---
+
+## I. Convenio escrito entre socios (1 página, firmado)
+
+Aunque no quieran constituir sociedad mercantil el día 1, sí necesitan un **documento de una página firmado entre los dos** antes de meter el primer peso. Vale como evidencia legal en MX si algo se complica, y obliga a hablar las cosas incómodas hoy.
+
+| Cláusula | Contenido mínimo |
+|---|---|
+| Partes | Nombre completo, RFC, domicilio fiscal de cada socio |
+| Objeto | "Operar conjuntamente la marca TORO KAIZEN bajo modelo Batch POD de ropa" |
+| Aportaciones | Monto inicial + mensual de cada uno + fechas |
+| Reparto de utilidades | % que recibe cada uno + cuándo se distribuye |
+| Reparto de pérdidas | Mismo %, sin escapatorias |
+| Roles y obligaciones | Lo que se acordó en C.3 (CEO / ops / marketing / diseño) |
+| Toma de decisiones | Cómo se rompe empate con 2 socios: (a) escalar a un mentor neutral X, (b) prevalece la opinión del área dueña del tema, (c) se pospone 7 días con investigación adicional — escoger UNA regla |
+| Confidencialidad | Lo que se ve en el chat de socios no se cuenta a terceros |
+| No competencia | Mientras dura la sociedad + 12 meses post-salida, ninguno arma marca paralela del mismo nicho |
+| Propiedad intelectual | Logo, diseños, fotos, base de clientes son **de la sociedad**, no del individuo |
+| Salida voluntaria | Aviso 60 días + valuación de su parte (fórmula simple: % × valor de inventario + caja) |
+| Salida forzada | Causales: incumplimiento grave, abandono >30 días, conflicto de interés |
+| Mediación previa | Antes de demandar, intentar mediación con tercero acordado |
+
+> No requiere notario el día 1, pero sí firmas con tinta y fecha en 2 copias. Tiempo total: 30-45 min con plantilla.
+
+---
+
+## J. Comunicación entre socios (qué canal para qué cosa)
+
+| Tipo de mensaje | Canal | Tiempo de respuesta esperado |
+|---|---|---|
+| Daily check-in | WhatsApp grupo socios | Mismo día antes de mediodía |
+| Decisión que afecta gasto >$2K | WhatsApp + confirmación escrita en Notion | <24 hrs |
+| Decisión que afecta gasto >$10K | Llamada/videollamada + minuta escrita | <48 hrs |
+| Cambio de dirección estratégica | Reunión presencial agendada | <7 días |
+| Customer service urgente | WhatsApp grupo (etiqueta "URGENTE") | <2 hrs |
+| Ideas / brainstorming | Notion o canal #ideas | Sin urgencia |
+| Documentos formales | Email con copia a ambos | <24 hrs |
+| Conflicto / queja entre socios | Llamada 1-on-1, **NO** chat | <72 hrs |
+
+> **Regla de oro:** las cosas serias **no se discuten por chat**. El chat es para coordinar, no para negociar. Si algo huele a conflicto, se agenda llamada.
+
+---
+
+## K. Stack de herramientas (decidir el viernes, llenar el lunes)
+
+| Función | Opciones | Decisión |
+|---|---|---|
+| Documentación viva | Notion / Google Drive / Coda | ___ |
+| Comunicación diaria | WhatsApp grupo dedicado | ___ |
+| Reuniones | Google Meet / Zoom / presencial | ___ |
+| Tareas | Notion / Trello / Linear | ___ |
+| Finanzas | Google Sheets / Wave / Belvo | ___ |
+| Diseño | Figma compartido (acceso ambos) | ___ |
+| Cuenta de ads | Manager con ambos como admin | ___ |
+| E-commerce | Shopify / WooCommerce / Tienda Nube | ___ |
+| Pagos | Stripe + MercadoPago | ___ |
+| Email marketing | Mailchimp / Klaviyo / Brevo | ___ |
+| Password manager compartido | 1Password Family / Bitwarden Org | ___ |
+| Repositorio de archivos | Drive / Dropbox compartido | ___ |
+
+> Todo accesible para **ambos** socios desde día 1. Si una sola persona tiene la contraseña de la cuenta de ads, hay riesgo si se enferma, viaja o se va.
+
+---
+
+## L. Ritmo extendido de seguimiento (más allá del weekly)
+
+### Mensual — Retrospectiva (1 hr, último viernes del mes)
+
+1. **Lo que funcionó** (15 min) — celebrar wins concretos con números
+2. **Lo que no funcionó** (15 min) — sin echar culpas, sí causas raíz
+3. **Lo que vamos a cambiar** (15 min) — 1-3 experimentos para el mes siguiente
+4. **Health check del partnership** (15 min) — *"¿cómo te sientes con la sociedad este mes? 1-10"* + por qué
+
+### Trimestral — OKRs (2 hrs, primer lunes del trimestre)
+
+Definir 2-3 objetivos por trimestre con 3 key results medibles cada uno. Ejemplo Q3 2026:
+
+| Objetivo | Key Results |
+|---|---|
+| Validar product-market fit | 100 ventas acumuladas / NPS >40 / Recompra >15% |
+| Sistematizar ops | SOP escrito de 10 procesos / 0 errores de envío en 30 días / Lead time <12 días |
+| Construir comunidad | 5K seguidores IG / 10K TikTok / 200 suscriptores email |
+
+### Anual — Strategic review (medio día, primera semana de enero)
+
+- ¿Seguimos en el mismo nicho? ¿Pivotamos?
+- ¿Sigue tener sentido la sociedad como está estructurada?
+- Distribución de utilidades del año
+- Plan financiero del año entrante
+- Renegociar el convenio escrito si hace falta
+
+---
+
+## M. Operación: SOPs (Standard Operating Procedures)
+
+Documentos cortos (1 página c/u) que **cualquiera** pueda ejecutar — incluso si el socio dueño está fuera. Crear estos antes de la primera venta:
+
+| SOP | Qué cubre |
+|---|---|
+| Procesar nueva orden | Web → confirmación → exportar a maquilador → tracking |
+| Atender duda pre-venta WhatsApp | Plantillas de respuesta + cuándo escalar al otro socio |
+| Atender devolución / cambio | Condiciones, ventana, quién absorbe costo |
+| Crear creatividad para ads | Brief, tamaños, dónde se sube, quién aprueba |
+| Publicar en redes | Calendario, horarios, hashtags, plantillas |
+| Onboarding de nuevo proveedor | Checklist legal + samples + primer pedido pequeño |
+| Cierre semanal de números | Qué tracker se actualiza viernes 5pm |
+| Pago a maquilador | 50% upfront, 50% contraentrega, comprobantes |
+| Manejo de queja en redes | Responder público + DM + escalar si grave |
+
+> Mantener en Notion. Cuando un socio detecta que está haciendo algo más de 2 veces, lo convierte en SOP.
+
+---
+
+## N. Aspectos legales / cumplimiento ANTES del primer cobro
+
+| Item | Obligatorio | Notas |
+|---|---|---|
+| Términos y condiciones de la web | Sí | Devoluciones, envíos, jurisdicción MX |
+| Aviso de privacidad (LFPDPPP) | Sí | Datos personales que recolectamos |
+| Política de devoluciones | Sí | 7-15 días, condición prenda, quién paga el envío |
+| Aviso de cookies | Sí | Si web usa tracking (Meta Pixel, GA) |
+| RFC con actividad de comercio | Sí | Para emitir facturas si cliente B2B pide |
+| Registro IMPI clase 25 (ropa) | Recomendado | Antes de hacer ruido en redes |
+| Seguro responsabilidad civil productos | Opcional | Si arrancan con volumen |
+
+> **Costo legal total inicial:** ~$3,500-5,000 MXN entre IMPI + asesoría legal básica + plantillas. No es opcional, es gasto del día 1.
+
+---
+
+## O. Inventario de cuentas y accesos (compartir antes del lunes 11-may)
+
+Hoja de cálculo con **todas** las cuentas del negocio. Ambos socios tienen acceso a TODO:
+
+| Cuenta | Usuario | Quién es admin | 2FA en | Recovery email |
+|---|---|---|---|---|
+| Email principal | hello@torokaizen.mx | Ambos | Authenticator app | Ambos correos personales |
+| Instagram @torokaizen | — | Ambos | SMS + app | — |
+| TikTok | — | Ambos | App | — |
+| Meta Business Manager | — | Ambos | App | — |
+| TikTok Ads Manager | — | Ambos | App | — |
+| Google Workspace | — | Ambos | App | — |
+| Stripe | — | Ambos | App | — |
+| MercadoPago | — | Ambos | App | — |
+| Shopify / web | — | Ambos | App | — |
+| Cuenta bancaria | — | Mancomunada | SMS | — |
+| Notion workspace | — | Ambos | App | — |
+| Figma team | — | Ambos | App | — |
+| Dominio (Namecheap/GoDaddy) | — | Ambos | App | — |
+
+> **Crítico:** si solo un socio tiene la 2FA en su celular y lo pierde / cambia / se va, se puede perder acceso a la cuenta de ads con historial valioso. **Compartir 2FA en app tipo 1Password Family** desde el día 1.
+
+---
+
+## P. Distribución de utilidades vs reinversión
+
+Decidir el viernes (o como deadline, cierre del mes 1):
+
+| Mes | Política sugerida | Motivo |
+|---|---|---|
+| 1-6 | **100% reinversión** | Recuperar inversión inicial + acelerar crecimiento |
+| 7-12 | **70% reinversión / 30% distribución** | Recompensar tiempo invertido sin frenar growth |
+| 13+ | **50% / 50% ajustable** | Sociedad madura, decidir trimestralmente |
+
+Distribución se reparte 50/50 (o el % acordado en el convenio I) **el primer día de cada mes** sobre utilidades del mes anterior cerradas y pagadas todas las cuentas.
+
+---
+
+## Q. Customer feedback loop
+
+Cada cliente que recibe paquete entra automáticamente a este flujo:
+
+1. **Día 0** (envío): tracking + WhatsApp con foto del paquete saliendo
+2. **Día +3** (entrega esperada): "¿Ya llegó? ¿Todo bien?"
+3. **Día +14** (después de usar): "¿Cómo te quedó? ¿Una foto para regalarte 10% en tu próxima compra?"
+4. **Día +30**: encuesta NPS de 2 preguntas (1-10 + ¿por qué?)
+
+Las respuestas se documentan en una pestaña de Notion. **Cada semana**, los socios revisan el feedback y deciden **1 cambio operativo o de producto** basado en lo que se repite. Si no hay cambio, lo escriben explícito: *"esta semana no cambiamos nada porque feedback fue positivo y consistente"*.
+
+---
+
+## R. Branding & voice guidelines (decidir antes del lanzamiento)
+
+| Aspecto | Decisión |
+|---|---|
+| Tono de voz | ¿Brutal/streetwear / aspiracional fitness / técnico premium? |
+| Vocabulario SÍ | "morros", "vibra", "built different", "kaizen", "made in MX" |
+| Vocabulario NO | Lenguaje corporativo, anglicismos forzados, slang de moda pasajera |
+| Emoji policy | ¿Usamos? ¿Cuáles? Consistencia entre socios |
+| Modo de tratar al cliente | ¿"Tú" siempre? |
+| Crisis communication | Si algo sale mal público, ¿quién responde y en qué tono? |
+
+> Sin esto, un socio responde DMs en tono frío y el otro en tono cuate, y la marca se siente esquizofrénica. Definir + dejar 5 ejemplos de respuestas tipo en un SOP.
+
+---
+
+## S. Calendario de contenido (primeras 4 semanas)
+
+| Semana | TikTok (4/sem) | IG Reels (3/sem) | IG Feed (5/sem) | Stories (diario) |
+|---|---|---|---|---|
+| -2 (pre-launch) | Teasers maquila + behind the scenes | Cross-post de TikTok | Mockups + lifestyle | BTS, polls, cuestionarios |
+| -1 (pre-launch) | Soft sell + "coming soon" | Cross-post | Producto + paleta de colores | Countdown |
+| 1 (launch) | Launch video + 3 angles distintos | Cross-post | Producto en uso real | Reviews de primeros clientes |
+| 2 | UGC primeros clientes | Cross-post | Comparativas vs gringas | Retos + tag a friends |
+
+Quién publica qué se asigna en la sección C.3 (roles). Cada socio carga 50% del contenido si quieren paridad de esfuerzo, o uno se hace cargo del 100% si compensa en otra área (ej. el otro lleva ops + finanzas).
+
+---
+
+## T. Health check del partnership (mensual, primer trimestre crítico)
+
+Cada mes, los socios responden estas preguntas en privado y luego comparten respuestas en la retro:
+
+1. ¿Estoy aportando lo que prometí? (1-10)
+2. ¿Mi socio está aportando lo que prometió? (1-10)
+3. ¿La comunicación entre nosotros es sana? (1-10)
+4. ¿Estoy disfrutando esto? (1-10)
+5. ¿Hay algo que me esté guardando que debería decir?
+
+> **Regla de alerta:** si en 2 meses consecutivos cualquier número promedia <6, **agendar conversación seria fuera del ritmo normal**. La mayoría de sociedades fallan no por dinero sino por no hablar de cosas que se van acumulando en silencio.
+
+---
+
+## U. Plan de contingencia personal
+
+Cubrir antes del lanzamiento:
+
+- **Si un socio se enferma 1-2 semanas:** ¿quién cubre sus tareas? ¿Cuál es la lista priorizada de qué SÍ se hace y qué se pausa?
+- **Si un socio viaja:** ¿avisa con cuántos días de anticipación? ¿Sigue daily check-in con horario distinto o se pausa?
+- **Si un socio tiene problema personal grave** (familiar, salud, etc.): ¿se pausa la sociedad 30 días sin penalización? ¿Se renegocia % temporalmente?
+- **Si ambos socios están fuera al mismo tiempo:** ¿hay un tercero (familiar, mentor) con acceso de emergencia a customer service para no perder ventas?
+
+> Discutir esto **antes** de que pase. Cuando ya pasó, la conversación es defensiva.
+
+---
+
+
+
+</script>
+
+<!-- Marked.js minimal MD → HTML renderer (CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/marked@13.0.2/marked.min.js"></script>
+<script>
+  const md = document.getElementById('md-source').textContent;
+  document.getElementById('content').innerHTML = marked.parse(md);
+</script>
+
+</body>
+</html>
