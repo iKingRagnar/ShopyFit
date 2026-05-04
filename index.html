@@ -239,9 +239,13 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 @keyframes megaIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 .mega-col{display:flex;flex-direction:column;gap:10px}
 .mega-h{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.18em;color:var(--lime);margin-bottom:10px;border-bottom:.5px solid var(--border-soft);padding-bottom:10px}
-.mega-link{font-family:'Barlow',sans-serif;font-size:13px;color:var(--text-2);text-decoration:none;transition:color .15s;display:flex;align-items:center;justify-content:space-between}
+.mega-link{font-family:'Barlow',sans-serif;font-size:13px;color:var(--text-2);text-decoration:none;transition:color .15s;display:flex;align-items:center;gap:10px;padding:5px 0}
 .mega-link:hover{color:var(--lime)}
-.mega-link .new{font-family:'Barlow Condensed';font-size:9px;letter-spacing:.16em;color:var(--lime);text-transform:uppercase}
+.mega-link .ml-ico{width:22px;height:22px;color:var(--text-3);transition:color .15s,transform .2s;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.mega-link .ml-ico svg{width:100%;height:100%}
+.mega-link:hover .ml-ico{color:var(--lime);transform:scale(1.1)}
+.mega-link .ml-txt{flex:1}
+.mega-link .new{font-family:'Barlow Condensed';font-size:9px;letter-spacing:.16em;color:var(--lime);text-transform:uppercase;margin-left:auto}
 .mega-feat{position:relative;overflow:hidden;height:240px;display:block;text-decoration:none}
 .mega-feat img{width:100%;height:100%;object-fit:cover;filter:brightness(.85);transition:transform .8s,filter .3s}
 .mega-feat:hover img{transform:scale(1.06);filter:brightness(1)}
@@ -1161,26 +1165,26 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       <div class="mega">
         <div class="mega-col">
           <div class="mega-h">Tops</div>
-          <a class="mega-link" href="#productos">Oversize Tees <span class="new">Drop</span></a>
-          <a class="mega-link" href="#productos">Tank Tops</a>
-          <a class="mega-link" href="#productos">Polos</a>
-          <a class="mega-link" href="#productos">Long Sleeves</a>
-          <a class="mega-link" href="#productos">Hoodies</a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#shape-tee"/></svg></span><span class="ml-txt">Oversize Tees</span><span class="new">Drop</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#shape-tank"/></svg></span><span class="ml-txt">Tank Tops</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-polo"/></svg></span><span class="ml-txt">Polos</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-longsleeve"/></svg></span><span class="ml-txt">Long Sleeves</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#shape-hoodie"/></svg></span><span class="ml-txt">Hoodies</span></a>
         </div>
         <div class="mega-col">
           <div class="mega-h">Bottoms</div>
-          <a class="mega-link" href="#productos">Shorts <span class="new">Hot</span></a>
-          <a class="mega-link" href="#productos">Joggers</a>
-          <a class="mega-link" href="#productos">Cargos</a>
-          <a class="mega-link" href="#productos">Pants</a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#shape-shorts"/></svg></span><span class="ml-txt">Shorts</span><span class="new">Hot</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#shape-jogger"/></svg></span><span class="ml-txt">Joggers</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-cargo"/></svg></span><span class="ml-txt">Cargos</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-pants"/></svg></span><span class="ml-txt">Pants</span></a>
         </div>
         <div class="mega-col">
           <div class="mega-h">Sets &amp; Más</div>
-          <a class="mega-link" href="#productos">Sets Completos</a>
-          <a class="mega-link" href="#productos">Outerwear</a>
-          <a class="mega-link" href="#productos">Underwear</a>
-          <a class="mega-link" href="#productos">Calcetines</a>
-          <a class="mega-link" href="#sale">Sale Hombre</a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#shape-set"/></svg></span><span class="ml-txt">Sets Completos</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-outerwear"/></svg></span><span class="ml-txt">Outerwear</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-underwear"/></svg></span><span class="ml-txt">Underwear</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-sock"/></svg></span><span class="ml-txt">Calcetines</span></a>
+          <a class="mega-link" href="#sale"><span class="ml-ico"><svg aria-hidden="true"><use href="#feat-mexico"/></svg></span><span class="ml-txt">Sale Hombre</span></a>
         </div>
         <a class="mega-feat" href="#productos">
           <img loading="eager" decoding="async" fetchpriority="high" src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=600&h=480&q=85" alt="">
@@ -1192,24 +1196,24 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       <div class="mega">
         <div class="mega-col">
           <div class="mega-h">Tops</div>
-          <a class="mega-link" href="#productos">Crop Tops <span class="new">Drop</span></a>
-          <a class="mega-link" href="#productos">Sports Bras</a>
-          <a class="mega-link" href="#productos">Tank Tops</a>
-          <a class="mega-link" href="#productos">Hoodies</a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-croptop"/></svg></span><span class="ml-txt">Crop Tops</span><span class="new">Drop</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-sportsbra"/></svg></span><span class="ml-txt">Sports Bras</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#shape-tank"/></svg></span><span class="ml-txt">Tank Tops</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#shape-hoodie"/></svg></span><span class="ml-txt">Hoodies</span></a>
         </div>
         <div class="mega-col">
           <div class="mega-h">Bottoms</div>
-          <a class="mega-link" href="#productos">Leggings <span class="new">Best</span></a>
-          <a class="mega-link" href="#productos">Biker Shorts</a>
-          <a class="mega-link" href="#productos">Joggers</a>
-          <a class="mega-link" href="#productos">Faldas Tech</a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-leggings"/></svg></span><span class="ml-txt">Leggings</span><span class="new">Best</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-biker"/></svg></span><span class="ml-txt">Biker Shorts</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#shape-jogger"/></svg></span><span class="ml-txt">Joggers</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-falda"/></svg></span><span class="ml-txt">Faldas Tech</span></a>
         </div>
         <div class="mega-col">
           <div class="mega-h">Sets &amp; Más</div>
-          <a class="mega-link" href="#productos">Sets Completos</a>
-          <a class="mega-link" href="#productos">Bodysuits</a>
-          <a class="mega-link" href="#productos">Outerwear</a>
-          <a class="mega-link" href="#sale">Sale Mujer</a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#shape-set"/></svg></span><span class="ml-txt">Sets Completos</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-bodysuit"/></svg></span><span class="ml-txt">Bodysuits</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-outerwear"/></svg></span><span class="ml-txt">Outerwear</span></a>
+          <a class="mega-link" href="#sale"><span class="ml-ico"><svg aria-hidden="true"><use href="#feat-mexico"/></svg></span><span class="ml-txt">Sale Mujer</span></a>
         </div>
         <a class="mega-feat" href="#productos">
           <img loading="eager" decoding="async" fetchpriority="high" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&h=480&q=85" alt="">
@@ -1221,22 +1225,22 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
       <div class="mega">
         <div class="mega-col">
           <div class="mega-h">Headwear</div>
-          <a class="mega-link" href="#productos">Gorras</a>
-          <a class="mega-link" href="#productos">Beanies</a>
-          <a class="mega-link" href="#productos">Bandanas</a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#shape-cap"/></svg></span><span class="ml-txt">Gorras</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-beanie"/></svg></span><span class="ml-txt">Beanies</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-bandana"/></svg></span><span class="ml-txt">Bandanas</span></a>
         </div>
         <div class="mega-col">
           <div class="mega-h">Gym Gear</div>
-          <a class="mega-link" href="#productos">Lifting Belts</a>
-          <a class="mega-link" href="#productos">Wrist Wraps</a>
-          <a class="mega-link" href="#productos">Shaker Bottles</a>
-          <a class="mega-link" href="#productos">Toallas</a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-belt-lift"/></svg></span><span class="ml-txt">Lifting Belts</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-wrist"/></svg></span><span class="ml-txt">Wrist Wraps</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-shaker"/></svg></span><span class="ml-txt">Shaker Bottles</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-towel"/></svg></span><span class="ml-txt">Toallas</span></a>
         </div>
         <div class="mega-col">
           <div class="mega-h">Bags</div>
-          <a class="mega-link" href="#productos">Gym Bags</a>
-          <a class="mega-link" href="#productos">Mochilas</a>
-          <a class="mega-link" href="#productos">Cinturones</a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-gymbag"/></svg></span><span class="ml-txt">Gym Bags</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-backpack"/></svg></span><span class="ml-txt">Mochilas</span></a>
+          <a class="mega-link" href="#productos"><span class="ml-ico"><svg aria-hidden="true"><use href="#cat-belt"/></svg></span><span class="ml-txt">Cinturones</span></a>
         </div>
         <a class="mega-feat" href="#productos">
           <img loading="eager" decoding="async" fetchpriority="high" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&h=480&q=85" alt="">
@@ -2872,6 +2876,142 @@ if(document.readyState!=='loading')renderCart();
       <path d="M32 4 L56 18 L56 46 L32 60 L8 46 L8 18 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
       <text x="32" y="40" text-anchor="middle" fill="currentColor" font-family="Bebas Neue,Impact,sans-serif" font-size="22" font-weight="700" letter-spacing=".06em">MX</text>
     </symbol>
+
+    <!-- ═══════════ APPAREL CATEGORY ICONS · uniform 64x64 viewBox ═══════════ -->
+    <symbol id="cat-polo" viewBox="0 0 64 64">
+      <path fill="currentColor" d="M22 14 L26 10 L38 10 L42 14 L52 18 L48 26 L44 23 L44 56 L20 56 L20 23 L16 26 L12 18 Z"/>
+      <path fill="#000" opacity=".35" d="M26 10 L38 10 L36 16 L32 22 L28 16 Z"/>
+      <line x1="32" y1="14" x2="32" y2="22" stroke="#000" stroke-width="1.5" opacity=".5"/>
+      <circle cx="30" cy="20" r="1" fill="#000" opacity=".5"/>
+    </symbol>
+    <symbol id="cat-longsleeve" viewBox="0 0 64 64">
+      <path fill="currentColor" d="M22 14 L26 10 Q32 8 38 10 L42 14 L56 22 L52 30 L48 27 L48 56 L16 56 L16 27 L12 30 L8 22 Z"/>
+      <ellipse cx="32" cy="14" rx="6" ry="2.5" fill="#000" opacity=".3"/>
+      <path fill="#000" opacity=".25" d="M48 30 L52 50 L56 48 L52 28 Z"/>
+      <path fill="#000" opacity=".25" d="M16 30 L12 50 L8 48 L12 28 Z"/>
+    </symbol>
+    <symbol id="cat-croptop" viewBox="0 0 64 64">
+      <path fill="currentColor" d="M22 18 L26 14 L38 14 L42 18 L48 22 L46 28 L44 25 L44 38 L20 38 L20 25 L18 28 L16 22 Z"/>
+      <ellipse cx="32" cy="18" rx="6" ry="2.5" fill="#000" opacity=".3"/>
+    </symbol>
+    <symbol id="cat-sportsbra" viewBox="0 0 64 64">
+      <path fill="currentColor" d="M14 24 Q14 18 22 16 L42 16 Q50 18 50 24 L50 36 Q40 38 32 38 Q24 38 14 36 Z"/>
+      <path fill="#000" opacity=".3" d="M22 16 Q24 22 22 28 L18 28 Q18 22 22 16 Z"/>
+      <path fill="#000" opacity=".3" d="M42 16 Q40 22 42 28 L46 28 Q46 22 42 16 Z"/>
+    </symbol>
+    <symbol id="cat-leggings" viewBox="0 0 64 64">
+      <rect x="20" y="10" width="24" height="6" fill="currentColor" opacity=".82"/>
+      <path fill="currentColor" d="M20 14 Q18 30 17 56 L29 56 Q31 36 31 18 Z"/>
+      <path fill="currentColor" d="M44 14 Q46 30 47 56 L35 56 Q33 36 33 18 Z"/>
+      <line x1="22" y1="22" x2="22" y2="50" stroke="#000" stroke-width=".8" opacity=".25"/>
+      <line x1="42" y1="22" x2="42" y2="50" stroke="#000" stroke-width=".8" opacity=".25"/>
+    </symbol>
+    <symbol id="cat-biker" viewBox="0 0 64 64">
+      <rect x="20" y="14" width="24" height="6" fill="currentColor" opacity=".82"/>
+      <path fill="currentColor" d="M20 18 Q18 26 18 40 L30 40 Q31 28 31 22 Z"/>
+      <path fill="currentColor" d="M44 18 Q46 26 46 40 L34 40 Q33 28 33 22 Z"/>
+    </symbol>
+    <symbol id="cat-falda" viewBox="0 0 64 64">
+      <rect x="22" y="14" width="20" height="5" fill="currentColor" opacity=".82"/>
+      <path fill="currentColor" d="M22 18 L42 18 L52 50 L12 50 Z"/>
+      <line x1="32" y1="22" x2="32" y2="48" stroke="#000" stroke-width=".8" opacity=".22"/>
+      <line x1="24" y1="22" x2="18" y2="48" stroke="#000" stroke-width=".8" opacity=".22"/>
+      <line x1="40" y1="22" x2="46" y2="48" stroke="#000" stroke-width=".8" opacity=".22"/>
+    </symbol>
+    <symbol id="cat-bodysuit" viewBox="0 0 64 64">
+      <path fill="currentColor" d="M22 14 L26 10 L38 10 L42 14 L46 22 L44 30 L40 28 L40 38 Q40 46 36 50 L28 50 Q24 46 24 38 L24 28 L20 30 L18 22 Z"/>
+      <ellipse cx="32" cy="14" rx="6" ry="2.5" fill="#000" opacity=".3"/>
+    </symbol>
+    <symbol id="cat-pants" viewBox="0 0 64 64">
+      <rect x="20" y="10" width="24" height="6" fill="currentColor" opacity=".82"/>
+      <path fill="currentColor" d="M20 14 Q18 28 18 56 L30 56 Q31 36 31 18 Z"/>
+      <path fill="currentColor" d="M44 14 Q46 28 46 56 L34 56 Q33 36 33 18 Z"/>
+      <line x1="32" y1="11" x2="32" y2="18" stroke="#000" stroke-width="1.5" opacity=".5"/>
+    </symbol>
+    <symbol id="cat-cargo" viewBox="0 0 64 64">
+      <rect x="20" y="10" width="24" height="6" fill="currentColor" opacity=".82"/>
+      <path fill="currentColor" d="M20 14 Q18 28 18 56 L30 56 Q31 36 31 18 Z"/>
+      <path fill="currentColor" d="M44 14 Q46 28 46 56 L34 56 Q33 36 33 18 Z"/>
+      <!-- Side cargo pockets -->
+      <rect x="14" y="26" width="8" height="12" fill="#000" opacity=".22"/>
+      <rect x="42" y="26" width="8" height="12" fill="#000" opacity=".22"/>
+      <line x1="32" y1="11" x2="32" y2="18" stroke="#000" stroke-width="1.5" opacity=".5"/>
+    </symbol>
+    <symbol id="cat-outerwear" viewBox="0 0 64 64">
+      <path fill="currentColor" d="M18 18 L24 12 L40 12 L46 18 L52 22 L48 32 L44 28 L44 56 L20 56 L20 28 L16 32 L12 22 Z"/>
+      <line x1="32" y1="14" x2="32" y2="56" stroke="#000" stroke-width="1.5" opacity=".55"/>
+      <circle cx="32" cy="22" r="1.5" fill="#000" opacity=".7"/>
+      <circle cx="32" cy="34" r="1.5" fill="#000" opacity=".7"/>
+      <circle cx="32" cy="46" r="1.5" fill="#000" opacity=".7"/>
+    </symbol>
+    <symbol id="cat-underwear" viewBox="0 0 64 64">
+      <path fill="currentColor" d="M14 22 L50 22 L48 42 Q42 50 32 50 Q22 50 16 42 Z"/>
+      <rect x="14" y="20" width="36" height="4" fill="currentColor" opacity=".82"/>
+    </symbol>
+    <symbol id="cat-sock" viewBox="0 0 64 64">
+      <path fill="currentColor" d="M22 8 L42 8 L42 32 Q42 38 36 38 L36 50 Q36 54 32 54 L18 54 Q14 54 14 50 L14 38 Q22 36 22 28 Z"/>
+      <line x1="22" y1="14" x2="42" y2="14" stroke="#000" stroke-width="1.5" opacity=".4"/>
+    </symbol>
+    <symbol id="cat-beanie" viewBox="0 0 64 64">
+      <path fill="currentColor" d="M14 36 Q14 16 32 14 Q50 16 50 36 L50 42 L14 42 Z"/>
+      <rect x="12" y="40" width="40" height="6" fill="currentColor" opacity=".82"/>
+      <line x1="20" y1="20" x2="20" y2="40" stroke="#000" stroke-width=".8" opacity=".25"/>
+      <line x1="32" y1="14" x2="32" y2="40" stroke="#000" stroke-width=".8" opacity=".25"/>
+      <line x1="44" y1="20" x2="44" y2="40" stroke="#000" stroke-width=".8" opacity=".25"/>
+    </symbol>
+    <symbol id="cat-bandana" viewBox="0 0 64 64">
+      <path fill="currentColor" d="M8 28 L32 16 L56 28 L52 40 L46 36 L42 42 L36 38 L32 44 L28 38 L22 42 L18 36 L12 40 Z"/>
+    </symbol>
+    <symbol id="cat-belt-lift" viewBox="0 0 64 64">
+      <rect x="6" y="22" width="52" height="20" fill="currentColor" opacity=".88"/>
+      <rect x="6" y="22" width="52" height="20" fill="none" stroke="#000" stroke-width="1" opacity=".5"/>
+      <rect x="22" y="26" width="20" height="12" fill="#000" opacity=".3"/>
+      <rect x="26" y="28" width="3" height="8" fill="currentColor"/>
+      <rect x="32" y="28" width="3" height="8" fill="currentColor"/>
+    </symbol>
+    <symbol id="cat-wrist" viewBox="0 0 64 64">
+      <path fill="currentColor" d="M16 18 Q16 14 24 14 L40 14 Q48 14 48 18 L48 38 Q48 50 32 50 Q16 50 16 38 Z"/>
+      <line x1="20" y1="22" x2="44" y2="22" stroke="#000" stroke-width="1" opacity=".4"/>
+      <line x1="20" y1="30" x2="44" y2="30" stroke="#000" stroke-width="1" opacity=".4"/>
+      <line x1="20" y1="38" x2="44" y2="38" stroke="#000" stroke-width="1" opacity=".4"/>
+    </symbol>
+    <symbol id="cat-shaker" viewBox="0 0 64 64">
+      <rect x="22" y="6" width="20" height="6" fill="currentColor"/>
+      <path fill="currentColor" d="M20 12 L44 12 L46 22 L46 50 Q46 56 40 56 L24 56 Q18 56 18 50 L18 22 Z"/>
+      <rect x="22" y="22" width="20" height="2" fill="#000" opacity=".4"/>
+      <rect x="22" y="34" width="20" height="2" fill="#000" opacity=".25"/>
+      <rect x="22" y="42" width="20" height="2" fill="#000" opacity=".25"/>
+    </symbol>
+    <symbol id="cat-towel" viewBox="0 0 64 64">
+      <path fill="currentColor" d="M12 12 L52 12 L52 52 L12 52 Z"/>
+      <line x1="14" y1="16" x2="50" y2="16" stroke="#000" stroke-width=".8" opacity=".3"/>
+      <line x1="14" y1="22" x2="50" y2="22" stroke="#000" stroke-width=".8" opacity=".3"/>
+      <line x1="14" y1="28" x2="50" y2="28" stroke="#000" stroke-width=".8" opacity=".3"/>
+      <line x1="14" y1="34" x2="50" y2="34" stroke="#000" stroke-width=".8" opacity=".3"/>
+      <line x1="14" y1="40" x2="50" y2="40" stroke="#000" stroke-width=".8" opacity=".3"/>
+      <line x1="14" y1="46" x2="50" y2="46" stroke="#000" stroke-width=".8" opacity=".3"/>
+      <rect x="12" y="48" width="40" height="4" fill="#000" opacity=".25"/>
+    </symbol>
+    <symbol id="cat-gymbag" viewBox="0 0 64 64">
+      <path fill="currentColor" d="M10 22 L54 22 L52 50 L12 50 Z"/>
+      <path d="M22 22 Q22 14 32 14 Q42 14 42 22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      <rect x="26" y="32" width="12" height="6" fill="#000" opacity=".3"/>
+      <line x1="32" y1="32" x2="32" y2="38" stroke="currentColor" stroke-width="1"/>
+    </symbol>
+    <symbol id="cat-backpack" viewBox="0 0 64 64">
+      <path fill="currentColor" d="M18 16 Q18 10 26 10 L38 10 Q46 10 46 16 L46 56 Q46 58 44 58 L20 58 Q18 58 18 56 Z"/>
+      <rect x="24" y="22" width="16" height="14" fill="#000" opacity=".25"/>
+      <rect x="26" y="42" width="12" height="6" fill="#000" opacity=".22"/>
+      <path d="M22 14 Q14 18 14 28 L18 28" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <path d="M42 14 Q50 18 50 28 L46 28" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    </symbol>
+    <symbol id="cat-belt" viewBox="0 0 64 64">
+      <rect x="4" y="26" width="56" height="12" fill="currentColor" opacity=".88"/>
+      <rect x="38" y="22" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <line x1="38" y1="32" x2="58" y2="32" stroke="currentColor" stroke-width="2"/>
+      <circle cx="48" cy="32" r="2" fill="currentColor"/>
+    </symbol>
+
   </defs>
 </svg>
 
