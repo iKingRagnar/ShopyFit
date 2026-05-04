@@ -1074,6 +1074,77 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
   .vs-row > div{padding:12px 10px;font-size:13px}
   .vs-tk-price{font-size:18px}
 }
+
+/* ═══════════════════════ BRAND VISUAL UPGRADE · TQ refs ═══════════════════════ */
+
+/* Hexagon-framed trust icons (replaces flat emoji feel) */
+.trust-cell .trust-ico-hex{
+  width:54px;height:54px;display:flex;align-items:center;justify-content:center;
+  position:relative;flex-shrink:0
+}
+.trust-cell .trust-ico-hex svg.hex-bg{
+  position:absolute;inset:0;width:100%;height:100%;color:var(--lime);opacity:.85
+}
+.trust-cell .trust-ico-hex svg.hex-glyph{
+  width:24px;height:24px;color:var(--white);position:relative;z-index:1
+}
+
+/* Hero secondary banner: TK monogram + rotating tagline strip */
+.tag-rotator{background:var(--bg-2);border-top:.5px solid var(--border);border-bottom:.5px solid var(--border);
+  padding:18px 5vw;display:flex;align-items:center;gap:24px;justify-content:center;overflow:hidden}
+.tag-rotator .tk-mono{width:34px;height:34px;color:var(--lime);flex-shrink:0}
+.tag-rotator .tag-track{position:relative;height:24px;flex:0 1 460px;overflow:hidden;text-align:center}
+.tag-rotator .tag-line{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',Impact,sans-serif;font-size:18px;letter-spacing:.18em;color:var(--white);
+  opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}
+.tag-rotator .tag-line.on{opacity:1;transform:translateY(0)}
+.tag-rotator .tag-line .lime{color:var(--lime)}
+.tag-rotator .tag-line.dim{color:var(--text-3)}
+.tag-rotator .tk-mono-r{width:34px;height:34px;color:var(--lime);flex-shrink:0;transform:scaleX(-1)}
+@media(max-width:768px){
+  .tag-rotator{padding:14px 5vw;gap:14px}
+  .tag-rotator .tk-mono,.tag-rotator .tk-mono-r{width:26px;height:26px}
+  .tag-rotator .tag-line{font-size:14px;letter-spacing:.14em}
+}
+
+/* Feature pills on product cards (4-way stretch / wicking / compression / mesh) */
+.pc-feats{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;padding-top:9px;border-top:.5px dashed var(--border-soft)}
+.pc-feat{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;background:var(--bg-3);
+  border:.5px solid var(--border-soft);font-family:'Barlow Condensed',sans-serif;font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);font-weight:700}
+.pc-feat svg{width:12px;height:12px;color:var(--lime);flex-shrink:0}
+.cream-band .pc-feat{background:var(--cream-bg-2);border-color:var(--cream-border-soft);color:var(--cream-text-2)}
+.cream-band .pc-feat svg{color:var(--cream-text)}
+@media(max-width:768px){
+  .pc-feats{gap:3px;padding-top:7px}
+  .pc-feat{padding:3px 6px;font-size:8px}
+  .pc-feat svg{width:10px;height:10px}
+}
+@media(max-width:768px){
+  .pc-feat:nth-child(n+3){display:none}  /* show only 2 feats on phone for breathing room */
+}
+
+/* Tech specs callouts (TQ mockup right column style) — for quickview */
+.qa-specs{margin:18px 0 22px;padding:16px 18px;background:var(--bg-3);border:.5px solid var(--border-soft)}
+.qa-specs-h{font-family:'Bebas Neue',Impact,sans-serif;font-size:13px;letter-spacing:.18em;
+  color:var(--lime);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.qa-specs-h::before{content:'';flex:0 0 16px;height:1px;background:var(--lime)}
+.qa-specs-list{display:grid;grid-template-columns:1fr;gap:10px}
+.qa-spec{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:flex-start}
+.qa-spec svg{width:20px;height:20px;color:var(--lime);margin-top:2px}
+.qa-spec b{display:block;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--white);margin-bottom:2px;font-weight:700}
+.qa-spec span{font-size:12px;color:var(--text-2);line-height:1.5}
+
+/* Big bull-aggressive watermark (replaces hero-bull-wm in some contexts) */
+.bull-aggressive-wm{position:absolute;color:var(--lime);opacity:.06;pointer-events:none}
+
+/* Section dividers with hex motif */
+.hex-divider{display:flex;align-items:center;justify-content:center;gap:14px;margin:30px 0 24px;color:var(--text-3)}
+.hex-divider::before,.hex-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.hex-divider svg{width:18px;height:18px;color:var(--lime)}
+.hex-divider span{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -1221,11 +1292,49 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
-  <div class="trust-cell"><div class="trust-ico">🇲🇽</div><div><b>Hecho en México 100%</b><span>Maquila local · sin import duties</span></div></div>
-  <div class="trust-cell"><div class="trust-ico">⚡</div><div><b>Made-to-order</b><span>Producimos solo lo que pides</span></div></div>
-  <div class="trust-cell"><div class="trust-ico">💳</div><div><b>12 MSI MercadoPago</b><span>Pago a meses sin intereses</span></div></div>
-  <div class="trust-cell"><div class="trust-ico">📦</div><div><b>Llega en 7-14 días</b><span>Envío gratis +$799</span></div></div>
+  <div class="trust-cell">
+    <div class="trust-ico-hex">
+      <svg class="hex-bg" aria-hidden="true"><use href="#hex-frame"/></svg>
+      <svg class="hex-glyph" aria-hidden="true"><use href="#feat-mexico"/></svg>
+    </div>
+    <div><b>Hecho en MÃ©xico 100%</b><span>Maquila local Â· sin import duties</span></div>
+  </div>
+  <div class="trust-cell">
+    <div class="trust-ico-hex">
+      <svg class="hex-bg" aria-hidden="true"><use href="#hex-frame"/></svg>
+      <svg class="hex-glyph" aria-hidden="true"><use href="#feat-stretch"/></svg>
+    </div>
+    <div><b>Made-to-order</b><span>Producimos solo lo que pides</span></div>
+  </div>
+  <div class="trust-cell">
+    <div class="trust-ico-hex">
+      <svg class="hex-bg" aria-hidden="true"><use href="#hex-frame"/></svg>
+      <svg class="hex-glyph" aria-hidden="true"><use href="#feat-silicone"/></svg>
+    </div>
+    <div><b>12 MSI MercadoPago</b><span>Pago a meses sin intereses</span></div>
+  </div>
+  <div class="trust-cell">
+    <div class="trust-ico-hex">
+      <svg class="hex-bg" aria-hidden="true"><use href="#hex-frame"/></svg>
+      <svg class="hex-glyph" aria-hidden="true"><use href="#feat-quickdry"/></svg>
+    </div>
+    <div><b>Llega en 7-14 dÃ­as</b><span>EnvÃ­o gratis +$799</span></div>
+  </div>
 </div>
+
+<!-- TAGLINE ROTATOR Â· cycle through brand mantras -->
+<div class="tag-rotator" role="banner" aria-live="polite">
+  <svg class="tk-mono" aria-hidden="true"><use href="#tk-mono"/></svg>
+  <div class="tag-track" id="tagTrack">
+    <div class="tag-line on">DISCIPLINE <span class="lime">OVER</span> EVERYTHING</div>
+    <div class="tag-line">DESIGNED FOR <span class="lime">GYMRATS</span></div>
+    <div class="tag-line">TRAIN Â· EVOLVE Â· <span class="lime">DOMINATE</span></div>
+    <div class="tag-line">MIND Â· BODY Â· <span class="lime">KAIZEN</span></div>
+    <div class="tag-line">BUILT FOR <span class="lime">GREATNESS</span></div>
+  </div>
+  <svg class="tk-mono-r" aria-hidden="true"><use href="#tk-mono"/></svg>
+</div>
+
 
 <!-- ═══════════ SCROLL-MORPH 01 · HERO BULL → ATHLETE ═══════════ -->
 <!-- Drop your generated MP4 at assets/morphs/hero-bull-to-athlete.mp4 to replace placeholder -->
@@ -1355,6 +1464,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
         <div class="pc-name">Tee Gothic Black</div>
         <div class="pc-rating"><span class="stars">★★★★★</span> 4.9 <span class="cnt">(124)</span></div>
         <div class="pc-tags"><span class="tg">Streetwear</span><span class="tg">Gym</span></div>
+        <div class="pc-feats"><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-stretch"/></svg>4-Way Stretch</span><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-wicking"/></svg>Wicking</span><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-silicone"/></svg>Silicone Print</span></div>
         <div class="pc-foot"><div><span class="pc-price">$649</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
         <div class="pc-swatches"><span class="pc-sw on" data-c="black"></span><span class="pc-sw" data-c="white"></span><span class="pc-sw" data-c="gray"></span><span class="pc-sw" data-c="navy"></span></div>
       </div>
@@ -1375,6 +1485,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
         <div class="pc-name">Tank Stringer Bravío</div>
         <div class="pc-rating"><span class="stars">★★★★★</span> 4.8 <span class="cnt">(312)</span></div>
         <div class="pc-tags"><span class="tg">Gym</span><span class="tg">Crossfit</span></div>
+        <div class="pc-feats"><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-stretch"/></svg>4-Way Stretch</span><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-wicking"/></svg>Wicking</span><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-mesh"/></svg>Mesh Zones</span></div>
         <div class="pc-foot"><div><span class="pc-price">$549</span><span class="pc-old">$649</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
         <div class="pc-swatches"><span class="pc-sw on" data-c="black"></span><span class="pc-sw" data-c="white"></span><span class="pc-sw" data-c="lime"></span></div>
       </div>
@@ -1395,6 +1506,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
         <div class="pc-name">Short Obsidian 5"</div>
         <div class="pc-rating"><span class="stars">★★★★★</span> 4.9 <span class="cnt">(528)</span></div>
         <div class="pc-tags"><span class="tg">Running</span><span class="tg">Gym</span></div>
+        <div class="pc-feats"><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-quickdry"/></svg>Quick Dry</span><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-mesh"/></svg>Mesh Pockets</span><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-stretch"/></svg>4-Way Stretch</span></div>
         <div class="pc-foot"><div><span class="pc-price">$649</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
         <div class="pc-swatches"><span class="pc-sw on" data-c="black"></span><span class="pc-sw" data-c="navy"></span><span class="pc-sw" data-c="olive"></span><span class="pc-sw" data-c="gray"></span><span class="pc-sw" data-c="red"></span></div>
       </div>
@@ -1415,6 +1527,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
         <div class="pc-name">Set Titan Edition</div>
         <div class="pc-rating"><span class="stars">★★★★★</span> 5.0 <span class="cnt">(48)</span></div>
         <div class="pc-tags"><span class="tg">Crossfit</span><span class="tg">Gym</span></div>
+        <div class="pc-feats"><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-stretch"/></svg>4-Way Stretch</span><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-compression"/></svg>Coord Set</span><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-silicone"/></svg>Silicone Print</span></div>
         <div class="pc-foot"><div><span class="pc-price">$1,199</span><span class="pc-old">$1,499</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
         <div class="pc-swatches"><span class="pc-sw on" data-c="black"></span><span class="pc-sw" data-c="navy"></span></div>
       </div>
@@ -1435,6 +1548,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
         <div class="pc-name">Tee Gothic White</div>
         <div class="pc-rating"><span class="stars">★★★★★</span> 4.8 <span class="cnt">(98)</span></div>
         <div class="pc-tags"><span class="tg">Streetwear</span><span class="tg">Gym</span></div>
+        <div class="pc-feats"><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-stretch"/></svg>4-Way Stretch</span><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-wicking"/></svg>Wicking</span><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-silicone"/></svg>Silicone Print</span></div>
         <div class="pc-foot"><div><span class="pc-price">$699</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
         <div class="pc-swatches"><span class="pc-sw" data-c="black"></span><span class="pc-sw on" data-c="white"></span><span class="pc-sw" data-c="gray"></span></div>
       </div>
@@ -1456,6 +1570,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
         <div class="pc-name">Jogger Phantom Toro</div>
         <div class="pc-rating"><span class="stars">★★★★★</span> 4.7 <span class="cnt">(216)</span></div>
         <div class="pc-tags"><span class="tg">Streetwear</span><span class="tg">Yoga</span></div>
+        <div class="pc-feats"><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-stretch"/></svg>4-Way Stretch</span><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-compression"/></svg>Tapered Fit</span><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-quickdry"/></svg>Quick Dry</span></div>
         <div class="pc-foot"><div><span class="pc-price">$849</span><span class="pc-old">$999</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
         <div class="pc-swatches"><span class="pc-sw on" data-c="black"></span><span class="pc-sw" data-c="gray"></span><span class="pc-sw" data-c="olive"></span></div>
       </div>
@@ -1477,6 +1592,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
         <div class="pc-name">Hoodie Void Mortal</div>
         <div class="pc-rating"><span class="stars">★★★★★</span> 4.9 <span class="cnt">(404)</span></div>
         <div class="pc-tags"><span class="tg">Streetwear</span></div>
+        <div class="pc-feats"><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-compression"/></svg>Premium Fit</span><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-silicone"/></svg>Silicone Print</span><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-woven"/></svg>Woven Label</span></div>
         <div class="pc-foot"><div><span class="pc-price">$899</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
         <div class="pc-swatches"><span class="pc-sw on" data-c="black"></span><span class="pc-sw" data-c="gray"></span><span class="pc-sw" data-c="purple"></span></div>
       </div>
@@ -1497,6 +1613,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
         <div class="pc-name">Set Venom W</div>
         <div class="pc-rating"><span class="stars">★★★★★</span> 5.0 <span class="cnt">(67)</span></div>
         <div class="pc-tags"><span class="tg">Yoga</span><span class="tg">Gym</span></div>
+        <div class="pc-feats"><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-stretch"/></svg>4-Way Stretch</span><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-compression"/></svg>Coord Set</span><span class="pc-feat"><svg aria-hidden="true"><use href="#feat-silicone"/></svg>Silicone Print</span></div>
         <div class="pc-foot"><div><span class="pc-price">$1,099</span><span class="pc-old">$1,299</span></div><button class="add-btn" onclick="addCart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></button></div>
         <div class="pc-swatches"><span class="pc-sw on" data-c="black"></span><span class="pc-sw" data-c="purple"></span><span class="pc-sw" data-c="lime"></span></div>
       </div>
@@ -2110,6 +2227,30 @@ document.querySelectorAll('.scroll-morph').forEach(initScrollMorph);
         </div>
         <div class="qa-color-name">Color: <b>Negro</b></div>
       </div>
+
+      <!-- Tech specs callouts (TQ ref-image style) -->
+      <div class="qa-specs">
+        <div class="qa-specs-h">FEATURES Â· BUILT DIFFERENT</div>
+        <div class="qa-specs-list">
+          <div class="qa-spec">
+            <svg aria-hidden="true"><use href="#feat-stretch"/></svg>
+            <div><b>4-Way Stretch</b><span>Maximum mobility en cada movimiento</span></div>
+          </div>
+          <div class="qa-spec">
+            <svg aria-hidden="true"><use href="#feat-wicking"/></svg>
+            <div><b>Moisture Wicking</b><span>Stay dry. Stay focused.</span></div>
+          </div>
+          <div class="qa-spec">
+            <svg aria-hidden="true"><use href="#feat-silicone"/></svg>
+            <div><b>Premium Silicone Print</b><span>Resiste 30+ lavadas sin perder color</span></div>
+          </div>
+          <div class="qa-spec">
+            <svg aria-hidden="true"><use href="#feat-woven"/></svg>
+            <div><b>Woven Label</b><span>Etiqueta cosida Â· premium finish</span></div>
+          </div>
+        </div>
+      </div>
+
       <div class="qa-row">
         <div class="qa-row-l">Talla</div>
         <div class="qa-sizes">
@@ -2450,6 +2591,20 @@ document.addEventListener('keydown',e=>{
 
 // Initialize cart count badge on load
 document.addEventListener('DOMContentLoaded',renderCart);
+
+// ═══════════════════════ TAGLINE ROTATOR ═══════════════════════
+(function(){
+  const track=document.getElementById('tagTrack');
+  if(!track)return;
+  const lines=track.querySelectorAll('.tag-line');
+  if(lines.length<2)return;
+  let idx=0;
+  setInterval(()=>{
+    lines[idx].classList.remove('on');
+    idx=(idx+1)%lines.length;
+    lines[idx].classList.add('on');
+  },3500);
+})();
 if(document.readyState!=='loading')renderCart();
 </script>
 
@@ -2606,6 +2761,116 @@ if(document.readyState!=='loading')renderCart();
         <path fill="currentColor" d="M58 8 Q52 50 46 165 L98 165 Q102 100 105 50 Q107 30 102 8 Z"/>
         <path fill="currentColor" d="M182 8 Q188 50 194 165 L142 165 Q138 100 135 50 Q133 30 138 8 Z"/>
       </g>
+    </symbol>
+
+    <!-- ═══════════ AGGRESSIVE BULL — gymrat-grade horned skull ═══════════ -->
+    <symbol id="bull-aggressive" viewBox="0 0 120 100">
+      <!-- Horns -->
+      <path fill="currentColor" d="M12 28 Q4 14 2 4 Q14 4 24 12 Q34 22 40 32 Z"/>
+      <path fill="currentColor" d="M108 28 Q116 14 118 4 Q106 4 96 12 Q86 22 80 32 Z"/>
+      <!-- Skull/forehead -->
+      <path fill="currentColor" d="M40 30 Q40 16 60 14 Q80 16 80 30 L80 50 Q80 56 76 60 L60 72 L44 60 Q40 56 40 50 Z"/>
+      <!-- Snout / lower face -->
+      <path fill="currentColor" d="M44 60 L76 60 Q80 70 76 80 L60 90 L44 80 Q40 70 44 60 Z"/>
+      <!-- Eye sockets (darker holes for depth) -->
+      <path fill="#000" opacity=".55" d="M48 38 Q48 30 54 30 Q60 30 60 38 Q60 46 54 46 Q48 46 48 38 Z"/>
+      <path fill="#000" opacity=".55" d="M60 38 Q60 30 66 30 Q72 30 72 38 Q72 46 66 46 Q60 46 60 38 Z"/>
+      <!-- Nose ring detail -->
+      <ellipse cx="60" cy="78" rx="6" ry="3" fill="#000" opacity=".45"/>
+      <!-- Center forehead crest -->
+      <path fill="#000" opacity=".22" d="M58 18 L62 18 L60 30 Z"/>
+    </symbol>
+
+    <!-- ═══════════ TK MONOGRAM in HEXAGON ═══════════ -->
+    <symbol id="tk-mono" viewBox="0 0 120 120">
+      <!-- Hexagonal frame -->
+      <path d="M60 6 L108 33 L108 87 L60 114 L12 87 L12 33 Z"
+            fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+      <!-- T -->
+      <path fill="currentColor" d="M28 42 L62 42 L62 52 L50 52 L50 86 L40 86 L40 52 L28 52 Z"/>
+      <!-- K (split style) -->
+      <path fill="currentColor" d="M68 42 L78 42 L78 60 L88 42 L98 42 L84 64 L100 86 L88 86 L78 70 L78 86 L68 86 Z"/>
+    </symbol>
+
+    <!-- ═══════════ HEXAGON FRAME (decoration) ═══════════ -->
+    <symbol id="hex-frame" viewBox="0 0 100 100">
+      <path d="M50 4 L92 28 L92 72 L50 96 L8 72 L8 28 Z"
+            fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    </symbol>
+
+    <!-- ═══════════ FEATURE ICONS · stencil/industrial style ═══════════ -->
+    <symbol id="feat-stretch" viewBox="0 0 64 64">
+      <!-- 4-way stretch arrows (cross pattern) -->
+      <g fill="currentColor">
+        <path d="M32 4 L40 14 L34 14 L34 26 L30 26 L30 14 L24 14 Z"/>
+        <path d="M32 60 L40 50 L34 50 L34 38 L30 38 L30 50 L24 50 Z"/>
+        <path d="M4 32 L14 40 L14 34 L26 34 L26 30 L14 30 L14 24 Z"/>
+        <path d="M60 32 L50 40 L50 34 L38 34 L38 30 L50 30 L50 24 Z"/>
+      </g>
+      <circle cx="32" cy="32" r="4" fill="currentColor"/>
+    </symbol>
+
+    <symbol id="feat-wicking" viewBox="0 0 64 64">
+      <!-- Stack of 3 droplets -->
+      <path fill="currentColor" d="M32 6 Q22 22 22 30 Q22 38 32 38 Q42 38 42 30 Q42 22 32 6 Z"/>
+      <path fill="currentColor" opacity=".65" d="M18 38 Q12 48 12 52 Q12 58 18 58 Q24 58 24 52 Q24 48 18 38 Z"/>
+      <path fill="currentColor" opacity=".65" d="M46 38 Q40 48 40 52 Q40 58 46 58 Q52 58 52 52 Q52 48 46 38 Z"/>
+    </symbol>
+
+    <symbol id="feat-compression" viewBox="0 0 64 64">
+      <!-- Concentric rings = compression target -->
+      <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="3"/>
+      <circle cx="32" cy="32" r="20" fill="none" stroke="currentColor" stroke-width="3"/>
+      <circle cx="32" cy="32" r="11" fill="none" stroke="currentColor" stroke-width="3"/>
+      <circle cx="32" cy="32" r="4" fill="currentColor"/>
+    </symbol>
+
+    <symbol id="feat-mesh" viewBox="0 0 64 64">
+      <!-- Hexagonal mesh -->
+      <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round">
+        <path d="M16 14 L24 10 L32 14 L32 22 L24 26 L16 22 Z"/>
+        <path d="M32 14 L40 10 L48 14 L48 22 L40 26 L32 22 Z"/>
+        <path d="M24 26 L32 22 L40 26 L40 34 L32 38 L24 34 Z"/>
+        <path d="M16 38 L24 34 L32 38 L32 46 L24 50 L16 46 Z"/>
+        <path d="M32 38 L40 34 L48 38 L48 46 L40 50 L32 46 Z"/>
+      </g>
+    </symbol>
+
+    <symbol id="feat-silicone" viewBox="0 0 64 64">
+      <!-- Stamped emboss icon: square with raised inner mark -->
+      <rect x="8" y="8" width="48" height="48" fill="none" stroke="currentColor" stroke-width="3"/>
+      <rect x="18" y="18" width="28" height="28" fill="currentColor" opacity=".25"/>
+      <path fill="currentColor" d="M20 26 L44 26 L44 30 L34 30 L34 44 L30 44 L30 30 L20 30 Z"/>
+    </symbol>
+
+    <symbol id="feat-woven" viewBox="0 0 64 64">
+      <!-- Woven label icon -->
+      <rect x="10" y="20" width="44" height="24" fill="none" stroke="currentColor" stroke-width="3"/>
+      <path d="M14 26 L50 26 M14 32 L50 32 M14 38 L50 38" stroke="currentColor" stroke-width="2"/>
+      <!-- Hanging loop -->
+      <path d="M30 12 L30 20 M34 12 L34 20" stroke="currentColor" stroke-width="2.5"/>
+      <circle cx="32" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    </symbol>
+
+    <symbol id="feat-quickdry" viewBox="0 0 64 64">
+      <!-- Sun + arrow up = quick dry -->
+      <circle cx="32" cy="34" r="10" fill="none" stroke="currentColor" stroke-width="3"/>
+      <g stroke="currentColor" stroke-width="3" stroke-linecap="round">
+        <line x1="32" y1="14" x2="32" y2="20"/>
+        <line x1="32" y1="48" x2="32" y2="54"/>
+        <line x1="14" y1="34" x2="20" y2="34"/>
+        <line x1="44" y1="34" x2="50" y2="34"/>
+        <line x1="18" y1="20" x2="22" y2="24"/>
+        <line x1="46" y1="20" x2="42" y2="24"/>
+        <line x1="18" y1="48" x2="22" y2="44"/>
+        <line x1="46" y1="48" x2="42" y2="44"/>
+      </g>
+    </symbol>
+
+    <symbol id="feat-mexico" viewBox="0 0 64 64">
+      <!-- Stylized eagle silhouette in hex (made-in-mexico mark) -->
+      <path d="M32 4 L56 18 L56 46 L32 60 L8 46 L8 18 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+      <text x="32" y="40" text-anchor="middle" fill="currentColor" font-family="Bebas Neue,Impact,sans-serif" font-size="22" font-weight="700" letter-spacing=".06em">MX</text>
     </symbol>
   </defs>
 </svg>
