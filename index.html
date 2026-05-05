@@ -15,6 +15,9 @@
 })();
 </script>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TORO KAIZEN — Built Different · Ropa deportiva premium hecha en México</title>
 <meta name="description" content="Ropa de alto rendimiento para gym, running, crossfit, yoga y streetwear. Diseñada y confeccionada en México. Drops semanales, envío gratis +$799, devoluciones 30 días. Built different.">
@@ -1451,7 +1454,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .mt-band{background:var(--black);padding:90px 5vw 100px;border-top:.5px solid var(--border);position:relative;overflow:hidden}
 .mt-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .mt-card{position:relative;background:var(--bg-2);aspect-ratio:3/4;overflow:hidden;border:.5px solid var(--border-soft)}
-.mt-card.cw-off-white{background:#f0ece2;color:#1a1a1a}
+.mt-card.cw-off-white{background:#2a2a2c;color:#f0ece2}
 .mt-card.cw-black{background:#0d0d0e;color:#f0ece2}
 .mt-card.cw-grey{background:linear-gradient(135deg,#3a3a3a 0%,#252525 100%);color:#e0d8c8}
 .mt-card-spec{position:absolute;top:18px;left:18px;font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;line-height:1.7;z-index:2}
@@ -1618,6 +1621,27 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   .mt-card { max-height: 320px !important }
   .showcase-main { min-height: 240px !important }
   .act-card { height: 140px !important }
+}
+
+/* ═══════ MOBILE FORCED DARK · v3 final ═══════ */
+@media (max-width: 768px) {
+  /* No more cream bands on mobile — forces dark across the board */
+  .cream-band { background: var(--bg-1) !important; color: var(--text) !important }
+  .cream-band .pc { background: var(--bg-2) !important; border-color: var(--border-soft) !important }
+  .cream-band .pc-name, .cream-band .pc-price, .cream-band .s-title { color: var(--white) !important }
+  .cream-band .pc-cat, .cream-band .pc-old, .cream-band .pc-rating .cnt { color: var(--text-3) !important }
+  .cream-band .rv-card { background: var(--bg-2) !important; border-color: var(--border) !important }
+  .cream-band .rv-text, .cream-band .rv-name { color: var(--white) !important }
+  .cream-band .ugc-cell { background: var(--bg-3) !important }
+  .cream-band .rs-img { background: var(--bg-3) !important }
+  .cream-band .pc-feat { background: var(--bg-3) !important; border-color: var(--border-soft) !important; color: var(--text-2) !important }
+  .cream-band .pc-feat svg { color: var(--lime) !important }
+
+  /* Force every section to have ZERO min-height so no blank space */
+  section, .activities, .products, .reviews, .ugc, .lookbook, .recent { min-height: 0 !important }
+
+  /* Tight padding everywhere */
+  section { padding-top: 30px !important; padding-bottom: 30px !important }
 }
 
 </style>
