@@ -3,6 +3,9 @@
   <url><loc>https://torokaizen.mx/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://torokaizen.mx/about.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://torokaizen.mx/manifesto.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://torokaizen.mx/atletas.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://torokaizen.mx/sostenibilidad.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://torokaizen.mx/blog.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://torokaizen.mx/marks.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
   <url><loc>https://torokaizen.mx/faq.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://torokaizen.mx/returns.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>

@@ -2310,10 +2310,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
         <li><a href="about.html">Sobre nosotros</a></li>
         <li><a href="manifesto.html">Manifesto</a></li>
         <li><a href="marks.html">Brand marks</a></li>
-        <li><a>Atletas &amp; embajadores</a></li>
-        <li><a>Sostenibilidad</a></li>
-        <li><a>Trabaja con nosotros</a></li>
-        <li><a>Mayoreo</a></li>
+        <li><a href="atletas.html">Atletas &amp; embajadores</a></li>
+        <li><a href="sostenibilidad.html">Sostenibilidad</a></li>
+        <li><a href="blog.html">Stories</a></li>
+        <li><a href="https://wa.me/525511223344?text=Hola%2C%20me%20interesa%20mayoreo%20TK">Mayoreo</a></li>
       </ul>
     </div>
     <div class="foot-x-col foot-x-news">
@@ -3964,5 +3964,57 @@ if(document.readyState!=='loading')renderCart();
 })();
 </script>
 
+<!-- IMAGE LIGHTBOX (pure CSS+JS, no deps) -->
+<style>
+.lb-bd{position:fixed;inset:0;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;z-index:600;animation:fadeIn .25s}
+.lb-bd.on{display:flex}
+.lb-img{max-width:92vw;max-height:90vh;object-fit:contain;cursor:zoom-out;filter:none !important}
+.lb-close{position:absolute;top:20px;right:20px;background:none;border:none;color:#fff;font-size:34px;cursor:pointer;line-height:1}
+.lb-close:hover{color:var(--lime)}
+.pc-img-wrap > img:not(.pc-img-2){cursor:zoom-in}
+</style>
+<div class="lb-bd" id="lbBd" role="dialog" aria-modal="true" aria-label="Vista ampliada" onclick="if(event.target===this)closeLightbox()">
+  <button class="lb-close" onclick="closeLightbox()" aria-label="Cerrar">×</button>
+  <img class="lb-img" id="lbImg" src="" alt="">
+</div>
+<script>
+function openLightbox(src,alt){const i=document.getElementById('lbImg');i.src=src;i.alt=alt||'';document.getElementById('lbBd').classList.add('on');document.body.style.overflow='hidden'}
+function closeLightbox(){document.getElementById('lbBd').classList.remove('on');document.body.style.overflow=''}
+document.addEventListener('click',e=>{
+  const img=e.target.closest('.pc-img-wrap > img:not(.pc-img-2)');
+  if(!img||e.target.closest('.q-btn,.add-btn,.pc-quick'))return;
+  e.preventDefault();
+  openLightbox(img.src,img.alt);
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
+</script>
+
+<!-- SERVICE WORKER REGISTRATION -->
+<script>
+if('serviceWorker' in navigator && location.protocol==='https:'){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('/sw.js').catch(()=>{/* silent fail */});
+  });
+}
+</script>
+
+<!-- TRACKING EVENT HOOKS — fire if GA4 / Meta / TikTok pixels are configured -->
+<script>
+window.tkTrack=function(eventName,params){
+  params=params||{};
+  // GA4 (gtag) — uncomment + paste GA4_ID in <head>
+  if(typeof window.gtag==='function')window.gtag('event',eventName,params);
+  // Meta Pixel — uncomment + paste FB_PIXEL_ID in <head>
+  if(typeof window.fbq==='function')window.fbq('track',mapMetaEvent(eventName),params);
+  // TikTok Pixel — uncomment + paste TT_PIXEL_ID in <head>
+  if(typeof window.ttq==='object'&&window.ttq.track)window.ttq.track(mapTtEvent(eventName),params);
+};
+function mapMetaEvent(n){return ({add_to_cart:'AddToCart',view_item:'ViewContent',begin_checkout:'InitiateCheckout',purchase:'Purchase',sign_up:'CompleteRegistration'})[n]||n}
+function mapTtEvent(n){return ({add_to_cart:'AddToCart',view_item:'ViewContent',begin_checkout:'InitiateCheckout',purchase:'CompletePayment'})[n]||n}
+// Wire common events
+if(window.addCart){const _o=window.addCart;window.addCart=function(opts){_o.apply(this,arguments);const o=opts||{};window.tkTrack('add_to_cart',{currency:'MXN',value:0,items:[o.sku||'unknown']})}}
+if(window.openQuickAdd){const _o=window.openQuickAdd;window.openQuickAdd=function(sku){_o.apply(this,arguments);window.tkTrack('view_item',{item_id:sku})}}
+if(window.checkout){const _o=window.checkout;window.checkout=function(){_o.apply(this,arguments);window.tkTrack('begin_checkout',{currency:'MXN'})}}
+</script>
 </body>
 </html>
