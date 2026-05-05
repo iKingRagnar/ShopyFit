@@ -1689,6 +1689,95 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   .showcase-callouts { grid-template-columns: 1fr !important }
 }
 
+/* ═══════════════════════ STRATEGIC POLISH v5 ═══════════════════════ */
+@media (max-width: 768px) {
+  /* DROP BANNER: remove on mobile (occupies precious top space) */
+  .drop-banner { display: none !important }
+  nav { top: 0 !important }
+  .mega { top: 60px !important }
+
+  /* TAG ROTATOR: hide on mobile (visual clutter, repeats brand voice) */
+  .tag-rotator { display: none !important }
+
+  /* CHATBOT FAB: hide on mobile (mb-nav already has WhatsApp + sticky badge) */
+  .cb-fab, .cb-tip, .cb-panel { display: none !important }
+
+  /* WA-FAB: stack above mb-nav with safe gap */
+  .wa-fab { bottom: 78px !important; right: 16px !important; width: 52px !important; height: 52px !important; z-index: 119 !important }
+
+  /* COOKIE BANNER: above wa-fab (not overlapping) */
+  .cookie-banner { bottom: 76px !important; left: 12px !important; right: 80px !important; padding: 12px 14px !important; font-size: 11px !important }
+  .cookie-banner .cb-actions button { padding: 8px 10px !important; font-size: 10px !important }
+
+  /* SOCIAL PROOF BUBBLE: top of viewport (so doesn't fight bottom area) */
+  .sp-bubble { top: 60px !important; bottom: auto !important; left: 12px !important; right: 12px !important; max-width: none !important }
+
+  /* TOPBAR mobile: logo fully visible */
+  nav { padding: 0 14px !important; height: 56px !important }
+  .logo { font-size: 16px !important; gap: 7px !important }
+  .logo-badge { width: 26px !important; height: 22px !important }
+  .nav-r { gap: 4px !important }
+  .cart-pill { padding: 6px 10px !important; font-size: 10px !important }
+
+  /* HERO mobile: tighter, balanced */
+  .hero { padding: 80px 5vw 36px !important }
+  h1.hero-t { font-size: 52px !important; line-height: .9 !important; margin-bottom: 16px !important }
+  .hero-pill { margin-bottom: 16px !important }
+  .hero-desc { margin-bottom: 16px !important; font-size: 13.5px !important }
+  .cnt-down { margin: 14px 0 20px !important }
+
+  /* TICKER tighter */
+  .ticker { padding: 8px 0 !important; font-size: 10px !important }
+
+  /* MASTER TEE 01: 1 col, max 480px height */
+  .mt-card { max-height: 480px !important; aspect-ratio: 4/5 !important }
+  .mt-card-spec { font-size: 9px !important; top: 14px !important; left: 14px !important }
+  .mt-card-spec b { font-size: 11px !important }
+  .mt-bull-print { width: 58% !important }
+  .mt-wordmark { width: 50% !important; top: 22% !important }
+
+  /* SHOWCASE more elegant */
+  .showcase-main { min-height: 340px !important; padding: 56px 22px 46px !important }
+  .showcase-eyebrow { font-size: 14px !important; top: 18px !important; left: 22px !important }
+  .showcase-tagline { font-size: 9px !important; top: 18px !important; right: 22px !important }
+  .showcase-callouts { gap: 8px !important }
+
+  /* VS BAND pillars: 2-col always on mobile */
+  .vs-pillars { grid-template-columns: 1fr 1fr !important; gap: 10px !important }
+  .vs-pillar { padding: 18px 14px !important }
+  .vs-pillar svg { width: 24px !important; height: 24px !important; margin-bottom: 10px !important }
+  .vs-pillar h3 { font-size: 16px !important; margin-bottom: 6px !important }
+  .vs-pillar p { font-size: 11px !important; line-height: 1.5 !important }
+
+  /* PRODUCTS grid 2-col stays + sane spacing */
+  .prod-grid { gap: 8px !important }
+  .pc-info { padding: 10px 8px 12px !important }
+  .pc-name { font-size: 12px !important; line-height: 1.15 !important }
+  .pc-cat { font-size: 8px !important }
+  .pc-price { font-size: 14px !important }
+
+  /* REVIEWS section: cards stacked compact */
+  .rv-card { padding: 18px 16px !important; margin-bottom: 0 !important }
+  .rv-text { font-size: 13px !important; line-height: 1.6 !important }
+
+  /* UGC: 3 cols always (feels like instagram feed) */
+  .ugc-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 4px !important }
+
+  /* FOOTER tighter */
+  .foot-x { padding: 36px 5vw 26px !important; gap: 24px !important }
+  .foot-x-col h4 { font-size: 12px !important; margin-bottom: 10px !important }
+  .foot-x-col a { font-size: 12px !important }
+
+  /* BODY bottom padding accounts for: mb-nav (56) + safe area */
+  body { padding-bottom: 60px !important }
+}
+
+@media (max-width: 480px) {
+  .vs-pillars { grid-template-columns: 1fr !important }
+  h1.hero-t { font-size: 44px !important }
+  .mt-card-spec { font-size: 8px !important }
+}
+
 </style>
 </head>
 <body>
