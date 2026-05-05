@@ -30,6 +30,20 @@ El error `Stream idle timeout - partial response received` ocurre cuando una sol
 
 ---
 
+## Anti rate-limit (CRÍTICO)
+
+El error `Server is temporarily limiting requests · Rate limited` viene del **servidor upstream de Anthropic** y NO se puede arreglar en código. Es una sobrecarga global de la API. Para reducir frecuencia:
+
+12. **Minimizar tool calls**: no llamar Bash 3 veces para algo que se puede hacer en 1 con `&&` o `;`.
+13. **Batching**: cuando edito 5 lugares de un archivo, usar UN script Python con varios `replace()`, no 5 `Edit` separados.
+14. **Stop-and-think**: antes de hacer una tool call, ¿es necesaria? Si tengo la info en contexto previo, no re-leer.
+15. **Sanity grep mínimo**: 1 grep al final del PR, no 5 distribuidos.
+16. **No verificar lo obvio**: si `Edit` retornó OK, el archivo cambió. No re-leer para confirmar.
+
+Cuando aparezca `rate limited`, **esperar 30-60 segundos en lugar de retry inmediato** (el upstream tiene exponential backoff implícito).
+
+---
+
 ## Operación del proyecto
 
 ### Branch & PR flow
