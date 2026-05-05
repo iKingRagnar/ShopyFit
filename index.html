@@ -1556,6 +1556,57 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 /* Always force product grid to actually render */
 .prod-grid { min-height: 100px }
 
+/* ═══════════════════════ MOBILE TIGHTEN · v2 ═══════════════════════ */
+/* User reported huge cream blank gaps still appearing on mobile. */
+@media (max-width: 768px) {
+  /* Drastically reduce section padding so no blank cream space */
+  .products, .activities, .reviews, .ugc, .lookbook, .recent { padding: 36px 5vw 40px !important }
+  .vs-band { padding: 36px 5vw 40px !important }
+  .showcase { padding: 36px 5vw 40px !important }
+  .mt-band { padding: 36px 5vw 40px !important }
+  .activities-head, .act-head, .ugc-head, .recent-head, .rv-head, .vs-head, .values-h { margin-bottom: 16px !important }
+
+  /* Hero: cap to viewport so it never has huge blank */
+  .hero { padding: 78px 5vw 30px !important; gap: 20px !important }
+  .hero-r { height: 280px !important }
+
+  /* Showcase main: minimum compact */
+  .showcase-main { min-height: 280px !important; padding: 50px 18px 40px !important }
+  .showcase-main svg.shape { width: 44% !important }
+
+  /* Master Tee cards: cap aspect 1:1 on mobile */
+  .mt-card { aspect-ratio: 1/1 !important; max-height: 380px !important }
+
+  /* Activity cards even more compact */
+  .act-card { height: 160px !important }
+  .lb-cell { height: 200px !important }
+  .lb-cell:nth-child(1) { height: 240px !important }
+
+  /* Trust bar tighter */
+  .trust-cell { padding: 14px 12px !important }
+
+  /* Tag rotator + ticker */
+  .tag-rotator { padding: 10px 4vw !important; gap: 10px !important }
+  .ticker { padding: 8px 0 !important }
+
+  /* Hide hidden recents */
+  .recent[hidden], .recent:not([id]) { display: none !important }
+
+  /* Ensure nothing has min-height > content */
+  section { min-height: 0 !important }
+
+  /* Footer tighter */
+  .foot-x { padding: 36px 5vw 28px !important }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 72px 4vw 26px !important }
+  .hero-r { height: 240px !important }
+  .mt-card { max-height: 320px !important }
+  .showcase-main { min-height: 240px !important }
+  .act-card { height: 140px !important }
+}
+
 </style>
 </head>
 <body>
