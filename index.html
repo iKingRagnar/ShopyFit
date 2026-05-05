@@ -1510,6 +1510,52 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 @media(max-width:768px){.mb-nav{display:flex} body{padding-bottom:62px}
   .wa-fab{bottom:74px}.cookie-banner{bottom:78px}}
 
+/* ═══════════════════════ MOBILE FIX · blank-gap regression ═══════════════════════ */
+/* Force scroll-morphs hidden — they're 240vh of nothing without .mp4 files */
+.scroll-morph,.scroll-morph[data-show-placeholder="1"]{display:none !important}
+.scroll-morph.has-video{display:block !important}
+
+@media (max-width: 768px) {
+  /* Reduce brand image filter aggressiveness on mobile so images aren't black */
+  .act-card img,.lb-cell img,.ugc-cell img,.rs-img img,.mega-feat img,
+  .hero-img-wrap img,.search-row .sr-thumb img,
+  .cart-item-thumb img,.wish-item-thumb img {
+    filter: grayscale(.4) contrast(1.05) brightness(.95) saturate(.85) !important;
+  }
+  .act-card::after,.lb-cell::after,.ugc-cell::before,.mega-feat::after,
+  .hero-img-wrap::after { background: linear-gradient(180deg,transparent 0%,transparent 60%,rgba(13,13,14,.6) 100%) !important; mix-blend-mode: normal !important }
+
+  /* Showcase: smaller stage on mobile */
+  .showcase-main { min-height: 320px !important; padding: 56px 18px 40px }
+  .showcase-main svg.shape { width: 48% }
+  .showcase { padding: 40px 5vw }
+
+  /* Master Tee 01 cards: cap aspect ratio so they don't take 480px each */
+  .mt-card { aspect-ratio: 4/5 !important; max-height: 420px }
+  .mt-grid { gap: 8px }
+  .mt-band { padding: 50px 5vw 60px }
+
+  /* Hero-r image strip: cap height */
+  .hero-r { height: 320px !important }
+
+  /* Activities: cap card height */
+  .act-card { height: 180px !important }
+
+  /* Lookbook: cap heights */
+  .lb-cell { height: 220px !important }
+  .lb-cell:nth-child(1) { height: 280px !important }
+
+  /* Recently viewed strip: avoid huge gap if empty */
+  .recent[hidden] { display: none !important }
+
+  /* Tag rotator + ticker shouldn't be massive */
+  .tag-rotator { padding: 12px 4vw !important }
+  .ticker, .ticker-track { font-size: 10px !important }
+}
+
+/* Always force product grid to actually render */
+.prod-grid { min-height: 100px }
+
 </style>
 </head>
 <body>
