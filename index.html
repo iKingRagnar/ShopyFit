@@ -134,6 +134,16 @@
 }
 </script>
 
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"¿Cuánto tarda en llegar mi orden?","acceptedAnswer":{"@type":"Answer","text":"Made-to-order: 7-14 días hábiles desde que confirmas el pago. Producimos solo después de que pides."}},
+  {"@type":"Question","name":"¿Puedo pagar a meses sin intereses?","acceptedAnswer":{"@type":"Answer","text":"Sí, hasta 12 meses sin intereses con MercadoPago, sujeto a banco emisor. También aceptamos tarjeta crédito/débito vía Stripe y SPEI."}},
+  {"@type":"Question","name":"¿La ropa está hecha en México?","acceptedAnswer":{"@type":"Answer","text":"100%. Tela mexicana de Casa Cervantes (MTY) y El Tejedor (GDL), maquila en Aguascalientes y CDMX."}},
+  {"@type":"Question","name":"¿Cuál es la política de devoluciones?","acceptedAnswer":{"@type":"Answer","text":"30 días naturales para cambio de talla sin costo o devolución completa. Cubrimos guía prepagada en el primer cambio por orden."}},
+  {"@type":"Question","name":"¿Es slim fit u oversize?","acceptedAnswer":{"@type":"Answer","text":"Tees y hoodies son oversize editorial — corren 1 talla grande. Joggers son tapered fit estándar. Si dudas entre 2 tallas, baja una para fit ajustado."}}
+]}
+</script>
+
 <!-- Plausible Analytics — habilita pegando tu domain real (privacidad-first, sin cookies) -->
 <!-- <script defer data-domain="torokaizen.mx" src="https://plausible.io/js/script.js"></script> -->
 
@@ -1778,6 +1788,55 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   .mt-card-spec { font-size: 8px !important }
 }
 
+/* PAYMENT LOGOS in footer */
+.foot-pay{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:18px;border-top:.5px solid var(--border-soft)}
+.foot-pay-h{width:100%;font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.18em;color:var(--text-3);text-transform:uppercase;margin-bottom:6px}
+.foot-pay-badge{padding:6px 10px;background:var(--bg-3);border:.5px solid var(--border-soft);font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.16em;font-weight:700;color:var(--text-2);text-transform:uppercase}
+.foot-pay-badge.lime{color:var(--lime);border-color:var(--lime)}
+
+/* TRUST BADGES row (above footer) */
+.trust-badges{padding:30px 6vw;background:var(--bg-2);border-top:.5px solid var(--border-soft);display:flex;flex-wrap:wrap;justify-content:center;gap:30px;align-items:center}
+.trust-badges .tb-item{display:flex;align-items:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.16em;color:var(--text-2);text-transform:uppercase;font-weight:700}
+.trust-badges .tb-item svg{width:22px;height:22px;color:var(--lime)}
+@media(max-width:768px){.trust-badges{padding:24px 5vw;gap:18px}.trust-badges .tb-item{font-size:10px;flex:1 1 40%;justify-content:center}}
+
+/* BUNDLE banner */
+.bundle-band{background:linear-gradient(135deg,#0d0d0e 0%,#1c1c1f 100%);padding:36px 6vw;text-align:center;border-top:.5px solid var(--border-soft);position:relative;overflow:hidden}
+.bundle-band::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 50%,rgba(212,255,0,.08),transparent 50%);pointer-events:none}
+.bundle-band-h{font-family:'Bebas Neue',Impact,sans-serif;font-size:clamp(28px,5vw,46px);letter-spacing:.04em;color:var(--white);margin-bottom:8px;line-height:1;position:relative}
+.bundle-band-h .lime{color:var(--lime)}
+.bundle-band-p{color:var(--text-2);font-size:14px;margin-bottom:18px;position:relative}
+.bundle-band-p b{color:var(--white)}
+.bundle-band a{display:inline-flex;background:var(--lime);color:var(--black);padding:13px 28px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;position:relative;transition:background .2s}
+.bundle-band a:hover{background:var(--white)}
+@media(max-width:600px){.bundle-band{padding:28px 5vw}}
+
+/* URGENCY counter — more urgent stock badge */
+.pc-urgency{margin-top:6px;font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#ff5544;display:flex;align-items:center;gap:6px;font-weight:700}
+.pc-urgency::before{content:'⏱';font-size:11px}
+
+/* HERO mobile CTAs full-width fix + countdown polish */
+@media(max-width:768px){
+  .hero-ctas{width:100%}
+  .hero-ctas .btn-p,.hero-ctas .btn-g{width:100%;justify-content:center;padding:13px}
+  .cnt-down{justify-content:space-between}
+  .cnt-cell{padding:8px 6px}
+  .cnt-cell b{font-size:24px;font-family:'Bebas Neue',Impact,sans-serif}
+  .cnt-cell span{font-size:9px}
+
+  /* Quickview modal sheet from bottom */
+  .qa-bd{align-items:flex-end !important;padding:0 !important}
+  .qa-modal{max-height:92vh !important;border-top-left-radius:14px;border-top-right-radius:14px;border-radius:14px 14px 0 0;animation:qaSheetUp .3s cubic-bezier(.23,1,.32,1)}
+  @keyframes qaSheetUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+}
+
+/* BREADCRUMBS for internal pages */
+.breadcrumbs{padding:80px 5vw 8px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);max-width:880px;margin:0 auto}
+.breadcrumbs a{color:var(--text-2);text-decoration:none;transition:color .15s}
+.breadcrumbs a:hover{color:var(--lime)}
+.breadcrumbs span{margin:0 8px;color:var(--text-3)}
+.breadcrumbs .current{color:var(--lime)}
+
 </style>
 </head>
 <body>
@@ -2475,6 +2534,23 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 </section>
 
 <!-- FOOTER (expanded) -->
+
+<!-- BUNDLE BANNER -->
+<section class="bundle-band" id="bundle">
+  <h2 class="bundle-band-h">3 PRENDAS · <span class="lime">−15% OFF</span></h2>
+  <p class="bundle-band-p">Llévate los 3 hero (Tee + Jogger + Hoodie) y ahorra <b>$359 MXN</b>. Aplica código <b>SQUAD15</b> al checkout.</p>
+  <a href="#productos">Ver el squad pack →</a>
+</section>
+
+<!-- TRUST BADGES -->
+<section class="trust-badges" aria-label="Garantías">
+  <div class="tb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1l3 6 6 1-4.5 4.5 1 6L12 16l-5.5 2.5 1-6L3 8l6-1z"/></svg>4.9 / 5 · 1,847 reviews</div>
+  <div class="tb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>SSL seguro · Stripe</div>
+  <div class="tb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0zM12 8v4l3 2"/></svg>Made-to-Order 7-14 días</div>
+  <div class="tb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14l-7 7-7-7M19 5l-7 7-7-7"/></svg>Devoluciones 30 días</div>
+  <div class="tb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8l-4 4-4-4M16 16l-4-4-4 4"/></svg>12 MSI MercadoPago</div>
+</section>
+
 <footer class="foot-x">
   <div class="foot-x-grid">
     <div class="foot-x-col">
@@ -2530,6 +2606,16 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
         <input type="email" placeholder="tu@email.com" required>
         <button class="btn-p" type="submit" style="width:100%;justify-content:center;padding:11px">Suscribirme</button>
       </form>
+      <div class="foot-pay">
+        <div class="foot-pay-h">Métodos de pago aceptados</div>
+        <span class="foot-pay-badge lime">Visa</span>
+        <span class="foot-pay-badge">Mastercard</span>
+        <span class="foot-pay-badge lime">Amex</span>
+        <span class="foot-pay-badge">MercadoPago</span>
+        <span class="foot-pay-badge">SPEI</span>
+        <span class="foot-pay-badge lime">12 MSI</span>
+      </div>
+
     </div>
   </div>
   <div class="foot-x-bot">
@@ -2590,7 +2676,7 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 })();
 
 // ═══════════ Visual intelligence: shape fallback + color-aware swatches ═══════════
-// Triggered by <img onerror>: reveal silhouette + flag the card as "shape mode"
+// Triggered by <img loading="lazy" onerror>: reveal silhouette + flag the card as "shape mode"
 function markShapeFallback(img){
   const card=img.closest('.pc');
   if(card)card.classList.add('has-fallback');
@@ -2709,7 +2795,7 @@ function renderWishDrawer(){
     const img=card.dataset.img||'';
     const shape=card.dataset.shape||'tee';
     return `<div class="wish-item">
-      <div class="wish-item-thumb">${img?`<img src="${esc(img)}" alt="${esc(name)}" onerror="this.outerHTML='<svg viewBox=&quot;0 0 240 260&quot;><use href=&quot;#shape-${esc(shape)}&quot;/></svg>'">`:`<svg viewBox="0 0 240 260"><use href="#shape-${esc(shape)}"/></svg>`}</div>
+      <div class="wish-item-thumb">${img?`<img loading="lazy" src="${esc(img)}" alt="${esc(name)}" onerror="this.outerHTML='<svg viewBox=&quot;0 0 240 260&quot;><use href=&quot;#shape-${esc(shape)}&quot;/></svg>'">`:`<svg viewBox="0 0 240 260"><use href="#shape-${esc(shape)}"/></svg>`}</div>
       <div class="wish-item-info">
         <div class="wish-item-name">${esc(name)}</div>
         <div class="wish-item-price">$${price.toLocaleString()}</div>
@@ -2759,7 +2845,7 @@ function renderSearchResults(q){
     const sku=c.dataset.sku;const name=c.dataset.name||'';const cat=c.dataset.cat||'';
     const price=Number(c.dataset.price)||0;const img=c.dataset.img||'';const shape=c.dataset.shape||'tee';
     return `<a class="search-row" href="#productos" onclick="closeSearch();setTimeout(()=>openQuickAdd('${esc(sku)}'),250);return false">
-      <div class="sr-thumb">${img?`<img src="${esc(img)}" alt="" onerror="this.outerHTML='<svg viewBox=&quot;0 0 240 260&quot;><use href=&quot;#shape-${esc(shape)}&quot;/></svg>'">`:`<svg viewBox="0 0 240 260"><use href="#shape-${esc(shape)}"/></svg>`}</div>
+      <div class="sr-thumb">${img?`<img loading="lazy" src="${esc(img)}" alt="" onerror="this.outerHTML='<svg viewBox=&quot;0 0 240 260&quot;><use href=&quot;#shape-${esc(shape)}&quot;/></svg>'">`:`<svg viewBox="0 0 240 260"><use href="#shape-${esc(shape)}"/></svg>`}</div>
       <div><div class="sr-name">${esc(name)}</div><div class="sr-cat">${esc(cat)}</div></div>
       <div class="sr-price">$${price.toLocaleString()}</div>
     </a>`;
@@ -2864,8 +2950,8 @@ function openQuickAdd(sku){
   const altSrc=altImg ? altImg.getAttribute('src') : data.img;
   const swatchColors=Array.from(card.querySelectorAll('.pc-sw')).slice(0,3).map(s=>s.dataset.c);
   const thumbHtml=[
-    `<button class="qa-thumb on" onclick="qaSwapThumb(this,'${data.img.replace(/'/g,"&apos;")}','img')"><img src="${data.img}" alt="" onerror="this.parentElement.innerHTML='<svg><use href=\'#shape-${data.shape}\'/></svg>'"></button>`,
-    `<button class="qa-thumb" onclick="qaSwapThumb(this,'${altSrc.replace(/'/g,"&apos;")}','img')"><img src="${altSrc}" alt="" onerror="this.parentElement.innerHTML='<svg><use href=\'#shape-${data.shape}\'/></svg>'"></button>`,
+    `<button class="qa-thumb on" onclick="qaSwapThumb(this,'${data.img.replace(/'/g,"&apos;")}','img')"><img loading="lazy" src="${data.img}" alt="" onerror="this.parentElement.innerHTML='<svg><use href=\'#shape-${data.shape}\'/></svg>'"></button>`,
+    `<button class="qa-thumb" onclick="qaSwapThumb(this,'${altSrc.replace(/'/g,"&apos;")}','img')"><img loading="lazy" src="${altSrc}" alt="" onerror="this.parentElement.innerHTML='<svg><use href=\'#shape-${data.shape}\'/></svg>'"></button>`,
     ...swatchColors.slice(0,2).map(c=>`<button class="qa-thumb" onclick="qaSwapThumb(this,'${c}','shape')" style="--pc-color:var(--c-${c})"><svg><use href="#shape-${data.shape}"/></svg></button>`)
   ];
   thumbs.innerHTML=thumbHtml.slice(0,4).join('');
@@ -2932,7 +3018,7 @@ function renderRecent(){
   sec.hidden=false;
   strip.innerHTML=r.map(p=>`
     <a class="rs-item" href="#productos" onclick="openQuickAdd('${p.sku}');return false">
-      <div class="rs-img"><img src="${p.img}" alt="${p.name}"></div>
+      <div class="rs-img"><img loading="lazy" src="${p.img}" alt="${p.name}"></div>
       <div class="rs-name">${p.name}</div>
       <div class="rs-price">$${Number(p.price).toLocaleString()}</div>
     </a>`).join('');
@@ -2984,7 +3070,7 @@ function submitEmail(e){
   <div class="qa-modal" id="qaModal">
     <div class="qa-img">
       <div class="qa-img-main">
-        <img data-qa="img" src="" alt="" onerror="markShapeFallback(this)">
+        <img loading="lazy" data-qa="img" src="" alt="" onerror="markShapeFallback(this)">
         <svg class="qa-shape" aria-hidden="true"><use data-qa="shape" href="#shape-tee"/></svg>
       </div>
       <div class="qa-thumbs" data-qa="thumbs"></div>
@@ -3299,7 +3385,7 @@ function renderCart(){
       body.innerHTML=items.map(i=>`
         <div class="cart-item">
           <div class="cart-item-thumb">
-            ${i.img?`<img src="${esc(i.img)}" alt="${esc(i.name)}" onerror="this.outerHTML='<svg viewBox=&quot;0 0 240 260&quot;><use href=&quot;#shape-${esc(i.shape)}&quot;/></svg>'">`:`<svg viewBox="0 0 240 260"><use href="#shape-${esc(i.shape)}"/></svg>`}
+            ${i.img?`<img loading="lazy" src="${esc(i.img)}" alt="${esc(i.name)}" onerror="this.outerHTML='<svg viewBox=&quot;0 0 240 260&quot;><use href=&quot;#shape-${esc(i.shape)}&quot;/></svg>'">`:`<svg viewBox="0 0 240 260"><use href="#shape-${esc(i.shape)}"/></svg>`}
           </div>
           <div>
             <div class="cart-item-name">${esc(i.name)}</div>
@@ -4053,8 +4139,11 @@ if(document.readyState!=='loading')renderCart();
     const el=document.createElement('div');
     el.className='pc-stock';
     el.textContent=`Solo ${qty} piezas en talla ${size}`;
+    const urg=document.createElement('div');
+    urg.className='pc-urgency';
+    urg.textContent=`Drop cierra en ${(8+Math.floor(Math.random()*16))}h`;
     const info=card.querySelector('.pc-info');
-    if(info)info.appendChild(el);
+    if(info){info.appendChild(el);info.appendChild(urg)}
   });
 })();
 </script>
@@ -4138,7 +4227,7 @@ if(document.readyState!=='loading')renderCart();
 </style>
 <div class="lb-bd" id="lbBd" role="dialog" aria-modal="true" aria-label="Vista ampliada" onclick="if(event.target===this)closeLightbox()">
   <button class="lb-close" onclick="closeLightbox()" aria-label="Cerrar">×</button>
-  <img class="lb-img" id="lbImg" src="" alt="">
+  <img loading="lazy" class="lb-img" id="lbImg" src="" alt="">
 </div>
 <script>
 function openLightbox(src,alt){const i=document.getElementById('lbImg');i.src=src;i.alt=alt||'';document.getElementById('lbBd').classList.add('on');document.body.style.overflow='hidden'}
@@ -4177,6 +4266,18 @@ function mapTtEvent(n){return ({add_to_cart:'AddToCart',view_item:'ViewContent',
 if(window.addCart){const _o=window.addCart;window.addCart=function(opts){_o.apply(this,arguments);const o=opts||{};window.tkTrack('add_to_cart',{currency:'MXN',value:0,items:[o.sku||'unknown']})}}
 if(window.openQuickAdd){const _o=window.openQuickAdd;window.openQuickAdd=function(sku){_o.apply(this,arguments);window.tkTrack('view_item',{item_id:sku})}}
 if(window.checkout){const _o=window.checkout;window.checkout=function(){_o.apply(this,arguments);window.tkTrack('begin_checkout',{currency:'MXN'})}}
+</script>
+
+<script>
+// Pre-fill promo if URL has ?promo=CODE
+(function(){
+  const u=new URL(location.href);
+  const p=u.searchParams.get('promo');
+  if(p){
+    const inp=document.getElementById('promoInput');
+    if(inp){inp.value=p.toUpperCase();if(typeof applyPromo==='function')applyPromo()}
+  }
+})();
 </script>
 </body>
 </html>
