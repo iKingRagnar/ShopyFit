@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<script>
+// AGGRESSIVE CLEANUP: kill any old SW + clear all caches before anything else loads
+(function(){
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.getRegistrations().then(rs=>{
+      rs.forEach(r=>r.unregister());
+    });
+  }
+  if(window.caches){
+    caches.keys().then(ks=>ks.forEach(k=>caches.delete(k)));
+  }
+})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TORO KAIZEN — Built Different · Ropa deportiva premium hecha en México</title>
@@ -1811,26 +1824,6 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 </div>
 
 
-<!-- ═══════════ SCROLL-MORPH 01 · HERO BULL → ATHLETE ═══════════ -->
-<!-- Drop your generated MP4 at assets/morphs/hero-bull-to-athlete.mp4 to replace placeholder -->
-<section class="scroll-morph" id="morph-hero" data-morph-id="hero-bull-to-athlete">
-  <div class="scroll-morph-sticky">
-    <div class="scroll-morph-eyebrow">Built different · scroll para vivirlo</div>
-    <h2 class="sm-title">DEL <span class="lime">SÍMBOLO</span><br>AL <span class="lime">RING</span></h2>
-    <p class="sm-sub">El toro no es decoración. Es el código que vives cada vez que entrenas, cada vez que sales a la calle.</p>
-    <div class="scroll-morph-stage">
-      <video class="scroll-morph-video" muted playsinline preload="auto" hidden>
-        <source src="assets/morphs/hero-bull-to-athlete.mp4" type="video/mp4">
-      </video>
-      <div class="scroll-morph-placeholder">
-        ⬇<br><br>SCROLL-MORPH<br>HERO<br><br>Reemplaza placeholder con<br><code style="font-family:'JetBrains Mono';font-size:11px;color:var(--lime)">assets/morphs/hero-bull-to-athlete.mp4</code><br><br>Ver prompts en<br>docs/claude-config/MORPH_VIDEOS.md
-      </div>
-    </div>
-    <div class="scroll-morph-progress"><div class="scroll-morph-progress-bar"></div></div>
-  </div>
-  <div class="scroll-morph-hint">Scroll ↓</div>
-</section>
-
 <div class="ticker">
   <div class="t-track">
     <div class="t-item">Made-to-Order · 7-14 días<span class="t-dot"></span></div>
@@ -2081,28 +2074,6 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   <p class="prod-empty rv" id="prodEmpty" hidden>Sin coincidencias para esta combinación · <button class="link" onclick="resetFilt()">Resetear filtros</button></p>
 </section>
 
-<!-- ═══════════ SCROLL-MORPH 02 · DROP STAMP ═══════════ -->
-<!-- Drop: assets/morphs/drop-stamp.mp4  -->
-<section class="scroll-morph dark" id="morph-drop" data-morph-id="drop-stamp">
-  <div class="scroll-morph-sticky">
-    <div class="scroll-morph-eyebrow">SS26 Drop · ya disponible</div>
-    <h2 class="sm-title">CRUDO <span class="lime">→</span> BUILT<br><span class="lime">DIFFERENT</span></h2>
-    <p class="sm-sub">Cada prenda nace en raw cotton mexicano y termina con el sello del toro. Ese es el viaje. Lo ves al hacer scroll.</p>
-    <div class="scroll-morph-stage">
-      <video class="scroll-morph-video" muted playsinline preload="auto" hidden>
-        <source src="assets/morphs/drop-stamp.mp4" type="video/mp4">
-      </video>
-      <div class="scroll-morph-placeholder">
-        ⬇<br><br>SCROLL-MORPH<br>DROP STAMP<br><br><code style="font-family:'JetBrains Mono';font-size:11px;color:var(--lime)">assets/morphs/drop-stamp.mp4</code>
-      </div>
-    </div>
-    <div class="scroll-morph-cta">
-      <a href="#productos" class="btn-p">Ver Drop SS26 →</a>
-    </div>
-    <div class="scroll-morph-progress"><div class="scroll-morph-progress-bar"></div></div>
-  </div>
-</section>
-
 <!-- ═══════════════════ SHOP BY ACTIVITY ═══════════════════ -->
 <!-- ═══════════ FEATURED SHOWCASE · estilo TQ mockup ═══════════ -->
 <section class="showcase" id="showcase">
@@ -2232,25 +2203,6 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 </section>
 
 
-
-<!-- ═══════════ SCROLL-MORPH 03 · FABRIC TO GARMENT ═══════════ -->
-<!-- Drop: assets/morphs/fabric-to-garment.mp4 -->
-<section class="scroll-morph" id="morph-fabric" data-morph-id="fabric-to-garment">
-  <div class="scroll-morph-sticky">
-    <div class="scroll-morph-eyebrow">Hecho en México · 100% origen</div>
-    <h2 class="sm-title">DEL ALGODÓN<br>A LA <span class="lime">PRENDA</span></h2>
-    <p class="sm-sub">Algodón peinado 30/1 de Casa Cervantes (MTY). Maquila en Aguascalientes. Tu Tee Gothic en menos de 14 días desde la fibra.</p>
-    <div class="scroll-morph-stage">
-      <video class="scroll-morph-video" muted playsinline preload="auto" hidden>
-        <source src="assets/morphs/fabric-to-garment.mp4" type="video/mp4">
-      </video>
-      <div class="scroll-morph-placeholder">
-        ⬇<br><br>SCROLL-MORPH<br>FABRIC → GARMENT<br><br><code style="font-family:'JetBrains Mono';font-size:11px;color:var(--lime)">assets/morphs/fabric-to-garment.mp4</code>
-      </div>
-    </div>
-    <div class="scroll-morph-progress"><div class="scroll-morph-progress-bar"></div></div>
-  </div>
-</section>
 
 <!-- ═══════════════════ LOOKBOOK ═══════════════════ -->
 <section class="lookbook" id="lookbook">
@@ -2866,51 +2818,7 @@ function submitEmail(e){
   }
 }
 
-/* ═══════════ SCROLL-MORPH ENGINE ═══════════
- * Tie video.currentTime to scroll progress within each .scroll-morph section.
- * If the <video> can't load (no asset yet), keeps the placeholder visible.
- */
-function initScrollMorph(section){
-  const video=section.querySelector('.scroll-morph-video');
-  const placeholder=section.querySelector('.scroll-morph-placeholder');
-  const bar=section.querySelector('.scroll-morph-progress-bar');
-  if(!video)return;
 
-  let videoReady=false;
-  video.addEventListener('loadedmetadata',()=>{
-    if(video.duration && isFinite(video.duration)){
-      videoReady=true;
-      video.hidden=false;section.classList.add("has-video");
-      if(placeholder)placeholder.style.display='none';
-      onScroll();
-    }
-  });
-  video.addEventListener('error',()=>{
-    /* video missing → keep placeholder, leave video hidden */
-    video.hidden=true;
-  });
-
-  let ticking=false;
-  function onScroll(){
-    if(ticking)return;
-    ticking=true;
-    requestAnimationFrame(()=>{
-      const rect=section.getBoundingClientRect();
-      const total=Math.max(1,rect.height-window.innerHeight);
-      const scrolled=Math.max(0,Math.min(total,-rect.top));
-      const progress=scrolled/total;
-      if(videoReady && video.duration){
-        try{video.currentTime=progress*video.duration}catch(_){}
-      }
-      if(bar)bar.style.width=(progress*100).toFixed(1)+'%';
-      ticking=false;
-    });
-  }
-  window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',onScroll,{passive:true});
-  onScroll();
-}
-document.querySelectorAll('.scroll-morph').forEach(initScrollMorph);
 </script>
 
 <!-- QUICK-ADD MODAL -->
