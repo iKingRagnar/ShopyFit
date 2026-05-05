@@ -3,43 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404 · TORO KAIZEN</title>
+<title>404 · Página no encontrada · TORO KAIZEN</title>
+<meta name="description" content="404 — esta página no existe. Volvé al drop SS26 o búscanos por WhatsApp.">
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&family=JetBrains+Mono:wght@500&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:#FAF7F0;color:#1a1a1a;font-family:'Barlow',sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center}
-.wrap{max-width:640px}
-.bull{width:120px;height:96px;color:#0d0d0e;margin:0 auto 32px;animation:wobble 4s ease-in-out infinite}
-@keyframes wobble{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
-.code{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.16em;color:#8a8580;text-transform:uppercase;margin-bottom:14px}
-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(64px,12vw,140px);line-height:.95;margin-bottom:18px;color:#0d0d0e}
-h1 .lime{color:#C8F000;-webkit-text-stroke:2px #0d0d0e}
-p{font-size:16px;color:#5a5550;line-height:1.6;margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto}
-.btns{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center}
-a{font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;padding:14px 32px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s}
-.p{background:#0d0d0e;color:#FAF7F0;border:1px solid #0d0d0e}
-.p:hover{background:#C8F000;color:#0d0d0e;border-color:#C8F000}
-.g{color:#0d0d0e;border:1px solid #0d0d0e}
-.g:hover{background:#0d0d0e;color:#FAF7F0}
+:root{--lime:#D4FF00;--bg-1:#141416;--bg-2:#1c1c1f;--white:#fff;--text-2:#c8c8c2;--text-3:#8e8e88;--border:#3a3a40}
+body{background:var(--bg-1);color:var(--text-2);font-family:'Barlow',sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 6vw;text-align:center;position:relative;overflow:hidden}
+.bull{position:absolute;color:var(--lime);opacity:.04;width:780px;max-width:120vw;pointer-events:none;z-index:0}
+.bull svg{width:100%}
+.wrap{position:relative;z-index:1;max-width:680px}
+.tag{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.32em;color:var(--lime);text-transform:uppercase;margin-bottom:18px;display:inline-flex;align-items:center;gap:14px}
+.tag::before,.tag::after{content:'';width:36px;height:1px;background:var(--lime)}
+.code{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--text-3);margin-bottom:8px;letter-spacing:.18em}
+h1{font-family:'Bebas Neue',Impact,sans-serif;font-size:clamp(96px,18vw,220px);line-height:.86;letter-spacing:.02em;color:var(--white);margin:0 0 8px}
+h1 .lime{color:var(--lime)}
+h1 .outline{-webkit-text-stroke:2px var(--white);color:transparent}
+.sub{font-family:'Bebas Neue',Impact,sans-serif;font-size:clamp(28px,4vw,42px);letter-spacing:.04em;color:var(--white);line-height:1;margin-bottom:18px}
+.lead{font-size:15px;max-width:480px;margin:0 auto 38px;line-height:1.75}
+.kanji{font-family:'Noto Serif JP',serif;color:var(--lime)}
+.ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.btn-p{font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;background:var(--lime);color:#0d0d0e;border:none;padding:15px 30px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;transition:all .2s}
+.btn-p:hover{background:var(--white);transform:translateY(-1px)}
+.btn-g{font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.22);padding:15px 30px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;transition:all .2s}
+.btn-g:hover{border-color:var(--lime);color:var(--lime)}
+.helpful{margin-top:30px;padding-top:24px;border-top:.5px solid var(--border);max-width:480px;width:100%}
+.helpful-h{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.22em;color:var(--text-3);text-transform:uppercase;margin-bottom:14px}
+.helpful-list{display:flex;flex-direction:column;gap:6px}
+.helpful-list a{color:var(--text-2);text-decoration:none;font-size:13px;padding:8px 12px;border:.5px solid var(--border);transition:all .2s;display:flex;align-items:center;gap:10px;justify-content:center}
+.helpful-list a:hover{color:var(--lime);border-color:var(--lime)}
+.helpful-list a span{color:var(--lime);font-family:'JetBrains Mono',monospace;font-size:11px}
+.foot{margin-top:50px;font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.32em;color:var(--text-3);text-transform:uppercase}
 </style>
 </head>
 <body>
-<main class="wrap">
-  <svg class="bull" viewBox="0 0 100 80" fill="currentColor" aria-hidden="true">
-    <path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/>
-    <path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/>
-    <path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/>
-  </svg>
-  <div class="code">Error 404 · página perdida</div>
-  <h1>EL TORO SE <span class="lime">SALIÓ</span><br>DEL RUEDO</h1>
-  <p>Esta página no existe o se cambió de ubicación. Pero el squad sigue aquí. Vuelve a la tienda y sigue entrenando con nosotros.</p>
-  <div class="btns">
-    <a href="/" class="p">Volver a la tienda →</a>
-    <a href="/manifesto.html" class="g">Leer manifesto</a>
+<div class="bull" aria-hidden="true">
+  <svg viewBox="0 0 200 180" fill="currentColor"><path d="M50 32 Q22 20 8 4 Q4 12 12 28 Q24 42 38 50 Z"/><path d="M150 32 Q178 20 192 4 Q196 12 188 28 Q176 42 162 50 Z"/><path d="M50 38 Q50 22 80 18 Q100 16 120 18 Q150 22 150 38 L150 70 Q150 86 132 96 L100 110 L68 96 Q50 86 50 70 Z"/><path d="M68 96 L132 96 Q140 116 130 136 L100 158 L70 136 Q60 116 68 96 Z"/></svg>
+</div>
+<div class="wrap">
+  <div class="tag">Esta no la encontramos</div>
+  <div class="code">ERROR · 404 · NOT_FOUND</div>
+  <h1><span class="outline">4</span><span class="lime">0</span><span class="outline">4</span></h1>
+  <div class="sub">SE TE FUE <span style="color:var(--lime)">EL TORO</span> <span class="kanji">改善</span></div>
+  <p class="lead">La ruta que buscas no existe o se movió. <b style="color:var(--white)">Built different</b> — y eso incluye no obsesionarse con errores. Volvé al drop o búscanos por WhatsApp.</p>
+  <div class="ctas">
+    <a href="/" class="btn-p">← Volver al drop</a>
+    <a href="https://wa.me/525511223344?text=Hola%2C%20me%20sali%C3%B3%20una%20p%C3%A1gina%20404" class="btn-g">WhatsApp soporte</a>
   </div>
-</main>
+  <div class="helpful">
+    <div class="helpful-h">¿Quizás buscabas?</div>
+    <div class="helpful-list">
+      <a href="/#productos">Ver productos · SS26 Drop <span>→</span></a>
+      <a href="/about.html">Sobre la marca <span>→</span></a>
+      <a href="/manifesto.html">Manifesto <span>→</span></a>
+      <a href="/faq.html">Preguntas frecuentes <span>→</span></a>
+      <a href="/returns.html">Devoluciones &amp; cambios <span>→</span></a>
+    </div>
+  </div>
+  <div class="foot">— Discipline over everything —</div>
+</div>
 </body>
 </html>
