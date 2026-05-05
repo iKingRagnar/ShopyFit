@@ -1454,7 +1454,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .mt-band{background:var(--black);padding:90px 5vw 100px;border-top:.5px solid var(--border);position:relative;overflow:hidden}
 .mt-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .mt-card{position:relative;background:var(--bg-2);aspect-ratio:3/4;overflow:hidden;border:.5px solid var(--border-soft)}
-.mt-card.cw-off-white{background:#2a2a2c;color:#f0ece2}
+.mt-card.cw-off-white{background:#f0ece2;color:#1a1a1a}
 .mt-card.cw-black{background:#0d0d0e;color:#f0ece2}
 .mt-card.cw-grey{background:linear-gradient(135deg,#3a3a3a 0%,#252525 100%);color:#e0d8c8}
 .mt-card-spec{position:absolute;top:18px;left:18px;font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;line-height:1.7;z-index:2}
@@ -1623,25 +1623,70 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   .act-card { height: 140px !important }
 }
 
-/* ═══════ MOBILE FORCED DARK · v3 final ═══════ */
+
+
+/* ═══════════════════════ POLISH v4 · beautiful + ordered ═══════════════════════ */
+/* The cream-band sections stay BEAUTIFUL — only fix actual empty-space sources */
+
+/* Hidden recent stays out of layout (was eating space when empty) */
+.recent[hidden]{display:none !important;height:0 !important;padding:0 !important;margin:0 !important}
+
+/* Section padding more elegant — not too much top/bottom */
 @media (max-width: 768px) {
-  /* No more cream bands on mobile — forces dark across the board */
-  .cream-band { background: var(--bg-1) !important; color: var(--text) !important }
-  .cream-band .pc { background: var(--bg-2) !important; border-color: var(--border-soft) !important }
-  .cream-band .pc-name, .cream-band .pc-price, .cream-band .s-title { color: var(--white) !important }
-  .cream-band .pc-cat, .cream-band .pc-old, .cream-band .pc-rating .cnt { color: var(--text-3) !important }
-  .cream-band .rv-card { background: var(--bg-2) !important; border-color: var(--border) !important }
-  .cream-band .rv-text, .cream-band .rv-name { color: var(--white) !important }
-  .cream-band .ugc-cell { background: var(--bg-3) !important }
-  .cream-band .rs-img { background: var(--bg-3) !important }
-  .cream-band .pc-feat { background: var(--bg-3) !important; border-color: var(--border-soft) !important; color: var(--text-2) !important }
-  .cream-band .pc-feat svg { color: var(--lime) !important }
+  .products, .activities, .reviews, .ugc, .lookbook { padding: 50px 5vw 50px !important }
+  .vs-band, .showcase, .mt-band { padding: 50px 5vw 50px !important }
 
-  /* Force every section to have ZERO min-height so no blank space */
-  section, .activities, .products, .reviews, .ugc, .lookbook, .recent { min-height: 0 !important }
+  /* Section heads centered nicely */
+  .act-head, .ugc-head, .recent-head, .rv-head, .vs-head, .values-h { margin-bottom: 22px !important; text-align: center !important }
+  .s-label { justify-content: center }
+  .s-label::before { display: none }  /* clean look on mobile */
 
-  /* Tight padding everywhere */
-  section { padding-top: 30px !important; padding-bottom: 30px !important }
+  /* Tag rotator subtle */
+  .tag-rotator { padding: 14px 5vw !important }
+
+  /* Master Tee 01 — restore beauty: 1 column, full pretty cards */
+  .mt-grid { grid-template-columns: 1fr !important; gap: 14px !important }
+  .mt-card { aspect-ratio: 4/5 !important; max-height: none !important }
+  .mt-card:last-child { grid-column: auto !important }
+
+  /* Spec sheet row stacks nice */
+  .mt-spec-row { padding: 24px 20px !important; margin-top: 30px !important }
+
+  /* Activity cards: nicer height (not too short) */
+  .act-card { height: 220px !important }
+  .act-grid { gap: 10px !important }
+
+  /* Lookbook: dramatic but compact */
+  .lb-cell { height: 240px !important }
+  .lb-cell:nth-child(1) { height: 320px !important }
+  .lb-grid { gap: 8px !important }
+
+  /* Showcase: compact + balanced */
+  .showcase-main { min-height: 360px !important; padding: 60px 24px 50px !important }
+
+  /* Hero polished */
+  .hero { padding: 88px 5vw 40px !important; gap: 24px !important }
+  .hero-r { height: 360px !important }
+
+  /* Footer: less bottom padding so no excess gap */
+  .foot-x { padding: 40px 5vw 30px !important }
+}
+
+/* Spec list more compact + 2-col always for visual order */
+@media (max-width: 600px) {
+  .mt-spec-list { grid-template-columns: 1fr 1fr !important; gap: 8px 14px !important; font-size: 10px !important }
+  .mt-spec-info h3 { font-size: 28px !important }
+}
+
+/* Showcase callouts — 2-col on tablet, 1-col on phone */
+@media (max-width: 768px) {
+  .showcase-callouts { display: grid; grid-template-columns: 1fr 1fr !important; gap: 10px !important }
+  .showcase-callout { padding: 14px 14px !important }
+  .showcase-callout b { font-size: 10px !important }
+  .showcase-callout span { font-size: 10px !important }
+}
+@media (max-width: 480px) {
+  .showcase-callouts { grid-template-columns: 1fr !important }
 }
 
 </style>
