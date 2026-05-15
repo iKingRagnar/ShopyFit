@@ -6,7 +6,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#FAF7F0",
-  "theme_color": "#FAF7F0",
+  "theme_color":"#0d0d0e",
   "lang": "es-MX",
   "dir": "ltr",
   "categories": ["shopping", "lifestyle", "fitness"],
