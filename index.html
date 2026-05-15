@@ -24,7 +24,7 @@
 <meta name="keywords" content="toro kaizen, ropa deportiva premium, gym wear mexico, streetwear mexicano, oversize tee, tank top, hoodie, joggers, hecho en mexico">
 <meta name="author" content="TORO KAIZEN">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#FAF7F0">
+<meta name="theme-color" content="#0d0d0e">
 <link rel="canonical" href="https://torokaizen.mx/">
 
 <!-- Open Graph (Facebook / WhatsApp / LinkedIn) -->
@@ -157,7 +157,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   /* HYBRID THEME — dark canvas with cream sections for shopping */
-  --lime:#D4FF00;
+  --lime:#C0202C;
   --black:#0d0d0e;
   --bg-1:#141416;             /* dark main bg (hero, ticker, lookbook, footer) */
   --bg-2:#1c1c1f;             /* card surfaces dark */
@@ -187,7 +187,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg-1);color:var(--text);font-family:'Barlow',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;cursor:none}
 .cur{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--lime);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:difference}
-.cur-r{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid rgba(212,255,0,.55);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .13s ease,width .25s,height .25s,opacity .25s;opacity:.55}
+.cur-r{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid rgba(192,32,44,.55);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .13s ease,width .25s,height .25s,opacity .25s;opacity:.55}
 .cur.h{width:18px;height:18px}.cur-r.h{width:52px;height:52px;opacity:.3}
 
 /* NAV */
@@ -199,8 +199,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:68px;padding:0 4vw;di
 .nav-links{display:flex;gap:1.6rem;list-style:none}
 .nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-2);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--lime)}
-.nav-links a.b2b{color:var(--lime);border:1px solid rgba(212,255,0,.4);padding:6px 12px}
-.nav-links a.b2b:hover{background:rgba(212,255,0,.1)}
+.nav-links a.b2b{color:var(--lime);border:1px solid rgba(192,32,44,.4);padding:6px 12px}
+.nav-links a.b2b:hover{background:rgba(192,32,44,.1)}
 .nav-r{display:flex;align-items:center;gap:14px}
 .nav-ico{background:none;border:none;cursor:none;color:var(--text-2);display:flex;transition:color .2s}
 .nav-ico:hover{color:var(--lime)}
@@ -222,7 +222,7 @@ h1.hero-t .lime{color:var(--lime)}
 .btn-p{font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;background:var(--lime);color:var(--black);border:none;cursor:none;padding:15px 34px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;transition:background .2s,transform .12s}
 .btn-p:hover{background:var(--white);transform:translateY(-1px)}
 .btn-g{font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.22);cursor:none;padding:15px 34px;text-decoration:none;display:inline-flex;align-items:center;gap:9px;transition:all .2s}
-.btn-g:hover{border-color:var(--lime);color:var(--lime);background:rgba(212,255,0,.05)}
+.btn-g:hover{border-color:var(--lime);color:var(--lime);background:rgba(192,32,44,.05)}
 .hero-r{position:relative;overflow:hidden}
 .hero-split{display:grid;grid-template-columns:1fr 1fr;height:100%;gap:2px}
 .hero-img-wrap{position:relative;overflow:hidden;background:var(--bg-2)}
@@ -262,7 +262,7 @@ section{padding:90px 5vw}
 @media(max-width:1100px){.prod-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.prod-grid{grid-template-columns:1fr}}
 .pc{background:var(--bg-2);border:.5px solid var(--border-soft);cursor:none;position:relative;overflow:hidden;transition:all .3s}
-.pc:hover{border-color:rgba(212,255,0,.5);transform:translateY(-3px)}
+.pc:hover{border-color:rgba(192,32,44,.5);transform:translateY(-3px)}
 .pc-badge{position:absolute;top:12px;left:12px;z-index:4;font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 9px}
 .b-new{background:var(--lime);color:var(--black)}
 .b-hot{background:var(--red);color:#fff}
@@ -348,7 +348,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 @media(max-width:900px){.trust-bar{grid-template-columns:repeat(2,1fr)}.trust-cell:nth-child(2){border-right:none}}
 
 /* HERO V2 */
-.hero-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:.5px solid var(--lime);background:rgba(212,255,0,.06);font-family:'Barlow Condensed';font-size:10px;letter-spacing:.22em;color:var(--lime);text-transform:uppercase;margin-bottom:24px}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:.5px solid var(--lime);background:rgba(192,32,44,.06);font-family:'Barlow Condensed';font-size:10px;letter-spacing:.22em;color:var(--lime);text-transform:uppercase;margin-bottom:24px}
 .hero-pill .ldot{width:6px;height:6px;background:var(--lime);border-radius:50%;animation:pulse 1.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 .cnt-down{display:flex;gap:10px;margin:18px 0 28px;font-family:'JetBrains Mono',monospace}
@@ -583,7 +583,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 
 /* ═══════════ VISUAL INTELLIGENCE — color-aware swatches, shape fallback, gallery ═══════════ */
 /* Color tokens — keyed to data-c on swatches */
-.pc{--c-black:#0d0d0e;--c-white:#f0ece2;--c-lime:#D4FF00;--c-gray:#8e8e88;--c-navy:#1a2740;--c-olive:#3e4a2e;--c-red:#a62828;--c-purple:#5d4a8c;--pc-color:var(--c-black)}
+.pc{--c-black:#0d0d0e;--c-white:#f0ece2;--c-lime:#C0202C;--c-gray:#8e8e88;--c-navy:#1a2740;--c-olive:#3e4a2e;--c-red:#a62828;--c-purple:#5d4a8c;--pc-color:var(--c-black)}
 /* Bigger swatches with brand-coherent active ring */
 .pc-swatches{display:flex;gap:7px;margin-top:10px;align-items:center;position:relative}
 .pc-sw{width:18px;height:18px;border-radius:50%;border:1px solid var(--border);cursor:none;transition:transform .15s,box-shadow .2s;position:relative}
@@ -1147,7 +1147,7 @@ footer{background:var(--black);padding:56px 5vw 28px;border-top:.5px solid var(-
 .vs-tk-price{text-align:center;color:var(--lime);font-family:'Bebas Neue',sans-serif;
   font-size:22px;font-weight:700}
 .vs-delta{text-align:center;color:var(--lime);font-family:'Barlow Condensed',sans-serif;
-  font-size:13px;letter-spacing:.12em;font-weight:700;background:rgba(212,255,0,.06);
+  font-size:13px;letter-spacing:.12em;font-weight:700;background:rgba(192,32,44,.06);
   border-left:.5px solid var(--border-soft)}
 .vs-foot{text-align:center;margin-top:28px;color:var(--text-2);font-size:13px;line-height:1.7;max-width:680px;margin-left:auto;margin-right:auto}
 .vs-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1100px;margin:0 auto}
@@ -1341,7 +1341,7 @@ nav{top:38px}  /* push nav below the drop banner */
 
 /* ═══════════════════════ MICROINTERACTIONS + A11Y ═══════════════════════ */
 .cart-pill.pulse{animation:cartPulse .55s cubic-bezier(.23,1,.32,1)}
-@keyframes cartPulse{0%{transform:scale(1)}30%{transform:scale(1.16);box-shadow:0 0 0 8px rgba(212,255,0,.25)}100%{transform:scale(1)}}
+@keyframes cartPulse{0%{transform:scale(1)}30%{transform:scale(1.16);box-shadow:0 0 0 8px rgba(192,32,44,.25)}100%{transform:scale(1)}}
 
 /* Skip link (a11y) */
 .skip-link{position:absolute;top:-40px;left:8px;background:var(--lime);color:var(--black);
@@ -1387,7 +1387,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .mega-feat::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(212,255,0,.08) 0%, rgba(13,13,14,.55) 60%, rgba(13,13,14,.85) 100%);
+  background: linear-gradient(135deg, rgba(192,32,44,.08) 0%, rgba(13,13,14,.55) 60%, rgba(13,13,14,.85) 100%);
   pointer-events: none; z-index: 1;
   mix-blend-mode: multiply;
   transition: opacity .4s ease;
@@ -1522,7 +1522,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 /* STOCK URGENCY BADGE */
 .pc-stock{margin-top:8px;font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);display:flex;align-items:center;gap:6px;font-weight:700}
 .pc-stock::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pcPulse 1.6s ease-in-out infinite}
-@keyframes pcPulse{0%,100%{box-shadow:0 0 0 0 rgba(212,255,0,.5)}50%{box-shadow:0 0 0 6px rgba(212,255,0,0)}}
+@keyframes pcPulse{0%,100%{box-shadow:0 0 0 0 rgba(192,32,44,.5)}50%{box-shadow:0 0 0 6px rgba(192,32,44,0)}}
 .cream-band .pc-stock{color:#a62828}
 .cream-band .pc-stock::before{background:#a62828}
 .pc[data-status="coming-soon"] .pc-stock{display:none}
@@ -1802,7 +1802,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 
 /* BUNDLE banner */
 .bundle-band{background:linear-gradient(135deg,#0d0d0e 0%,#1c1c1f 100%);padding:36px 6vw;text-align:center;border-top:.5px solid var(--border-soft);position:relative;overflow:hidden}
-.bundle-band::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 50%,rgba(212,255,0,.08),transparent 50%);pointer-events:none}
+.bundle-band::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 50%,rgba(192,32,44,.08),transparent 50%);pointer-events:none}
 .bundle-band-h{font-family:'Bebas Neue',Impact,sans-serif;font-size:clamp(28px,5vw,46px);letter-spacing:.04em;color:var(--white);margin-bottom:8px;line-height:1;position:relative}
 .bundle-band-h .lime{color:var(--lime)}
 .bundle-band-p{color:var(--text-2);font-size:14px;margin-bottom:18px;position:relative}
@@ -1966,7 +1966,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M30 30Q14 22 8 4Q14 0 22 4Q30 14 36 30Z"/><path d="M70 30Q86 22 92 4Q86 0 78 4Q70 14 64 30Z"/><path d="M30 30L70 30Q76 40 74 52Q70 64 60 72L50 78L40 72Q30 64 26 52Q24 40 30 30Z"/></svg>
   </div>
   <div class="hero-l">
-    <div class="hero-pill"><span class="ldot"></span> SS26 Drop · Made-to-Order · Built Different</div>
+    <div class="hero-pill"><span class="ldot"></span> RELENTLESS IMPROVEMENT · 改善 · BUILT DIFFERENT</div>
     <h1 class="hero-t">BUILT<br><span class="lime">DIFF</span><span class="outline">ERENT</span></h1>
     <p class="hero-desc">Ropa diseñada para los que no conocen el límite. Cortes oversize, telas premium y una identidad que se nota en el gimnasio y en la calle.</p>
     <div class="cnt-down" id="cntDown" aria-label="Countdown próximo drop">
@@ -2048,13 +2048,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     <div class="t-item">12 MSI con MercadoPago<span class="t-dot"></span></div>
     <div class="t-item">Envío gratis +$799<span class="t-dot"></span></div>
     <div class="t-item">Devoluciones 30 días<span class="t-dot"></span></div>
-    <div class="t-item">Built different. Built local.<span class="t-dot"></span></div>
+    <div class="t-item">Relentless improvement. Built different.<span class="t-dot"></span></div>
     <div class="t-item">Made-to-Order · 7-14 días<span class="t-dot"></span></div>
     <div class="t-item">100% Hecho en México<span class="t-dot"></span></div>
     <div class="t-item">12 MSI con MercadoPago<span class="t-dot"></span></div>
     <div class="t-item">Envío gratis +$799<span class="t-dot"></span></div>
     <div class="t-item">Devoluciones 30 días<span class="t-dot"></span></div>
-    <div class="t-item">Built different. Built local.<span class="t-dot"></span></div>
+    <div class="t-item">Relentless improvement. Built different.<span class="t-dot"></span></div>
   </div>
 </div>
 
@@ -2063,7 +2063,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   <div class="vs-head">
     <div class="vs-eyebrow">Calidad premium · Precio justo</div>
     <h2 class="vs-title">PREMIUM <span class="lime">DESDE MÉXICO</span></h2>
-    <p class="vs-desc">240 gsm cotton premium, fit oversize editorial, hecho en México. Sin pagar import duties, sin esperar tres semanas de envío internacional. <b>Built different. Built local.</b></p>
+    <p class="vs-desc">240 gsm cotton premium, fit oversize editorial, hecho en México. Sin pagar import duties, sin esperar tres semanas de envío internacional. <b>Relentless improvement. Built different.</b></p>
   </div>
   <div class="vs-pillars">
     <div class="vs-pillar">
@@ -3682,21 +3682,20 @@ if(document.readyState!=='loading')renderCart();
     </symbol>
 
     <!-- ═══════════ AGGRESSIVE BULL — gymrat-grade horned skull ═══════════ -->
-    <symbol id="bull-aggressive" viewBox="0 0 120 100">
+    <symbol id="bull-aggressive" viewBox="0 0 120 120">
+      <!-- Hexagon frame -->
+      <path d="M60 6 L106 33 L106 87 L60 114 L14 87 L14 33 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
       <!-- Horns -->
-      <path fill="currentColor" d="M12 28 Q4 14 2 4 Q14 4 24 12 Q34 22 40 32 Z"/>
-      <path fill="currentColor" d="M108 28 Q116 14 118 4 Q106 4 96 12 Q86 22 80 32 Z"/>
-      <!-- Skull/forehead -->
-      <path fill="currentColor" d="M40 30 Q40 16 60 14 Q80 16 80 30 L80 50 Q80 56 76 60 L60 72 L44 60 Q40 56 40 50 Z"/>
-      <!-- Snout / lower face -->
-      <path fill="currentColor" d="M44 60 L76 60 Q80 70 76 80 L60 90 L44 80 Q40 70 44 60 Z"/>
-      <!-- Eye sockets (darker holes for depth) -->
-      <path fill="#000" opacity=".55" d="M48 38 Q48 30 54 30 Q60 30 60 38 Q60 46 54 46 Q48 46 48 38 Z"/>
-      <path fill="#000" opacity=".55" d="M60 38 Q60 30 66 30 Q72 30 72 38 Q72 46 66 46 Q60 46 60 38 Z"/>
-      <!-- Nose ring detail -->
-      <ellipse cx="60" cy="78" rx="6" ry="3" fill="#000" opacity=".45"/>
-      <!-- Center forehead crest -->
-      <path fill="#000" opacity=".22" d="M58 18 L62 18 L60 30 Z"/>
+      <path fill="currentColor" d="M34 50 Q20 42 16 28 Q26 28 36 38 Q44 46 46 56 Z"/>
+      <path fill="currentColor" d="M86 50 Q100 42 104 28 Q94 28 84 38 Q76 46 74 56 Z"/>
+      <!-- Skull -->
+      <path fill="currentColor" d="M40 50 Q40 38 60 36 Q80 38 80 50 L80 70 Q80 80 72 86 L60 96 L48 86 Q40 80 40 70 Z"/>
+      <!-- Eyes (negative space) -->
+      <path fill="#0d0d0e" d="M48 56 Q48 50 54 50 Q60 50 60 58 Q58 64 53 64 Q48 62 48 56 Z"/>
+      <path fill="#0d0d0e" d="M60 58 Q60 50 66 50 Q72 50 72 56 Q72 62 67 64 Q60 64 60 58 Z"/>
+      <!-- Snout -->
+      <path fill="currentColor" d="M50 84 L70 84 Q72 90 68 96 L60 102 L52 96 Q48 90 50 84 Z"/>
+      <ellipse cx="60" cy="92" rx="5" ry="2.5" fill="#0d0d0e"/>
     </symbol>
 
     <!-- ═══════════ TK MONOGRAM in HEXAGON ═══════════ -->
@@ -4186,9 +4185,9 @@ if(document.readyState!=='loading')renderCart();
     if(localStorage.getItem(SEEN_KEY))return;
     loadConfetti(c=>{
       if(!c)return;
-      c({particleCount:80,spread:75,origin:{y:.7},colors:['#D4FF00','#ffffff','#0d0d0e','#c8c8c2']});
-      setTimeout(()=>c({particleCount:50,spread:90,origin:{x:.2,y:.6},colors:['#D4FF00','#ffffff']}),200);
-      setTimeout(()=>c({particleCount:50,spread:90,origin:{x:.8,y:.6},colors:['#D4FF00','#ffffff']}),350);
+      c({particleCount:80,spread:75,origin:{y:.7},colors:['#C0202C','#ffffff','#0d0d0e','#c8c8c2']});
+      setTimeout(()=>c({particleCount:50,spread:90,origin:{x:.2,y:.6},colors:['#C0202C','#ffffff']}),200);
+      setTimeout(()=>c({particleCount:50,spread:90,origin:{x:.8,y:.6},colors:['#C0202C','#ffffff']}),350);
       localStorage.setItem(SEEN_KEY,'1');
     });
   }
